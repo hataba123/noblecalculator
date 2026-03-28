@@ -3,8 +3,11 @@ import type { ReactNode } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "NobleCalculator",
-  description: "Financial calculators for freelancers, agencies, and small businesses.",
+  title: {
+    default: "NobleCalculator",
+    template: "%s | NobleCalculator",
+  },
+  description: "Fast financial calculators for freelancers, agencies, and small businesses.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
