@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { HomeCalculator } from "@/src/components/shared/home-calculator";
 import { ToolCard } from "@/src/components/shared/tool-card";
 import { createPageMetadata } from "@/src/lib/metadata";
 
@@ -47,6 +48,8 @@ export default function HomePage() {
 
           </div>
         </header>
+
+        <HomeCalculator />
 
         <section className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="grid gap-4 sm:grid-cols-2 lg:col-span-2">
