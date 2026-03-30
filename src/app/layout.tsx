@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/next"
 
-import { Analytics } from "@vercel/analytics/next";
 import { AppFooter } from "@/src/components/shared/app-footer";
 import { AppHeader } from "@/src/components/shared/app-header";
 import { siteMetadata } from "@/src/lib/metadata";
