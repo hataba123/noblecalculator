@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
+import { AppFooter } from "@/src/components/shared/app-footer";
+import { AppHeader } from "@/src/components/shared/app-header";
 import { siteMetadata } from "@/src/lib/metadata";
 import { siteConfig } from "@/src/config/site";
 import "./globals.css";
@@ -50,7 +52,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="flex min-h-screen flex-col">
+        <AppHeader />
+        <div className="flex-1">{children}</div>
+        <AppFooter />
+      </body>
     </html>
   );
 }

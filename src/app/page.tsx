@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { ToolCard } from "@/src/components/shared/tool-card";
 import { createPageMetadata } from "@/src/lib/metadata";
 
 export const metadata = createPageMetadata(
@@ -84,25 +85,12 @@ export default function HomePage() {
 
           <div className="grid gap-4 sm:grid-cols-2">
             {[
-              { title: "Profit Margin", href: "/tools/profit-margin", description: "Revenue vs cost landing page for quick checks." },
-              { title: "Markup", href: "/tools/markup", description: "Markup and price planning for sales decisions." },
-              { title: "Freelance Hourly Rate", href: "/tools/freelance-hourly-rate", description: "Target hourly rate for freelancers and consultants." },
-              { title: "VAT Calculator", href: "/tools/vat-calculator", description: "Net, gross, and tax values in one place." },
+              { title: "Profit Margin", href: "/tools/profit-margin", description: "Revenue vs cost landing page for quick checks.", slug: "profit-margin" },
+              { title: "Markup", href: "/tools/markup", description: "Markup and price planning for sales decisions.", slug: "markup" },
+              { title: "Freelance Hourly Rate", href: "/tools/freelance-hourly-rate", description: "Target hourly rate for freelancers and consultants.", slug: "freelance-hourly-rate" },
+              { title: "VAT Calculator", href: "/tools/vat-calculator", description: "Net, gross, and tax values in one place.", slug: "vat-calculator" },
             ].map((tool) => (
-              <article
-                key={tool.href}
-                className="rounded-[1.75rem] border border-black/10 bg-white/80 p-5 shadow-[0_18px_48px_rgba(34,24,12,0.08)] backdrop-blur transition-transform duration-200 hover:-translate-y-1"
-              >
-                <p className="text-xs uppercase tracking-[0.24em] text-[#8a6b45]">Tool</p>
-                <h3 className="mt-2 text-xl font-semibold text-[#1b1a17]">{tool.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-[#5c554b]">{tool.description}</p>
-                <Link
-                  href={tool.href}
-                  className="mt-5 inline-flex rounded-full border border-black/10 bg-[#f7f1e8] px-4 py-2 text-sm font-semibold text-[#1b1a17] transition-colors hover:bg-[#efe2cf]"
-                >
-                  Open route
-                </Link>
-              </article>
+              <ToolCard key={tool.href} title={tool.title} href={tool.href} slug={tool.slug} description={tool.description} variant="light" />
             ))}
           </div>
         </section>
