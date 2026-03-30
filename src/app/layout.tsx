@@ -9,6 +9,10 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+  },
   title: {
     default: siteMetadata.title,
     template: `%s | ${siteMetadata.title}`,

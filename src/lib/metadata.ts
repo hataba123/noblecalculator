@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/src/config/site";
 
 export const siteMetadata = {
-  title: "NobleCalculator",
-  description: "Financial calculators for freelancers, agencies, and small businesses.",
+  title: "Noble Calculator: Simple Online Calculators for Everyday Use",
+  description: "Explore simple, easy-to-use calculators for finance, fitness, math, and everyday needs.",
 };
 
 const ogImagePath = "/og-image.svg";
