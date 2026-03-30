@@ -16,7 +16,7 @@ export function InvoiceCalculatorForm({ value, onChange }: InvoiceCalculatorForm
         value={value.amount}
         onChange={(amount) => onChange({ ...value, amount })}
         placeholder="2500"
-        helpText="Giá trị invoice trước thuế."
+        helpText="Invoice amount before tax."
       />
       <NumberField
         label="Tax rate (%)"
@@ -25,7 +25,7 @@ export function InvoiceCalculatorForm({ value, onChange }: InvoiceCalculatorForm
         placeholder="10"
         min={0}
         step={0.1}
-        helpText="Thuế áp dụng cho hóa đơn."
+        helpText="Tax applied to the invoice."
       />
     </form>
   );

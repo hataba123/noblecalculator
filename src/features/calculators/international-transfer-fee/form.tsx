@@ -16,7 +16,7 @@ export function InternationalTransferFeeForm({ value, onChange }: InternationalT
         value={value.amount}
         onChange={(amount) => onChange({ ...value, amount })}
         placeholder="1000"
-        helpText="Số tiền cần chuyển trước phí."
+          helpText="Amount you want to send before fees."
       />
       <NumberField
         label="Fee rate (%)"
@@ -25,7 +25,7 @@ export function InternationalTransferFeeForm({ value, onChange }: InternationalT
         placeholder="2.5"
         min={0}
         step={0.1}
-        helpText="Tỷ lệ phí chuyển tiền quốc tế."
+          helpText="International transfer fee rate."
       />
     </form>
   );

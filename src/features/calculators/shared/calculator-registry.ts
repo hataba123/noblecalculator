@@ -4,32 +4,32 @@ export const calculatorRegistry: CalculatorDefinition[] = [
 	{
 		slug: "profit-margin",
 		title: "Profit Margin Calculator",
-		description: "Calculate profit, margin, and markup from revenue and cost.",
+		description: "See how much profit you keep after costs.",
 	},
 	{
 		slug: "markup",
 		title: "Markup Calculator",
-		description: "Work out markup percentage and selling price from cost.",
+		description: "Find the right selling price from your cost and target markup.",
 	},
 	{
 		slug: "freelance-hourly-rate",
 		title: "Freelance Hourly Rate Calculator",
-		description: "Turn income goals, working hours, and expenses into a target hourly rate.",
+		description: "Set an hourly rate that fits your income goal.",
 	},
 	{
 		slug: "vat-calculator",
 		title: "VAT Calculator",
-		description: "Add or remove VAT and see the net, tax, and gross values.",
+		description: "Add VAT to a price or split it back out.",
 	},
 	{
 		slug: "invoice-calculator",
 		title: "Invoice Calculator",
-		description: "Estimate invoice totals from hours, rates, and fixed fees.",
+		description: "Estimate the final invoice amount before you send it.",
 	},
 	{
 		slug: "international-transfer-fee",
 		title: "International Transfer Fee Calculator",
-		description: "Estimate the real cost of cross-border transfers and fees.",
+		description: "Check the real cost of sending money abroad.",
 	},
 ];
 

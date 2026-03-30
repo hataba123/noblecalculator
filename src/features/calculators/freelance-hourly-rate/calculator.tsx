@@ -3,12 +3,13 @@
 import { useState } from "react";
 
 import { calculateFreelanceHourlyRate } from "./formula";
+import { freelanceHourlyRateConfig } from "./config";
 import { FreelanceHourlyRateForm } from "./form";
 import { FreelanceHourlyRateResult } from "./result";
 import type { FreelanceHourlyRateInput } from "./schema";
 
 export function FreelanceHourlyRateCalculator() {
-  const [value, setValue] = useState<FreelanceHourlyRateInput>({ targetIncome: 60000, billableHours: 120 });
+  const [value, setValue] = useState<FreelanceHourlyRateInput>(() => ({ ...freelanceHourlyRateConfig.defaultValue }));
   const result = calculateFreelanceHourlyRate(value);
 
   return (
@@ -17,7 +18,7 @@ export function FreelanceHourlyRateCalculator() {
         <p className="text-sm uppercase tracking-[0.24em] text-[#8a6b45]">Inputs</p>
         <h2 className="mt-2 text-2xl font-semibold text-[#1b1a17]">Freelance Hourly Rate Calculator</h2>
         <p className="mt-3 max-w-xl text-sm leading-6 text-[#5c554b]">
-          Quy đổi thu nhập mục tiêu và số giờ billable thành mức giá theo giờ.
+          Set an hourly rate that matches your income goal.
         </p>
 
         <div className="mt-6">
@@ -30,7 +31,7 @@ export function FreelanceHourlyRateCalculator() {
           <p className="text-sm uppercase tracking-[0.24em] text-[#c9b79d]">Result</p>
           <h3 className="mt-2 text-2xl font-semibold">Suggested hourly rate</h3>
           <p className="mt-3 text-sm leading-6 text-white/72">
-            Nếu billable hours bằng 0, calculator sẽ trả về 0 để tránh chia cho 0.
+            If billable hours is 0, we return 0.
           </p>
         </div>
 

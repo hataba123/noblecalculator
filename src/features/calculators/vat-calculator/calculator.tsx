@@ -3,12 +3,13 @@
 import { useState } from "react";
 
 import { calculateVat } from "./formula";
+import { vatCalculatorConfig } from "./config";
 import { VatCalculatorForm } from "./form";
 import { VatCalculatorResult } from "./result";
 import type { VatCalculatorInput } from "./schema";
 
 export function VatCalculatorCalculator() {
-  const [value, setValue] = useState<VatCalculatorInput>({ amount: 1000, vatRate: 20 });
+  const [value, setValue] = useState<VatCalculatorInput>(() => ({ ...vatCalculatorConfig.defaultValue }));
   const result = calculateVat(value);
 
   return (
@@ -17,7 +18,7 @@ export function VatCalculatorCalculator() {
         <p className="text-sm uppercase tracking-[0.24em] text-[#8a6b45]">Inputs</p>
         <h2 className="mt-2 text-2xl font-semibold text-[#1b1a17]">VAT Calculator</h2>
         <p className="mt-3 max-w-xl text-sm leading-6 text-[#5c554b]">
-          Tính VAT và gross amount từ giá trị trước thuế.
+          Calculate VAT and gross amount from the pre-tax value.
         </p>
 
         <div className="mt-6">
@@ -30,7 +31,7 @@ export function VatCalculatorCalculator() {
           <p className="text-sm uppercase tracking-[0.24em] text-[#c9b79d]">Results</p>
           <h3 className="mt-2 text-2xl font-semibold">VAT breakdown</h3>
           <p className="mt-3 text-sm leading-6 text-white/72">
-            Sử dụng cùng công thức cho landing page, API, và export sau này.
+            See the tax amount and the final price side by side.
           </p>
         </div>
 

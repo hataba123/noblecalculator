@@ -3,12 +3,13 @@
 import { useState } from "react";
 
 import { calculateMarkup } from "./formula";
+import { markupConfig } from "./config";
 import { MarkupForm } from "./form";
 import { MarkupResult } from "./result";
 import type { MarkupInput } from "./schema";
 
 export function MarkupCalculator() {
-  const [value, setValue] = useState<MarkupInput>({ cost: 100, markupRate: 30 });
+  const [value, setValue] = useState<MarkupInput>(() => ({ ...markupConfig.defaultValue }));
   const result = calculateMarkup(value);
 
   return (
@@ -17,7 +18,7 @@ export function MarkupCalculator() {
         <p className="text-sm uppercase tracking-[0.24em] text-[#8a6b45]">Inputs</p>
         <h2 className="mt-2 text-2xl font-semibold text-[#1b1a17]">Markup Calculator</h2>
         <p className="mt-3 max-w-xl text-sm leading-6 text-[#5c554b]">
-          Tính giá bán từ giá vốn và tỷ lệ markup để ra quyết định pricing nhanh hơn.
+          Find the right selling price from your cost and target markup.
         </p>
 
         <div className="mt-6">
@@ -28,9 +29,9 @@ export function MarkupCalculator() {
       <section className="space-y-6">
         <div className="rounded-[2rem] border border-black/10 bg-[#201c17] p-6 text-white shadow-[0_20px_60px_rgba(34,24,12,0.12)] sm:p-8">
           <p className="text-sm uppercase tracking-[0.24em] text-[#c9b79d]">Results</p>
-          <h3 className="mt-2 text-2xl font-semibold">Price and margin snapshot</h3>
+          <h3 className="mt-2 text-2xl font-semibold">Your price breakdown</h3>
           <p className="mt-3 text-sm leading-6 text-white/72">
-            Khi thay đổi markup rate, các giá trị bên dưới sẽ cập nhật ngay.
+            Change the markup rate and the results update instantly.
           </p>
         </div>
 

@@ -1,12 +1,10 @@
-import Link from "next/link";
-
 import { tools } from "@/src/config/tools";
 import { ToolCard } from "@/src/components/shared/tool-card";
 import { createPageMetadata } from "@/src/lib/metadata";
 
 export const metadata = createPageMetadata(
-  "Tools Directory",
-  "Browse every financial calculator in NobleCalculator from one shared registry.",
+  "Calculator Hub",
+  "Browse all calculators in one place and open the one you need.",
   "/tools",
   ["financial tools", "calculator directory", "SEO landing pages", "calculator registry"]
 );
@@ -19,28 +17,16 @@ export default function ToolsPage() {
           <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl space-y-3">
               <span className="inline-flex w-fit rounded-full border border-black/10 bg-[#f4efe8] px-3 py-1 text-xs font-semibold uppercase tracking-[0.28em] text-[#6b5a43]">
-                Tools Directory
+                Calculator Hub
               </span>
               <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-                One shared registry, one route per calculator.
+                All calculators in one place.
               </h1>
               <p className="max-w-2xl text-base leading-7 text-[#5c554b] sm:text-lg">
-                Mỗi calculator giờ có route riêng trong tools/[slug], còn dữ liệu chung như title và description đi từ một nguồn duy nhất.
+                Choose a calculator and start from a prefilled example.
               </p>
             </div>
 
-            <div className="grid gap-3 text-sm text-[#5c554b] sm:grid-cols-3 lg:w-[30rem]">
-              {[
-                { label: "Routes", value: "6 dedicated pages" },
-                { label: "Source", value: "Shared registry" },
-                { label: "Status", value: "SEO-ready scaffold" },
-              ].map((stat) => (
-                <div key={stat.label} className="rounded-2xl border border-black/10 bg-[#fbf8f3] p-4">
-                  <div className="text-xs uppercase tracking-[0.24em] text-[#8a6b45]">{stat.label}</div>
-                  <div className="mt-1 font-semibold text-[#1b1a17]">{stat.value}</div>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 

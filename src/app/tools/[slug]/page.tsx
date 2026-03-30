@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: ToolPageProps) {
   if (!tool) {
     return createPageMetadata(
       "Calculator",
-      "Browse financial calculators in NobleCalculator.",
+      "Choose a calculator and get a quick result in seconds.",
       "/tools",
       ["financial calculator", "calculator tool"]
     );
@@ -67,13 +67,10 @@ export default async function ToolPage({ params }: ToolPageProps) {
           <div className="mb-6 flex flex-wrap gap-3">
             <Link
               href="/tools"
-              className="inline-flex rounded-full border border-black/10 bg-[#201c17] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-black"
+              className="inline-flex rounded-full border border-black/10 bg-[#201c17] px-5 py-3 text-sm font-semibold !text-white transition-colors hover:bg-black hover:!text-white"
             >
               Back to tools
             </Link>
-            <div className="rounded-full border border-black/10 bg-[#f7f1e8] px-5 py-3 text-sm font-semibold text-[#1b1a17]">
-              /tools/{tool.slug}
-            </div>
           </div>
 
           <Calculator />

@@ -9,6 +9,7 @@ export const siteMetadata = {
 
 const ogImagePath = "/og-image.svg";
 
+// Shared helper so every route gets the same SEO and social preview shape.
 export function createPageMetadata(
   title: string,
   description: string,

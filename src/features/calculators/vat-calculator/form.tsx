@@ -16,7 +16,7 @@ export function VatCalculatorForm({ value, onChange }: VatCalculatorFormProps) {
         value={value.amount}
         onChange={(amount) => onChange({ ...value, amount })}
         placeholder="1000"
-        helpText="Giá trị trước VAT."
+        helpText="Amount before VAT."
       />
       <NumberField
         label="VAT rate (%)"
@@ -25,7 +25,7 @@ export function VatCalculatorForm({ value, onChange }: VatCalculatorFormProps) {
         placeholder="20"
         min={0}
         step={0.1}
-        helpText="Tỷ lệ VAT áp dụng cho amount."
+        helpText="VAT rate applied to the amount."
       />
     </form>
   );

@@ -16,7 +16,7 @@ export function MarkupForm({ value, onChange }: MarkupFormProps) {
         value={value.cost}
         onChange={(cost) => onChange({ ...value, cost })}
         placeholder="100"
-        helpText="Giá vốn của sản phẩm hoặc dịch vụ."
+        helpText="Cost of the product or service."
       />
       <NumberField
         label="Markup rate (%)"
@@ -25,7 +25,7 @@ export function MarkupForm({ value, onChange }: MarkupFormProps) {
         placeholder="30"
         min={0}
         step={0.1}
-        helpText="Phần trăm cộng thêm trên giá vốn."
+        helpText="Additional percentage added on top of cost."
       />
     </form>
   );

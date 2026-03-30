@@ -12,11 +12,11 @@ export function FreelanceHourlyRateForm({ value, onChange }: FreelanceHourlyRate
   return (
     <form className="grid gap-4 sm:grid-cols-2" onSubmit={(event) => event.preventDefault()}>
       <NumberField
-        label="Target income"
+        label="Income goal"
         value={value.targetIncome}
         onChange={(targetIncome) => onChange({ ...value, targetIncome })}
         placeholder="60000"
-        helpText="Thu nhập mục tiêu trong một chu kỳ tính toán."
+        helpText="How much you want to earn in the selected period."
       />
       <NumberField
         label="Billable hours"
@@ -24,7 +24,7 @@ export function FreelanceHourlyRateForm({ value, onChange }: FreelanceHourlyRate
         onChange={(billableHours) => onChange({ ...value, billableHours })}
         placeholder="120"
         min={0}
-        helpText="Số giờ có thể tính phí cho khách hàng."
+        helpText="Hours you expect to bill a client."
       />
     </form>
   );

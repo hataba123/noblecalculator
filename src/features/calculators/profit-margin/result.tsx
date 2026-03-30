@@ -10,9 +10,9 @@ type ProfitMarginResultProps = {
 export function ProfitMarginResult({ result }: ProfitMarginResultProps) {
   return (
     <div className="grid gap-4 sm:grid-cols-3">
-      <ResultCard label="Profit" value={formatCurrency(result.profit)} hint="Revenue minus cost." />
+      <ResultCard label="Profit" value={formatCurrency(result.profit)} hint="What you keep after costs." />
       <ResultCard label="Margin" value={formatPercent(result.margin)} hint="Profit as a share of revenue." />
-      <ResultCard label="Markup" value={formatPercent(result.markup)} hint="Profit as a share of cost." />
+      <ResultCard label="Markup" value={formatPercent(result.markup)} hint="How much you add on top of cost." />
     </div>
   );
 }

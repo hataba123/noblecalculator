@@ -3,12 +3,13 @@
 import { useState } from "react";
 
 import { calculateInternationalTransferFee } from "./formula";
+import { internationalTransferFeeConfig } from "./config";
 import { InternationalTransferFeeForm } from "./form";
 import { InternationalTransferFeeResult } from "./result";
 import type { InternationalTransferFeeInput } from "./schema";
 
 export function InternationalTransferFeeCalculator() {
-  const [value, setValue] = useState<InternationalTransferFeeInput>({ amount: 1000, feeRate: 2.5 });
+  const [value, setValue] = useState<InternationalTransferFeeInput>(() => ({ ...internationalTransferFeeConfig.defaultValue }));
   const result = calculateInternationalTransferFee(value);
 
   return (
@@ -17,7 +18,7 @@ export function InternationalTransferFeeCalculator() {
         <p className="text-sm uppercase tracking-[0.24em] text-[#8a6b45]">Inputs</p>
         <h2 className="mt-2 text-2xl font-semibold text-[#1b1a17]">International Transfer Fee Calculator</h2>
         <p className="mt-3 max-w-xl text-sm leading-6 text-[#5c554b]">
-          Ước tính phí chuyển tiền quốc tế và tổng số tiền cần nạp.
+          Estimate international transfer fees and the total amount to fund.
         </p>
 
         <div className="mt-6">
@@ -30,7 +31,7 @@ export function InternationalTransferFeeCalculator() {
           <p className="text-sm uppercase tracking-[0.24em] text-[#c9b79d]">Results</p>
           <h3 className="mt-2 text-2xl font-semibold">Transfer cost snapshot</h3>
           <p className="mt-3 text-sm leading-6 text-white/72">
-            Kết quả giúp bạn thấy fee và total debit trong một bước.
+            The result shows the fee and total debit in one step.
           </p>
         </div>
 

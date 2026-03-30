@@ -5,7 +5,7 @@ import { createPageMetadata } from "@/src/lib/metadata";
 
 export const metadata = createPageMetadata(
   "NobleCalculator",
-  "Financial calculators now live on dedicated routes with shared registry data.",
+  "Simple financial calculators for pricing, profit, tax, and transfer costs.",
   "/",
   ["financial calculator", "profit margin calculator", "markup calculator", "freelance calculator"]
 );
@@ -22,19 +22,19 @@ export default function HomePage() {
               </span>
               <div className="space-y-3">
                 <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-                  Financial calculators now live on dedicated routes.
+                  Financial calculators for everyday business decisions.
                 </h1>
                 <p className="max-w-2xl text-base leading-7 text-[#5c554b] sm:text-lg">
-                  Homepage chỉ còn vai trò landing page. Toàn bộ calculator đã được tách sang tools/[slug] và lấy metadata chung từ một registry.
+                  Pick a calculator, enter a few numbers, and get a clear result right away.
                 </p>
               </div>
 
               <div className="flex flex-wrap gap-3">
                 <Link
                   href="/tools"
-                  className="inline-flex rounded-full border border-black/10 bg-[#201c17] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-black"
+                  className="inline-flex rounded-full border border-black/10 bg-[#201c17] px-5 py-3 text-sm font-semibold !text-white transition-colors hover:bg-black hover:!text-white"
                 >
-                  Browse tools
+                  Browse calculators
                 </Link>
                 <Link
                   href="/tools/profit-margin"
@@ -45,56 +45,23 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="grid gap-3 text-sm text-[#5c554b] sm:grid-cols-3 lg:w-[30rem]">
-              {[
-                { label: "Routes", value: "6 dedicated pages" },
-                { label: "Source", value: "Shared registry" },
-                { label: "SEO", value: "One page per tool" },
-              ].map((item) => (
-                <div key={item.label} className="rounded-2xl border border-black/10 bg-[#fbf8f3] p-4">
-                  <div className="text-xs uppercase tracking-[0.24em] text-[#8a6b45]">{item.label}</div>
-                  <div className="mt-1 font-semibold text-[#1b1a17]">{item.value}</div>
-                </div>
-              ))}
-            </div>
           </div>
         </header>
 
         <section className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="rounded-[2rem] border border-black/10 bg-[#201c17] p-6 text-white shadow-[0_20px_60px_rgba(34,24,12,0.12)] sm:p-8">
-            <p className="text-sm uppercase tracking-[0.24em] text-[#c9b79d]">Shared data</p>
-            <h2 className="mt-2 text-2xl font-semibold sm:text-3xl">One registry powers the whole tools section</h2>
-            <p className="mt-3 max-w-xl text-sm leading-6 text-white/72">
-              Tất cả metadata cho calculator đang nằm trong một registry chung, nên khi thêm tool mới chỉ cần thêm 1 entry là xong.
-            </p>
-
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              {[
-                { label: "Directory", value: "/tools" },
-                { label: "Detail route", value: "/tools/[slug]" },
-                { label: "Source of truth", value: "calculatorRegistry" },
-                { label: "Next step", value: "Wire form/result modules" },
-              ].map((item) => (
-                <div key={item.label} className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <div className="text-xs uppercase tracking-[0.24em] text-white/45">{item.label}</div>
-                  <div className="mt-2 text-sm font-semibold text-white">{item.value}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-2 lg:col-span-2">
             {[
-              { title: "Profit Margin", href: "/tools/profit-margin", description: "Revenue vs cost landing page for quick checks.", slug: "profit-margin" },
-              { title: "Markup", href: "/tools/markup", description: "Markup and price planning for sales decisions.", slug: "markup" },
-              { title: "Freelance Hourly Rate", href: "/tools/freelance-hourly-rate", description: "Target hourly rate for freelancers and consultants.", slug: "freelance-hourly-rate" },
-              { title: "VAT Calculator", href: "/tools/vat-calculator", description: "Net, gross, and tax values in one place.", slug: "vat-calculator" },
+              { title: "Profit Margin", href: "/tools/profit-margin", description: "See how much profit you keep after costs.", slug: "profit-margin" },
+              { title: "Markup", href: "/tools/markup", description: "Find a selling price from your cost and markup.", slug: "markup" },
+              { title: "Freelance Hourly Rate", href: "/tools/freelance-hourly-rate", description: "Set an hourly rate that matches your income goal.", slug: "freelance-hourly-rate" },
+              { title: "VAT Calculator", href: "/tools/vat-calculator", description: "Add VAT to a price or split it back out.", slug: "vat-calculator" },
             ].map((tool) => (
               <ToolCard key={tool.href} title={tool.title} href={tool.href} slug={tool.slug} description={tool.description} variant="light" />
             ))}
           </div>
         </section>
       </div>
+
     </main>
   );
 }

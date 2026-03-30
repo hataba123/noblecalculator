@@ -16,14 +16,14 @@ export function ProfitMarginForm({ value, onChange }: ProfitMarginFormProps) {
         value={value.revenue}
         onChange={(revenue) => onChange({ ...value, revenue })}
         placeholder="12000"
-        helpText="Tổng doanh thu trước khi trừ chi phí."
+        helpText="Total revenue before expenses."
       />
       <NumberField
         label="Cost"
         value={value.cost}
         onChange={(cost) => onChange({ ...value, cost })}
         placeholder="7500"
-        helpText="Tổng chi phí để tạo ra doanh thu đó."
+        helpText="Total cost required to generate that revenue."
       />
     </form>
   );

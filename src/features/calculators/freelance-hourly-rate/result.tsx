@@ -10,7 +10,7 @@ type FreelanceHourlyRateResultProps = {
 export function FreelanceHourlyRateResult({ result }: FreelanceHourlyRateResultProps) {
   return (
     <div className="grid gap-4">
-      <ResultCard label="Hourly rate" value={formatCurrency(result.hourlyRate)} hint="Target income divided by billable hours." />
+      <ResultCard label="Hourly rate" value={formatCurrency(result.hourlyRate)} hint="Your income goal spread across billable hours." />
     </div>
   );
 }
