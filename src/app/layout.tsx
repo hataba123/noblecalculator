@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
+import { Analytics } from "@vercel/analytics/next";
 import { AppFooter } from "@/src/components/shared/app-footer";
 import { AppHeader } from "@/src/components/shared/app-header";
 import { siteMetadata } from "@/src/lib/metadata";
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <AppHeader />
         <div className="flex-1">{children}</div>
         <AppFooter />
+        <Analytics />
       </body>
     </html>
   );
