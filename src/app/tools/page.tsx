@@ -27,17 +27,17 @@ export default function ToolsPage() {
       <div className="mx-auto flex w-full max-w-[90rem] flex-col gap-6 sm:gap-8">
         <section className="rounded-[1.75rem] border border-black/10 bg-white/80 p-5 shadow-[0_18px_48px_rgba(34,24,12,0.08)] backdrop-blur sm:p-6 lg:rounded-[2rem] lg:p-8">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-2xl space-y-3">
+            <div className="w-full min-w-0 space-y-3 lg:flex-1">
               <span className="inline-flex w-fit rounded-full border border-black/10 bg-[#f4efe8] px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#6b5a43] sm:text-xs">
                 Calculator Hub
               </span>
-              <h1 className="text-[2.15rem] font-semibold tracking-tight sm:text-5xl xl:text-6xl">
+              <h1 className="text-balance text-[2.15rem] font-semibold tracking-tight sm:text-5xl xl:text-6xl">
                 All calculators in one place.
               </h1>
-              <p className="max-w-2xl text-sm leading-7 text-[#5c554b] sm:text-base lg:text-lg">
+              <p className="break-words text-sm leading-7 text-[#5c554b] sm:text-base lg:text-lg">
                 Choose a calculator and start from a prefilled example.
               </p>
-              <p className="max-w-2xl text-sm leading-7 text-[#5c554b] sm:text-base">
+              <p className="break-words text-sm leading-7 text-[#5c554b] sm:text-base">
                 Use the hub when you want a fast path to pricing, tax, profit, and marketing decisions without digging through menus.
               </p>
             </div>

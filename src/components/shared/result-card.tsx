@@ -6,10 +6,14 @@ type ResultCardProps = {
 
 export function ResultCard({ label, value, hint }: ResultCardProps) {
   return (
-    <div className="rounded-[1.35rem] border border-black/10 bg-white/80 p-3.5 shadow-[0_10px_26px_rgba(34,24,12,0.06)] sm:p-4">
-      <div className="text-[0.7rem] uppercase tracking-[0.24em] text-[#8a6b45] sm:text-xs">{label}</div>
-      <div className="mt-2 text-xl font-semibold text-[#1b1a17] sm:text-2xl lg:text-3xl">{value}</div>
-      {hint ? <p className="mt-2 text-sm leading-6 text-[#5c554b]">{hint}</p> : null}
+    <div className="min-w-0 rounded-[1.35rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-3.5 shadow-[0_10px_26px_rgba(34,24,12,0.06)] sm:p-4">
+      <div className="inline-flex max-w-full rounded-full bg-[color:var(--accent-soft)] px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-[color:var(--accent-strong)] sm:text-xs">
+        <span className="break-words text-balance">{label}</span>
+      </div>
+      <div className="mt-2 break-words text-2xl font-semibold leading-tight text-[color:var(--foreground)] sm:text-3xl lg:text-3xl">
+        {value}
+      </div>
+      {hint ? <p className="mt-2 break-words text-sm leading-6 text-[color:var(--muted)]">{hint}</p> : null}
     </div>
   );
 }

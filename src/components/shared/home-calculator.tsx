@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { CalculatorShell } from "./calculator-shell";
 import { ResultCard } from "./result-card";
@@ -643,12 +643,12 @@ function getButtonClass(tone: KeypadButton["tone"], wide = false) {
 
   switch (tone) {
     case "accent":
-      return `${baseClass} border-[#d0b08a]/40 bg-[#d0b08a] text-[#201c17] hover:bg-[#ddb98f]`;
+      return `${baseClass} border-[color:var(--accent)]/40 bg-[color:var(--accent)] text-[color:var(--surface-strong)] hover:bg-[color:var(--accent-strong)]`;
     case "ghost":
       return `${baseClass} border-white/10 bg-white/5 text-white/75 hover:bg-white/10 hover:text-white`;
     case "soft":
     default:
-      return `${baseClass} border-black/10 bg-[#f7f1e8] text-[#1b1a17] hover:bg-[#efe4d3]`;
+      return `${baseClass} border-[color:var(--border)] bg-[color:var(--surface-soft)] text-[color:var(--foreground)] hover:bg-[color:var(--accent-soft)]`;
   }
 }
 
@@ -677,26 +677,33 @@ export function HomeCalculator() {
   const [lastValidValue, setLastValidValue] = useState(() => evaluateExpression(initialExpression) ?? 0);
 
   const previewValue = evaluateExpression(expression, angleMode);
-  const displayValue = formatDisplayNumber(lastValidValue);
+  const displayValue = formatDisplayNumber(previewValue ?? lastValidValue);
   const invalidExpressionMessage = previewValue === null && !isIncompleteExpression(expression) ? "Biểu thức chưa hợp lệ" : null;
 
-  useEffect(() => {
-    if (previewValue !== null) {
-      setLastValidValue(previewValue);
-    }
-  }, [previewValue]);
+  const commitExpression = (updater: (currentExpression: string) => string) => {
+    setExpression((currentExpression) => {
+      const nextExpression = updater(currentExpression);
+      const nextPreview = evaluateExpression(nextExpression, angleMode);
 
-  const clearExpression = () => setExpression("0");
+      if (nextPreview !== null) {
+        setLastValidValue(nextPreview);
+      }
+
+      return nextExpression;
+    });
+  };
+
+  const clearExpression = () => commitExpression(() => "0");
 
   const appendDigit = (digit: string) => {
-    setExpression((currentExpression) => {
+    commitExpression((currentExpression) => {
       const normalizedExpression = currentExpression === "0" ? "" : currentExpression;
       return appendTextToExpression(normalizedExpression, digit);
     });
   };
 
   const appendDecimal = () => {
-    setExpression((currentExpression) => {
+    commitExpression((currentExpression) => {
       const normalizedExpression = currentExpression === "0" ? "" : currentExpression;
       const lastNumber = normalizedExpression.split(/[^0-9.]/).at(-1) ?? "";
 
@@ -713,7 +720,7 @@ export function HomeCalculator() {
   };
 
   const appendOperator = (operator: Operator) => {
-    setExpression((currentExpression) => {
+    commitExpression((currentExpression) => {
       const normalizedExpression = currentExpression === "0" ? "" : currentExpression;
 
       if (!normalizedExpression) {
@@ -737,7 +744,7 @@ export function HomeCalculator() {
   };
 
   const appendParen = (paren: "(" | ")") => {
-    setExpression((currentExpression) => {
+    commitExpression((currentExpression) => {
       const normalizedExpression = currentExpression === "0" ? "" : currentExpression;
 
       if (paren === "(") {
@@ -768,7 +775,7 @@ export function HomeCalculator() {
   };
 
   const deleteLastCharacter = () => {
-    setExpression((currentExpression) => {
+    commitExpression((currentExpression) => {
       const normalizedExpression = currentExpression === "0" ? "" : currentExpression;
 
       if (!normalizedExpression) {
@@ -781,7 +788,7 @@ export function HomeCalculator() {
   };
 
   const toggleSign = () => {
-    setExpression((currentExpression) => {
+    commitExpression((currentExpression) => {
       const normalizedExpression = currentExpression === "0" ? "" : currentExpression;
 
       if (!normalizedExpression) {
@@ -797,7 +804,7 @@ export function HomeCalculator() {
   };
 
   const applyPercent = () => {
-    setExpression((currentExpression) => {
+    commitExpression((currentExpression) => {
       const normalizedExpression = currentExpression === "0" ? "" : currentExpression;
 
       if (!normalizedExpression || /[+\-*/^(]$/.test(normalizedExpression)) {
@@ -823,10 +830,12 @@ export function HomeCalculator() {
     ].slice(0, 5));
 
     setExpression(normalizedResult);
+    setLastValidValue(result);
   };
 
   const recallMemory = () => {
     setExpression(formatRawNumber(memory));
+    setLastValidValue(memory);
   };
 
   const addToMemory = () => {
@@ -854,14 +863,14 @@ export function HomeCalculator() {
   };
 
   const appendScientificText = (text: string) => {
-    setExpression((currentExpression) => {
+    commitExpression((currentExpression) => {
       const normalizedExpression = normalizeExpressionValue(currentExpression);
       return appendTextToExpression(normalizedExpression, text);
     });
   };
 
   const applyPrefixScientificFunction = (functionName: ScientificFunction) => {
-    setExpression((currentExpression) => {
+    commitExpression((currentExpression) => {
       const normalizedExpression = normalizeExpressionValue(currentExpression);
 
       if (functionName === "root") {
@@ -881,7 +890,7 @@ export function HomeCalculator() {
   };
 
   const applyScientificTransform = (transform: "square" | "cube" | "sqrt" | "cbrt" | "exp" | "pow10" | "inv" | "factorial") => {
-    setExpression((currentExpression) => {
+    commitExpression((currentExpression) => {
       const normalizedExpression = normalizeExpressionValue(currentExpression);
 
       if (!normalizedExpression || isIncompleteExpression(normalizedExpression)) {
@@ -1004,12 +1013,12 @@ export function HomeCalculator() {
   return (
     <CalculatorShell title="Quick Calculator" description="A full-size calculator with memory, live preview, and a keypad that feels like a desk calculator.">
       <div className="grid gap-5 xl:grid-cols-[1.12fr_0.88fr]">
-        <div className="rounded-[1.85rem] border border-black/10 bg-[#201c17] p-4 text-white shadow-[0_18px_48px_rgba(34,24,12,0.16)] sm:p-5">
+        <div className="rounded-[1.85rem] border border-[color:var(--border)] bg-[color:var(--surface-strong)] p-4 text-white shadow-[0_18px_48px_rgba(34,24,12,0.16)] sm:p-5">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <p className="text-xs uppercase tracking-[0.24em] text-[#c9b79d]">Quick calculator</p>
+              <p className="text-xs uppercase tracking-[0.24em] text-[color:#c9b79d]">Quick calculator</p>
               <h2 className="mt-2 text-2xl font-semibold">Desk calculator</h2>
-              <p className="mt-2 max-w-xl text-sm leading-6 text-white/72">
+              <p className="mt-2 text-sm leading-6 text-white/72">
                 Tap the keypad or type an expression. Parentheses and memory keys are built in.
               </p>
             </div>
@@ -1038,7 +1047,7 @@ export function HomeCalculator() {
                   type="button"
                   onClick={() => setAngleMode("deg")}
                   className={`rounded-full px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] transition-colors ${
-                    angleMode === "deg" ? "bg-[#d0b08a] text-[#201c17]" : "bg-white/5 text-white/70 hover:bg-white/10"
+                    angleMode === "deg" ? "bg-[color:var(--accent)] text-[color:var(--surface-strong)]" : "bg-white/5 text-white/70 hover:bg-white/10"
                   }`}
                 >
                   Deg
@@ -1047,7 +1056,7 @@ export function HomeCalculator() {
                   type="button"
                   onClick={() => setAngleMode("rad")}
                   className={`rounded-full px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] transition-colors ${
-                    angleMode === "rad" ? "bg-[#d0b08a] text-[#201c17]" : "bg-white/5 text-white/70 hover:bg-white/10"
+                    angleMode === "rad" ? "bg-[color:var(--accent)] text-[color:var(--surface-strong)]" : "bg-white/5 text-white/70 hover:bg-white/10"
                   }`}
                 >
                   Rad
@@ -1060,7 +1069,7 @@ export function HomeCalculator() {
             <div className="flex items-start justify-between gap-4">
               <div className="min-w-0 flex-1">
                 <div className="text-xs uppercase tracking-[0.22em] text-white/45">Expression</div>
-                <div className="mt-2.5 min-h-10 text-left text-[0.98rem] leading-7 text-white/72 sm:text-[1.05rem]">
+                <div className="mt-2.5 min-h-10 break-words whitespace-normal text-left text-[0.98rem] leading-7 text-white/72 sm:text-[1.05rem]">
                   {prettyExpression(expression) || "0"}
                 </div>
               </div>
@@ -1135,19 +1144,19 @@ export function HomeCalculator() {
             hint={invalidExpressionMessage ?? "Changes as you build the expression."}
           />
 
-          <div className="rounded-[2rem] border border-black/10 bg-[#fbf8f3] p-5 shadow-[0_12px_32px_rgba(34,24,12,0.06)]">
-            <p className="text-sm uppercase tracking-[0.24em] text-[#8a6b45]">Recent calculations</p>
+          <div className="rounded-[2rem] border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-5 shadow-[0_12px_32px_rgba(34,24,12,0.06)]">
+            <p className="text-sm uppercase tracking-[0.24em] text-[color:var(--muted-strong)]">Recent calculations</p>
             <div className="mt-4 space-y-3">
               {history.length > 0 ? (
                 history.map((entry) => (
-                  <div key={`${entry.expression}-${entry.value}`} className="rounded-2xl border border-black/10 bg-white px-4 py-3">
-                    <div className="text-sm leading-6 text-[#5c554b]">{prettyExpression(entry.expression)}</div>
-                    <div className="mt-1 text-lg font-semibold text-[#1b1a17]">{formatDisplayNumber(entry.value)}</div>
+                  <div key={`${entry.expression}-${entry.value}`} className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-3">
+                    <div className="break-words whitespace-normal text-sm leading-6 text-[color:var(--muted)]">{prettyExpression(entry.expression)}</div>
+                    <div className="mt-1 break-words whitespace-normal text-lg font-semibold text-[color:var(--foreground)]">{formatDisplayNumber(entry.value)}</div>
                   </div>
                 ))
               ) : (
-                <p className="rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm leading-6 text-[#5c554b]">
-                  Try <span className="font-semibold text-[#1b1a17]">12 × 8 + 6</span> to see the history stack fill up.
+                <p className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-3 text-sm leading-6 text-[color:var(--muted)]">
+                  Try <span className="font-semibold text-[color:var(--foreground)]">12 × 8 + 6</span> to see the history stack fill up.
                 </p>
               )}
             </div>

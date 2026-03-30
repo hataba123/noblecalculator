@@ -19,15 +19,15 @@ export default function HomePage() {
       <div className="mx-auto flex w-full max-w-[90rem] flex-col gap-6 sm:gap-8">
         <header className="rounded-[1.75rem] border border-black/10 bg-white/75 p-5 shadow-[0_18px_48px_rgba(34,24,12,0.08)] backdrop-blur sm:p-6 lg:rounded-[2rem] lg:p-8">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-2xl space-y-4">
+            <div className="w-full min-w-0 space-y-4 lg:flex-1">
               <span className="inline-flex w-fit rounded-full border border-black/10 bg-[#f4efe8] px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#6b5a43] sm:text-xs">
                 Noble Calculator
               </span>
               <div className="space-y-3">
-                <h1 className="text-[2.15rem] font-semibold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl">
+                <h1 className="w-full max-w-none text-balance text-[2.15rem] font-semibold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl">
                   Practical calculators for everyday tasks.
                 </h1>
-                <p className="max-w-2xl text-sm leading-7 text-[#5c554b] sm:text-base lg:text-lg">
+                <p className="break-words text-sm leading-7 text-[#5c554b] sm:text-base lg:text-lg">
                   Pick a calculator, enter a few numbers, and get a clear result right away.
                 </p>
               </div>
@@ -56,10 +56,10 @@ export default function HomePage() {
         <section className="grid gap-5 lg:grid-cols-[0.92fr_1.08fr]">
           <div className="rounded-[1.75rem] border border-black/10 bg-white/80 p-5 shadow-[0_18px_48px_rgba(34,24,12,0.08)] backdrop-blur sm:p-6 lg:rounded-[2rem] lg:p-8">
             <p className="text-xs uppercase tracking-[0.24em] text-[#8a6b45] sm:text-sm">Why people use this</p>
-            <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">
+            <h2 className="mt-2 text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
               Fast answers for pricing, tax, and cash flow.
             </h2>
-            <p className="mt-3 text-sm leading-7 text-[#5c554b] sm:text-base">
+            <p className="mt-3 break-words text-sm leading-7 text-[#5c554b] sm:text-base">
               Each calculator is built to get you from question to answer quickly, with clear breakdowns and plain-English explanations.
             </p>
             <div className="mt-5 grid gap-3 text-sm text-[#5c554b] sm:grid-cols-2">
@@ -102,8 +102,8 @@ export default function HomePage() {
           <div className="grid gap-5 lg:grid-cols-[1fr_1fr]">
             <div>
               <p className="text-xs uppercase tracking-[0.24em] text-[#8a6b45] sm:text-sm">What to expect</p>
-              <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">Clear breakdowns, not just one number.</h2>
-              <p className="mt-3 text-sm leading-7 text-[#5c554b] sm:text-base">
+              <h2 className="mt-2 text-balance text-2xl font-semibold tracking-tight sm:text-3xl">Clear breakdowns, not just one number.</h2>
+                <p className="mt-3 break-words text-sm leading-7 text-[#5c554b] sm:text-base">
                 Every calculator shows the final answer and the values behind it, so you can understand the result instead of just copying it.
               </p>
             </div>

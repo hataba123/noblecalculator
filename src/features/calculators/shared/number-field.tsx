@@ -1,3 +1,5 @@
+import { useId } from "react";
+
 type NumberFieldProps = {
   label: string;
   value: number;
@@ -19,20 +21,30 @@ export function NumberField({
   step,
   helpText,
 }: NumberFieldProps) {
+  const helpTextId = useId();
+
   return (
-    <label className="space-y-2">
-      <span className="text-sm font-medium text-[#1b1a17]">{label}</span>
+    <label className="min-w-0 space-y-2 text-left">
+      <span className="block text-sm font-medium leading-6 text-[color:var(--muted-strong)] text-balance">
+        {label}
+      </span>
       <input
         type="number"
+        inputMode="decimal"
         value={value}
         min={min}
         max={max}
         step={step}
+        aria-describedby={helpText ? helpTextId : undefined}
         onChange={(event) => onChange(Number(event.target.value) || 0)}
         placeholder={placeholder}
-        className="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-base text-[#1b1a17] outline-none transition placeholder:text-[#9b8f80] focus:border-[#d0b08a] focus:ring-2 focus:ring-[#d0b08a]/30"
+        className="min-w-0 w-full rounded-[1.1rem] border border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-3 text-base text-[color:var(--foreground)] outline-none transition placeholder:text-[color:var(--muted)] focus:border-[color:var(--accent)] focus:ring-2 focus:ring-[color:var(--accent)]/20"
       />
-      {helpText ? <p className="text-sm leading-6 text-[#5c554b]">{helpText}</p> : null}
+      {helpText ? (
+        <p id={helpTextId} className="break-words text-sm leading-6 text-[color:var(--muted)]">
+          {helpText}
+        </p>
+      ) : null}
     </label>
   );
 }

@@ -3,6 +3,15 @@
 :root {
   --background: #f4efe8;
   --foreground: #1b1a17;
+  --surface: rgba(255, 255, 255, 0.8);
+  --surface-strong: #201c17;
+  --surface-soft: #f7f1e8;
+  --border: rgba(34, 24, 12, 0.1);
+  --muted: #5c554b;
+  --muted-strong: #6b5a43;
+  --accent: #8a6b45;
+  --accent-strong: #201c17;
+  --accent-soft: #f4efe8;
 }
 
 * {
@@ -22,11 +31,33 @@ body {
     radial-gradient(circle at top right, rgba(32, 83, 97, 0.14), transparent 28%),
     linear-gradient(180deg, #f8f3ec 0%, #f4efe8 100%);
   color: var(--foreground);
-  font-family: "Aptos", "Segoe UI", "Trebuchet MS", sans-serif;
+  font-family: var(--font-body), "Segoe UI", "Trebuchet MS", sans-serif;
   line-height: 1.5;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-heading), var(--font-body), "Segoe UI", sans-serif;
+  text-wrap: balance;
+  letter-spacing: -0.03em;
+}
+
+p,
+li {
+  overflow-wrap: anywhere;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
 }
 
 a {
