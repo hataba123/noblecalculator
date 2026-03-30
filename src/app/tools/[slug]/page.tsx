@@ -4,13 +4,19 @@ import { notFound } from "next/navigation";
 import { CalculatorShell } from "@/src/components/shared/calculator-shell";
 import { tools, getCalculatorDefinition } from "@/src/config/tools";
 import { createPageMetadata } from "@/src/lib/metadata";
-import {
-  FreelanceHourlyRateCalculator,
-} from "@/src/features/calculators/freelance-hourly-rate";
+import { BreakEvenCalculator } from "@/src/features/calculators/break-even";
+import { FreelanceHourlyRateCalculator } from "@/src/features/calculators/freelance-hourly-rate";
+import { GrossToNetCalculator } from "@/src/features/calculators/gross-to-net";
 import { InternationalTransferFeeCalculator } from "@/src/features/calculators/international-transfer-fee";
 import { InvoiceCalculatorCalculator } from "@/src/features/calculators/invoice-calculator";
+import { LatePaymentFeeCalculator } from "@/src/features/calculators/late-payment-fee";
 import { MarkupCalculator } from "@/src/features/calculators/markup";
+import { NetToGrossCalculator } from "@/src/features/calculators/net-to-gross";
+import { PaymentProcessingFeeCalculator } from "@/src/features/calculators/payment-processing-fee";
 import { ProfitMarginCalculator } from "@/src/features/calculators/profit-margin";
+import { RoiCalculator } from "@/src/features/calculators/roi";
+import { RoasCalculator } from "@/src/features/calculators/roas";
+import { WebsiteCostCalculator } from "@/src/features/calculators/website-cost";
 import { VatCalculatorCalculator } from "@/src/features/calculators/vat-calculator";
 
 type ToolPageProps = {
@@ -24,6 +30,14 @@ const calculatorMap = {
   "vat-calculator": VatCalculatorCalculator,
   "invoice-calculator": InvoiceCalculatorCalculator,
   "international-transfer-fee": InternationalTransferFeeCalculator,
+  "break-even": BreakEvenCalculator,
+  "gross-to-net": GrossToNetCalculator,
+  "net-to-gross": NetToGrossCalculator,
+  "late-payment-fee": LatePaymentFeeCalculator,
+  "payment-processing-fee": PaymentProcessingFeeCalculator,
+  roi: RoiCalculator,
+  roas: RoasCalculator,
+  "website-cost": WebsiteCostCalculator,
 } as const;
 
 export function generateStaticParams() {
