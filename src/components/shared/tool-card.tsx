@@ -13,6 +13,7 @@ export function ToolCard({ title, description, href, slug, variant = "light" }: 
 
   return (
     <article
+      data-slug={slug}
       className={[
         "group flex h-full flex-col rounded-[1.55rem] border p-4 shadow-[0_16px_36px_rgba(34,24,12,0.08)] transition-transform duration-200 hover:-translate-y-1 sm:p-5",
         isDark ? "border-black/10 bg-[#201c17] text-white shadow-[0_18px_48px_rgba(34,24,12,0.12)]" : "border-black/10 bg-white/80 text-[#1b1a17] backdrop-blur",
@@ -36,6 +37,7 @@ export function ToolCard({ title, description, href, slug, variant = "light" }: 
       <div className="mt-5 flex flex-1 items-end justify-end gap-3 sm:mt-6">
         <Link
           href={href}
+          aria-label={`Open ${title}`}
           className={
             isDark
               ? "rounded-full border border-white/10 bg-[#201c17] px-4 py-2 text-sm font-semibold !text-white transition-colors hover:bg-black hover:!text-white"

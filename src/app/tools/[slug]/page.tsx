@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { CalculatorShell } from "@/src/components/shared/calculator-shell";
+import { CalculatorSeoSections } from "@/src/components/shared/calculator-seo-sections";
+import { PageStructuredData } from "@/src/components/shared/page-structured-data";
 import { tools, getCalculatorDefinition } from "@/src/config/tools";
 import { createPageMetadata } from "@/src/lib/metadata";
 import { BreakEvenCalculator } from "@/src/features/calculators/break-even";
@@ -24,6 +26,7 @@ import { RoasCalculator } from "@/src/features/calculators/roas";
 import { WebsiteCostCalculator } from "@/src/features/calculators/website-cost";
 import { UtilizationRateCalculator } from "@/src/features/calculators/utilization-rate";
 import { VatCalculatorCalculator } from "@/src/features/calculators/vat-calculator";
+import { getCalculatorSeoContent } from "@/src/features/calculators/shared/calculator-content-registry";
 
 type ToolPageProps = {
   params: Promise<{ slug: string }>;
@@ -59,21 +62,23 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: ToolPageProps) {
   const { slug } = await params;
   const tool = getCalculatorDefinition(slug);
+  const seoContent = getCalculatorSeoContent(slug);
+  const description = seoContent?.metaDescription ?? tool?.description ?? "Choose a calculator and get a quick result in seconds.";
 
   if (!tool) {
     return createPageMetadata(
       "Calculator",
-      "Choose a calculator and get a quick result in seconds.",
+      description,
       "/tools",
-      ["financial calculator", "calculator tool"]
+      seoContent?.keywords ?? ["financial calculator", "calculator tool"]
     );
   }
 
   return createPageMetadata(
     tool.title,
-    tool.description,
+    description,
     `/tools/${tool.slug}`,
-    [tool.slug, tool.title, "financial calculator", "business calculator"]
+    seoContent ? [tool.slug, tool.title, ...seoContent.keywords, "financial calculator", "business calculator"] : [tool.slug, tool.title, "financial calculator", "business calculator"]
   );
 }
 
@@ -81,6 +86,8 @@ export default async function ToolPage({ params }: ToolPageProps) {
   const { slug } = await params;
   const tool = getCalculatorDefinition(slug);
   const Calculator = calculatorMap[slug as keyof typeof calculatorMap];
+  const seoContent = getCalculatorSeoContent(slug);
+  const pageDescription = seoContent?.intro ?? tool?.description;
 
   if (!tool || !Calculator) {
     notFound();
@@ -88,8 +95,20 @@ export default async function ToolPage({ params }: ToolPageProps) {
 
   return (
     <main className="min-h-screen px-3 py-4 text-[#1b1a17] sm:px-6 sm:py-6 lg:px-8 xl:px-10">
+      <PageStructuredData
+        kind="calculator"
+        title={tool.title}
+        description={pageDescription ?? tool.description}
+        pathname={`/tools/${tool.slug}`}
+        breadcrumbs={[
+          { name: "Home", href: "/" },
+          { name: "Tools", href: "/tools" },
+          { name: tool.title, href: `/tools/${tool.slug}` },
+        ]}
+        faq={seoContent?.faq}
+      />
       <div className="mx-auto flex w-full max-w-[90rem] flex-col gap-6 sm:gap-8">
-        <CalculatorShell title={tool.title} description={tool.description}>
+        <CalculatorShell title={tool.title} description={pageDescription}>
           <div className="mb-5 flex flex-wrap gap-3 sm:mb-6">
             <Link
               href="/tools"
@@ -101,6 +120,8 @@ export default async function ToolPage({ params }: ToolPageProps) {
 
           <Calculator />
         </CalculatorShell>
+
+        <CalculatorSeoSections content={seoContent} />
       </div>
     </main>
   );
