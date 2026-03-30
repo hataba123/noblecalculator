@@ -11,6 +11,7 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
 }
 
 body {
@@ -21,7 +22,11 @@ body {
     radial-gradient(circle at top right, rgba(32, 83, 97, 0.14), transparent 28%),
     linear-gradient(180deg, #f8f3ec 0%, #f4efe8 100%);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Aptos", "Segoe UI", "Trebuchet MS", sans-serif;
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 a {

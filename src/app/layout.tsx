@@ -57,7 +57,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en">
-      <body className="flex min-h-screen flex-col">
+      <body className="flex min-h-screen flex-col overflow-x-hidden bg-[#f4efe8] text-[#1b1a17]">
         <AppHeader />
         <div className="flex-1">{children}</div>
         <AppFooter />

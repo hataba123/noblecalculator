@@ -61,13 +61,13 @@ export default async function ToolPage({ params }: ToolPageProps) {
   }
 
   return (
-    <main className="min-h-screen px-4 py-6 text-[#1b1a17] sm:px-6 lg:px-8">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-8">
+    <main className="min-h-screen px-3 py-4 text-[#1b1a17] sm:px-6 sm:py-6 lg:px-8 xl:px-10">
+      <div className="mx-auto flex w-full max-w-[90rem] flex-col gap-6 sm:gap-8">
         <CalculatorShell title={tool.title} description={tool.description}>
-          <div className="mb-6 flex flex-wrap gap-3">
+          <div className="mb-5 flex flex-wrap gap-3 sm:mb-6">
             <Link
               href="/tools"
-              className="inline-flex rounded-full border border-black/10 bg-[#201c17] px-5 py-3 text-sm font-semibold !text-white transition-colors hover:bg-black hover:!text-white"
+              className="inline-flex rounded-full border border-black/10 bg-[#201c17] px-4 py-2.5 text-sm font-semibold !text-white transition-colors hover:bg-black hover:!text-white sm:px-5 sm:py-3"
             >
               Back to tools
             </Link>

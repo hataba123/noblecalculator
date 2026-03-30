@@ -5,24 +5,27 @@ import { siteConfig } from "@/src/config/site";
 export function AppHeader() {
   return (
     <header className="sticky top-0 z-20 border-b border-black/10 bg-[#f8f3ec]/90 backdrop-blur">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-3">
-          <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#201c17] text-sm font-semibold text-white shadow-[0_10px_24px_rgba(34,24,12,0.2)]">
+      <div className="mx-auto flex w-full max-w-[90rem] flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8 xl:px-10">
+        <Link href="/" className="flex items-center gap-3 self-start">
+          <span className="flex h-9 w-9 items-center justify-center rounded-2xl bg-[#201c17] text-sm font-semibold text-white shadow-[0_10px_24px_rgba(34,24,12,0.2)] sm:h-10 sm:w-10">
             NC
           </span>
-          <div>
-            <div className="text-sm font-semibold tracking-[0.16em] uppercase text-[#1b1a17]">
+          <div className="leading-tight">
+            <div className="text-sm font-semibold tracking-[0.16em] uppercase text-[#1b1a17] sm:text-base">
               {siteConfig.name}
+            </div>
+            <div className="text-[0.7rem] uppercase tracking-[0.22em] text-[#6b5a43] sm:text-xs">
+              Calculators
             </div>
           </div>
         </Link>
 
-        <nav className="flex items-center gap-2 text-sm font-medium text-[#1b1a17]">
-          <Link href="/" className="rounded-full px-4 py-2 transition-colors hover:bg-black/5">
+        <nav className="flex flex-wrap items-center gap-2 text-xs font-medium text-[#1b1a17] sm:text-sm">
+          <Link href="/" className="rounded-full px-3 py-2 transition-colors hover:bg-black/5 sm:px-4">
             Home
           </Link>
-          <Link href="/tools" className="rounded-full px-4 py-2 transition-colors hover:bg-black/5">
-            Tools
+          <Link href="/tools" className="rounded-full px-3 py-2 transition-colors hover:bg-black/5 sm:px-4">
+            Calculators
           </Link>
         </nav>
       </div>
