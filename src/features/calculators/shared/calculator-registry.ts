@@ -71,6 +71,36 @@ export const calculatorRegistry: CalculatorDefinition[] = [
 		title: "Website Cost Calculator",
 		description: "Estimate the cost of designing and building a website.",
 	},
+	{
+		slug: "self-employed-tax-estimator",
+		title: "Self-employed Tax Estimator",
+		description: "Estimate how much tax to set aside from self-employed income.",
+	},
+	{
+		slug: "utilization-rate",
+		title: "Utilization Rate Calculator",
+		description: "Measure how much of your available time is billable.",
+	},
+	{
+		slug: "monthly-income-target",
+		title: "Monthly Income Target Calculator",
+		description: "Find the monthly revenue you need to cover income, taxes, and expenses.",
+	},
+	{
+		slug: "cac",
+		title: "CAC Calculator",
+		description: "See how much it costs to acquire one customer.",
+	},
+	{
+		slug: "cpm-cpc",
+		title: "CPM / CPC Calculator",
+		description: "Compare cost per thousand impressions and cost per click.",
+	},
+	{
+		slug: "day-rate-to-hourly-rate",
+		title: "Day Rate to Hourly Rate Calculator",
+		description: "Convert a day rate into an hourly rate and weekly equivalent.",
+	},
 ];
 
 export function getCalculatorDefinition(slug: string) {

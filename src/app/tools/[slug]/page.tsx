@@ -5,18 +5,24 @@ import { CalculatorShell } from "@/src/components/shared/calculator-shell";
 import { tools, getCalculatorDefinition } from "@/src/config/tools";
 import { createPageMetadata } from "@/src/lib/metadata";
 import { BreakEvenCalculator } from "@/src/features/calculators/break-even";
+import { CacCalculator } from "@/src/features/calculators/cac";
+import { CpmCpcCalculator } from "@/src/features/calculators/cpm-cpc";
+import { DayRateToHourlyRateCalculator } from "@/src/features/calculators/day-rate-to-hourly-rate";
 import { FreelanceHourlyRateCalculator } from "@/src/features/calculators/freelance-hourly-rate";
 import { GrossToNetCalculator } from "@/src/features/calculators/gross-to-net";
 import { InternationalTransferFeeCalculator } from "@/src/features/calculators/international-transfer-fee";
 import { InvoiceCalculatorCalculator } from "@/src/features/calculators/invoice-calculator";
 import { LatePaymentFeeCalculator } from "@/src/features/calculators/late-payment-fee";
+import { MonthlyIncomeTargetCalculator } from "@/src/features/calculators/monthly-income-target";
 import { MarkupCalculator } from "@/src/features/calculators/markup";
 import { NetToGrossCalculator } from "@/src/features/calculators/net-to-gross";
 import { PaymentProcessingFeeCalculator } from "@/src/features/calculators/payment-processing-fee";
+import { SelfEmployedTaxEstimatorCalculator } from "@/src/features/calculators/self-employed-tax-estimator";
 import { ProfitMarginCalculator } from "@/src/features/calculators/profit-margin";
 import { RoiCalculator } from "@/src/features/calculators/roi";
 import { RoasCalculator } from "@/src/features/calculators/roas";
 import { WebsiteCostCalculator } from "@/src/features/calculators/website-cost";
+import { UtilizationRateCalculator } from "@/src/features/calculators/utilization-rate";
 import { VatCalculatorCalculator } from "@/src/features/calculators/vat-calculator";
 
 type ToolPageProps = {
@@ -38,6 +44,12 @@ const calculatorMap = {
   roi: RoiCalculator,
   roas: RoasCalculator,
   "website-cost": WebsiteCostCalculator,
+  "self-employed-tax-estimator": SelfEmployedTaxEstimatorCalculator,
+  "utilization-rate": UtilizationRateCalculator,
+  "monthly-income-target": MonthlyIncomeTargetCalculator,
+  cac: CacCalculator,
+  "cpm-cpc": CpmCpcCalculator,
+  "day-rate-to-hourly-rate": DayRateToHourlyRateCalculator,
 } as const;
 
 export function generateStaticParams() {
