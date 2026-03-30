@@ -1,286 +1,291 @@
-# noblecalculator
-Khi bắt đầu ngày làm việc
-git checkout main
-git pull origin main
-
-Tạo branch cho task mới
-git checkout -b feat/tools-directory
-
-Làm code, rồi commit
-git add .
-git commit -m "feat: add tools directory page"
-
-Push branch
-git push -u origin feat/tools-directory
-
-Làm tiếp calculator khác
-git checkout main
-git pull origin main
-git checkout -b feat/profit-margin-calculator
-
-Nhớ nhanh các type hay dùng
-feat → thêm tính năng mới
-fix → sửa lỗi
-docs → sửa tài liệu, README, guide
-chore → việc lặt vặt/config/setup
-refactor → sửa cấu trúc code nhưng không thêm tính năng, không fix bug
-test → thêm/sửa test
-
 # NobleCalculator
 
-NobleCalculator là một dự án web xây bằng **Next.js** nhằm tạo ra bộ **financial calculators** cho freelancer, agency, startup nhỏ và business owner.  
-Mục tiêu của dự án là ra mắt nhanh các công cụ có nhu cầu tìm kiếm tốt, dễ SEO, dễ tạo lead, và có khả năng mở rộng sang các tính năng kiếm tiền như tích hợp kế toán, thanh toán và báo giá.
+NobleCalculator is a lean Next.js app for fast, SEO-friendly financial calculators.
+It is built for freelancers, agencies, and small businesses that need quick answers for pricing, tax, margin, and transfer questions.
 
-## Mục tiêu sản phẩm
+## What this project is
 
-Dự án tập trung vào 3 mục tiêu chính:
+The project follows one simple rule: each calculator gets its own route, but shared data and shared UI stay centralized.
 
-- Xây một bộ calculator tài chính chạy nhanh, giao diện đơn giản, dễ dùng
-- Tối ưu để mỗi calculator có thể rank SEO như một landing page riêng
-- Chuẩn bị sẵn kiến trúc để sau này tích hợp với **QuickBooks**, **Xero**, **Wise** và các luồng monetization khác
+That gives us:
+- one source of truth for calculator metadata
+- one route per tool for SEO and sharing
+- pure calculation logic that is easy to test
+- a small shared UI layer that keeps the app consistent
 
-## Hướng đi phát triển
+## Product goals
 
-NobleCalculator sẽ được triển khai theo 3 đợt.
+The app is designed to:
+- ship useful calculator pages quickly
+- rank each calculator as its own landing page
+- support future integrations with accounting and payment tools
+- stay simple enough to extend without a large refactor
 
-### Đợt 1: nhóm tool dễ rank, dễ kiếm tiền
-Đây là nhóm công cụ ưu tiên ra mắt đầu tiên vì có nhu cầu thực tế cao và dễ nối sang hệ sinh thái kế toán/thanh toán.
+## Current calculator set
 
-- Profit Margin
-- Markup
-- Freelance Hourly Rate
+The current registry includes:
+- Profit Margin Calculator
+- Markup Calculator
+- Freelance Hourly Rate Calculator
 - VAT Calculator
 - Invoice Calculator
-- International Transfer Fee
+- International Transfer Fee Calculator
 
-### Đợt 2: nhóm tool support
-Nhóm này giúp mở rộng traffic và tăng internal linking cho toàn hệ thống.
+## Project structure
 
-- Break-even
-- Gross to Net
-- Net to Gross
-- Late Payment Fee
-- Payment Processing Fee
-- ROI
-- ROAS
-- Website Cost
+This is the current repository layout and the role of each main folder:
 
-### Đợt 3: nhóm tool chuyên sâu hơn
-Nhóm này phục vụ sâu hơn cho freelancer, agency, marketing và business planning.
-
-- Self-employed Tax Estimator
-- Utilization Rate
-- Monthly Income Target
-- CAC
-- CPM/CPC
-- Day Rate to Hourly Rate
-
-## Triết lý kiến trúc
-
-Dự án được thiết kế theo hướng **lean MVP nhưng dễ scale**.
-
-Nguyên tắc chính:
-
-- Mỗi calculator là một module độc lập
-- Routing tách khỏi business logic
-- Các phần dùng chung như format số, công thức chung, shell UI được gom vào `shared`
-- Cấu trúc đơn giản để ra mắt nhanh, nhưng đủ sạch để mở rộng sau này
-## Cấu trúc dự án
-
-```
+```text
 src/
 ├─ app/
-│  ├─ page.tsx                      # Homepage
-│  ├─ layout.tsx
-│  ├─ globals.css
-│  ├─ tools/
-│  │  ├─ page.tsx                   # Danh sách toàn bộ calculators
-│  │  └─ [slug]/
-│  │     └─ page.tsx                # Chi tiết calculator động
-│  └─ api/
-│     └─ calculators/
-│        └─ route.ts
+│  ├─ layout.tsx                 # Root layout and global metadata
+│  ├─ page.tsx                   # Home landing page
+│  ├─ robots.ts                  # Robots metadata route
+│  ├─ sitemap.ts                 # Sitemap metadata route
+│  ├─ api/
+│  │  └─ calculators/
+│  │     └─ route.ts             # Registry-backed API endpoint
+│  └─ tools/
+│     ├─ page.tsx                # Tools directory page
+│     └─ [slug]/
+│        └─ page.tsx             # Dynamic page for each calculator
 │
 ├─ components/
-│  ├─ ui/                           # Base components
-│  └─ shared/                       # Reusable blocks
-│     ├─ app-header.tsx
-│     ├─ app-footer.tsx
-│     ├─ calculator-shell.tsx
-│     ├─ result-card.tsx
-│     └─ tool-card.tsx
+│  ├─ shared/                    # Reusable page blocks and cards
+│  │  ├─ app-header.tsx
+│  │  ├─ app-footer.tsx
+│  │  ├─ calculator-shell.tsx
+│  │  ├─ result-card.tsx
+│  │  └─ tool-card.tsx
+│  └─ ui/                        # Lower-level UI primitives
+│     └─ button.tsx
+│
+├─ config/
+│  ├─ site.ts                    # Site name and base URL
+│  └─ tools.ts                   # Shared calculator registry export
 │
 ├─ features/
 │  ├─ calculators/
-│  │  ├─ shared/                    # Logic dùng chung
-│  │  │  ├─ types.ts
-│  │  │  ├─ helpers.ts
-│  │  │  ├─ constants.ts
-│  │  │  └─ calculator-registry.ts
-│  │  ├─ profit-margin/             # Mỗi calculator
+│  │  ├─ shared/                 # Shared calculator helpers and registry
+│  │  ├─ profit-margin/
 │  │  ├─ markup/
 │  │  ├─ freelance-hourly-rate/
 │  │  ├─ vat-calculator/
 │  │  ├─ invoice-calculator/
 │  │  └─ international-transfer-fee/
-│  │
-│  └─ integrations/                 # Future: QuickBooks, Xero, Wise
-│     ├─ quickbooks/
-│     ├─ xero/
-│     └─ wise/
+│  └─ integrations/              # Future QuickBooks, Wise, Xero connectors
 │
 ├─ lib/
-│  ├─ utils.ts
-│  ├─ format.ts                     # Format số & tiền tệ
-│  └─ metadata.ts                   # SEO metadata
-│
-├─ config/
-│  ├─ site.ts                       # Thông tin site
-│  └─ tools.ts                      # Danh sách tools & metadata
+│  ├─ format.ts                  # Number and currency formatting helpers
+│  ├─ metadata.ts                # Shared page metadata helper
+│  └─ utils.ts                   # General utility helpers
 │
 └─ tests/
-   └─ calculators/                  # Test công thức
+	└─ calculators/               # Formula tests for each calculator
+
+public/
+└─ og-image.svg                  # Shared social preview image
+
+dataflow.md                      # End-to-end data flow documentation
+README.md                        # Project overview and architecture notes
 ```
 
-### Giải thích chi tiết
+### How the structure works
 
-#### `app/`
-App Router tương ứng với Next.js 13+
-- `page.tsx`: Homepage chính
-- `tools/page.tsx`: Trang danh sách toàn bộ calculators
-- `tools/[slug]/page.tsx`: Trang động cho từng calculator riêng
-- `api/`: Backend logic, calculator endpoints, tích hợp bên ngoài
+- `app/` owns routing, page composition, and route-level metadata.
+- `components/shared/` holds reusable UI blocks used across pages.
+- `config/` stores small application-wide configuration and shared registry data.
+- `features/calculators/` contains the business logic for each calculator.
+- `lib/` contains generic helpers that are not tied to one feature.
+- `tests/` contains formula tests, so the math stays easy to verify.
+- `public/` stores static assets used by social sharing and the browser.
 
-#### `components/`
-Thành phần UI tái sử dụng
-- `ui/`: Base components (input, button, card, v.v.)
-- `shared/`: Reusable blocks như header, footer, shell layout, result card, tool card
+## Architecture pattern
 
-#### `features/calculators/`
-**Core business logic của dự án**
+The codebase uses a registry-driven, feature-first design.
 
-**Mỗi calculator bao gồm:**
+### 1. Registry-driven routing
+
+Calculator metadata lives in `src/features/calculators/shared/calculator-registry.ts`.
+
+That registry feeds:
+- the tools directory page
+- the dynamic calculator route
+- the API response
+- the sitemap
+
+### 2. Calculator module pattern
+
+Each calculator follows the same structure:
+
+```text
+calculator-name/
+├─ config.ts
+├─ schema.ts
+├─ formula.ts
+├─ form.tsx
+├─ result.tsx
+├─ calculator.tsx
+└─ index.ts
 ```
-profit-margin/
-├─ formula.ts          # Công thức tính
-├─ schema.ts           # Validation input (Zod)
-├─ config.ts           # Title, description, default values
-├─ form.tsx            # Giao diện nhập liệu
-├─ result.tsx          # Giao diện hiển thị kết quả
-└─ index.ts            # Export module
-```
 
-**`shared/`** chứa:
-- Types, constants, helpers dùng chung
-- Registry để quản lý toàn bộ calculators
+Responsibilities:
+- `schema.ts` defines input and output types
+- `formula.ts` contains pure calculation logic
+- `form.tsx` renders user input controls
+- `result.tsx` formats and displays output
+- `calculator.tsx` connects state, form, and formula
+- `index.ts` exposes the public module API
 
-#### `features/integrations/`
-Chuẩn bị sẵn cho tích hợp:
+### 3. Shared UI layer
+
+Shared components live in `src/components/shared/`.
+
+They provide:
+- `AppHeader`
+- `AppFooter`
+- `CalculatorShell`
+- `ToolCard`
+- `ResultCard`
+
+These components keep the app visually consistent while each calculator stays isolated.
+
+### 4. Shared metadata pattern
+
+Metadata is centralized in `src/lib/metadata.ts`.
+
+The project uses:
+- root metadata in `src/app/layout.tsx`
+- page metadata via `createPageMetadata()`
+- Open Graph metadata for social sharing
+- Twitter card metadata for previews
+- robots rules and sitemap routes for crawl support
+
+## Data flow
+
+The detailed data flow is documented in [dataflow.md](dataflow.md).
+
+In short:
+1. The registry defines the calculator list.
+2. Pages read the registry.
+3. Dynamic routes resolve a slug to a calculator module.
+4. Calculator modules compute values with pure formulas.
+5. Shared UI renders and formats the result.
+6. SEO routes expose the same structure to search engines.
+
+## Route map
+
+- `/` - landing page
+- `/tools` - tools directory
+- `/tools/[slug]` - individual calculator page
+- `/api/calculators` - registry-backed API response
+- `/sitemap.xml` - sitemap generated from the registry
+- `/robots.txt` - crawl rules for the site
+
+## SEO implementation
+
+SEO is built into the app, not added later.
+
+Included pieces:
+- canonical metadata
+- Open Graph metadata
+- Twitter metadata
+- robots directives
+- Google bot directives
+- a shared social image at `public/og-image.svg`
+- sitemap generation from the same registry data
+
+## Planned integrations
+
+The integrations folder is reserved for future connector flows:
 - QuickBooks
-- Xero
 - Wise
+- Xero
 
-*(Chưa phải ưu tiên MVP, nhưng kiến trúc để mở rộng sau)*
+Those modules are currently stubs, but they define where sync/export/payout features will live later.
 
-#### `lib/`
-Utilities cấp ứng dụng:
-- Format số, tiền tệ
-- Metadata SEO
-- Helper functions dùng chung
+## Design principles
 
-#### `config/`
-Cấu hình tĩnh:
-- `site.ts`: Thông tin chung về site
-- `tools.ts`: Danh sách & metadata từng calculator (slug, title, description, category)
+The codebase follows these patterns:
+- registry-driven architecture
+- feature-first module layout
+- pure formula functions
+- UI composition through shared shells and cards
+- SEO metadata centralized in one place
+- route files kept thin and declarative
 
-#### `tests/`
-Test cho công thức của từng calculator để đảm bảo độ chính xác
+## GoF patterns reflected in the project
 
-### Vì sao chọn cấu trúc này
+The project does not implement all 23 GoF patterns, but a few are clearly reflected in the current structure.
 
-Cấu trúc này được chọn vì phù hợp với 4 yêu cầu chính của dự án:
+### 1. Strategy
 
-- **Ra nhanh**: không over-engineer
-- **Dễ scale**: thêm tool mới bằng cách thêm module mới
-- **Dễ SEO**: mỗi tool có page riêng
-- **Dễ monetization**: có sẵn chỗ để nối integrations và lead flows
+Each calculator formula acts like a strategy: the route or page selects the calculator by slug, then the corresponding formula module performs the calculation.
 
----
-## Roadmap ngắn hạn
+That keeps the math swappable and isolated in `formula.ts` files.
 
-### Phase 1: MVP - 6 calculators core
-- Khởi tạo project bằng Next.js
-- Setup GitHub repo
-- Dựng folder structure
-- Làm trang homepage
-- Làm tools directory
-- Build 6 calculators đầu tiên:
-  - Profit Margin
-  - Markup
-  - Freelance Hourly Rate
-  - VAT Calculator
-  - Invoice Calculator
-  - International Transfer Fee
+### 2. Simple Factory
 
-### Phase 2: Expansion - 8 support tools
-- Thêm 8 calculators support tools
-- Bổ sung internal linking giữa các tools
-- Cải thiện metadata và SEO content
+The dynamic route uses a slug-to-component map to resolve which calculator component should render.
 
-### Phase 3: Professional tools & Monetization
-- Thêm 6 calculators chuyên sâu
-- Bắt đầu tích hợp QuickBooks, Xero, Wise
-- Nghiên cứu các hướng monetization (export, premium features, API)
+This is a practical simple-factory style lookup rather than a full abstract factory.
 
----
-## Định hướng monetization
+### 3. Facade
 
-Các hướng kiếm tiền tiềm năng của NobleCalculator:
+`createPageMetadata()` provides one small API over Next.js metadata object construction.
 
-- **Lead generation** cho freelancer và small business
-- **Affiliate/Referral** tới công cụ kế toán/thanh toán
-- **Tích hợp QuickBooks / Xero / Wise**
-- **Premium calculator features**
-- **Export** invoice / report / saved history
-- **SaaS dashboard** cho người dùng đăng nhập
+`CalculatorShell` also acts like a facade over the repeated page chrome used by calculator pages.
 
----
+### 4. Template Method style layout
+
+The calculator pages follow the same overall flow:
+resolve slug, load metadata, render shell, render calculator module.
+
+The sequence is consistent, while the module content varies per calculator.
+
+### 5. Composition
+
+The UI is assembled from smaller components like `AppHeader`, `AppFooter`, `ToolCard`, `CalculatorShell`, and `ResultCard`.
+
+This is not a strict GoF pattern by itself, but it is the main way the UI stays modular and reusable.
+
+## Why this structure works
+
+This structure reduces duplication and keeps the app easy to maintain.
+
+When you add a new calculator, you typically only need to:
+- add a registry entry
+- add the calculator module
+- let the route and sitemap pick it up automatically
+
+That keeps the app scalable without unnecessary abstraction.
 
 ## Tech stack
 
-**Core:**
+Core stack:
 - Next.js
+- React
 - TypeScript
 - Tailwind CSS
-- App Router
-- Git + GitHub
 
-**Future additions:**
-- Zod (validation)
-- React Hook Form (form handling)
-- Prisma (ORM)
-- PostgreSQL (database)
-- Stripe (payments)
-- Clerk / NextAuth (authentication)
+Supporting tooling:
+- ESLint
+- Vitest
 
----
+## Scripts
 
-## Nguyên tắc phát triển
+- `npm run dev` - start development server
+- `npm run build` - build production bundle
+- `npm start` - start production server
+- `npm run lint` - run ESLint
+- `npm test` - run calculator formula tests
 
-- ✅ Ưu tiên ship nhanh bản chạy được
-- ✅ Mỗi tool phải có công thức rõ ràng và test được
-- ✅ Không over-engineer cấu trúc quá sớm
-- ✅ Ưu tiên module hóa để dễ thêm tool mới
-- ✅ Luôn giữ codebase sạch, dễ đọc, dễ mở rộng
+## Repository status
 
----
-
-## Trạng thái hiện tại
-
-Dự án đang ở giai đoạn **nền tảng**:
-
-- ✅ Đã xác định hướng sản phẩm
-- ✅ Đã chốt naming: noblecalculator
-- ✅ Đã khởi tạo project và repo
-- 🔄 Đang triển khai cấu trúc lean MVP để bắt đầu build Phase 1
+The project currently has a working MVP foundation with:
+- dedicated calculator routes
+- shared registry data
+- shared metadata and SEO routes
+- calculator formula tests
+- reusable UI shells and cards
 
