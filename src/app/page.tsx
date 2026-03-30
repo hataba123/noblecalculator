@@ -23,7 +23,7 @@ export default function HomePage() {
               </span>
               <div className="space-y-3">
                 <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-                  Financial calculators for everyday business decisions.
+                  Practical calculators for everyday tasks.
                 </h1>
                 <p className="max-w-2xl text-base leading-7 text-[#5c554b] sm:text-lg">
                   Pick a calculator, enter a few numbers, and get a clear result right away.

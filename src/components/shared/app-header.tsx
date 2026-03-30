@@ -14,7 +14,6 @@ export function AppHeader() {
             <div className="text-sm font-semibold tracking-[0.16em] uppercase text-[#1b1a17]">
               {siteConfig.name}
             </div>
-            <div className="text-xs text-[#6b5a43]">Financial calculators</div>
           </div>
         </Link>
 
