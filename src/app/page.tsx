@@ -1,5 +1,14 @@
 import Link from "next/link";
 
+import { createPageMetadata } from "@/src/lib/metadata";
+
+export const metadata = createPageMetadata(
+  "NobleCalculator",
+  "Financial calculators now live on dedicated routes with shared registry data.",
+  "/",
+  ["financial calculator", "profit margin calculator", "markup calculator", "freelance calculator"]
+);
+
 export default function HomePage() {
   return (
     <main className="min-h-screen px-4 py-6 text-[#1b1a17] sm:px-6 lg:px-8">

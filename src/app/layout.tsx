@@ -1,13 +1,50 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+
+import { siteMetadata } from "@/src/lib/metadata";
+import { siteConfig } from "@/src/config/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: "NobleCalculator",
-    template: "%s | NobleCalculator",
+    default: siteMetadata.title,
+    template: `%s | ${siteMetadata.title}`,
   },
-  description: "Fast financial calculators for freelancers, agencies, and small businesses.",
+  description: siteMetadata.description,
+  openGraph: {
+    title: siteMetadata.title,
+    description: siteMetadata.description,
+    siteName: siteMetadata.title,
+    url: "/",
+    images: [
+      {
+        url: "/og-image.svg",
+        width: 1200,
+        height: 630,
+        alt: siteMetadata.title,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteMetadata.title,
+    description: siteMetadata.description,
+    images: ["/og-image.svg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {

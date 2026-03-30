@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { tools, getCalculatorDefinition } from "@/src/config/tools";
+import { createPageMetadata } from "@/src/lib/metadata";
 import {
   FreelanceHourlyRateCalculator,
 } from "@/src/features/calculators/freelance-hourly-rate";
@@ -26,6 +27,27 @@ const calculatorMap = {
 
 export function generateStaticParams() {
   return tools.map((tool) => ({ slug: tool.slug }));
+}
+
+export async function generateMetadata({ params }: ToolPageProps) {
+  const { slug } = await params;
+  const tool = getCalculatorDefinition(slug);
+
+  if (!tool) {
+    return createPageMetadata(
+      "Calculator",
+      "Browse financial calculators in NobleCalculator.",
+      "/tools",
+      ["financial calculator", "calculator tool"]
+    );
+  }
+
+  return createPageMetadata(
+    tool.title,
+    tool.description,
+    `/tools/${tool.slug}`,
+    [tool.slug, tool.title, "financial calculator", "business calculator"]
+  );
 }
 
 export default async function ToolPage({ params }: ToolPageProps) {

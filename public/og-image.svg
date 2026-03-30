@@ -1,0 +1,12 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" rx="48" fill="#201C17"/>
+  <circle cx="1040" cy="120" r="180" fill="#D0B08A" fill-opacity="0.14"/>
+  <circle cx="180" cy="520" r="220" fill="#F4EFE8" fill-opacity="0.1"/>
+  <rect x="80" y="82" width="160" height="42" rx="21" fill="#F4EFE8" fill-opacity="0.12"/>
+  <text x="110" y="110" fill="#F7F1E8" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" letter-spacing="4">NOBLECALCULATOR</text>
+  <text x="80" y="260" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700">Financial calculators</text>
+  <text x="80" y="340" fill="#E8D8C5" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700">built for fast decisions.</text>
+  <text x="80" y="430" fill="#C9B79D" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="400">Shared registry. Dedicated routes. SEO-ready metadata.</text>
+  <rect x="80" y="486" width="1040" height="2" fill="#D0B08A" fill-opacity="0.2"/>
+  <text x="80" y="540" fill="#F7F1E8" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Profit Margin • Markup • Freelance Hourly Rate • VAT • Invoice • Transfer Fee</text>
+</svg>

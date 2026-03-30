@@ -1,6 +1,14 @@
 import Link from "next/link";
 
 import { tools } from "@/src/config/tools";
+import { createPageMetadata } from "@/src/lib/metadata";
+
+export const metadata = createPageMetadata(
+  "Tools Directory",
+  "Browse every financial calculator in NobleCalculator from one shared registry.",
+  "/tools",
+  ["financial tools", "calculator directory", "SEO landing pages", "calculator registry"]
+);
 
 export default function ToolsPage() {
   return (
