@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { CalculatorShell } from "./calculator-shell";
 import { ResultCard } from "./result-card";
@@ -10,17 +10,47 @@ type HistoryEntry = {
   value: number;
 };
 
-type Operator = "+" | "-" | "*" | "/";
+type CalculatorMode = "basic" | "scientific";
+
+type AngleMode = "deg" | "rad";
+
+type Operator = "+" | "-" | "*" | "/" | "^";
+
+type ScientificFunction =
+  | "sin"
+  | "cos"
+  | "tan"
+  | "asin"
+  | "acos"
+  | "atan"
+  | "sqrt"
+  | "cbrt"
+  | "ln"
+  | "log"
+  | "neg"
+  | "root"
+  | "inv";
 
 type Token =
   | { type: "number"; value: number }
   | { type: "operator"; value: Operator }
-  | { type: "paren"; value: "(" | ")" };
+  | { type: "paren"; value: "(" | ")" }
+  | { type: "comma" }
+  | { type: "function"; value: ScientificFunction }
+  | { type: "postfix"; value: "!" };
 
 type KeypadButton = {
   label: string;
   kind: "digit" | "operator" | "action" | "equals" | "paren";
   value?: string;
+  tone?: "soft" | "ghost" | "accent";
+  wide?: boolean;
+};
+
+type ScientificButton = {
+  label: string;
+  kind: "digit" | "operator" | "action" | "equals" | "paren" | "function" | "constant" | "transform" | "comma";
+  value: string;
   tone?: "soft" | "ghost" | "accent";
   wide?: boolean;
 };
@@ -57,17 +87,45 @@ const keypadButtons: KeypadButton[] = [
   { label: "=", kind: "equals", tone: "accent", wide: true },
 ];
 
+const scientificButtons: ScientificButton[] = [
+  { label: "sin", kind: "function", value: "sin", tone: "soft" },
+  { label: "cos", kind: "function", value: "cos", tone: "soft" },
+  { label: "tan", kind: "function", value: "tan", tone: "soft" },
+  { label: "sin⁻¹", kind: "function", value: "asin", tone: "soft" },
+  { label: "cos⁻¹", kind: "function", value: "acos", tone: "soft" },
+  { label: "tan⁻¹", kind: "function", value: "atan", tone: "soft" },
+  { label: "π", kind: "constant", value: "pi", tone: "ghost" },
+  { label: "e", kind: "constant", value: "e", tone: "ghost" },
+  { label: "xʸ", kind: "operator", value: "^", tone: "ghost" },
+  { label: "x³", kind: "transform", value: "cube", tone: "soft" },
+  { label: "x²", kind: "transform", value: "square", tone: "soft" },
+  { label: "eˣ", kind: "transform", value: "exp", tone: "soft" },
+  { label: "10ˣ", kind: "transform", value: "pow10", tone: "soft" },
+  { label: "y√x", kind: "function", value: "root", tone: "soft" },
+  { label: "³√x", kind: "transform", value: "cbrt", tone: "soft" },
+  { label: "√x", kind: "transform", value: "sqrt", tone: "soft" },
+  { label: "ln", kind: "function", value: "ln", tone: "ghost" },
+  { label: "log", kind: "function", value: "log", tone: "ghost" },
+  { label: "(", kind: "paren", value: "(", tone: "soft" },
+  { label: ")", kind: "paren", value: ")", tone: "soft" },
+  { label: ",", kind: "comma", value: ",", tone: "ghost" },
+  { label: "1/x", kind: "transform", value: "inv", tone: "soft" },
+  { label: "%", kind: "action", value: "percent", tone: "ghost" },
+  { label: "n!", kind: "transform", value: "factorial", tone: "soft" },
+] as const;
+
 const operatorPrecedence: Record<Operator, number> = {
   "+": 1,
   "-": 1,
   "*": 2,
   "/": 2,
+  "^": 3,
 };
 
 const initialExpression = "1280/4+75";
 
 function isOperator(value: string): value is Operator {
-  return value === "+" || value === "-" || value === "*" || value === "/";
+  return value === "+" || value === "-" || value === "*" || value === "/" || value === "^";
 }
 
 function formatDisplayNumber(value: number) {
@@ -79,7 +137,50 @@ function formatRawNumber(value: number) {
 }
 
 function prettyExpression(expression: string) {
-  return expression.replaceAll("*", "×").replaceAll("/", "÷");
+  return expression
+    .replaceAll("pi", "π")
+    .replaceAll("*", "×")
+    .replaceAll("/", "÷");
+}
+
+function isIncompleteExpression(expression: string) {
+  const normalizedExpression = expression === "0" ? "" : expression;
+
+  if (!normalizedExpression) {
+    return true;
+  }
+
+  if (normalizedExpression === "-" || normalizedExpression === "(") {
+    return true;
+  }
+
+  return /[+\-*/^(,]$/.test(normalizedExpression);
+}
+
+function normalizeScientificText(expression: string) {
+  return expression.replaceAll("×", "*").replaceAll("÷", "/").replaceAll("π", "pi").replace(/\s+/g, "");
+}
+
+function toRadians(value: number, angleMode: AngleMode) {
+  return angleMode === "deg" ? (value * Math.PI) / 180 : value;
+}
+
+function fromRadians(value: number, angleMode: AngleMode) {
+  return angleMode === "deg" ? (value * 180) / Math.PI : value;
+}
+
+function factorial(value: number) {
+  if (!Number.isInteger(value) || value < 0) {
+    return null;
+  }
+
+  let result = 1;
+
+  for (let index = 2; index <= value; index += 1) {
+    result *= index;
+  }
+
+  return result;
 }
 
 function readNumber(expression: string, startIndex: number, allowSign = false) {
@@ -122,10 +223,12 @@ function readNumber(expression: string, startIndex: number, allowSign = false) {
 }
 
 function tokenize(expression: string): Token[] {
-  const normalized = expression.replaceAll("×", "*").replaceAll("÷", "/").replace(/\s+/g, "");
+  const normalized = normalizeScientificText(expression);
   const tokens: Token[] = [];
   let index = 0;
   let expectValue = true;
+
+  const isIdentifierCharacter = (character: string) => /[a-z]/i.test(character);
 
   while (index < normalized.length) {
     const character = normalized[index];
@@ -139,6 +242,20 @@ function tokenize(expression: string): Token[] {
 
     if (character === ")") {
       tokens.push({ type: "paren", value: ")" });
+      expectValue = false;
+      index += 1;
+      continue;
+    }
+
+    if (character === ",") {
+      tokens.push({ type: "comma" });
+      expectValue = true;
+      index += 1;
+      continue;
+    }
+
+    if (character === "!") {
+      tokens.push({ type: "postfix", value: "!" });
       expectValue = false;
       index += 1;
       continue;
@@ -164,6 +281,11 @@ function tokenize(expression: string): Token[] {
             expectValue = false;
             continue;
           }
+
+          tokens.push({ type: "function", value: "neg" });
+          index += 1;
+          expectValue = true;
+          continue;
         }
 
         if (character === "+") {
@@ -188,6 +310,55 @@ function tokenize(expression: string): Token[] {
       continue;
     }
 
+    if (isIdentifierCharacter(character)) {
+      let endIndex = index + 1;
+
+      while (endIndex < normalized.length && isIdentifierCharacter(normalized[endIndex])) {
+        endIndex += 1;
+      }
+
+      const identifier = normalized.slice(index, endIndex).toLowerCase();
+
+      if (identifier === "pi") {
+        tokens.push({ type: "number", value: Math.PI });
+        expectValue = false;
+        index = endIndex;
+        continue;
+      }
+
+      if (identifier === "e") {
+        tokens.push({ type: "number", value: Math.E });
+        expectValue = false;
+        index = endIndex;
+        continue;
+      }
+
+      if (
+        identifier === "sin" ||
+        identifier === "cos" ||
+        identifier === "tan" ||
+        identifier === "asin" ||
+        identifier === "acos" ||
+        identifier === "atan" ||
+        identifier === "sqrt" ||
+        identifier === "cbrt" ||
+        identifier === "ln" ||
+        identifier === "log" ||
+        identifier === "root"
+      ) {
+        if (normalized[endIndex] !== "(") {
+          throw new Error("Function must use parentheses");
+        }
+
+        tokens.push({ type: "function", value: identifier as ScientificFunction });
+        expectValue = true;
+        index = endIndex;
+        continue;
+      }
+
+      throw new Error("Invalid character");
+    }
+
     throw new Error("Invalid character");
   }
 
@@ -205,6 +376,32 @@ function toRpn(tokens: Token[]) {
   for (const token of tokens) {
     if (token.type === "number") {
       output.push(token);
+      continue;
+    }
+
+    if (token.type === "postfix") {
+      output.push(token);
+      continue;
+    }
+
+    if (token.type === "function") {
+      operators.push(token);
+      continue;
+    }
+
+    if (token.type === "comma") {
+      while (operators.length > 0 && operators[operators.length - 1]?.type !== "paren") {
+        const nextOperator = operators.pop();
+
+        if (nextOperator) {
+          output.push(nextOperator);
+        }
+      }
+
+      if (operators.length === 0) {
+        throw new Error("Misplaced comma");
+      }
+
       continue;
     }
 
@@ -227,25 +424,50 @@ function toRpn(tokens: Token[]) {
       }
 
       operators.pop();
+
+      if (operators.length > 0 && operators[operators.length - 1]?.type === "function") {
+        const nextFunction = operators.pop();
+
+        if (nextFunction) {
+          output.push(nextFunction);
+        }
+      }
+
       continue;
     }
 
     while (operators.length > 0) {
       const topOperator = operators[operators.length - 1];
 
+      if (topOperator.type === "function") {
+        const nextFunction = operators.pop();
+
+        if (nextFunction) {
+          output.push(nextFunction);
+        }
+
+        continue;
+      }
+
       if (topOperator.type !== "operator") {
         break;
       }
 
-      if (operatorPrecedence[topOperator.value] < operatorPrecedence[token.value]) {
-        break;
+      const topPrecedence = operatorPrecedence[topOperator.value];
+      const currentPrecedence = operatorPrecedence[token.value];
+      const isRightAssociative = token.value === "^";
+
+      if (topPrecedence > currentPrecedence || (topPrecedence === currentPrecedence && !isRightAssociative)) {
+        const poppedOperator = operators.pop();
+
+        if (poppedOperator) {
+          output.push(poppedOperator);
+        }
+
+        continue;
       }
 
-      const poppedOperator = operators.pop();
-
-      if (poppedOperator) {
-        output.push(poppedOperator);
-      }
+      break;
     }
 
     operators.push(token);
@@ -264,13 +486,92 @@ function toRpn(tokens: Token[]) {
   return output;
 }
 
-function evaluateRpn(tokens: Token[]) {
+function evaluateRpn(tokens: Token[], angleMode: AngleMode) {
   const values: number[] = [];
 
   for (const token of tokens) {
     if (token.type === "number") {
       values.push(token.value);
       continue;
+    }
+
+    if (token.type === "postfix") {
+      const value = values.pop();
+
+      if (typeof value !== "number") {
+        throw new Error("Invalid expression");
+      }
+
+      const result = factorial(value);
+
+      if (result === null) {
+        throw new Error("Invalid factorial");
+      }
+
+      values.push(result);
+      continue;
+    }
+
+    if (token.type === "function") {
+      if (token.value === "root") {
+        const radicand = values.pop();
+        const degree = values.pop();
+
+        if (typeof degree !== "number" || typeof radicand !== "number" || degree === 0) {
+          throw new Error("Invalid expression");
+        }
+
+        values.push(Math.pow(radicand, 1 / degree));
+        continue;
+      }
+
+      const value = values.pop();
+
+      if (typeof value !== "number") {
+        throw new Error("Invalid expression");
+      }
+
+      switch (token.value) {
+        case "neg":
+          values.push(-value);
+          break;
+        case "sin":
+          values.push(Math.sin(toRadians(value, angleMode)));
+          break;
+        case "cos":
+          values.push(Math.cos(toRadians(value, angleMode)));
+          break;
+        case "tan":
+          values.push(Math.tan(toRadians(value, angleMode)));
+          break;
+        case "asin":
+          values.push(fromRadians(Math.asin(value), angleMode));
+          break;
+        case "acos":
+          values.push(fromRadians(Math.acos(value), angleMode));
+          break;
+        case "atan":
+          values.push(fromRadians(Math.atan(value), angleMode));
+          break;
+        case "sqrt":
+          values.push(Math.sqrt(value));
+          break;
+        case "cbrt":
+          values.push(Math.cbrt(value));
+          break;
+        case "ln":
+          values.push(Math.log(value));
+          break;
+        case "log":
+          values.push(Math.log10(value));
+          break;
+      }
+
+      continue;
+    }
+
+    if (token.type !== "operator") {
+      throw new Error("Invalid expression");
     }
 
     const rightValue = values.pop();
@@ -297,6 +598,9 @@ function evaluateRpn(tokens: Token[]) {
 
         values.push(leftValue / rightValue);
         break;
+      case "^":
+        values.push(Math.pow(leftValue, rightValue));
+        break;
     }
   }
 
@@ -307,7 +611,7 @@ function evaluateRpn(tokens: Token[]) {
   return values[0];
 }
 
-function evaluateExpression(expression: string) {
+function evaluateExpression(expression: string, angleMode: AngleMode = "rad") {
   const trimmedExpression = expression.trim();
 
   if (!trimmedExpression || trimmedExpression === "0") {
@@ -322,7 +626,7 @@ function evaluateExpression(expression: string) {
     }
 
     const rpn = toRpn(tokens);
-    const result = evaluateRpn(rpn);
+    const result = evaluateRpn(rpn, angleMode);
 
     return Number.isFinite(result) ? result : null;
   } catch {
@@ -331,7 +635,7 @@ function evaluateExpression(expression: string) {
 }
 
 function getButtonClass(tone: KeypadButton["tone"], wide = false) {
-  const baseClass = "rounded-2xl border px-4 py-3 text-sm font-semibold transition-transform duration-150 active:scale-[0.98]";
+  const baseClass = "rounded-2xl border px-3.5 py-3 text-sm font-semibold transition-transform duration-150 active:scale-[0.98]";
 
   if (wide) {
     return `${baseClass} col-span-4`;
@@ -348,26 +652,46 @@ function getButtonClass(tone: KeypadButton["tone"], wide = false) {
   }
 }
 
+function normalizeExpressionValue(expression: string) {
+  return expression === "0" ? "" : expression;
+}
+
+function appendTextToExpression(expression: string, text: string) {
+  if (!expression) {
+    return text;
+  }
+
+  if (/[0-9)!a-z]$/i.test(expression)) {
+    return `${expression}*${text}`;
+  }
+
+  return `${expression}${text}`;
+}
+
 export function HomeCalculator() {
   const [expression, setExpression] = useState(initialExpression);
   const [memory, setMemory] = useState(0);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
+  const [calculatorMode, setCalculatorMode] = useState<CalculatorMode>("basic");
+  const [angleMode, setAngleMode] = useState<AngleMode>("rad");
+  const [lastValidValue, setLastValidValue] = useState(() => evaluateExpression(initialExpression) ?? 0);
 
-  const previewValue = evaluateExpression(expression);
-  const displayValue = previewValue === null ? "Check the expression" : formatDisplayNumber(previewValue);
+  const previewValue = evaluateExpression(expression, angleMode);
+  const displayValue = formatDisplayNumber(lastValidValue);
+  const invalidExpressionMessage = previewValue === null && !isIncompleteExpression(expression) ? "Biểu thức chưa hợp lệ" : null;
+
+  useEffect(() => {
+    if (previewValue !== null) {
+      setLastValidValue(previewValue);
+    }
+  }, [previewValue]);
 
   const clearExpression = () => setExpression("0");
 
   const appendDigit = (digit: string) => {
     setExpression((currentExpression) => {
       const normalizedExpression = currentExpression === "0" ? "" : currentExpression;
-      const lastCharacter = normalizedExpression.at(-1);
-
-      if (lastCharacter === ")") {
-        return `${normalizedExpression}*${digit}`;
-      }
-
-      return `${normalizedExpression}${digit}`;
+      return appendTextToExpression(normalizedExpression, digit);
     });
   };
 
@@ -380,7 +704,7 @@ export function HomeCalculator() {
         return normalizedExpression || "0";
       }
 
-      if (!normalizedExpression || /[+\-*/(]$/.test(normalizedExpression)) {
+      if (!normalizedExpression || /[+\-*/^(]$/.test(normalizedExpression)) {
         return `${normalizedExpression}0.`;
       }
 
@@ -396,7 +720,7 @@ export function HomeCalculator() {
         return operator === "-" ? "-" : "0";
       }
 
-      if (/[+\-*/]$/.test(normalizedExpression)) {
+      if (/[+\-*/^]$/.test(normalizedExpression)) {
         if (operator === "-") {
           return `${normalizedExpression}-`;
         }
@@ -435,7 +759,7 @@ export function HomeCalculator() {
         return normalizedExpression || "0";
       }
 
-      if (/[+\-*/(]$/.test(normalizedExpression)) {
+      if (/[+\-*/^(]$/.test(normalizedExpression)) {
         return normalizedExpression;
       }
 
@@ -476,7 +800,7 @@ export function HomeCalculator() {
     setExpression((currentExpression) => {
       const normalizedExpression = currentExpression === "0" ? "" : currentExpression;
 
-      if (!normalizedExpression || /[+\-*/(]$/.test(normalizedExpression)) {
+      if (!normalizedExpression || /[+\-*/^(]$/.test(normalizedExpression)) {
         return normalizedExpression || "0";
       }
 
@@ -485,7 +809,7 @@ export function HomeCalculator() {
   };
 
   const storeResult = () => {
-    const result = evaluateExpression(expression);
+    const result = evaluateExpression(expression, angleMode);
 
     if (result === null) {
       return;
@@ -506,7 +830,7 @@ export function HomeCalculator() {
   };
 
   const addToMemory = () => {
-    const result = evaluateExpression(expression);
+    const result = evaluateExpression(expression, angleMode);
 
     if (result === null) {
       return;
@@ -516,7 +840,7 @@ export function HomeCalculator() {
   };
 
   const subtractFromMemory = () => {
-    const result = evaluateExpression(expression);
+    const result = evaluateExpression(expression, angleMode);
 
     if (result === null) {
       return;
@@ -527,6 +851,104 @@ export function HomeCalculator() {
 
   const clearMemory = () => {
     setMemory(0);
+  };
+
+  const appendScientificText = (text: string) => {
+    setExpression((currentExpression) => {
+      const normalizedExpression = normalizeExpressionValue(currentExpression);
+      return appendTextToExpression(normalizedExpression, text);
+    });
+  };
+
+  const applyPrefixScientificFunction = (functionName: ScientificFunction) => {
+    setExpression((currentExpression) => {
+      const normalizedExpression = normalizeExpressionValue(currentExpression);
+
+      if (functionName === "root") {
+        if (!normalizedExpression || isIncompleteExpression(normalizedExpression)) {
+          return appendTextToExpression(normalizedExpression, "root(");
+        }
+
+        return `root(${normalizedExpression},`;
+      }
+
+      if (!normalizedExpression || isIncompleteExpression(normalizedExpression)) {
+        return appendTextToExpression(normalizedExpression, `${functionName}(`);
+      }
+
+      return `${functionName}(${normalizedExpression})`;
+    });
+  };
+
+  const applyScientificTransform = (transform: "square" | "cube" | "sqrt" | "cbrt" | "exp" | "pow10" | "inv" | "factorial") => {
+    setExpression((currentExpression) => {
+      const normalizedExpression = normalizeExpressionValue(currentExpression);
+
+      if (!normalizedExpression || isIncompleteExpression(normalizedExpression)) {
+        return normalizedExpression || "0";
+      }
+
+      switch (transform) {
+        case "square":
+          return `(${normalizedExpression})^2`;
+        case "cube":
+          return `(${normalizedExpression})^3`;
+        case "sqrt":
+          return `sqrt(${normalizedExpression})`;
+        case "cbrt":
+          return `cbrt(${normalizedExpression})`;
+        case "exp":
+          return `e^(${normalizedExpression})`;
+        case "pow10":
+          return `10^(${normalizedExpression})`;
+        case "inv":
+          return `1/(${normalizedExpression})`;
+        case "factorial":
+          return `(${normalizedExpression})!`;
+      }
+
+      return normalizedExpression;
+    });
+  };
+
+  const handleScientificButtonPress = (button: (typeof scientificButtons)[number]) => {
+    switch (button.kind) {
+      case "function":
+        if (button.value === "sin" || button.value === "cos" || button.value === "tan" || button.value === "asin" || button.value === "acos" || button.value === "atan" || button.value === "ln" || button.value === "log" || button.value === "root") {
+          applyPrefixScientificFunction(button.value);
+        }
+        break;
+      case "action":
+        if (button.value === "percent") {
+          applyPercent();
+        }
+        break;
+      case "comma":
+        appendScientificText(",");
+        break;
+      case "constant":
+        appendScientificText(button.value);
+        break;
+      case "operator":
+        if (button.value && isOperator(button.value)) {
+          appendOperator(button.value);
+        }
+        break;
+      case "transform":
+        switch (button.value) {
+          case "square":
+          case "cube":
+          case "sqrt":
+          case "cbrt":
+          case "exp":
+          case "pow10":
+          case "inv":
+          case "factorial":
+            applyScientificTransform(button.value);
+            break;
+        }
+        break;
+    }
   };
 
   const handleButtonPress = (button: KeypadButton) => {
@@ -580,9 +1002,9 @@ export function HomeCalculator() {
   };
 
   return (
-    <CalculatorShell title="Homepage Calculator" description="A full-size calculator with memory, live preview, and a keypad that feels like a desk calculator.">
-      <div className="grid gap-6 xl:grid-cols-[1.15fr_0.85fr]">
-        <div className="rounded-[2rem] border border-black/10 bg-[#201c17] p-5 text-white shadow-[0_20px_60px_rgba(34,24,12,0.18)] sm:p-6">
+    <CalculatorShell title="Quick Calculator" description="A full-size calculator with memory, live preview, and a keypad that feels like a desk calculator.">
+      <div className="grid gap-5 xl:grid-cols-[1.12fr_0.88fr]">
+        <div className="rounded-[1.85rem] border border-black/10 bg-[#201c17] p-4 text-white shadow-[0_18px_48px_rgba(34,24,12,0.16)] sm:p-5">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div>
               <p className="text-xs uppercase tracking-[0.24em] text-[#c9b79d]">Quick calculator</p>
@@ -592,25 +1014,70 @@ export function HomeCalculator() {
               </p>
             </div>
 
-            <div className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white/60">
-              Live preview
+            <div className="flex flex-col items-end gap-2">
+              <label className="text-xs uppercase tracking-[0.22em] text-white/45" htmlFor="calculator-mode">
+                Mode
+              </label>
+              <select
+                id="calculator-mode"
+                value={calculatorMode}
+                onChange={(event) => setCalculatorMode(event.target.value as CalculatorMode)}
+                className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white outline-none transition-colors hover:bg-white/10"
+              >
+                <option value="basic">Basic</option>
+                <option value="scientific">Scientific</option>
+              </select>
             </div>
           </div>
 
-          <div className="mt-5 rounded-[1.6rem] border border-white/10 bg-white/5 p-5">
-            <div className="flex items-center justify-between gap-3 text-xs uppercase tracking-[0.22em] text-white/45">
-              <span>Expression</span>
-              <span>Result</span>
+          {calculatorMode === "scientific" ? (
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-[1.1rem] border border-white/10 bg-white/5 px-4 py-3">
+              <span className="text-xs uppercase tracking-[0.22em] text-white/45">Angle</span>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setAngleMode("deg")}
+                  className={`rounded-full px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] transition-colors ${
+                    angleMode === "deg" ? "bg-[#d0b08a] text-[#201c17]" : "bg-white/5 text-white/70 hover:bg-white/10"
+                  }`}
+                >
+                  Deg
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setAngleMode("rad")}
+                  className={`rounded-full px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] transition-colors ${
+                    angleMode === "rad" ? "bg-[#d0b08a] text-[#201c17]" : "bg-white/5 text-white/70 hover:bg-white/10"
+                  }`}
+                >
+                  Rad
+                </button>
+              </div>
             </div>
-            <div className="mt-3 min-h-10 text-right text-lg leading-7 text-white/72 sm:text-xl">
-              {prettyExpression(expression) || "0"}
+          ) : null}
+
+          <div className="mt-4 rounded-[1.5rem] border border-white/10 bg-white/5 p-4">
+            <div className="flex items-start justify-between gap-4">
+              <div className="min-w-0 flex-1">
+                <div className="text-xs uppercase tracking-[0.22em] text-white/45">Expression</div>
+                <div className="mt-2.5 min-h-10 text-left text-[0.98rem] leading-7 text-white/72 sm:text-[1.05rem]">
+                  {prettyExpression(expression) || "0"}
+                </div>
+              </div>
+
+              <div className="shrink-0 text-right">
+                <div className="text-xs uppercase tracking-[0.22em] text-white/45">Result</div>
+                <div className="mt-2.5 text-3xl font-semibold tracking-tight sm:text-[2.45rem]">
+                  {displayValue}
+                </div>
+              </div>
             </div>
-            <div className="mt-2 text-right text-4xl font-semibold tracking-tight sm:text-5xl">
-              {displayValue}
-            </div>
+            {invalidExpressionMessage ? (
+              <p className="mt-2 text-left text-sm leading-6 text-white/45">{invalidExpressionMessage}</p>
+            ) : null}
           </div>
 
-          <div className="mt-5 flex flex-wrap gap-2">
+          <div className="mt-4 flex flex-wrap gap-2">
             {functionButtons.map((button) => (
               <button
                 key={button.label}
@@ -623,7 +1090,26 @@ export function HomeCalculator() {
             ))}
           </div>
 
-          <div className="mt-5 grid grid-cols-4 gap-3">
+          {calculatorMode === "scientific" ? (
+            <div className="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-4">
+              {scientificButtons.map((button) => {
+                const wide = "wide" in button ? ((button as { wide?: boolean }).wide ?? false) : false;
+
+                return (
+                  <button
+                    key={button.label}
+                    type="button"
+                    onClick={() => handleScientificButtonPress(button)}
+                    className={getButtonClass(button.tone, wide)}
+                  >
+                    {button.label}
+                  </button>
+                );
+              })}
+            </div>
+          ) : null}
+
+          <div className="mt-4 grid grid-cols-4 gap-2.5">
             {keypadButtons.map((button) => (
               <button
                 key={button.label}
@@ -646,7 +1132,7 @@ export function HomeCalculator() {
           <ResultCard
             label="Current answer"
             value={displayValue}
-            hint="Changes as you build the expression."
+            hint={invalidExpressionMessage ?? "Changes as you build the expression."}
           />
 
           <div className="rounded-[2rem] border border-black/10 bg-[#fbf8f3] p-5 shadow-[0_12px_32px_rgba(34,24,12,0.06)]">
