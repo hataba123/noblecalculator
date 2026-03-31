@@ -37,6 +37,15 @@ type IndexedToolGroup = ToolGroup & {
   items: IndexedToolItem[];
 };
 
+type RankedToolItem = IndexedToolItem & {
+  searchScore: number;
+};
+
+type RankedToolGroup = Omit<IndexedToolGroup, "items"> & {
+  searchScore: number;
+  items: RankedToolItem[];
+};
+
 type ToolsBrowserProps = {
   groups: ToolGroup[];
   searchLabel: string;
@@ -249,7 +258,7 @@ export function ToolsBrowser({
       groups.map((group) => ({
         ...group,
         searchIndex: buildSearchIndex(group.title, group.description),
-        items: group.items.map((item) => ({
+        items: group.items.map((item): IndexedToolItem => ({
           ...item,
           searchIndex: buildSearchIndex(item.title, item.description),
         })),
@@ -257,15 +266,23 @@ export function ToolsBrowser({
     [groups]
   );
 
-  const filteredGroups = useMemo(() => {
+  const filteredGroups = useMemo<RankedToolGroup[]>(() => {
     if (queryTokens.length === 0) {
-      return indexedGroups;
+      return indexedGroups.map((group) => ({
+        ...group,
+        searchScore: 0,
+        items: (group.items as IndexedToolItem[]).map((item): RankedToolItem => ({
+          ...item,
+          searchScore: 0,
+        })),
+      }));
     }
 
     return indexedGroups
       .map((group) => {
-        const rankedItems = group.items
-          .map((item) => ({
+        const indexedItems = group.items as IndexedToolItem[];
+        const rankedItems: RankedToolItem[] = indexedItems
+          .map((item): RankedToolItem => ({
             ...item,
             searchScore: getRelevanceScore(item.searchIndex, queryTokens),
           }))
