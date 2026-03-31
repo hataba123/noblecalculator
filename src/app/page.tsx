@@ -20,10 +20,7 @@ export default function HomePage() {
         <header className="rounded-[1.75rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-5 shadow-[0_18px_48px_rgba(34,24,12,0.08)] backdrop-blur sm:p-6 lg:rounded-[2rem] lg:p-8">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div className="w-full min-w-0 space-y-4 lg:flex-1">
-              <span className="inline-flex w-fit rounded-full border border-[color:var(--border)] bg-[color:var(--surface-soft)] px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[color:var(--muted-strong)] sm:text-xs">
-                Noble Calculator
-              </span>
-              <div className="space-y-3">
+                <div className="space-y-3">
                 <h1 className="w-full max-w-none text-balance text-[2.15rem] font-semibold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl break-words">
                   Practical calculators for everyday tasks.
                 </h1>
