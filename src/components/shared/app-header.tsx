@@ -70,9 +70,9 @@ export function AppHeader() {
               aria-expanded={isLanguageMenuOpen}
               aria-label={t("navigation.language")}
               onClick={() => setIsLanguageMenuOpen((current) => !current)}
-              className="inline-flex w-full min-w-0 items-center justify-between gap-1.5 rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] px-2.5 py-2 text-[0.72rem] font-semibold leading-none text-[color:var(--foreground)] shadow-[0_8px_18px_rgba(34,24,12,0.08)] transition-all duration-150 ease-out hover:-translate-y-0.5 hover:bg-[color:var(--surface-soft)] active:translate-y-[1px] active:scale-[0.98] sm:w-auto sm:gap-2 sm:px-4 sm:text-sm sm:leading-normal"
+              className="inline-flex w-full min-w-0 items-center justify-center gap-1.5 rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] px-2.5 py-2 text-[0.72rem] font-semibold leading-none text-[color:var(--foreground)] shadow-[0_8px_18px_rgba(34,24,12,0.08)] transition-all duration-150 ease-out hover:-translate-y-0.5 hover:bg-[color:var(--surface-soft)] active:translate-y-[1px] active:scale-[0.98] sm:justify-between sm:gap-2 sm:px-4 sm:text-sm sm:leading-normal"
             >
-              <span className="sm:hidden">{locale === "es" ? "ES" : "EN"}</span>
+              <span className="sm:hidden text-center">{locale === "es" ? "ES" : "EN"}</span>
               <span className="hidden sm:inline">{locale === "es" ? t("navigation.spanish") : t("navigation.english")}</span>
               <span
                 aria-hidden="true"
