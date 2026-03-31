@@ -1,50 +1,91 @@
 import Link from "next/link";
 
-import { PageStructuredData } from "@/src/components/shared/page-structured-data";
+import { siteConfig } from "@/src/config/site";
 import { HomeCalculator } from "@/src/components/shared/home-calculator";
+import { PageStructuredData } from "@/src/components/shared/page-structured-data";
 import { ToolCard } from "@/src/components/shared/tool-card";
 import { createPageMetadata } from "@/src/lib/metadata";
+import { createTranslator, getLocalizedPathname, translateText } from "@/src/i18n";
+import { getRequestLocale } from "@/src/i18n/server";
 
-export const metadata = createPageMetadata(
-  "NobleCalculator",
-  "Simple financial calculators for pricing, profit, tax, and transfer costs.",
-  "/",
-  ["financial calculator", "profit margin calculator", "markup calculator", "freelance calculator", "tax calculator", "business calculator"]
-);
+export async function generateMetadata() {
+  const locale = await getRequestLocale();
+  const t = createTranslator(locale);
 
-export default function HomePage() {
+  return createPageMetadata(
+    locale,
+    siteConfig.name,
+    t("site.description"),
+    "/",
+    locale === "es"
+      ? ["calculadora financiera", "calculadora de margen de beneficio", "calculadora de markup", "calculadora freelance", "calculadora de impuestos", "calculadora de negocios"]
+      : ["financial calculator", "profit margin calculator", "markup calculator", "freelance calculator", "tax calculator", "business calculator"]
+  );
+}
+
+export default async function HomePage() {
+  const locale = await getRequestLocale();
+  const t = createTranslator(locale);
+  const browseCalculatorsHref = getLocalizedPathname("/tools", locale);
+  const profitMarginHref = getLocalizedPathname("/tools/profit-margin", locale);
+
+  const featuredTools = [
+    { title: "Profit Margin", href: "/tools/profit-margin", description: "See how much profit you keep after costs.", slug: "profit-margin" },
+    { title: "Markup", href: "/tools/markup", description: "Find the right selling price from your cost and target markup.", slug: "markup" },
+    { title: "Freelance Hourly Rate", href: "/tools/freelance-hourly-rate", description: "Set an hourly rate that fits your income goal.", slug: "freelance-hourly-rate" },
+    { title: "VAT Calculator", href: "/tools/vat-calculator", description: "Add VAT to a price or split it back out.", slug: "vat-calculator" },
+  ].map((tool) => ({
+    ...tool,
+    title: translateText(locale, tool.title),
+    description: translateText(locale, tool.description),
+    href: getLocalizedPathname(tool.href, locale),
+  }));
+
+  const goodForItems = [
+    "Freelance pricing",
+    "Invoice and tax planning",
+    "Ad spend and ROI checks",
+    "Website budget estimates",
+  ].map((item) => translateText(locale, item));
+
+  const whatToExpectCards = [
+    "See answers update instantly while you type",
+    "Easy words for everyone, not only number people",
+    "Looks great on phones, tablets, and desktop screens",
+    "Same clean style across every calculator page",
+  ].map((item) => translateText(locale, item));
+
   return (
     <main className="min-h-screen px-3 py-4 text-[color:var(--foreground)] sm:px-6 sm:py-6 lg:px-8 xl:px-10">
-      <PageStructuredData kind="home" title="NobleCalculator" description="Simple financial calculators for pricing, profit, tax, and transfer costs." pathname="/" />
+      <PageStructuredData kind="home" title={siteConfig.name} description={t("site.description")} pathname={getLocalizedPathname("/", locale)} />
       <div className="mx-auto flex w-full max-w-[90rem] flex-col gap-6 sm:gap-8">
         <header className="rounded-[1.75rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-5 shadow-[0_18px_48px_rgba(34,24,12,0.08)] backdrop-blur sm:p-6 lg:rounded-[2rem] lg:p-8">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div className="w-full min-w-0 space-y-4 lg:flex-1">
-                <div className="space-y-3">
-                <h1 className="w-full max-w-none text-balance text-[2.15rem] font-semibold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl break-words">
-                  Practical calculators for everyday tasks.
+              <div className="space-y-3">
+                <h1 className="w-full max-w-none break-words text-balance text-[2.15rem] font-semibold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl">
+                  {t("home.heroKicker")}
                 </h1>
                 <p className="w-full max-w-none break-words text-sm leading-7 text-[color:var(--muted)] sm:text-base lg:text-lg">
-                  Pick a calculator, enter a few numbers, and get a clear result right away.
+                  {t("home.heroDescription")}
                 </p>
               </div>
 
               <div className="flex flex-wrap gap-3 pt-1">
                 <Link
-                  href="/tools"
+                  href={browseCalculatorsHref}
                   className="inline-flex rounded-full border border-[color:var(--border)] bg-[color:var(--accent-strong)] px-4 py-2.5 text-sm font-semibold !text-[color:var(--background)] transition-colors hover:bg-[color:var(--foreground)] hover:!text-[color:var(--background)] sm:px-5 sm:py-3"
                 >
-                  Browse calculators
+                  {t("home.browseCalculators")}
                 </Link>
                 <Link
-                  href="/tools/profit-margin"
+                  href={profitMarginHref}
                   className="inline-flex rounded-full border border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-2.5 text-sm font-semibold text-[color:var(--foreground)] transition-colors hover:bg-[color:var(--surface-soft)] sm:px-5 sm:py-3"
                 >
-                  Open Profit Margin
+                  {t("home.openProfitMargin")}
                 </Link>
               </div>
             </div>
-
           </div>
         </header>
 
@@ -52,28 +93,23 @@ export default function HomePage() {
 
         <section className="grid gap-5 lg:grid-cols-[0.88fr_1.12fr] xl:grid-cols-[0.84fr_1.16fr]">
           <div className="rounded-[1.85rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-6 shadow-[0_20px_54px_rgba(34,24,12,0.10)] backdrop-blur sm:p-7 lg:rounded-[2.1rem] lg:p-9">
-            <p className="text-xs uppercase tracking-[0.24em] text-[color:var(--accent)] sm:text-sm">Why people use this</p>
-            <h2 className="mt-2 w-full max-w-none text-balance text-2xl font-semibold tracking-tight break-words sm:text-3xl">
-              Fast answers for pricing, tax, and cash flow.
+            <p className="text-xs uppercase tracking-[0.24em] text-[color:var(--accent)] sm:text-sm">{t("home.whyPeopleUseThis")}</p>
+            <h2 className="mt-2 w-full max-w-none break-words text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
+              {t("home.whyTitle")}
             </h2>
             <p className="mt-3 w-full max-w-none break-words text-sm leading-7 text-[color:var(--muted)] sm:text-base">
-              Each calculator is built to get you from question to answer quickly, with clear breakdowns and plain-English explanations.
+              {t("home.whyDescription")}
             </p>
             <div className="mt-5 grid gap-3 text-sm text-[color:var(--muted)] sm:grid-cols-2">
-              <div className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">Use them when you need a quote, a tax estimate, or a quick pricing check.</div>
-              <div className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">Switch between tools without losing the context of your calculation.</div>
+              <div className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">{t("home.whyCardOne")}</div>
+              <div className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">{t("home.whyCardTwo")}</div>
             </div>
           </div>
 
           <div className="rounded-[1.85rem] border border-[color:var(--border)] bg-[color:var(--accent-soft)] p-6 text-[color:var(--foreground)] shadow-[0_20px_54px_rgba(34,24,12,0.13)] sm:p-7 lg:rounded-[2.1rem] lg:p-9">
-            <p className="text-xs uppercase tracking-[0.24em] text-[color:var(--accent)] sm:text-sm">Good for</p>
+            <p className="text-xs uppercase tracking-[0.24em] text-[color:var(--accent)] sm:text-sm">{t("home.goodFor")}</p>
             <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-              {[
-                "Freelance pricing",
-                "Invoice and tax planning",
-                "Ad spend and ROI checks",
-                "Website budget estimates",
-              ].map((item) => (
+              {goodForItems.map((item) => (
                 <li key={item} className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-3 text-sm text-[color:var(--foreground)]">
                   {item}
                 </li>
@@ -84,12 +120,7 @@ export default function HomePage() {
 
         <section className="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4 lg:col-span-2">
-            {[
-              { title: "Profit Margin", href: "/tools/profit-margin", description: "See how much profit you keep after costs.", slug: "profit-margin" },
-              { title: "Markup", href: "/tools/markup", description: "Find a selling price from your cost and markup.", slug: "markup" },
-              { title: "Freelance Hourly Rate", href: "/tools/freelance-hourly-rate", description: "Set an hourly rate that matches your income goal.", slug: "freelance-hourly-rate" },
-              { title: "VAT Calculator", href: "/tools/vat-calculator", description: "Add VAT to a price or split it back out.", slug: "vat-calculator" },
-            ].map((tool) => (
+            {featuredTools.map((tool) => (
               <ToolCard key={tool.href} title={tool.title} href={tool.href} slug={tool.slug} description={tool.description} variant="light" />
             ))}
           </div>
@@ -98,19 +129,14 @@ export default function HomePage() {
         <section className="rounded-[1.75rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-5 shadow-[0_18px_48px_rgba(34,24,12,0.08)] backdrop-blur sm:p-6 lg:rounded-[2rem] lg:p-8">
           <div className="grid gap-5 lg:grid-cols-[1fr_1fr]">
             <div>
-              <p className="text-xs uppercase tracking-[0.24em] text-[color:var(--accent)] sm:text-sm">What to expect</p>
-              <h2 className="mt-2 text-balance text-2xl font-semibold tracking-tight sm:text-3xl">Clear breakdowns, not just one number.</h2>
-                <p className="mt-3 break-words text-sm leading-7 text-[color:var(--muted)] sm:text-base">
-                Every calculator shows the final answer and the values behind it, so you can understand the result instead of just copying it.
+              <p className="text-xs uppercase tracking-[0.24em] text-[color:var(--accent)] sm:text-sm">{t("home.whatToExpect")}</p>
+              <h2 className="mt-2 text-balance text-2xl font-semibold tracking-tight sm:text-3xl">{t("home.whatToExpectTitle")}</h2>
+              <p className="mt-3 break-words text-sm leading-7 text-[color:var(--muted)] sm:text-base">
+                {t("home.whatToExpectDescription")}
               </p>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
-              {[
-                "See answers update instantly while you type",
-                "Easy words for everyone, not only number people",
-                "Looks great on phones, tablets, and desktop screens",
-                "Same clean style across every calculator page",
-              ].map((item) => (
+              {whatToExpectCards.map((item) => (
                 <div key={item} className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4 text-sm text-[color:var(--muted)]">
                   {item}
                 </div>
@@ -119,7 +145,6 @@ export default function HomePage() {
           </div>
         </section>
       </div>
-
     </main>
   );
 }

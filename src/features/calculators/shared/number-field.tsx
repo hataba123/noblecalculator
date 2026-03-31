@@ -1,4 +1,9 @@
+"use client";
+
 import { useId } from "react";
+
+import { useLanguage } from "@/src/components/shared/language-provider";
+import { translateText } from "@/src/i18n";
 
 type NumberFieldProps = {
   label: string;
@@ -22,11 +27,12 @@ export function NumberField({
   helpText,
 }: NumberFieldProps) {
   const helpTextId = useId();
+  const { locale } = useLanguage();
 
   return (
     <label className="min-w-0 space-y-2 text-left">
       <span className="block text-sm font-medium leading-6 text-[color:var(--muted-strong)] text-balance">
-        {label}
+        {translateText(locale, label)}
       </span>
       <input
         type="number"
@@ -42,7 +48,7 @@ export function NumberField({
       />
       {helpText ? (
         <p id={helpTextId} className="break-words text-sm leading-6 text-[color:var(--muted)]">
-          {helpText}
+          {translateText(locale, helpText)}
         </p>
       ) : null}
     </label>

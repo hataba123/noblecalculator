@@ -2,10 +2,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { CalculatorShell } from "@/src/components/shared/calculator-shell";
-import { CalculatorSeoSections } from "@/src/components/shared/calculator-seo-sections";
+import { CalculatorSeoSections } from "../../../components/shared/calculator-seo-sections";
 import { PageStructuredData } from "@/src/components/shared/page-structured-data";
 import { tools, getCalculatorDefinition } from "@/src/config/tools";
 import { createPageMetadata } from "@/src/lib/metadata";
+import { createTranslator, getLocalizedPathname, translateText } from "@/src/i18n";
+import { getRequestLocale } from "@/src/i18n/server";
 import { BreakEvenCalculator } from "@/src/features/calculators/break-even";
 import { CacCalculator } from "@/src/features/calculators/cac";
 import { CpmCpcCalculator } from "@/src/features/calculators/cpm-cpc";
@@ -60,34 +62,48 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ToolPageProps) {
+  const locale = await getRequestLocale();
+  const t = createTranslator(locale);
   const { slug } = await params;
   const tool = getCalculatorDefinition(slug);
-  const seoContent = getCalculatorSeoContent(slug);
-  const description = seoContent?.metaDescription ?? tool?.description ?? "Choose a calculator and get a quick result in seconds.";
+  const seoContent = getCalculatorSeoContent(slug, locale);
+  const description = seoContent?.metaDescription ?? (tool ? translateText(locale, tool.description) : t("calculatorShell.quickCalculatorDescription"));
+  const title = tool ? translateText(locale, tool.title) : t("calculator.badge");
+  const translatedKeywords = (seoContent?.keywords ?? []).map((keyword) => translateText(locale, keyword));
 
   if (!tool) {
     return createPageMetadata(
-      "Calculator",
+      locale,
+      title,
       description,
       "/tools",
-      seoContent?.keywords ?? ["financial calculator", "calculator tool"]
+      translatedKeywords.length > 0 ? translatedKeywords : locale === "es" ? ["calculadora financiera", "herramienta de calculadora"] : ["financial calculator", "calculator tool"]
     );
   }
 
   return createPageMetadata(
-    tool.title,
+    locale,
+    title,
     description,
     `/tools/${tool.slug}`,
-    seoContent ? [tool.slug, tool.title, ...seoContent.keywords, "financial calculator", "business calculator"] : [tool.slug, tool.title, "financial calculator", "business calculator"]
+    seoContent
+      ? [tool.slug, title, ...translatedKeywords, ...(locale === "es" ? ["calculadora financiera", "calculadora de negocios"] : ["financial calculator", "business calculator"])]
+      : [tool.slug, title, ...(locale === "es" ? ["calculadora financiera", "calculadora de negocios"] : ["financial calculator", "business calculator"])]
   );
 }
 
 export default async function ToolPage({ params }: ToolPageProps) {
+  const locale = await getRequestLocale();
+  const t = createTranslator(locale);
   const { slug } = await params;
   const tool = getCalculatorDefinition(slug);
   const Calculator = calculatorMap[slug as keyof typeof calculatorMap];
-  const seoContent = getCalculatorSeoContent(slug);
-  const pageDescription = seoContent?.intro ?? tool?.description;
+  const seoContent = getCalculatorSeoContent(slug, locale);
+  const pageDescription = seoContent?.intro ?? (tool ? translateText(locale, tool.description) : undefined);
+  const translatedTitle = tool ? translateText(locale, tool.title) : t("calculator.badge");
+  const toolsPath = getLocalizedPathname("/tools", locale);
+  const homePath = getLocalizedPathname("/", locale);
+  const calculatorPath = getLocalizedPathname(`/tools/${slug}`, locale);
 
   if (!tool || !Calculator) {
     notFound();
@@ -97,24 +113,24 @@ export default async function ToolPage({ params }: ToolPageProps) {
     <main className="min-h-screen px-3 py-4 text-[color:var(--foreground)] sm:px-6 sm:py-6 lg:px-8 xl:px-10">
       <PageStructuredData
         kind="calculator"
-        title={tool.title}
-        description={pageDescription ?? tool.description}
-        pathname={`/tools/${tool.slug}`}
+        title={translatedTitle}
+        description={pageDescription ?? translateText(locale, tool.description)}
+        pathname={calculatorPath}
         breadcrumbs={[
-          { name: "Home", href: "/" },
-          { name: "Tools", href: "/tools" },
-          { name: tool.title, href: `/tools/${tool.slug}` },
+          { name: t("navigation.home"), href: homePath },
+          { name: t("navigation.calculators"), href: toolsPath },
+          { name: translatedTitle, href: calculatorPath },
         ]}
         faq={seoContent?.faq}
       />
       <div className="mx-auto flex w-full max-w-[90rem] flex-col gap-6 sm:gap-8">
-        <CalculatorShell title={tool.title} description={pageDescription}>
+        <CalculatorShell title={translatedTitle} description={pageDescription}>
           <div className="mb-5 flex flex-wrap gap-3 sm:mb-6">
             <Link
-              href="/tools"
+              href={toolsPath}
               className="inline-flex rounded-full border border-[color:var(--border)] bg-[color:var(--accent-strong)] px-4 py-2.5 text-sm font-semibold !text-[color:var(--background)] transition-colors hover:bg-[color:var(--foreground)] hover:!text-[color:var(--background)] sm:px-5 sm:py-3"
             >
-              Back to tools
+              {translateText(locale, "Back to tools")}
             </Link>
           </div>
 

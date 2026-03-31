@@ -1,4 +1,9 @@
+"use client";
+
 import type { ReactNode } from "react";
+
+import { useLanguage } from "@/src/components/shared/language-provider";
+import { translateText } from "@/src/i18n";
 
 type SupportToolShellProps = {
   title: string;
@@ -21,21 +26,23 @@ export function SupportToolShell({
   inputs,
   results,
 }: SupportToolShellProps) {
+  const { locale, t } = useLanguage();
+
   return (
     <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
       <section className="rounded-[2rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-6 shadow-[0_20px_60px_rgba(34,24,12,0.08)] backdrop-blur sm:p-8">
-        <p className="text-sm uppercase tracking-[0.24em] text-[color:var(--accent)]">Inputs</p>
-        <h2 className="mt-2 text-2xl font-semibold text-[color:var(--foreground)]">{title}</h2>
-        <p className="mt-3 max-w-xl text-sm leading-6 text-[color:var(--muted)]">{description}</p>
+        <p className="text-sm uppercase tracking-[0.24em] text-[color:var(--accent)]">{t("supportTools.inputs")}</p>
+        <h2 className="mt-2 text-2xl font-semibold text-[color:var(--foreground)]">{translateText(locale, title)}</h2>
+        <p className="mt-3 max-w-xl text-sm leading-6 text-[color:var(--muted)]">{translateText(locale, description)}</p>
 
         <div className="mt-6">{inputs}</div>
       </section>
 
       <section className="space-y-6">
         <div className="rounded-[2rem] border border-[color:var(--border)] bg-[color:var(--accent-soft)] p-6 text-[color:var(--foreground)] shadow-[0_20px_60px_rgba(34,24,12,0.12)] sm:p-8">
-          <p className="text-sm uppercase tracking-[0.24em] text-[color:var(--accent)]">Results</p>
-          <h3 className="mt-2 text-2xl font-semibold">{resultTitle}</h3>
-          <p className="mt-3 text-sm leading-6 text-[color:var(--muted)]">{resultDescription}</p>
+          <p className="text-sm uppercase tracking-[0.24em] text-[color:var(--accent)]">{t("supportTools.results")}</p>
+          <h3 className="mt-2 text-2xl font-semibold">{translateText(locale, resultTitle)}</h3>
+          <p className="mt-3 text-sm leading-6 text-[color:var(--muted)]">{translateText(locale, resultDescription)}</p>
         </div>
 
         {results}

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { CalculatorShell } from "./calculator-shell";
 import { ResultCard } from "./result-card";
+import { useLanguage } from "./language-provider";
 
 type HistoryEntry = {
   expression: string;
@@ -670,6 +671,7 @@ function appendTextToExpression(expression: string, text: string) {
 }
 
 export function HomeCalculator() {
+  const { t } = useLanguage();
   const [expression, setExpression] = useState(initialExpression);
   const [memory, setMemory] = useState(0);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
@@ -711,7 +713,7 @@ export function HomeCalculator() {
   const previewValue = evaluateExpression(expression, angleMode);
   const currentAnswer = previewValue ?? lastValidValue;
   const displayValue = formatDisplayNumber(currentAnswer);
-  const invalidExpressionMessage = previewValue === null && !isIncompleteExpression(expression) ? "Biểu thức chưa hợp lệ" : null;
+  const invalidExpressionMessage = previewValue === null && !isIncompleteExpression(expression) ? t("calculatorShell.invalidExpression") : null;
   const expressionDisplayValue = expression === "0" ? "" : expression;
 
   const commitExpression = (updater: (currentExpression: string) => string) => {
@@ -1065,19 +1067,19 @@ export function HomeCalculator() {
   };
 
   return (
-    <CalculatorShell title="Quick Calculator" description="A full-size calculator with memory, live preview, and a keypad that feels like a desk calculator.">
+    <CalculatorShell title={t("calculatorShell.quickCalculatorTitle")} description={t("calculatorShell.quickCalculatorDescription")}>
       <div className="grid gap-5 xl:grid-cols-[0.94fr_1.06fr] xl:items-start xl:gap-6">
         <div className="rounded-[1.85rem] border border-[color:var(--border)] bg-[color:var(--surface-strong)] p-4 text-white shadow-[0_18px_48px_rgba(34,24,12,0.16)] sm:p-5 xl:max-w-[42rem]">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <h2 className="mt-2 text-2xl font-semibold">Desk calculator</h2>
+              <h2 className="mt-2 text-2xl font-semibold">{t("calculatorShell.deskCalculator")}</h2>
               <p className="mt-2 text-sm leading-6 text-white/72">
-                Tap the keypad or type an expression. Parentheses and memory keys are built in.
+                {t("calculatorShell.quickCalculatorDescription")}
               </p>
             </div>
 
             <div ref={modeMenuRef} className="relative flex flex-col items-end gap-2">
-              <span className="text-xs uppercase tracking-[0.22em] text-white/45">Mode</span>
+              <span className="text-xs uppercase tracking-[0.22em] text-white/45">{t("calculatorShell.mode")}</span>
               <button
                 type="button"
                 aria-haspopup="menu"
@@ -1085,7 +1087,7 @@ export function HomeCalculator() {
                 onClick={() => setIsModeMenuOpen((current) => !current)}
                 className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white outline-none shadow-[0_6px_0_rgba(0,0,0,0.14)] transition-all duration-150 ease-out hover:-translate-y-0.5 hover:bg-white/10 hover:shadow-[0_8px_0_rgba(0,0,0,0.14)] active:translate-y-[2px] active:scale-[0.99] active:bg-[linear-gradient(180deg,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.06)_100%)] active:shadow-[0_2px_0_rgba(0,0,0,0.14)]"
               >
-                <span>{calculatorMode === "basic" ? "Basic" : "Scientific"}</span>
+                <span>{calculatorMode === "basic" ? t("calculatorShell.basic") : t("calculatorShell.scientific")}</span>
                 <span aria-hidden="true" className="text-[0.65rem] text-white/55">
                   ▾
                 </span>
@@ -1094,7 +1096,7 @@ export function HomeCalculator() {
               {isModeMenuOpen ? (
                 <div
                   role="menu"
-                  aria-label="Calculator mode"
+                  aria-label={t("calculatorShell.mode")}
                   className="absolute right-0 top-[calc(100%+0.5rem)] z-30 w-48 overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-strong)] p-1 shadow-[0_20px_48px_rgba(0,0,0,0.32)]"
                 >
                   {(["basic", "scientific"] as const).map((mode) => {
@@ -1116,7 +1118,7 @@ export function HomeCalculator() {
                             : "text-white/80 hover:bg-white/10 hover:text-white"
                         }`}
                       >
-                        <span>{mode === "basic" ? "Basic" : "Scientific"}</span>
+                        <span>{mode === "basic" ? t("calculatorShell.basic") : t("calculatorShell.scientific")}</span>
                         {isActive ? <span aria-hidden="true">✓</span> : null}
                       </button>
                     );
@@ -1128,7 +1130,7 @@ export function HomeCalculator() {
 
           {calculatorMode === "scientific" ? (
             <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-[1.1rem] border border-[color:var(--border)] bg-[color:var(--surface-soft)] px-4 py-3">
-              <span className="text-xs uppercase tracking-[0.22em] text-[color:var(--muted)]">Angle</span>
+              <span className="text-xs uppercase tracking-[0.22em] text-[color:var(--muted)]">{t("calculatorShell.angle")}</span>
               <div className="flex items-center gap-2">
                 <button
                   type="button"
@@ -1137,7 +1139,7 @@ export function HomeCalculator() {
                       angleMode === "deg" ? "bg-[color:var(--accent)] text-[color:var(--surface-strong)]" : "bg-[color:var(--surface)] text-[color:var(--foreground)] hover:bg-[color:var(--surface-soft)]"
                     }`}
                 >
-                  Deg
+                  {t("calculatorShell.deg")}
                 </button>
                 <button
                   type="button"
@@ -1146,7 +1148,7 @@ export function HomeCalculator() {
                       angleMode === "rad" ? "bg-[color:var(--accent)] text-[color:var(--surface-strong)]" : "bg-[color:var(--surface)] text-[color:var(--foreground)] hover:bg-[color:var(--surface-soft)]"
                     }`}
                 >
-                  Rad
+                  {t("calculatorShell.rad")}
                 </button>
               </div>
             </div>
@@ -1156,7 +1158,7 @@ export function HomeCalculator() {
             <div className="flex items-start justify-between gap-4">
               <div className="min-w-0 flex-1">
                 <label className="block text-xs uppercase tracking-[0.22em] text-white/45" htmlFor="calculator-expression">
-                  Expression
+                  {t("calculatorShell.expression")}
                 </label>
                 <textarea
                   id="calculator-expression"
@@ -1170,19 +1172,19 @@ export function HomeCalculator() {
                     }
                   }}
                   spellCheck={false}
-                  aria-label="Editable calculator expression"
+                  aria-label={t("calculatorShell.editableExpression")}
                   className="mt-2.5 min-h-10 w-full resize-none border-0 bg-transparent text-left text-[0.98rem] leading-7 text-white/72 outline-none placeholder:text-white/35 sm:text-[1.05rem]"
-                  placeholder="Type an expression or use the keypad"
+                  placeholder={t("calculatorShell.typeExpression")}
                 />
               </div>
 
               <div className="shrink-0 text-right">
-                <div className="text-xs uppercase tracking-[0.22em] text-white/45">Result</div>
+                <div className="text-xs uppercase tracking-[0.22em] text-white/45">{t("calculatorShell.result")}</div>
                 <button
                   type="button"
                   onClick={reuseCurrentAnswer}
                   className="mt-2.5 rounded-2xl px-2 py-1 text-3xl font-semibold tracking-tight text-white transition-all duration-150 ease-out hover:-translate-y-0.5 hover:bg-white/5 active:translate-y-[2px] active:scale-[0.99] sm:text-[2.45rem]"
-                  aria-label="Use current answer in expression"
+                  aria-label={t("calculatorShell.useCurrentAnswer")}
                 >
                   {displayValue}
                 </button>
@@ -1241,20 +1243,20 @@ export function HomeCalculator() {
 
         <div className="grid gap-5 content-start xl:gap-6">
           <ResultCard
-            label="Memory"
+            label={t("calculatorShell.memory")}
             value={formatDisplayNumber(memory)}
-            hint="Stored by M+, M-, MC, and MR."
+            hint={t("calculatorShell.memoryHint")}
             className="min-h-[9.25rem] p-4 sm:p-5"
           />
           <ResultCard
-            label="Current answer"
+            label={t("calculatorShell.currentAnswer")}
             value={displayValue}
-            hint={invalidExpressionMessage ?? "Changes as you build the expression."}
+            hint={invalidExpressionMessage ?? t("calculatorShell.currentAnswerHint")}
             className="min-h-[9.25rem] p-4 sm:p-5"
           />
 
           <div className="min-h-[18rem] rounded-[2rem] border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-5 shadow-[0_12px_32px_rgba(34,24,12,0.06)] sm:p-6">
-            <p className="text-sm uppercase tracking-[0.24em] text-[color:var(--muted-strong)]">Recent calculations</p>
+            <p className="text-sm uppercase tracking-[0.24em] text-[color:var(--muted-strong)]">{t("calculatorShell.recentCalculations")}</p>
             <div className="mt-4 space-y-3">
               {history.length > 0 ? (
                 history.map((entry) => (
@@ -1265,7 +1267,7 @@ export function HomeCalculator() {
                 ))
               ) : (
                 <p className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] px-5 py-4 text-sm leading-6 text-[color:var(--muted)]">
-                  Try <span className="font-semibold text-[color:var(--foreground)]">12 × 8 + 6</span> to see the history stack fill up.
+                  {t("calculatorShell.recentHint")}
                 </p>
               )}
             </div>

@@ -2,28 +2,31 @@ import type { MetadataRoute } from "next";
 
 import { siteConfig } from "@/src/config/site";
 import { tools } from "@/src/config/tools";
+import { getLocalizedPathname, supportedLocales } from "@/src/i18n";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url.replace(/\/$/, "");
 
-  return [
+  const toAbsoluteUrl = (pathname: string) => `${baseUrl}${pathname}`;
+
+  return supportedLocales.flatMap((locale) => [
     {
-      url: `${baseUrl}/`,
+      url: toAbsoluteUrl(getLocalizedPathname("/", locale)),
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: "weekly" as const,
       priority: 1,
     },
     {
-      url: `${baseUrl}/tools`,
+      url: toAbsoluteUrl(getLocalizedPathname("/tools", locale)),
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: "weekly" as const,
       priority: 0.9,
     },
     ...tools.map((tool) => ({
-      url: `${baseUrl}/tools/${tool.slug}`,
+      url: toAbsoluteUrl(getLocalizedPathname(`/tools/${tool.slug}`, locale)),
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.8,
     })),
-  ];
+  ]);
 }

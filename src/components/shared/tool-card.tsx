@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+
+import { useLanguage } from "./language-provider";
 
 type ToolCardProps = {
   title: string;
@@ -10,6 +14,7 @@ type ToolCardProps = {
 
 export function ToolCard({ title, description, href, slug, variant = "light" }: ToolCardProps) {
   const isDark = variant === "dark";
+  const { t } = useLanguage();
 
   return (
     <article
@@ -32,7 +37,7 @@ export function ToolCard({ title, description, href, slug, variant = "light" }: 
               : "shrink-0 rounded-full border border-[color:var(--border)] bg-[color:var(--surface-soft)] px-3 py-1 text-xs uppercase tracking-[0.22em] text-[color:var(--muted-strong)]"
           }
         >
-          Calculator
+          {t("calculator.badge")}
         </span>
       </div>
 
@@ -45,14 +50,14 @@ export function ToolCard({ title, description, href, slug, variant = "light" }: 
       <div className="mt-5 flex flex-1 items-end justify-end gap-3 sm:mt-6">
         <Link
           href={href}
-          aria-label={`Open ${title}`}
+          aria-label={`${t("tools.open") ?? "Open"} ${title}`}
           className={
             isDark
               ? "tool-card-open-btn rounded-full border border-[color:var(--accent)] bg-[color:var(--accent-strong)] px-4 py-2 text-sm font-semibold text-[color:var(--background)]"
               : "tool-card-open-btn rounded-full border border-[color:var(--accent-strong)] bg-[color:var(--accent-strong)] px-4 py-2 text-sm font-semibold text-[color:var(--background)]"
           }
         >
-          Open
+          {t("tools.open")}
         </Link>
       </div>
     </article>

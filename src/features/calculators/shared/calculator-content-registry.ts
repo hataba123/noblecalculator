@@ -1,4 +1,5 @@
 import type { CalculatorSeoContent } from "./types";
+import { type Locale, translateValue } from "@/src/i18n";
 import { breakEvenSeoContent } from "../break-even/content";
 import { cacSeoContent } from "../cac/content";
 import { cpmCpcSeoContent } from "../cpm-cpc/content";
@@ -43,6 +44,12 @@ const calculatorSeoContentRegistry: Record<string, CalculatorSeoContent> = {
 	"day-rate-to-hourly-rate": dayRateToHourlyRateSeoContent,
 };
 
-export function getCalculatorSeoContent(slug: string) {
-	return calculatorSeoContentRegistry[slug];
+export function getCalculatorSeoContent(slug: string, locale: Locale = "en") {
+	const content = calculatorSeoContentRegistry[slug];
+
+	if (!content) {
+		return undefined;
+	}
+
+	return translateValue(locale, content);
 }
