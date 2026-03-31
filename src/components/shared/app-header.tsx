@@ -56,21 +56,21 @@ export function AppHeader() {
           </div>
         </Link>
 
-        <nav className="grid w-full grid-cols-3 gap-2 text-sm font-medium text-[color:var(--foreground)] sm:flex sm:w-auto sm:flex-wrap sm:items-center sm:justify-end sm:gap-2 sm:text-base lg:text-lg">
+        <nav className="grid w-full grid-cols-2 gap-2 text-sm font-medium text-[color:var(--foreground)] sm:flex sm:w-auto sm:flex-wrap sm:items-center sm:justify-end sm:gap-2 sm:text-base lg:text-lg">
           <Link href={homeHref} className="inline-flex items-center justify-center rounded-xl px-2.5 py-2 text-center transition-all duration-150 ease-out hover:bg-[color:var(--surface-soft)] active:translate-y-[1px] active:scale-[0.98] sm:px-4">
             {t("navigation.home")}
           </Link>
           <Link href={toolsHref} className="inline-flex items-center justify-center rounded-xl px-2.5 py-2 text-center transition-all duration-150 ease-out hover:bg-[color:var(--surface-soft)] active:translate-y-[1px] active:scale-[0.98] sm:px-4">
             {t("navigation.calculators")}
           </Link>
-          <div ref={languageMenuRef} className="relative justify-self-end sm:justify-self-auto">
+          <div ref={languageMenuRef} className="relative justify-self-stretch sm:justify-self-auto">
             <button
               type="button"
               aria-haspopup="menu"
               aria-expanded={isLanguageMenuOpen}
               aria-label={t("navigation.language")}
               onClick={() => setIsLanguageMenuOpen((current) => !current)}
-              className="inline-flex items-center gap-2 rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] px-3 py-2 text-sm font-semibold text-[color:var(--foreground)] shadow-[0_8px_18px_rgba(34,24,12,0.08)] transition-all duration-150 ease-out hover:-translate-y-0.5 hover:bg-[color:var(--surface-soft)] active:translate-y-[1px] active:scale-[0.98] sm:px-4"
+              className="inline-flex w-full items-center justify-between gap-2 rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] px-3 py-2 text-sm font-semibold text-[color:var(--foreground)] shadow-[0_8px_18px_rgba(34,24,12,0.08)] transition-all duration-150 ease-out hover:-translate-y-0.5 hover:bg-[color:var(--surface-soft)] active:translate-y-[1px] active:scale-[0.98] sm:w-auto sm:px-4"
             >
               <span>{locale === "es" ? t("navigation.spanish") : t("navigation.english")}</span>
               <span
@@ -125,7 +125,7 @@ export function AppHeader() {
               </button>
             </div>
           </div>
-          <ThemeToggle />
+          <ThemeToggle className="w-full sm:w-auto" />
         </nav>
       </div>
     </header>
