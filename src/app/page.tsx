@@ -91,32 +91,47 @@ export default async function HomePage() {
 
         <HomeCalculator />
 
-        <section className="grid gap-5 lg:grid-cols-[0.88fr_1.12fr] xl:grid-cols-[0.84fr_1.16fr]">
-          <div className="rounded-[1.85rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-6 shadow-[0_20px_54px_rgba(34,24,12,0.10)] backdrop-blur sm:p-7 lg:rounded-[2.1rem] lg:p-9">
-            <p className="text-xs uppercase tracking-[0.24em] text-[color:var(--accent)] sm:text-sm">{t("home.whyPeopleUseThis")}</p>
-            <h2 className="mt-2 w-full max-w-none break-words text-2xl font-semibold tracking-tight sm:text-3xl">
-              {t("home.whyTitle")}
-            </h2>
-            <p className="mt-3 w-full max-w-none break-words text-sm leading-7 text-[color:var(--muted)] sm:text-base">
-              {t("home.whyDescription")}
-            </p>
-            <div className="mt-5 grid gap-3 text-sm text-[color:var(--muted)] sm:grid-cols-2">
-              <div className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">{t("home.whyCardOne")}</div>
-              <div className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">{t("home.whyCardTwo")}</div>
+              <section className="grid items-stretch gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] xl:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)]">
+        <div className="h-full rounded-[1.9rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-6 shadow-[0_20px_54px_rgba(34,24,12,0.10)] backdrop-blur sm:p-7 lg:rounded-[2.1rem] lg:p-8 xl:p-9">
+          <p className="text-xs uppercase tracking-[0.24em] text-[color:var(--accent)] sm:text-sm">
+            {t("home.whyPeopleUseThis")}
+          </p>
+
+          <h2 className="mt-2 max-w-[18ch] text-2xl font-semibold tracking-tight text-[color:var(--foreground)] sm:text-3xl lg:text-[2rem]">
+            {t("home.whyTitle")}
+          </h2>
+
+          <p className="mt-3 max-w-[62ch] text-sm leading-7 text-[color:var(--muted)] sm:text-base">
+            {t("home.whyDescription")}
+          </p>
+
+          <div className="mt-5 grid gap-3 text-sm text-[color:var(--muted)] sm:grid-cols-2">
+            <div className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
+              {t("home.whyCardOne")}
+            </div>
+            <div className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
+              {t("home.whyCardTwo")}
             </div>
           </div>
+        </div>
 
-          <div className="rounded-[1.85rem] border border-[color:var(--border)] bg-[color:var(--accent-soft)] p-6 text-[color:var(--foreground)] shadow-[0_20px_54px_rgba(34,24,12,0.13)] sm:p-7 lg:rounded-[2.1rem] lg:p-9">
-            <p className="text-xs uppercase tracking-[0.24em] text-[color:var(--accent)] sm:text-sm">{t("home.goodFor")}</p>
-            <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-              {goodForItems.map((item) => (
-                <li key={item} className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-3 text-sm text-[color:var(--foreground)]">
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
+        <div className="h-full rounded-[1.9rem] border border-[color:var(--border)] bg-[color:var(--accent-soft)] p-6 text-[color:var(--foreground)] shadow-[0_20px_54px_rgba(34,24,12,0.13)] sm:p-7 lg:rounded-[2.1rem] lg:p-8 xl:p-9">
+          <p className="text-xs uppercase tracking-[0.24em] text-[color:var(--accent)] sm:text-sm">
+            {t("home.goodFor")}
+          </p>
+
+          <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+            {goodForItems.map((item) => (
+              <li
+                key={item}
+                className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-3 text-sm text-[color:var(--foreground)]"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
         <section className="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4 lg:col-span-2">
