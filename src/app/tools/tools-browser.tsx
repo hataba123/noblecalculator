@@ -312,7 +312,7 @@ export function ToolsBrowser({
 
   return (
     <div className="grid gap-5 sm:gap-6">
-      <section className="overflow-hidden rounded-[1.1rem] border border-[color:var(--border)] bg-[linear-gradient(135deg,var(--surface)_0%,var(--surface-soft)_100%)] p-5 shadow-[0_18px_48px_rgba(34,24,12,0.08)] backdrop-blur sm:p-6 lg:rounded-[1.25rem] lg:p-8">
+      <section className="relative overflow-hidden rounded-[1.1rem] border border-[color:var(--border)] bg-[linear-gradient(135deg,var(--surface)_0%,var(--surface-soft)_100%)] p-5 shadow-[0_18px_48px_rgba(34,24,12,0.08)] backdrop-blur sm:p-6 lg:rounded-[1.25rem] lg:p-8">
         <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[radial-gradient(circle,rgba(212,132,31,0.18)_0%,rgba(212,132,31,0)_70%)]" />
         <div className="pointer-events-none absolute -bottom-12 -left-12 h-36 w-36 rounded-full bg-[radial-gradient(circle,rgba(109,78,49,0.14)_0%,rgba(109,78,49,0)_72%)]" />
 

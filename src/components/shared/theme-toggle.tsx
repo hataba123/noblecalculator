@@ -18,7 +18,7 @@ export function ThemeToggle({ className = "", ...props }: ThemeToggleProps) {
       type="button"
       onClick={toggleTheme}
       aria-label={theme === "light" ? t("theme.switchToDark") : t("theme.switchToLight")}
-      className={`inline-flex min-h-10 items-center justify-center gap-2 rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] px-3 py-2 text-sm font-semibold leading-normal text-[color:var(--foreground)] shadow-[0_8px_18px_rgba(34,24,12,0.08)] transition-all duration-150 ease-out hover:-translate-y-0.5 hover:bg-[color:var(--surface-soft)] active:translate-y-[2px] active:scale-[0.99] sm:min-h-11 sm:px-4 ${className}`.trim()}
+      className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] px-3 py-2 text-sm font-semibold leading-normal text-[color:var(--foreground)] shadow-[0_8px_18px_rgba(34,24,12,0.08)] transition-all duration-150 ease-out hover:-translate-y-0.5 hover:bg-[color:var(--surface-soft)] active:translate-y-[2px] active:scale-[0.99] sm:min-h-11 sm:px-4 ${className}`.trim()}
       {...props}
     >
       <span className="flex h-5 w-5 items-center justify-center leading-none" aria-hidden="true">
