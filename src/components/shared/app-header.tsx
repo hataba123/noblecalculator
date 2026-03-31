@@ -45,7 +45,7 @@ export function AppHeader() {
   return (
     <header className="sticky top-0 z-20 border-b border-[color:var(--border)] bg-[color:var(--background)]/90 backdrop-blur">
       <div className="mx-auto flex w-full max-w-[90rem] flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8 xl:px-10">
-        <Link href={homeHref} className="flex items-center gap-3 self-start">
+        <Link href={homeHref} className="flex items-center gap-3 self-start transition-transform duration-150 ease-out active:translate-y-[1px] active:scale-[0.99]">
           <span className="app-logo-badge flex h-9 w-9 items-center justify-center rounded-2xl bg-[color:var(--accent-strong)] text-sm font-semibold text-white shadow-[0_10px_24px_rgba(34,24,12,0.2)] sm:h-10 sm:w-10">
             NC
           </span>
@@ -57,10 +57,10 @@ export function AppHeader() {
         </Link>
 
         <nav className="flex flex-wrap items-center gap-2 text-sm font-medium text-[color:var(--foreground)] sm:text-base lg:text-lg">
-          <Link href={homeHref} className="rounded-xl px-3 py-2 transition-colors hover:bg-[color:var(--surface-soft)] sm:px-4">
+          <Link href={homeHref} className="inline-flex items-center rounded-xl px-3 py-2 transition-all duration-150 ease-out hover:bg-[color:var(--surface-soft)] active:translate-y-[1px] active:scale-[0.98] sm:px-4">
             {t("navigation.home")}
           </Link>
-          <Link href={toolsHref} className="rounded-xl px-3 py-2 transition-colors hover:bg-[color:var(--surface-soft)] sm:px-4">
+          <Link href={toolsHref} className="inline-flex items-center rounded-xl px-3 py-2 transition-all duration-150 ease-out hover:bg-[color:var(--surface-soft)] active:translate-y-[1px] active:scale-[0.98] sm:px-4">
             {t("navigation.calculators")}
           </Link>
           <div ref={languageMenuRef} className="relative">
@@ -70,12 +70,12 @@ export function AppHeader() {
               aria-expanded={isLanguageMenuOpen}
               aria-label={t("navigation.language")}
               onClick={() => setIsLanguageMenuOpen((current) => !current)}
-              className="inline-flex items-center gap-2 rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] px-3 py-2 text-sm font-semibold text-[color:var(--foreground)] shadow-[0_8px_18px_rgba(34,24,12,0.08)] transition-all duration-150 ease-out hover:-translate-y-0.5 hover:bg-[color:var(--surface-soft)] active:translate-y-[1px] sm:px-4"
+              className="inline-flex items-center gap-2 rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] px-3 py-2 text-sm font-semibold text-[color:var(--foreground)] shadow-[0_8px_18px_rgba(34,24,12,0.08)] transition-all duration-150 ease-out hover:-translate-y-0.5 hover:bg-[color:var(--surface-soft)] active:translate-y-[1px] active:scale-[0.98] sm:px-4"
             >
               <span>{locale === "es" ? t("navigation.spanish") : t("navigation.english")}</span>
               <span
                 aria-hidden="true"
-                className={`text-[0.65rem] leading-none text-[color:var(--muted-strong)] transition-transform duration-150 ease-out ${
+                className={`text-[0.8rem] leading-none text-[color:var(--muted-strong)] transition-transform duration-150 ease-out ${
                   isLanguageMenuOpen ? "rotate-180" : "rotate-0"
                 }`}
               >
@@ -99,7 +99,7 @@ export function AppHeader() {
                 aria-checked={locale === "en"}
                 onClick={() => selectLocale("en")}
                 disabled={!isLanguageMenuOpen}
-                className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm font-semibold transition-colors disabled:cursor-default ${
+                className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm font-semibold transition-all duration-150 ease-out disabled:cursor-default active:translate-y-[1px] active:scale-[0.98] ${
                   locale === "en"
                     ? "bg-[color:var(--accent)] text-[color:var(--surface-strong)]"
                     : "text-[color:var(--foreground)] hover:bg-[color:var(--surface-soft)]"
@@ -114,7 +114,7 @@ export function AppHeader() {
                 aria-checked={locale === "es"}
                 onClick={() => selectLocale("es")}
                 disabled={!isLanguageMenuOpen}
-                className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm font-semibold transition-colors disabled:cursor-default ${
+                className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm font-semibold transition-all duration-150 ease-out disabled:cursor-default active:translate-y-[1px] active:scale-[0.98] ${
                   locale === "es"
                     ? "bg-[color:var(--accent)] text-[color:var(--surface-strong)]"
                     : "text-[color:var(--foreground)] hover:bg-[color:var(--surface-soft)]"
