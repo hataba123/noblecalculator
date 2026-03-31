@@ -646,7 +646,7 @@ function getButtonClass(tone: KeypadButton["tone"], wide = false) {
     case "accent":
       return `${baseClass} border-[color:var(--accent)]/40 bg-[color:var(--accent)] text-[color:var(--surface-strong)] hover:bg-[color:var(--accent-strong)] active:bg-[linear-gradient(180deg,#c89c67_0%,#8a6b45_100%)]`;
     case "ghost":
-      return `${baseClass} border-white/10 bg-white/5 text-white/75 hover:bg-white/10 hover:text-white active:bg-[linear-gradient(180deg,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.06)_100%)]`;
+      return `${baseClass} border-[color:var(--border)] bg-[color:var(--surface-soft)] text-[color:var(--foreground)] hover:bg-[color:var(--surface)] hover:text-[color:var(--foreground)] active:bg-[linear-gradient(180deg,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.06)_100%)]`;
     case "soft":
     default:
       return `${baseClass} border-[color:var(--border)] bg-[color:var(--surface-soft)] text-[color:var(--foreground)] hover:bg-[color:var(--accent-soft)] active:bg-[linear-gradient(180deg,#fff8ef_0%,#eadcc9_100%)]`;
@@ -1128,14 +1128,14 @@ export function HomeCalculator() {
           </div>
 
           {calculatorMode === "scientific" ? (
-            <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-[1.1rem] border border-white/10 bg-white/5 px-4 py-3">
-              <span className="text-xs uppercase tracking-[0.22em] text-white/45">Angle</span>
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-[1.1rem] border border-[color:var(--border)] bg-[color:var(--surface-soft)] px-4 py-3">
+              <span className="text-xs uppercase tracking-[0.22em] text-[color:var(--muted)]">Angle</span>
               <div className="flex items-center gap-2">
                 <button
                   type="button"
                   onClick={() => setAngleMode("deg")}
-                className={`rounded-xl px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] shadow-[0_5px_0_rgba(0,0,0,0.12)] transition-all duration-150 ease-out hover:-translate-y-0.5 hover:shadow-[0_7px_0_rgba(0,0,0,0.12)] active:translate-y-[2px] active:scale-[0.99] active:shadow-[0_2px_0_rgba(0,0,0,0.12)] ${
-                      angleMode === "deg" ? "bg-[color:var(--accent)] text-[color:var(--surface-strong)]" : "bg-white/5 text-white/70 hover:bg-white/10"
+                  className={`rounded-xl px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] shadow-[0_5px_0_rgba(0,0,0,0.12)] transition-all duration-150 ease-out hover:-translate-y-0.5 hover:shadow-[0_7px_0_rgba(0,0,0,0.12)] active:translate-y-[2px] active:scale-[0.99] active:shadow-[0_2px_0_rgba(0,0,0,0.12)] ${
+                      angleMode === "deg" ? "bg-[color:var(--accent)] text-[color:var(--surface-strong)]" : "bg-[color:var(--surface)] text-[color:var(--foreground)] hover:bg-[color:var(--surface-soft)]"
                     }`}
                 >
                   Deg
@@ -1144,7 +1144,7 @@ export function HomeCalculator() {
                   type="button"
                   onClick={() => setAngleMode("rad")}
                   className={`rounded-xl px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] shadow-[0_5px_0_rgba(0,0,0,0.12)] transition-all duration-150 ease-out hover:-translate-y-0.5 hover:shadow-[0_7px_0_rgba(0,0,0,0.12)] active:translate-y-[2px] active:scale-[0.99] active:shadow-[0_2px_0_rgba(0,0,0,0.12)] ${
-                      angleMode === "rad" ? "bg-[color:var(--accent)] text-[color:var(--surface-strong)]" : "bg-white/5 text-white/70 hover:bg-white/10"
+                      angleMode === "rad" ? "bg-[color:var(--accent)] text-[color:var(--surface-strong)]" : "bg-[color:var(--surface)] text-[color:var(--foreground)] hover:bg-[color:var(--surface-soft)]"
                     }`}
                 >
                   Rad
@@ -1208,7 +1208,7 @@ export function HomeCalculator() {
           </div>
 
           {calculatorMode === "scientific" ? (
-            <div className="mt-4 grid grid-cols-2 gap-1.5 sm:grid-cols-3 sm:gap-2 lg:grid-cols-4">
+            <div className="mt-4 grid grid-cols-4 gap-1.5 sm:grid-cols-6 sm:gap-2 lg:grid-cols-8">
               {scientificButtons.map((button) => {
                 const wide = "wide" in button ? ((button as { wide?: boolean }).wide ?? false) : false;
 
