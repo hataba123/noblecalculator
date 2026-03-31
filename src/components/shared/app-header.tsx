@@ -56,7 +56,7 @@ export function AppHeader() {
           </div>
         </Link>
 
-        <nav className="grid w-full grid-cols-4 gap-1.5 text-[0.72rem] font-medium leading-none text-[color:var(--foreground)] sm:flex sm:w-auto sm:flex-wrap sm:items-center sm:justify-end sm:gap-2 sm:text-base sm:leading-normal lg:text-lg">
+        <nav className="grid w-full grid-cols-4 gap-1.5 text-[0.72rem] font-medium leading-none text-[color:var(--foreground)] sm:flex sm:w-auto sm:flex-wrap sm:items-center sm:justify-end sm:gap-2 sm:text-base sm:leading-normal md:flex-nowrap md:gap-1.5 lg:text-lg">
           <Link href={homeHref} className="inline-flex w-full min-h-11 min-w-0 items-center justify-center whitespace-nowrap rounded-xl px-1.5 py-2 text-center text-[0.72rem] leading-normal transition-all duration-150 ease-out hover:bg-[color:var(--surface-soft)] active:translate-y-[1px] active:scale-[0.98] sm:w-auto sm:min-h-0 sm:px-4 sm:text-base sm:leading-normal">
             {t("navigation.home")}
           </Link>
@@ -126,7 +126,7 @@ export function AppHeader() {
               </button>
             </div>
           </div>
-          <ThemeToggle className="w-full min-h-11 justify-center px-2.5 py-2 sm:w-auto sm:min-h-11 sm:px-4" />
+          <ThemeToggle className="w-full min-h-11 shrink-0 justify-center px-2.5 py-2 sm:w-auto sm:min-h-11 sm:px-4" />
         </nav>
       </div>
     </header>
