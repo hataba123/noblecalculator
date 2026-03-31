@@ -9,6 +9,7 @@ import { createPageMetadata } from "@/src/lib/metadata";
 import { createTranslator, getLocalizedPathname, translateText } from "@/src/i18n";
 import { getRequestLocale } from "@/src/i18n/server";
 import { BreakEvenCalculator } from "@/src/features/calculators/break-even";
+import { BmiCalculator } from "@/src/features/calculators/bmi";
 import { CacCalculator } from "@/src/features/calculators/cac";
 import { CpmCpcCalculator } from "@/src/features/calculators/cpm-cpc";
 import { DayRateToHourlyRateCalculator } from "@/src/features/calculators/day-rate-to-hourly-rate";
@@ -35,6 +36,7 @@ type ToolPageProps = {
 };
 
 const calculatorMap = {
+  bmi: BmiCalculator,
   "profit-margin": ProfitMarginCalculator,
   markup: MarkupCalculator,
   "freelance-hourly-rate": FreelanceHourlyRateCalculator,

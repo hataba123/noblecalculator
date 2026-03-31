@@ -2,6 +2,11 @@ import type { CalculatorDefinition } from "./types";
 
 export const calculatorRegistry: CalculatorDefinition[] = [
 	{
+		slug: "bmi",
+		title: "BMI Calculator",
+		description: "Check your body mass index and healthy weight range.",
+	},
+	{
 		slug: "profit-margin",
 		title: "Profit Margin Calculator",
 		description: "See how much profit you keep after costs.",

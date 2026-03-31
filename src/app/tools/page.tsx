@@ -7,6 +7,11 @@ import { ToolsBrowser } from "./tools-browser";
 
 const toolGroupDefinitions = [
   {
+    key: "health",
+    id: "health-wellness",
+    slugs: ["bmi"],
+  },
+  {
     key: "pricing",
     id: "pricing-planning",
     slugs: [

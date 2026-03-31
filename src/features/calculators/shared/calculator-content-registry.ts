@@ -1,6 +1,7 @@
 import type { CalculatorSeoContent } from "./types";
 import { type Locale, translateValue } from "@/src/i18n";
 import { breakEvenSeoContent } from "../break-even/content";
+import { bmiSeoContent } from "../bmi/content";
 import { cacSeoContent } from "../cac/content";
 import { cpmCpcSeoContent } from "../cpm-cpc/content";
 import { dayRateToHourlyRateSeoContent } from "../day-rate-to-hourly-rate/content";
@@ -22,6 +23,7 @@ import { vatCalculatorSeoContent } from "../vat-calculator/content";
 import { websiteCostSeoContent } from "../website-cost/content";
 
 const calculatorSeoContentRegistry: Record<string, CalculatorSeoContent> = {
+	bmi: bmiSeoContent,
 	"profit-margin": profitMarginSeoContent,
 	markup: markupSeoContent,
 	"freelance-hourly-rate": freelanceHourlyRateSeoContent,
