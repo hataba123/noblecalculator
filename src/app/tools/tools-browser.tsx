@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useDeferredValue, useMemo, useState } from "react";
 
 import { ToolCard } from "@/src/components/shared/tool-card";
@@ -11,11 +12,29 @@ type ToolItem = {
   href: string;
 };
 
+type IndexedToolItem = ToolItem & {
+  searchIndex: SearchIndex;
+};
+
+type SearchIndex = {
+  normalizedTitle: string;
+  normalizedDescription: string;
+  normalizedCombined: string;
+  titleTokens: string[];
+  descriptionTokens: string[];
+  combinedTokens: string[];
+};
+
 type ToolGroup = {
   id: string;
   title: string;
   description: string;
   items: ToolItem[];
+};
+
+type IndexedToolGroup = ToolGroup & {
+  searchIndex: SearchIndex;
+  items: IndexedToolItem[];
 };
 
 type ToolsBrowserProps = {
@@ -37,6 +56,180 @@ function normalizeSearchValue(value: string) {
     .trim();
 }
 
+function tokenizeSearchValue(value: string) {
+  return normalizeSearchValue(value)
+    .split(/[^a-z0-9]+/)
+    .filter(Boolean);
+}
+
+function buildSearchIndex(title: string, description: string): SearchIndex {
+  const normalizedTitle = normalizeSearchValue(title);
+  const normalizedDescription = normalizeSearchValue(description);
+  const normalizedCombined = normalizeSearchValue(`${title} ${description}`);
+
+  return {
+    normalizedTitle,
+    normalizedDescription,
+    normalizedCombined,
+    titleTokens: tokenizeSearchValue(title),
+    descriptionTokens: tokenizeSearchValue(description),
+    combinedTokens: tokenizeSearchValue(`${title} ${description}`),
+  };
+}
+
+function buildNormalizedCharacterMap(value: string) {
+  let normalized = "";
+  const characterMap: number[] = [];
+
+  for (let index = 0; index < value.length; index += 1) {
+    const normalizedChunk = value[index].normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+    if (!normalizedChunk) {
+      continue;
+    }
+
+    normalized += normalizedChunk;
+
+    for (let characterIndex = 0; characterIndex < normalizedChunk.length; characterIndex += 1) {
+      characterMap.push(index);
+    }
+  }
+
+  return { normalized, characterMap };
+}
+
+function getHighlightedRanges(value: string, queryTokens: string[]) {
+  if (queryTokens.length === 0) {
+    return [] as Array<{ start: number; end: number }>;
+  }
+
+  const { normalized, characterMap } = buildNormalizedCharacterMap(value);
+  const ranges: Array<{ start: number; end: number }> = [];
+
+  for (const queryToken of queryTokens) {
+    let matchIndex = normalized.indexOf(queryToken);
+
+    while (matchIndex !== -1) {
+      const start = characterMap[matchIndex];
+      const end = characterMap[matchIndex + queryToken.length - 1];
+
+      if (start !== undefined && end !== undefined) {
+        ranges.push({ start, end: end + 1 });
+      }
+
+      matchIndex = normalized.indexOf(queryToken, matchIndex + 1);
+    }
+  }
+
+  ranges.sort((left, right) => left.start - right.start || left.end - right.end);
+
+  const mergedRanges: Array<{ start: number; end: number }> = [];
+
+  for (const range of ranges) {
+    const previousRange = mergedRanges[mergedRanges.length - 1];
+
+    if (!previousRange || range.start > previousRange.end) {
+      mergedRanges.push(range);
+      continue;
+    }
+
+    previousRange.end = Math.max(previousRange.end, range.end);
+  }
+
+  return mergedRanges;
+}
+
+function renderHighlightedText(value: string, queryTokens: string[]) {
+  const ranges = getHighlightedRanges(value, queryTokens);
+
+  if (ranges.length === 0) {
+    return value;
+  }
+
+  const parts: ReactNode[] = [];
+  let cursor = 0;
+
+  ranges.forEach((range, index) => {
+    if (cursor < range.start) {
+      parts.push(value.slice(cursor, range.start));
+    }
+
+    parts.push(
+      <mark key={`${range.start}-${range.end}-${index}`} className="rounded-sm bg-[color:var(--accent)]/15 px-1 py-0.5 text-inherit">
+        {value.slice(range.start, range.end)}
+      </mark>
+    );
+
+    cursor = range.end;
+  });
+
+  if (cursor < value.length) {
+    parts.push(value.slice(cursor));
+  }
+
+  return parts;
+}
+
+function scoreTokens(sourceTokens: string[], queryTokens: string[], baseScore: number, prefixScore: number) {
+  let score = 0;
+
+  for (const queryToken of queryTokens) {
+    if (sourceTokens.some((sourceToken) => sourceToken === queryToken)) {
+      score += baseScore;
+      continue;
+    }
+
+    if (sourceTokens.some((sourceToken) => sourceToken.startsWith(queryToken))) {
+      score += prefixScore;
+      continue;
+    }
+
+    return 0;
+  }
+
+  return score;
+}
+
+function getRelevanceScore(searchIndex: SearchIndex, queryTokens: string[]) {
+
+  if (queryTokens.length === 0) {
+    return 0;
+  }
+
+  const normalizedQuery = queryTokens.join(" ");
+  const exactPhraseMatch = searchIndex.normalizedCombined.includes(normalizedQuery);
+  const titlePhraseMatch = searchIndex.normalizedTitle.includes(normalizedQuery);
+  const descriptionPhraseMatch = searchIndex.normalizedDescription.includes(normalizedQuery);
+
+  const titleScore = scoreTokens(searchIndex.titleTokens, queryTokens, 9, 6);
+  const descriptionScore = scoreTokens(searchIndex.descriptionTokens, queryTokens, 4, 2);
+  const combinedScore = scoreTokens(searchIndex.combinedTokens, queryTokens, 2, 1);
+
+  if (titleScore === 0 && descriptionScore === 0 && combinedScore === 0) {
+    return 0;
+  }
+
+  let score = titleScore + descriptionScore + combinedScore;
+
+  if (exactPhraseMatch) {
+    score += 7;
+  }
+
+  if (titlePhraseMatch) {
+    score += 5;
+  }
+
+  if (descriptionPhraseMatch) {
+    score += 2;
+  }
+
+  if (searchIndex.normalizedTitle.startsWith(queryTokens[0] ?? "")) {
+    score += 3;
+  }
+
+  return score;
+}
+
 export function ToolsBrowser({
   groups,
   searchLabel,
@@ -49,36 +242,53 @@ export function ToolsBrowser({
 }: ToolsBrowserProps) {
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query);
+  const queryTokens = useMemo(() => tokenizeSearchValue(deferredQuery), [deferredQuery]);
+
+  const indexedGroups = useMemo<IndexedToolGroup[]>(
+    () =>
+      groups.map((group) => ({
+        ...group,
+        searchIndex: buildSearchIndex(group.title, group.description),
+        items: group.items.map((item) => ({
+          ...item,
+          searchIndex: buildSearchIndex(item.title, item.description),
+        })),
+      })),
+    [groups]
+  );
 
   const filteredGroups = useMemo(() => {
-    const normalizedQuery = normalizeSearchValue(deferredQuery);
-
-    if (!normalizedQuery) {
-      return groups;
+    if (queryTokens.length === 0) {
+      return indexedGroups;
     }
 
-    return groups
+    return indexedGroups
       .map((group) => {
-        const groupMatches =
-          normalizeSearchValue(group.title).includes(normalizedQuery) ||
-          normalizeSearchValue(group.description).includes(normalizedQuery);
+        const rankedItems = group.items
+          .map((item) => ({
+            ...item,
+            searchScore: getRelevanceScore(item.searchIndex, queryTokens),
+          }))
+          .filter((item) => item.searchScore > 0)
+          .sort((left, right) => right.searchScore - left.searchScore);
 
-        const items = group.items.filter((item) => {
-          const searchableText = `${item.title} ${item.description}`;
-          return normalizeSearchValue(searchableText).includes(normalizedQuery);
-        });
-
-        if (groupMatches) {
-          return group;
-        }
+        const groupScore = getRelevanceScore(group.searchIndex, queryTokens);
 
         return {
           ...group,
-          items,
+          searchScore: groupScore,
+          items: rankedItems,
         };
       })
-      .filter((group) => group.items.length > 0);
-  }, [deferredQuery, groups]);
+      .filter((group) => group.items.length > 0)
+      .sort((left, right) => {
+        if (right.searchScore !== left.searchScore) {
+          return right.searchScore - left.searchScore;
+        }
+
+        return right.items.length - left.items.length;
+      });
+  }, [indexedGroups, queryTokens]);
 
   const totalMatches = filteredGroups.reduce((count, group) => count + group.items.length, 0);
   const hasQuery = normalizeSearchValue(query).length > 0;
@@ -175,11 +385,12 @@ export function ToolsBrowser({
                   {group.items.map((tool) => (
                     <ToolCard
                       key={tool.slug}
-                      title={tool.title}
-                      description={tool.description}
+                      title={renderHighlightedText(tool.title, queryTokens)}
+                      description={renderHighlightedText(tool.description, queryTokens)}
                       href={tool.href}
                       slug={tool.slug}
                       variant="light"
+                      ariaLabelTitle={tool.title}
                     />
                   ))}
                 </div>

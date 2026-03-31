@@ -1,20 +1,23 @@
 "use client";
 
 import Link from "next/link";
+import type { ReactNode } from "react";
 
 import { useLanguage } from "./language-provider";
 
 type ToolCardProps = {
-  title: string;
-  description?: string;
+  title: ReactNode;
+  description?: ReactNode;
   href: string;
   slug: string;
   variant?: "light" | "dark";
+  ariaLabelTitle?: string;
 };
 
-export function ToolCard({ title, description, href, slug, variant = "light" }: ToolCardProps) {
+export function ToolCard({ title, description, href, slug, variant = "light", ariaLabelTitle }: ToolCardProps) {
   const isDark = variant === "dark";
   const { t } = useLanguage();
+  const accessibleTitle = ariaLabelTitle ?? (typeof title === "string" ? title : "");
 
   return (
     <article
@@ -50,7 +53,7 @@ export function ToolCard({ title, description, href, slug, variant = "light" }: 
       <div className="mt-5 flex flex-1 items-end justify-end gap-3 sm:mt-6">
         <Link
           href={href}
-          aria-label={`${t("tools.open") ?? "Open"} ${title}`}
+          aria-label={`${t("tools.open") ?? "Open"} ${accessibleTitle}`}
           className={
             isDark
               ? "tool-card-open-btn rounded-full border border-[color:var(--accent)] bg-[color:var(--accent-strong)] px-4 py-2 text-sm font-semibold text-[color:var(--background)]"
