@@ -48,8 +48,8 @@ export function ToolCard({ title, description, href, slug, variant = "light" }: 
           aria-label={`Open ${title}`}
           className={
             isDark
-              ? "tool-card-open-btn rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold text-[color:var(--foreground)] transition-colors hover:bg-white/15"
-              : "tool-card-open-btn rounded-full border border-[color:var(--accent-strong)] bg-[color:var(--accent-strong)] px-4 py-2 text-sm font-semibold text-[color:var(--background)] transition-colors hover:bg-black"
+              ? "tool-card-open-btn rounded-full border border-[color:var(--border)] bg-[color:var(--surface-soft)] px-4 py-2 text-sm font-semibold text-[color:var(--foreground)]"
+              : "tool-card-open-btn rounded-full border border-[color:var(--accent-strong)] bg-[color:var(--accent-strong)] px-4 py-2 text-sm font-semibold text-[color:var(--background)]"
           }
         >
           Open
