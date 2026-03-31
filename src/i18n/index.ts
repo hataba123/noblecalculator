@@ -65,6 +65,25 @@ const uiMessages = {
       supportingDescription:
         "Use the hub when you want a fast path to pricing, tax, profit, and marketing decisions without digging through menus.",
       open: "Open",
+      groupCount: "calculators",
+      groups: {
+        pricing: {
+          title: "Pricing and Planning",
+          description: "Set rates, margins, and budgets before work starts.",
+        },
+        billing: {
+          title: "Billing, Tax and Fees",
+          description: "Handle invoices, tax, and payment costs in one place.",
+        },
+        marketing: {
+          title: "Marketing and Growth",
+          description: "Measure ad performance, return, and acquisition cost.",
+        },
+        payments: {
+          title: "Payments and Transfers",
+          description: "Check transfer and processing fees before money moves.",
+        },
+      },
       cards: [
         "Pricing and margin checks",
         "Tax and invoice estimates",
@@ -217,6 +236,25 @@ const uiMessages = {
       supportingDescription:
         "Usa el centro cuando quieras una ruta rápida para decisiones de precios, impuestos, beneficios y marketing sin navegar por menús.",
       open: "Abrir",
+      groupCount: "calculadoras",
+      groups: {
+        pricing: {
+          title: "Precios y planificación",
+          description: "Define tarifas, márgenes y presupuestos antes de empezar.",
+        },
+        billing: {
+          title: "Facturación, impuestos y comisiones",
+          description: "Gestiona facturas, impuestos y costos de pago en un solo lugar.",
+        },
+        marketing: {
+          title: "Marketing y crecimiento",
+          description: "Mide el rendimiento de anuncios, retorno y costo de adquisición.",
+        },
+        payments: {
+          title: "Pagos y transferencias",
+          description: "Revisa comisiones de transferencia y de procesamiento antes de mover dinero.",
+        },
+      },
       cards: [
         "Revisión de precios y márgenes",
         "Estimaciones de impuestos y facturas",
