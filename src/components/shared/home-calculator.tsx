@@ -636,7 +636,7 @@ function evaluateExpression(expression: string, angleMode: AngleMode = "rad") {
 
 function getButtonClass(tone: KeypadButton["tone"], wide = false) {
   const baseClass =
-    "rounded-xl border px-2.5 py-2.5 text-[0.8rem] font-semibold shadow-[0_6px_0_rgba(0,0,0,0.12)] transition-all duration-150 ease-out hover:-translate-y-0.5 hover:shadow-[0_8px_0_rgba(0,0,0,0.12)] active:translate-y-[2px] active:scale-[0.99] active:shadow-[0_2px_0_rgba(0,0,0,0.12)] sm:px-3 sm:py-3 sm:text-sm";
+    "rounded-xl border px-2.5 py-2.5 text-[0.8rem] font-semibold shadow-[0_6px_0_var(--key-shadow)] transition-all duration-150 ease-out hover:-translate-y-0.5 hover:shadow-[0_8px_0_var(--key-shadow-hover)] active:translate-y-[2px] active:scale-[0.99] active:shadow-[0_2px_0_var(--key-shadow-active)] sm:px-3 sm:py-3 sm:text-sm";
 
   if (wide) {
     return `${baseClass} col-span-4`;
@@ -1200,7 +1200,7 @@ export function HomeCalculator() {
                 key={button.label}
                 type="button"
                 onClick={() => handleButtonPress(button)}
-                className="rounded-xl border border-white/10 bg-white/5 px-2.5 py-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-white/75 shadow-[0_5px_0_rgba(0,0,0,0.12)] transition-all duration-150 ease-out hover:-translate-y-0.5 hover:bg-white/10 hover:text-white hover:shadow-[0_7px_0_rgba(0,0,0,0.12)] active:translate-y-[2px] active:scale-[0.99] active:bg-[linear-gradient(180deg,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.06)_100%)] active:shadow-[0_2px_0_rgba(0,0,0,0.12)] sm:px-3 sm:py-2 sm:text-xs"
+                className="rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] px-2.5 py-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-[color:var(--foreground)] shadow-[0_5px_0_var(--key-shadow)] transition-all duration-150 ease-out hover:-translate-y-0.5 hover:bg-[color:var(--surface)] hover:text-[color:var(--foreground)] hover:shadow-[0_7px_0_var(--key-shadow-hover)] active:translate-y-[2px] active:scale-[0.99] active:bg-[linear-gradient(180deg,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.06)_100%)] active:shadow-[0_2px_0_var(--key-shadow-active)] sm:px-3 sm:py-2 sm:text-xs"
               >
                 {button.label}
               </button>

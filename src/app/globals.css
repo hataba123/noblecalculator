@@ -13,6 +13,9 @@
   --accent: #8a6b45;
   --accent-strong: #201c17;
   --accent-soft: #f4efe8;
+  --key-shadow: rgba(34, 24, 12, 0.12);
+  --key-shadow-hover: rgba(34, 24, 12, 0.16);
+  --key-shadow-active: rgba(34, 24, 12, 0.08);
   --page-bg:
     radial-gradient(circle at top left, rgba(194, 142, 71, 0.18), transparent 34%),
     radial-gradient(circle at top right, rgba(32, 83, 97, 0.14), transparent 28%),
@@ -32,6 +35,9 @@ html[data-theme="dark"] {
   --accent: #d0a06a;
   --accent-strong: #f2e6d8;
   --accent-soft: #2a241d;
+  --key-shadow: rgba(0, 0, 0, 0.34);
+  --key-shadow-hover: rgba(0, 0, 0, 0.45);
+  --key-shadow-active: rgba(0, 0, 0, 0.22);
   --page-bg:
     radial-gradient(circle at top left, rgba(208, 160, 106, 0.12), transparent 34%),
     radial-gradient(circle at top right, rgba(102, 159, 178, 0.1), transparent 28%),
