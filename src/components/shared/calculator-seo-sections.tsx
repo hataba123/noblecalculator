@@ -214,7 +214,7 @@ function VisualIllustration({ variant, title, t }: { variant: VisualVariant; tit
 						<span className="h-2.5 w-2.5 rounded-full bg-[#6d8eff]" />
 						<span>{title}</span>
 					</div>
-					<div className="grid grid-cols-[0.9fr_1.1fr] gap-3 rounded-[1.2rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-4">
+					<div className="grid gap-3 rounded-[1.2rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-4 sm:grid-cols-[0.9fr_1.1fr]">
 						<div className="flex flex-col justify-between rounded-[1rem] bg-[linear-gradient(180deg,#6d8eff_0%,#96b0ff_100%)] p-3 text-white shadow-[0_10px_18px_rgba(109,142,255,0.22)]">
 							<div className="text-[0.64rem] uppercase tracking-[0.2em] opacity-85">{t("seoSections.spend")}</div>
 							<div className="text-lg font-semibold">$1.2k</div>

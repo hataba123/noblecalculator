@@ -63,7 +63,7 @@ export default async function HomePage() {
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div className="w-full min-w-0 space-y-4 lg:flex-1">
               <div className="space-y-3">
-                <h1 className="w-full max-w-none break-words text-balance text-[2.15rem] font-semibold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl">
+                <h1 className="w-full max-w-none break-words text-balance text-[2rem] font-semibold tracking-tight sm:text-4xl lg:text-5xl xl:text-6xl">
                   {t("home.heroKicker")}
                 </h1>
                 <p className="w-full max-w-none break-words text-sm leading-7 text-[color:var(--muted)] sm:text-base lg:text-lg">
@@ -97,7 +97,7 @@ export default async function HomePage() {
             {t("home.whyPeopleUseThis")}
           </p>
 
-          <h2 className="mt-2 max-w-[18ch] text-2xl font-semibold tracking-tight text-[color:var(--foreground)] sm:text-3xl lg:text-[2rem]">
+          <h2 className="mt-2 max-w-[18ch] text-xl font-semibold tracking-tight text-[color:var(--foreground)] sm:text-2xl lg:text-[2rem]">
             {t("home.whyTitle")}
           </h2>
 

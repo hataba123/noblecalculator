@@ -93,7 +93,7 @@ export default async function ToolsPage() {
               <span className="inline-flex w-fit rounded-full border border-[color:var(--border)] bg-[color:var(--surface-soft)] px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[color:var(--muted-strong)] sm:text-xs">
                 {t("tools.badge")}
               </span>
-              <h1 className="text-balance text-[2.15rem] font-semibold tracking-tight sm:text-5xl xl:text-6xl">
+              <h1 className="text-balance text-[2rem] font-semibold tracking-tight sm:text-4xl lg:text-5xl xl:text-6xl">
                 {t("tools.title")}
               </h1>
               <p className="break-words text-sm leading-7 text-[color:var(--muted)] sm:text-base lg:text-lg">

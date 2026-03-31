@@ -56,14 +56,14 @@ export function AppHeader() {
           </div>
         </Link>
 
-        <nav className="flex flex-wrap items-center gap-2 text-sm font-medium text-[color:var(--foreground)] sm:text-base lg:text-lg">
-          <Link href={homeHref} className="inline-flex items-center rounded-xl px-3 py-2 transition-all duration-150 ease-out hover:bg-[color:var(--surface-soft)] active:translate-y-[1px] active:scale-[0.98] sm:px-4">
+        <nav className="grid w-full grid-cols-3 gap-2 text-sm font-medium text-[color:var(--foreground)] sm:flex sm:w-auto sm:flex-wrap sm:items-center sm:justify-end sm:gap-2 sm:text-base lg:text-lg">
+          <Link href={homeHref} className="inline-flex items-center justify-center rounded-xl px-2.5 py-2 text-center transition-all duration-150 ease-out hover:bg-[color:var(--surface-soft)] active:translate-y-[1px] active:scale-[0.98] sm:px-4">
             {t("navigation.home")}
           </Link>
-          <Link href={toolsHref} className="inline-flex items-center rounded-xl px-3 py-2 transition-all duration-150 ease-out hover:bg-[color:var(--surface-soft)] active:translate-y-[1px] active:scale-[0.98] sm:px-4">
+          <Link href={toolsHref} className="inline-flex items-center justify-center rounded-xl px-2.5 py-2 text-center transition-all duration-150 ease-out hover:bg-[color:var(--surface-soft)] active:translate-y-[1px] active:scale-[0.98] sm:px-4">
             {t("navigation.calculators")}
           </Link>
-          <div ref={languageMenuRef} className="relative">
+          <div ref={languageMenuRef} className="relative justify-self-end sm:justify-self-auto">
             <button
               type="button"
               aria-haspopup="menu"
@@ -87,7 +87,7 @@ export function AppHeader() {
               role="menu"
               aria-label={t("navigation.language")}
               aria-hidden={!isLanguageMenuOpen}
-              className={`absolute right-0 top-[calc(100%+0.5rem)] z-30 min-w-40 overflow-hidden rounded-[0.95rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-1 shadow-[0_20px_48px_rgba(34,24,12,0.16)] transition-all duration-150 ease-out ${
+              className={`absolute right-0 top-[calc(100%+0.5rem)] z-30 w-[min(12rem,calc(100vw-2rem))] overflow-hidden rounded-[0.95rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-1 shadow-[0_20px_48px_rgba(34,24,12,0.16)] transition-all duration-150 ease-out ${
                 isLanguageMenuOpen
                   ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
                   : "pointer-events-none -translate-y-1 scale-95 opacity-0"

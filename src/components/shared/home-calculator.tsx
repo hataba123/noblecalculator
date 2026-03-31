@@ -1097,7 +1097,7 @@ export function HomeCalculator() {
                 <div
                   role="menu"
                   aria-label={t("calculatorShell.mode")}
-                  className="absolute right-0 top-[calc(100%+0.5rem)] z-30 w-48 overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-strong)] p-1 shadow-[0_20px_48px_rgba(0,0,0,0.32)]"
+                  className="absolute right-0 top-[calc(100%+0.5rem)] z-30 w-[min(12rem,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-strong)] p-1 shadow-[0_20px_48px_rgba(0,0,0,0.32)]"
                 >
                   {(["basic", "scientific"] as const).map((mode) => {
                     const isActive = calculatorMode === mode;
@@ -1155,7 +1155,7 @@ export function HomeCalculator() {
           ) : null}
 
           <div className="mt-4 rounded-[1.5rem] border border-white/10 bg-white/5 p-4">
-            <div className="flex items-start justify-between gap-4">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div className="min-w-0 flex-1">
                 <label className="block text-xs uppercase tracking-[0.22em] text-white/45" htmlFor="calculator-expression">
                   {t("calculatorShell.expression")}
@@ -1178,12 +1178,12 @@ export function HomeCalculator() {
                 />
               </div>
 
-              <div className="shrink-0 text-right">
+              <div className="shrink-0 text-left sm:text-right">
                 <div className="text-xs uppercase tracking-[0.22em] text-white/45">{t("calculatorShell.result")}</div>
                 <button
                   type="button"
                   onClick={reuseCurrentAnswer}
-                  className="mt-2.5 rounded-2xl px-2 py-1 text-3xl font-semibold tracking-tight text-white transition-all duration-150 ease-out hover:-translate-y-0.5 hover:bg-white/5 active:translate-y-[2px] active:scale-[0.99] sm:text-[2.45rem]"
+                  className="mt-2.5 rounded-2xl px-2 py-1 text-2xl font-semibold tracking-tight text-white transition-all duration-150 ease-out hover:-translate-y-0.5 hover:bg-white/5 active:translate-y-[2px] active:scale-[0.99] sm:text-[2.45rem]"
                   aria-label={t("calculatorShell.useCurrentAnswer")}
                 >
                   {displayValue}
@@ -1209,7 +1209,7 @@ export function HomeCalculator() {
           </div>
 
           {calculatorMode === "scientific" ? (
-            <div className="mt-4 grid grid-cols-5 gap-1 sm:grid-cols-6 sm:gap-2 lg:grid-cols-8">
+            <div className="mt-4 grid grid-cols-4 gap-1.5 sm:grid-cols-6 sm:gap-2 lg:grid-cols-8">
               {scientificButtons.map((button) => {
                 const wide = "wide" in button ? ((button as { wide?: boolean }).wide ?? false) : false;
 
@@ -1262,7 +1262,7 @@ export function HomeCalculator() {
                 history.map((entry) => (
                   <div key={`${entry.expression}-${entry.value}`} className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] px-5 py-4">
                     <div className="break-words whitespace-normal text-sm leading-6 text-[color:var(--muted)]">{prettyExpression(entry.expression)}</div>
-                    <div className="mt-1 break-words whitespace-normal text-xl font-semibold text-[color:var(--foreground)] sm:text-[1.35rem]">{formatDisplayNumber(entry.value)}</div>
+                    <div className="mt-1 break-words whitespace-normal text-lg font-semibold text-[color:var(--foreground)] sm:text-[1.35rem]">{formatDisplayNumber(entry.value)}</div>
                   </div>
                 ))
               ) : (
