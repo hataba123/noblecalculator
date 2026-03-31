@@ -119,7 +119,7 @@ function VisualIllustration({ variant, title }: { variant: VisualVariant; title:
 
 	if (variant === "rate") {
 		return (
-			<div className="relative overflow-hidden rounded-[1.4rem] border border-[color:var(--border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.82)_0%,rgba(247,241,232,0.98)_100%)] p-4 shadow-[0_16px_30px_rgba(85,56,19,0.08)]">
+			<div className="relative overflow-hidden rounded-[1.4rem] border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4 shadow-[0_16px_30px_rgba(85,56,19,0.08)]">
 				<div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(245,184,122,0.22),transparent_34%),radial-gradient(circle_at_80%_20%,rgba(110,140,255,0.18),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(88,180,159,0.16),transparent_30%)]" />
 				<div className="relative grid gap-4">
 					<div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[color:var(--muted-strong)]">
@@ -153,7 +153,7 @@ function VisualIllustration({ variant, title }: { variant: VisualVariant; title:
 
 	if (variant === "income") {
 		return (
-			<div className="relative overflow-hidden rounded-[1.4rem] border border-[color:var(--border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.82)_0%,rgba(247,241,232,0.98)_100%)] p-4 shadow-[0_16px_30px_rgba(85,56,19,0.08)]">
+			<div className="relative overflow-hidden rounded-[1.4rem] border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4 shadow-[0_16px_30px_rgba(85,56,19,0.08)]">
 				<div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(91,183,157,0.2),transparent_34%),radial-gradient(circle_at_78%_22%,rgba(109,142,255,0.18),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(240,161,79,0.16),transparent_30%)]" />
 				<div className="relative grid gap-4">
 					<div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[color:var(--muted-strong)]">
@@ -180,7 +180,7 @@ function VisualIllustration({ variant, title }: { variant: VisualVariant; title:
 
 	if (variant === "roi") {
 		return (
-			<div className="relative overflow-hidden rounded-[1.4rem] border border-[color:var(--border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.82)_0%,rgba(247,241,232,0.98)_100%)] p-4 shadow-[0_16px_30px_rgba(85,56,19,0.08)]">
+			<div className="relative overflow-hidden rounded-[1.4rem] border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4 shadow-[0_16px_30px_rgba(85,56,19,0.08)]">
 				<div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(240,161,79,0.22),transparent_34%),radial-gradient(circle_at_80%_20%,rgba(109,142,255,0.18),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(91,183,157,0.16),transparent_30%)]" />
 				<div className="relative grid gap-4">
 					<div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[color:var(--muted-strong)]">
@@ -203,7 +203,7 @@ function VisualIllustration({ variant, title }: { variant: VisualVariant; title:
 
 	if (variant === "roas") {
 		return (
-			<div className="relative overflow-hidden rounded-[1.4rem] border border-[color:var(--border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.82)_0%,rgba(247,241,232,0.98)_100%)] p-4 shadow-[0_16px_30px_rgba(85,56,19,0.08)]">
+			<div className="relative overflow-hidden rounded-[1.4rem] border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4 shadow-[0_16px_30px_rgba(85,56,19,0.08)]">
 				<div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(109,142,255,0.22),transparent_34%),radial-gradient(circle_at_80%_20%,rgba(240,161,79,0.18),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(91,183,157,0.16),transparent_30%)]" />
 				<div className="relative grid gap-4">
 					<div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[color:var(--muted-strong)]">
@@ -220,7 +220,7 @@ function VisualIllustration({ variant, title }: { variant: VisualVariant; title:
 							<div className="text-lg font-semibold">$5.4k</div>
 						</div>
 					</div>
-					<div className="rounded-full border border-[#d9c8b6] bg-white/75 px-4 py-2 text-center text-sm font-semibold text-[#8a6b45]">
+					<div className="rounded-full border border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-2 text-center text-sm font-semibold text-[color:var(--accent)]">
 						4.5x ROAS
 					</div>
 				</div>
@@ -230,7 +230,7 @@ function VisualIllustration({ variant, title }: { variant: VisualVariant; title:
 
 	if (variant === "build") {
 		return (
-			<div className="relative overflow-hidden rounded-[1.4rem] border border-[color:var(--border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.82)_0%,rgba(247,241,232,0.98)_100%)] p-4 shadow-[0_16px_30px_rgba(85,56,19,0.08)]">
+			<div className="relative overflow-hidden rounded-[1.4rem] border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4 shadow-[0_16px_30px_rgba(85,56,19,0.08)]">
 				<div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(240,161,79,0.18),transparent_34%),radial-gradient(circle_at_80%_20%,rgba(109,142,255,0.14),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(91,183,157,0.16),transparent_30%)]" />
 				<div className="relative grid gap-4">
 					<div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[color:var(--muted-strong)]">
@@ -257,7 +257,7 @@ function VisualIllustration({ variant, title }: { variant: VisualVariant; title:
 	}
 
 	return (
-		<div className="relative overflow-hidden rounded-[1.4rem] border border-[color:var(--border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.82)_0%,rgba(247,241,232,0.98)_100%)] p-4 shadow-[0_16px_30px_rgba(85,56,19,0.08)]">
+		<div className="relative overflow-hidden rounded-[1.4rem] border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4 shadow-[0_16px_30px_rgba(85,56,19,0.08)]">
 			<div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(245,184,122,0.24),transparent_34%),radial-gradient(circle_at_85%_20%,rgba(134,179,255,0.2),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(122,204,181,0.18),transparent_30%)]" />
 			<div className="relative grid gap-4 lg:grid-cols-[1fr_auto] lg:items-center">
 				<div className="grid gap-3">
@@ -317,7 +317,7 @@ export function CalculatorSeoSections({ content }: CalculatorSeoSectionsProps) {
 					<h2 className="mt-2 text-2xl font-semibold text-[color:var(--foreground)] sm:text-3xl">A quick read before you calculate</h2>
 					<p className="mt-3 text-sm leading-7 text-[color:var(--muted)] sm:text-base">{content.intro}</p>
 					{content.visual ? (
-						<div className="mt-5 overflow-hidden rounded-[1.6rem] border border-[color:var(--border)] bg-[linear-gradient(135deg,#fffaf4_0%,#f9f0e4_44%,#efe2d2_100%)] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.75)] sm:p-5">
+						<div className="mt-5 overflow-hidden rounded-[1.6rem] border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] sm:p-5">
 							<div className="flex flex-col gap-4">
 								<div className="flex items-start justify-between gap-4">
 									<div className="w-full min-w-0">
@@ -333,27 +333,27 @@ export function CalculatorSeoSections({ content }: CalculatorSeoSectionsProps) {
 						</div>
 					) : null}
 					<div className="mt-5 grid gap-3 sm:grid-cols-3">
-						<div className="rounded-2xl border border-[color:var(--border)] bg-[linear-gradient(180deg,#fff8f1_0%,#f7efe2_100%)] p-4">
+						<div className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
 							<p className="text-xs uppercase tracking-[0.22em] text-[color:var(--muted-strong)]">Formula</p>
 							<p className="mt-2 text-sm text-[color:var(--muted)]">{content.formulaTitle}</p>
 						</div>
-						<div className="rounded-2xl border border-[color:var(--border)] bg-[linear-gradient(180deg,#f8fbff_0%,#eef3ff_100%)] p-4">
+						<div className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
 							<p className="text-xs uppercase tracking-[0.22em] text-[color:var(--muted-strong)]">Examples</p>
 							<p className="mt-2 text-sm text-[color:var(--muted)]">2-3 real scenarios to make the result easier to trust.</p>
 						</div>
-						<div className="rounded-2xl border border-[color:var(--border)] bg-[linear-gradient(180deg,#f3fbf8_0%,#e9f7f3_100%)] p-4">
+						<div className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
 							<p className="text-xs uppercase tracking-[0.22em] text-[color:var(--muted-strong)]">FAQ</p>
 							<p className="mt-2 text-sm text-[color:var(--muted)]">Clear answers to the questions people usually ask first.</p>
 						</div>
 					</div>
 				</section>
 
-				<nav className="rounded-[1.75rem] border border-[color:var(--border)] bg-[color:var(--surface-strong)] p-5 text-white shadow-[0_18px_48px_rgba(34,24,12,0.12)] backdrop-blur sm:p-6 lg:sticky lg:top-6 lg:self-start lg:rounded-[2rem]">
-					<p className="text-xs uppercase tracking-[0.24em] text-[#c9b79d] sm:text-sm">On this page</p>
+				<nav className="rounded-[1.75rem] border border-[color:var(--border)] bg-[color:var(--accent-soft)] p-5 text-[color:var(--foreground)] shadow-[0_18px_48px_rgba(34,24,12,0.12)] backdrop-blur sm:p-6 lg:sticky lg:top-6 lg:self-start lg:rounded-[2rem]">
+					<p className="text-xs uppercase tracking-[0.24em] text-[color:var(--muted-strong)] sm:text-sm">On this page</p>
 					<ul className="mt-4 grid gap-2 text-sm">
 						{sections.map((section) => (
 							<li key={section.href}>
-								<a className="text-white/80 transition-colors hover:text-white" href={section.href}>
+								<a className="text-[color:var(--muted-strong)] transition-colors hover:text-[color:var(--foreground)]" href={section.href}>
 									{section.label}
 								</a>
 							</li>

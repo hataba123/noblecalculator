@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Script from "next/script";
 import { Manrope, Space_Grotesk } from "next/font/google";
 
 import { AppFooter } from "@/src/components/shared/app-footer";
 import { AppHeader } from "@/src/components/shared/app-header";
+import { ThemeProvider } from "@/src/components/shared/theme-provider";
 import { siteMetadata } from "@/src/lib/metadata";
 import { siteConfig } from "@/src/config/site";
 import "./globals.css";
@@ -70,11 +72,27 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en">
-      <body className={`${bodyFont.variable} ${headingFont.variable} flex min-h-screen flex-col overflow-x-hidden bg-[#f4efe8] text-[#1b1a17]`}>
-        <AppHeader />
-        <div className="flex-1">{children}</div>
-        <AppFooter />
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${bodyFont.variable} ${headingFont.variable} flex min-h-screen flex-col overflow-x-hidden bg-[color:var(--background)] text-[color:var(--foreground)]`}>
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(() => {
+  const storageKey = "noblecalculator-theme";
+  const storedTheme = window.localStorage.getItem(storageKey);
+  const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  const theme = storedTheme === "dark" || storedTheme === "light" ? storedTheme : systemTheme;
+  document.documentElement.dataset.theme = theme;
+  document.documentElement.style.colorScheme = theme;
+})();`,
+          }}
+        />
+        <ThemeProvider>
+          <AppHeader />
+          <div className="flex-1">{children}</div>
+          <AppFooter />
+        </ThemeProvider>
         <Analytics />
         <SpeedInsights />
       </body>

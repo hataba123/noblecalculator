@@ -94,7 +94,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
   }
 
   return (
-    <main className="min-h-screen px-3 py-4 text-[#1b1a17] sm:px-6 sm:py-6 lg:px-8 xl:px-10">
+    <main className="min-h-screen px-3 py-4 text-[color:var(--foreground)] sm:px-6 sm:py-6 lg:px-8 xl:px-10">
       <PageStructuredData
         kind="calculator"
         title={tool.title}
@@ -112,7 +112,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
           <div className="mb-5 flex flex-wrap gap-3 sm:mb-6">
             <Link
               href="/tools"
-              className="inline-flex rounded-full border border-black/10 bg-[#201c17] px-4 py-2.5 text-sm font-semibold !text-white transition-colors hover:bg-black hover:!text-white sm:px-5 sm:py-3"
+              className="inline-flex rounded-full border border-[color:var(--border)] bg-[color:var(--accent-strong)] px-4 py-2.5 text-sm font-semibold !text-[color:var(--background)] transition-colors hover:bg-[color:var(--foreground)] hover:!text-[color:var(--background)] sm:px-5 sm:py-3"
             >
               Back to tools
             </Link>

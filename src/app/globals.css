@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+  color-scheme: light;
   --background: #f4efe8;
   --foreground: #1b1a17;
   --surface: rgba(255, 255, 255, 0.8);
@@ -12,6 +13,29 @@
   --accent: #8a6b45;
   --accent-strong: #201c17;
   --accent-soft: #f4efe8;
+  --page-bg:
+    radial-gradient(circle at top left, rgba(194, 142, 71, 0.18), transparent 34%),
+    radial-gradient(circle at top right, rgba(32, 83, 97, 0.14), transparent 28%),
+    linear-gradient(180deg, #f8f3ec 0%, #f4efe8 100%);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --background: #11110f;
+  --foreground: #f3eee7;
+  --surface: rgba(29, 26, 22, 0.82);
+  --surface-strong: #161311;
+  --surface-soft: #25211c;
+  --border: rgba(255, 255, 255, 0.1);
+  --muted: #c1b6a7;
+  --muted-strong: #dccfb8;
+  --accent: #d0a06a;
+  --accent-strong: #f2e6d8;
+  --accent-soft: #2a241d;
+  --page-bg:
+    radial-gradient(circle at top left, rgba(208, 160, 106, 0.12), transparent 34%),
+    radial-gradient(circle at top right, rgba(102, 159, 178, 0.1), transparent 28%),
+    linear-gradient(180deg, #171513 0%, #11110f 100%);
 }
 
 * {
@@ -20,16 +44,12 @@
 
 html {
   scroll-behavior: smooth;
-  color-scheme: light;
 }
 
 body {
   min-height: 100vh;
   margin: 0;
-  background:
-    radial-gradient(circle at top left, rgba(194, 142, 71, 0.18), transparent 34%),
-    radial-gradient(circle at top right, rgba(32, 83, 97, 0.14), transparent 28%),
-    linear-gradient(180deg, #f8f3ec 0%, #f4efe8 100%);
+  background: var(--page-bg);
   color: var(--foreground);
   font-family: var(--font-body), "Segoe UI", "Trebuchet MS", sans-serif;
   line-height: 1.5;
@@ -63,4 +83,12 @@ textarea {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.app-logo-badge {
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .app-logo-badge {
+  color: #11110f;
 }
