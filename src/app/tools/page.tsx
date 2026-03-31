@@ -9,7 +9,7 @@ const toolGroupDefinitions = [
   {
     key: "health",
     id: "health-wellness",
-    slugs: ["bmi"],
+    slugs: ["bmi", "tdee-calculator"],
   },
   {
     key: "pricing",
@@ -108,7 +108,6 @@ export default async function ToolsPage() {
                 {t("tools.supportingDescription")}
               </p>
             </div>
-
           </div>
         </section>
         <ToolsBrowser

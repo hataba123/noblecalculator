@@ -26,6 +26,7 @@ import { SelfEmployedTaxEstimatorCalculator } from "@/src/features/calculators/s
 import { ProfitMarginCalculator } from "@/src/features/calculators/profit-margin";
 import { RoiCalculator } from "@/src/features/calculators/roi";
 import { RoasCalculator } from "@/src/features/calculators/roas";
+import { TdeeCalculator } from "@/src/features/calculators/tdee-calculator";
 import { WebsiteCostCalculator } from "@/src/features/calculators/website-cost";
 import { UtilizationRateCalculator } from "@/src/features/calculators/utilization-rate";
 import { VatCalculatorCalculator } from "@/src/features/calculators/vat-calculator";
@@ -37,6 +38,7 @@ type ToolPageProps = {
 
 const calculatorMap = {
   bmi: BmiCalculator,
+  "tdee-calculator": TdeeCalculator,
   "profit-margin": ProfitMarginCalculator,
   markup: MarkupCalculator,
   "freelance-hourly-rate": FreelanceHourlyRateCalculator,

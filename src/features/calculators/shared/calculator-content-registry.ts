@@ -15,6 +15,7 @@ import { monthlyIncomeTargetSeoContent } from "../monthly-income-target/content"
 import { netToGrossSeoContent } from "../net-to-gross/content";
 import { paymentProcessingFeeSeoContent } from "../payment-processing-fee/content";
 import { profitMarginSeoContent } from "../profit-margin/content";
+import { tdeeSeoContent } from "../tdee-calculator/content";
 import { roasSeoContent } from "../roas/content";
 import { roiSeoContent } from "../roi/content";
 import { selfEmployedTaxEstimatorSeoContent } from "../self-employed-tax-estimator/content";
@@ -24,6 +25,7 @@ import { websiteCostSeoContent } from "../website-cost/content";
 
 const calculatorSeoContentRegistry: Record<string, CalculatorSeoContent> = {
 	bmi: bmiSeoContent,
+	"tdee-calculator": tdeeSeoContent,
 	"profit-margin": profitMarginSeoContent,
 	markup: markupSeoContent,
 	"freelance-hourly-rate": freelanceHourlyRateSeoContent,

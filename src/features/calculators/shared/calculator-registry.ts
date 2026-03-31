@@ -7,6 +7,11 @@ export const calculatorRegistry: CalculatorDefinition[] = [
 		description: "Check your body mass index and healthy weight range.",
 	},
 	{
+		slug: "tdee-calculator",
+		title: "TDEE Calculator",
+		description: "Estimate adult calorie needs and daily targets.",
+	},
+	{
 		slug: "profit-margin",
 		title: "Profit Margin Calculator",
 		description: "See how much profit you keep after costs.",
