@@ -24,10 +24,10 @@ export default function HomePage() {
                 Noble Calculator
               </span>
               <div className="space-y-3">
-                <h1 className="w-full max-w-none text-balance text-[2.15rem] font-semibold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl">
+                <h1 className="w-full max-w-none text-balance text-[2.15rem] font-semibold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl break-words">
                   Practical calculators for everyday tasks.
                 </h1>
-                <p className="break-words text-sm leading-7 text-[#5c554b] sm:text-base lg:text-lg">
+                <p className="w-full max-w-none break-words text-sm leading-7 text-[#5c554b] sm:text-base lg:text-lg">
                   Pick a calculator, enter a few numbers, and get a clear result right away.
                 </p>
               </div>
@@ -53,13 +53,13 @@ export default function HomePage() {
 
         <HomeCalculator />
 
-        <section className="grid gap-5 lg:grid-cols-[0.92fr_1.08fr]">
-          <div className="rounded-[1.75rem] border border-black/10 bg-white/80 p-5 shadow-[0_18px_48px_rgba(34,24,12,0.08)] backdrop-blur sm:p-6 lg:rounded-[2rem] lg:p-8">
+        <section className="grid gap-5 lg:grid-cols-[0.88fr_1.12fr] xl:grid-cols-[0.84fr_1.16fr]">
+          <div className="rounded-[1.85rem] border border-black/10 bg-white/80 p-6 shadow-[0_20px_54px_rgba(34,24,12,0.10)] backdrop-blur sm:p-7 lg:rounded-[2.1rem] lg:p-9">
             <p className="text-xs uppercase tracking-[0.24em] text-[#8a6b45] sm:text-sm">Why people use this</p>
-            <h2 className="mt-2 text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
+            <h2 className="mt-2 w-full max-w-none text-balance text-2xl font-semibold tracking-tight break-words sm:text-3xl">
               Fast answers for pricing, tax, and cash flow.
             </h2>
-            <p className="mt-3 break-words text-sm leading-7 text-[#5c554b] sm:text-base">
+            <p className="mt-3 w-full max-w-none break-words text-sm leading-7 text-[#5c554b] sm:text-base">
               Each calculator is built to get you from question to answer quickly, with clear breakdowns and plain-English explanations.
             </p>
             <div className="mt-5 grid gap-3 text-sm text-[#5c554b] sm:grid-cols-2">
@@ -68,7 +68,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="rounded-[1.75rem] border border-black/10 bg-[#201c17] p-5 text-white shadow-[0_18px_48px_rgba(34,24,12,0.12)] sm:p-6 lg:rounded-[2rem] lg:p-8">
+          <div className="rounded-[1.85rem] border border-black/10 bg-[#201c17] p-6 text-white shadow-[0_20px_54px_rgba(34,24,12,0.13)] sm:p-7 lg:rounded-[2.1rem] lg:p-9">
             <p className="text-xs uppercase tracking-[0.24em] text-[#c9b79d] sm:text-sm">Good for</p>
             <ul className="mt-4 grid gap-3 sm:grid-cols-2">
               {[
@@ -109,10 +109,10 @@ export default function HomePage() {
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
               {[
-                "Instant results as you type",
-                "Friendly copy for non-technical users",
-                "Responsive layout on mobile and desktop",
-                "Shared design across every tool",
+                "See answers update instantly while you type",
+                "Easy words for everyone, not only number people",
+                "Looks great on phones, tablets, and desktop screens",
+                "Same clean style across every calculator page",
               ].map((item) => (
                 <div key={item} className="rounded-2xl border border-black/10 bg-[#f7f1e8] p-4 text-sm text-[#5c554b]">
                   {item}

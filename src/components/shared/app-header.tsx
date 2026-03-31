@@ -11,16 +11,13 @@ export function AppHeader() {
             NC
           </span>
           <div className="min-w-0 leading-tight">
-            <div className="break-words text-sm font-semibold tracking-[0.16em] uppercase text-[color:var(--foreground)] sm:text-base">
+            <div className="break-words text-base font-semibold tracking-[0.16em] uppercase text-[color:var(--foreground)] sm:text-lg lg:text-xl">
               {siteConfig.name}
-            </div>
-            <div className="break-words text-[0.7rem] uppercase tracking-[0.22em] text-[color:var(--muted-strong)] sm:text-xs">
-              Calculators
             </div>
           </div>
         </Link>
 
-        <nav className="flex flex-wrap items-center gap-2 text-xs font-medium text-[color:var(--foreground)] sm:text-sm">
+        <nav className="flex flex-wrap items-center gap-2 text-sm font-medium text-[color:var(--foreground)] sm:text-base lg:text-lg">
           <Link href="/" className="rounded-full px-3 py-2 transition-colors hover:bg-black/5 sm:px-4">
             Home
           </Link>

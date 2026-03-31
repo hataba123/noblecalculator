@@ -15,7 +15,7 @@ export function ToolCard({ title, description, href, slug, variant = "light" }: 
     <article
       data-slug={slug}
       className={[
-        "group flex h-full min-w-0 flex-col rounded-[1.55rem] border p-4 shadow-[0_16px_36px_rgba(34,24,12,0.08)] transition-transform duration-200 hover:-translate-y-1 sm:p-5",
+        "group flex h-full min-w-0 flex-col rounded-[1.25rem] border p-3 shadow-[0_10px_20px_rgba(34,24,12,0.08)] transition-transform duration-200 hover:-translate-y-1 sm:p-4",
         isDark
           ? "border-[color:var(--border)] bg-[color:var(--surface-strong)] text-white shadow-[0_18px_48px_rgba(34,24,12,0.12)]"
           : "border-[color:var(--border)] bg-[color:var(--surface)] text-[color:var(--foreground)] backdrop-blur",
@@ -23,7 +23,7 @@ export function ToolCard({ title, description, href, slug, variant = "light" }: 
     >
       <div className="flex min-w-0 items-start justify-between gap-3">
         <div className="min-w-0">
-          <h2 className="mt-1 break-words text-balance text-lg font-semibold sm:text-xl">{title}</h2>
+          <h2 className="mt-1 break-words text-base font-semibold sm:text-lg">{title}</h2>
         </div>
         <span
           className={
