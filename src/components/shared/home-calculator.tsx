@@ -1207,7 +1207,7 @@ export function HomeCalculator() {
           </div>
 
           {calculatorMode === "scientific" ? (
-            <div className="mt-4 grid grid-cols-4 gap-1.5 sm:grid-cols-6 sm:gap-2 lg:grid-cols-8">
+            <div className="mt-4 grid grid-cols-5 gap-1 sm:grid-cols-6 sm:gap-2 lg:grid-cols-8">
               {scientificButtons.map((button) => {
                 const wide = "wide" in button ? ((button as { wide?: boolean }).wide ?? false) : false;
 
