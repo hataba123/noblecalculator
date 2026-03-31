@@ -316,18 +316,59 @@ const uiMessages = {
 const stringTranslations: Record<string, string> = {
   "Profit Margin Calculator": "Calculadora de margen de beneficio",
   "Markup Calculator": "Calculadora de markup",
+  "Fee rate (%)": "Tasa de comisión (%)",
   "Freelance Hourly Rate Calculator": "Calculadora de tarifa por hora freelance",
+  "Ad spend": "Gasto publicitario",
   "VAT Calculator": "Calculadora de IVA",
+  "Impressions": "Impresiones",
   "Invoice Calculator": "Calculadora de facturas",
+  "Clicks": "Clics",
   "International Transfer Fee Calculator": "Calculadora de comisión por transferencia internacional",
+  "Marketing spend": "Gasto de marketing",
+  "New customers": "Clientes nuevos",
   "Break-even Calculator": "Calculadora de punto de equilibrio",
   "Gross to Net Calculator": "Calculadora de bruto a neto",
   "Net to Gross Calculator": "Calculadora de neto a bruto",
+  "Invoice amount": "Monto de la factura",
+  "Monthly fee rate (%)": "Tasa de comisión mensual (%)",
+  "Days late": "Días de atraso",
   "Late Payment Fee Calculator": "Calculadora de recargo por pago tardío",
   "Payment Processing Fee Calculator": "Calculadora de comisión de procesamiento",
   "ROI Calculator": "Calculadora de ROI",
+  "Day rate": "Tarifa diaria",
+  "Billable hours per day": "Horas facturables por día",
   "ROAS Calculator": "Calculadora de ROAS",
   "Website Cost Calculator": "Calculadora de costo de sitio web",
+  "Markup rate (%)": "Tasa de markup (%)",
+  "Cost of the product or service.": "Costo del producto o servicio.",
+  "Additional percentage added on top of cost.": "Porcentaje adicional agregado sobre el costo.",
+  "Desired take-home per month": "Ingreso neto deseado al mes",
+  "Monthly business expenses": "Gastos mensuales del negocio",
+  "The net income you want to keep each month.": "El ingreso neto que quieres conservar cada mes.",
+  "Fixed expenses that must be covered each month.": "Gastos fijos que deben cubrirse cada mes.",
+  "Estimated tax rate to reserve.": "Tasa de impuesto estimada para reservar.",
+  "Payment amount": "Monto del pago",
+  "Percentage fee rate (%)": "Tasa de comisión porcentual (%)",
+  "Fixed fee": "Comisión fija",
+  "Total customer payment before fees.": "Pago total del cliente antes de comisiones.",
+  "Investment": "Inversión",
+  "Return amount": "Monto del retorno",
+  "Money you put into the project or asset.": "Dinero que aportas al proyecto o activo.",
+  "Money you get back from the investment.": "Dinero que recuperas de la inversión.",
+  "Annual revenue": "Ingresos anuales",
+  "Business expenses": "Gastos del negocio",
+  "Income tax rate (%)": "Tasa de impuesto sobre la renta (%)",
+  "Self-employment tax rate (%)": "Tasa de impuesto por trabajo autónomo (%)",
+  "Total self-employed income before expenses.": "Ingresos totales por trabajo autónomo antes de gastos.",
+  "Deductible business costs.": "Costos del negocio deducibles.",
+  "Estimated income tax rate.": "Tasa estimada de impuesto sobre la renta.",
+  "Estimated self-employment tax rate.": "Tasa estimada de impuesto por trabajo autónomo.",
+  "Total available hours": "Horas disponibles totales",
+  "Hours you can invoice or charge for.": "Horas que puedes facturar o cobrar.",
+  "Design hours": "Horas de diseño",
+  "Development hours": "Horas de desarrollo",
+  "Content hours": "Horas de contenido",
+  "Hourly rate": "Tarifa por hora",
   "Self-employed Tax Estimator": "Estimador de impuestos para autónomos",
   "Utilization Rate Calculator": "Calculadora de tasa de utilización",
   "Monthly Income Target Calculator": "Calculadora de objetivo de ingreso mensual",
@@ -470,6 +511,167 @@ const stringTranslations: Record<string, string> = {
   "Total cost required to generate that revenue.": "Costo total necesario para generar esos ingresos.",
 };
 
+const extraStringTranslations: Record<string, string> = {
+  "Amount you want to send before fees.": "Monto que quieres enviar antes de las comisiones.",
+  "International transfer fee rate.": "Tasa de comisión por transferencia internacional.",
+  "Total campaign spend.": "Gasto total de la campaña.",
+  "How many times the ad was shown.": "Cuántas veces se mostró el anuncio.",
+  "How many clicks the campaign generated.": "Cuántos clics generó la campaña.",
+  "Total cost spent on marketing and sales.": "Costo total gastado en marketing y ventas.",
+  "Customers acquired from that spend.": "Clientes adquiridos a partir de ese gasto.",
+  "Original invoice value.": "Valor original de la factura.",
+  "Late fee rate per month.": "Tasa de comisión por atraso por mes.",
+  "How many days the payment is overdue.": "Cuántos días tiene de atraso el pago.",
+  "Invoice amount before tax.": "Monto de factura antes de impuestos.",
+  "Tax applied to the invoice.": "Impuesto aplicado a la factura.",
+  "Your daily charge or pay rate.": "Tu tarifa diaria o tasa de pago.",
+  "How many hours the day rate covers.": "Cuántas horas cubre la tarifa diaria.",
+  "Time spent on layout and visual design.": "Tiempo dedicado al diseño visual y de maquetación.",
+  "Time spent building the site.": "Tiempo dedicado a construir el sitio.",
+  "Copy, images, and content work.": "Redacción, imágenes y trabajo de contenido.",
+  "Your blended hourly rate.": "Tu tarifa horaria combinada.",
+  "Hosting, plugins, domains, and other fixed costs.": "Hosting, complementos, dominios y otros costos fijos.",
+  "Variable percentage charged by the processor.": "Porcentaje variable cobrado por el procesador.",
+  "Flat fee per transaction.": "Comisión fija por transacción.",
+  "All working hours available in the period.": "Todas las horas de trabajo disponibles en el período.",
+  "Break-even snapshot": "Resumen de punto de equilibrio",
+  "Use the contribution margin to see how many sales you need to hit break-even.":
+    "Usa el margen de contribución para ver cuántas ventas necesitas para llegar al punto de equilibrio.",
+  "Net pay breakdown": "Desglose del pago neto",
+  "Compare the gross amount, withheld tax, and the amount that remains.": "Compara el monto bruto, el impuesto retenido y el monto que queda.",
+  "Gross-up breakdown": "Desglose de cálculo bruto",
+  "Use this when you know the net amount and need the pre-tax figure.": "Úsalo cuando conozcas el monto neto y necesites la cifra antes de impuestos.",
+  "Advertising return": "Retorno de publicidad",
+  "Use ROAS to judge whether your ads are returning enough revenue.": "Usa ROAS para juzgar si tus anuncios están devolviendo suficientes ingresos.",
+  "Tax estimate": "Estimación de impuestos",
+  "Use this to plan for income tax and self-employment tax throughout the year.":
+    "Úsalo para planificar el impuesto sobre la renta y el impuesto por trabajo autónomo durante todo el año.",
+  "See how many sales you need to cover fixed and variable costs with this break-even calculator.":
+    "Ve cuántas ventas necesitas para cubrir los costos fijos y variables con esta calculadora de punto de equilibrio.",
+  "Use this calculator when you want a fast answer to a practical question: how many units, jobs, or orders do I need before the business starts paying for itself?":
+    "Usa esta calculadora cuando quieras una respuesta rápida a una pregunta práctica: cuántas unidades, trabajos u órdenes necesito antes de que el negocio se pague a sí mismo.",
+  "Break-even formula": "Fórmula de punto de equilibrio",
+  "Break-even units = Fixed costs ÷ (Selling price - Variable cost per unit). Break-even revenue = Break-even units × Selling price.":
+    "Unidades de equilibrio = Costos fijos ÷ (Precio de venta - Costo variable por unidad). Ingresos de equilibrio = Unidades de equilibrio × Precio de venta.",
+  "If your selling price is too close to variable cost, the number of units you need rises quickly.":
+    "Si tu precio de venta está muy cerca del costo variable, la cantidad de unidades que necesitas sube rápidamente.",
+  "Use it when you are setting a price, testing a new offer, or checking whether a month of sales can cover rent, payroll, and tools.":
+    "Úsalo cuando estés fijando un precio, probando una nueva oferta o verificando si un mes de ventas puede cubrir alquiler, nómina y herramientas.",
+  "Need cleaner cash flow tracking?": "¿Necesitas un seguimiento más limpio del flujo de caja?",
+  "If you want a fuller view of invoices, expenses, and profit, QuickBooks or Xero can keep the numbers in one place.":
+    "Si quieres una vista más completa de facturas, gastos y ganancias, QuickBooks o Xero pueden mantener los números en un solo lugar.",
+  "Revisit break-even anytime your price, supplier cost, or fixed overhead changes.":
+    "Revisa el punto de equilibrio cada vez que cambien tu precio, costo del proveedor o gastos generales fijos.",
+  "See how much it costs to acquire one customer.": "Ve cuánto cuesta adquirir un cliente.",
+  "Use this calculator when you want a quick read on whether your marketing spend is efficient enough to keep growing.":
+    "Usa esta calculadora cuando quieras una lectura rápida sobre si tu gasto de marketing es lo suficientemente eficiente como para seguir creciendo.",
+  "CAC formula": "Fórmula de CAC",
+  "CAC = Marketing spend ÷ New customers.": "CAC = Gasto de marketing ÷ Clientes nuevos.",
+  "Lower CAC usually means you are acquiring customers more efficiently, but it still needs to be checked against revenue and lifetime value.":
+    "Un CAC más bajo normalmente significa que estás adquiriendo clientes de forma más eficiente, pero aún debe compararse con ingresos y valor de vida útil.",
+  "Use it when reviewing campaign performance, comparing channels, or checking whether growth is coming at a healthy cost.":
+    "Úsalo al revisar el rendimiento de campañas, comparar canales o comprobar si el crecimiento está llegando a un costo saludable.",
+  "Compare CPM and CPC to understand your ad campaign efficiency.": "Compara CPM y CPC para entender la eficiencia de tu campaña publicitaria.",
+  "Use this calculator when you want a clear, quick way to compare how much your ads cost per impression and per click.":
+    "Usa esta calculadora cuando quieras una forma clara y rápida de comparar cuánto cuestan tus anuncios por impresión y por clic.",
+  "CPM / CPC formula": "Fórmula de CPM / CPC",
+  "CPM = Ad spend ÷ Impressions × 1,000. CPC = Ad spend ÷ Clicks. CTR = Clicks ÷ Impressions × 100.":
+    "CPM = Gasto publicitario ÷ Impresiones × 1,000. CPC = Gasto publicitario ÷ Clics. CTR = Clics ÷ Impresiones × 100.",
+  "CPM tells you exposure cost. CPC tells you traffic cost. CTR shows how often people click.":
+    "CPM te dice el costo de exposición. CPC te dice el costo del tráfico. CTR muestra con qué frecuencia la gente hace clic.",
+  "Use it when comparing creatives, audiences, or channels and you want the basic media numbers in one place.":
+    "Úsalo cuando compares creativos, audiencias o canales y quieras los números básicos de medios en un solo lugar.",
+  "Convert a day rate into an hourly rate and weekly equivalent.": "Convierte una tarifa diaria en una tarifa por hora y equivalente semanal.",
+  "Use this calculator when a client offers a day rate and you want to see what that looks like as an hourly number.":
+    "Usa esta calculadora cuando un cliente ofrezca una tarifa diaria y quieras ver cómo se ve como un número por hora.",
+  "Day rate to hourly rate formula": "Fórmula de tarifa diaria a tarifa por hora",
+  "Hourly rate = Day rate ÷ Billable hours per day. Weekly equivalent = Day rate × 5. Monthly equivalent = Day rate × 20.":
+    "Tarifa por hora = Tarifa diaria ÷ Horas facturables por día. Equivalente semanal = Tarifa diaria × 5. Equivalente mensual = Tarifa diaria × 20.",
+  "This makes it easier to compare a day fee with hourly work, retained work, or full-time pay.":
+    "Esto facilita comparar una tarifa diaria con trabajo por hora, trabajo retenido o pago de tiempo completo.",
+  "Use it when comparing freelance offers, setting your own rate, or deciding whether a day rate is actually worth it.":
+    "Úsalo cuando compares ofertas freelance, fijes tu propia tarifa o decidas si una tarifa diaria realmente vale la pena.",
+  "Set an hourly rate that matches your income goal.": "Establece una tarifa por hora que coincida con tu meta de ingresos.",
+  "Use this when you want a rate that can actually support your income goal instead of guessing a number that feels safe.":
+    "Úsalo cuando quieras una tarifa que realmente pueda sostener tu meta de ingresos en lugar de adivinar un número que se sienta seguro.",
+  "Freelance hourly rate formula": "Fórmula de tarifa por hora freelance",
+  "Hourly rate = Target income ÷ Billable hours.": "Tarifa por hora = Ingreso objetivo ÷ Horas facturables.",
+  "If your billable time is limited, your hourly rate has to carry the full income target.":
+    "Si tu tiempo facturable es limitado, tu tarifa por hora tiene que sostener la meta de ingresos completa.",
+  "Use it when quoting freelance work, planning a retainer, or checking whether a project will realistically pay the bills.":
+    "Úsalo cuando presupuestes trabajo freelance, planifiques una retención o verifiques si un proyecto realmente pagará las cuentas.",
+  "See how much of a gross amount remains after tax.": "Ve cuánto de un monto bruto queda después de impuestos.",
+  "Use this when you already know the gross amount and want to see the amount that actually lands in your pocket after tax.":
+    "Úsalo cuando ya conozcas el monto bruto y quieras ver el monto que realmente llega a tu bolsillo después de impuestos.",
+  "Gross to net formula": "Fórmula de bruto a neto",
+  "Tax amount = Gross amount × Tax rate. Net amount = Gross amount - Tax amount.":
+    "Monto de impuesto = Monto bruto × Tasa de impuesto. Monto neto = Monto bruto - Monto de impuesto.",
+  "It is a quick way to estimate take-home pay without opening a spreadsheet.":
+    "Es una forma rápida de estimar el pago neto sin abrir una hoja de cálculo.",
+  "Use it for salary planning, freelance quotes, or any situation where a tax rate reduces the final amount you keep.":
+    "Úsalo para planeación salarial, presupuestos freelance o cualquier situación donde una tasa de impuesto reduzca el monto final que conservas.",
+  "Check how much revenue your ad spend brings back.": "Comprueba cuánto ingreso genera tu gasto publicitario.",
+  "Measure the return earned from an investment.": "Mide el retorno obtenido de una inversión.",
+  "Use this when you need a fast read on whether an investment produced enough return to justify the money you put in.":
+    "Úsalo cuando necesites una lectura rápida sobre si una inversión produjo suficiente retorno para justificar el dinero que pusiste.",
+  "ROI formula": "Fórmula de ROI",
+  "ROI = (Return amount - Investment) ÷ Investment × 100.": "ROI = (Monto de retorno - Inversión) ÷ Inversión × 100.",
+  "A positive ROI means the return beat the original spend. A negative result means the investment lost value.":
+    "Un ROI positivo significa que el retorno superó el gasto original. Un resultado negativo significa que la inversión perdió valor.",
+  "Use it for campaigns, equipment purchases, projects, or any decision where you want to compare gain against the original cost.":
+    "Úsalo para campañas, compras de equipo, proyectos o cualquier decisión donde quieras comparar la ganancia con el costo original.",
+  "Estimate how much tax to set aside from self-employed income.": "Estima cuánto impuesto reservar de ingresos por trabajo autónomo.",
+  "Measure how much of your available time is billable.": "Mide cuánto de tu tiempo disponible es facturable.",
+  "Use this calculator when you want to know how much of your working time is actually earning money.":
+    "Usa esta calculadora cuando quieras saber cuánto de tu tiempo de trabajo está realmente generando dinero.",
+  "Utilization rate formula": "Fórmula de tasa de utilización",
+  "Utilization rate = Billable hours ÷ Total available hours × 100.": "Tasa de utilización = Horas facturables ÷ Horas disponibles totales × 100.",
+  "The higher the rate, the more of your time is being converted into revenue.":
+    "Cuanto más alta sea la tasa, más de tu tiempo se está convirtiendo en ingresos.",
+  "Use it when checking whether your work week has enough billable time to support your pricing and income goal.":
+    "Úsalo cuando verifiques si tu semana de trabajo tiene suficiente tiempo facturable para apoyar tus precios y meta de ingresos.",
+  "Estimate the cost of designing, building, and launching a website.": "Estima el costo de diseñar, construir y lanzar un sitio web.",
+  "Use this when you need a quick website budget that feels realistic, not just a rough guess.":
+    "Úsalo cuando necesites un presupuesto rápido de sitio web que se sienta realista, no solo una estimación vaga.",
+  "Website cost formula": "Fórmula de costo de sitio web",
+  "Total cost = (Design hours + Development hours + Content hours) × Hourly rate + Fixed expenses.":
+    "Costo total = (Horas de diseño + Horas de desarrollo + Horas de contenido) × Tarifa por hora + Gastos fijos.",
+  "This is handy when you want to quote a client or plan your own build budget before work starts.":
+    "Esto es útil cuando quieres presupuestar a un cliente o planificar tu propio presupuesto de construcción antes de empezar el trabajo.",
+  "Use it when you are pricing a new site, reviewing a proposal, or checking whether the project scope still fits the budget.":
+    "Úsalo cuando pongas precio a un sitio nuevo, revises una propuesta o compruebes si el alcance del proyecto aún encaja con el presupuesto.",
+  "Need cleaner collections?": "¿Necesitas cobros más ordenados?",
+  "QuickBooks or Xero can help if you want overdue invoices, reminders, and payments in one place.":
+    "QuickBooks o Xero pueden ayudar si quieres facturas vencidas, recordatorios y pagos en un solo lugar.",
+  "Use the calculator again whenever the invoice amount or delay changes.":
+    "Usa la calculadora nuevamente cada vez que cambie el monto de la factura o el retraso.",
+  "Need the finance side too?": "¿Necesitas también la parte financiera?",
+  "If you want campaign numbers alongside invoices and expenses, QuickBooks or Xero can make reporting much easier later on.":
+    "Si quieres números de campaña junto con facturas y gastos, QuickBooks o Xero pueden hacer que los informes sean mucho más fáciles después.",
+  "Use CPM, CPC, and ROAS together to get the full picture.": "Usa CPM, CPC y ROAS juntos para obtener la imagen completa.",
+  "Want a cleaner view of costs and returns?": "¿Quieres una vista más limpia de costos y retornos?",
+  "QuickBooks or Xero can help you keep project costs, invoices, and returns in one place so ROI is easier to track later.":
+    "QuickBooks o Xero pueden ayudarte a mantener costos de proyecto, facturas y retornos en un solo lugar para que el ROI sea más fácil de seguir después.",
+  "Check ROI again whenever the return amount or spend changes.": "Revisa el ROI nuevamente cada vez que cambie el monto de retorno o el gasto.",
+  "Need the project finances to stay tidy?": "¿Necesitas que las finanzas del proyecto se mantengan ordenadas?",
+  "QuickBooks or Xero can help you track deposits, project costs, and remaining balances after the site is delivered.":
+    "QuickBooks o Xero pueden ayudarte a rastrear depósitos, costos del proyecto y saldos restantes después de entregar el sitio.",
+  "Recalculate when the scope or hourly rate changes.": "Recalcula cuando cambie el alcance o la tarifa por hora.",
+  "Keep the full revenue picture close": "Mantén cerca la imagen completa de ingresos",
+  "If you want to line up marketing spend with revenue and invoices, QuickBooks or Xero can help you keep the back office tidy.":
+    "Si quieres alinear el gasto de marketing con ingresos y facturas, QuickBooks o Xero pueden ayudarte a mantener la oficina interna ordenada.",
+  "Use this together with ROAS and profit checks, not on its own.": "Úsalo junto con ROAS y revisiones de beneficio, no por sí solo.",
+  "Keep payroll and invoices tidy": "Mantén la nómina y las facturas organizadas",
+  "QuickBooks or Xero can help if you want salary, tax, and expense tracking in one workflow.":
+    "QuickBooks o Xero pueden ayudar si quieres seguimiento de salario, impuestos y gastos en un solo flujo de trabajo.",
+  "Use this calculator again whenever your tax rate or gross offer changes.":
+    "Usa esta calculadora nuevamente cada vez que cambie tu tasa de impuesto o tu oferta bruta.",
+  "Need cleaner invoice totals?": "¿Quieres totales de factura más limpios?",
+  "If you invoice often, QuickBooks or Xero can help you track payment fees, revenue, and outstanding balances together.":
+    "Si facturas con frecuencia, QuickBooks o Xero pueden ayudarte a rastrear comisiones de pago, ingresos y saldos pendientes juntos.",
+  "Recalculate whenever the payment size or processor rate changes.": "Recalcula cada vez que cambie el tamaño del pago o la tasa del procesador.",
+};
+
 export function createTranslator(locale: Locale) {
   return (key: string) => getMessage(locale, key);
 }
@@ -494,7 +696,7 @@ export function translateText(locale: Locale, text: string) {
     return text;
   }
 
-  return stringTranslations[text] ?? text;
+  return stringTranslations[text] ?? extraStringTranslations[text] ?? text;
 }
 
 export function translateValue<T>(locale: Locale, value: T): T {
