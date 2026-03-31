@@ -1065,7 +1065,7 @@ export function HomeCalculator() {
   };
 
   return (
-    <CalculatorShell title="Quick Calculator" description="A full-size calculator with memory, live preview, and a keypad that feels like a desk calculator.">
+    <CalculatorShell description="A full-size calculator with memory, live preview, and a keypad that feels like a desk calculator.">
       <div className="grid gap-5 xl:grid-cols-[0.94fr_1.06fr] xl:items-start xl:gap-6">
         <div className="rounded-[1.85rem] border border-[color:var(--border)] bg-[color:var(--surface-strong)] p-4 text-white shadow-[0_18px_48px_rgba(34,24,12,0.16)] sm:p-5 xl:max-w-[42rem]">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
