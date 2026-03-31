@@ -64,6 +64,12 @@ const uiMessages = {
       description: "Choose a calculator and start from a prefilled example.",
       supportingDescription:
         "Use the hub when you want a fast path to pricing, tax, profit, and marketing decisions without digging through menus.",
+      searchLabel: "Search calculators",
+      searchPlaceholder: "Search by calculator name or description",
+      searchResults: "results found",
+      noResultsTitle: "No calculators found",
+      noResultsDescription: "Try a different word or clear the search to see all calculators again.",
+      clearSearch: "Clear search",
       open: "Open",
       groupCount: "calculators",
       groups: {
@@ -235,6 +241,12 @@ const uiMessages = {
       description: "Elige una calculadora y empieza desde un ejemplo precargado.",
       supportingDescription:
         "Usa el centro cuando quieras una ruta rápida para decisiones de precios, impuestos, beneficios y marketing sin navegar por menús.",
+      searchLabel: "Buscar calculadoras",
+      searchPlaceholder: "Busca por nombre o descripción",
+      searchResults: "resultados encontrados",
+      noResultsTitle: "No se encontraron calculadoras",
+      noResultsDescription: "Prueba otra palabra o limpia la búsqueda para ver todas las calculadoras otra vez.",
+      clearSearch: "Limpiar búsqueda",
       open: "Abrir",
       groupCount: "calculadoras",
       groups: {

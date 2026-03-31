@@ -1,11 +1,9 @@
-import Link from "next/link";
-
 import { tools } from "@/src/config/tools";
-import { ToolCard } from "@/src/components/shared/tool-card";
 import { PageStructuredData } from "@/src/components/shared/page-structured-data";
 import { createPageMetadata } from "@/src/lib/metadata";
 import { createTranslator, getLocalizedPathname, translateText } from "@/src/i18n";
 import { getRequestLocale } from "@/src/i18n/server";
+import { ToolsBrowser } from "./tools-browser";
 
 const toolGroupDefinitions = [
   {
@@ -66,7 +64,13 @@ export default async function ToolsPage() {
     description: t(`tools.groups.${group.key}.description`),
     items: group.slugs
       .map((slug) => toolBySlug.get(slug))
-      .filter((tool): tool is (typeof tools)[number] => Boolean(tool)),
+      .filter((tool): tool is (typeof tools)[number] => Boolean(tool))
+      .map((tool) => ({
+        slug: tool.slug,
+        title: translateText(locale, tool.title),
+        description: translateText(locale, tool.description),
+        href: getLocalizedPathname(`/tools/${tool.slug}`, locale),
+      })),
   }));
 
   return (
@@ -102,60 +106,16 @@ export default async function ToolsPage() {
 
           </div>
         </section>
-
-        <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          {groupedTools.map((group) => (
-            <Link
-              key={group.id}
-              href={`#${group.id}`}
-              className="group rounded-[0.9rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-4 text-left shadow-[0_14px_32px_rgba(34,24,12,0.06)] backdrop-blur transition-all duration-150 ease-out hover:-translate-y-0.5 hover:bg-[color:var(--surface-soft)] active:translate-y-[1px] active:scale-[0.99]"
-            >
-              <p className="text-xs uppercase tracking-[0.24em] text-[color:var(--accent)] sm:text-sm">{group.title}</p>
-              <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">{group.description}</p>
-              <div className="mt-4 flex items-center justify-between text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--muted-strong)]">
-                <span>
-                  {group.items.length} {t("tools.groupCount")}
-                </span>
-                <span aria-hidden="true" className="transition-transform duration-150 ease-out group-hover:translate-x-0.5">
-                  →
-                </span>
-              </div>
-            </Link>
-          ))}
-        </section>
-
-        <div className="grid gap-5">
-          {groupedTools.map((group) => (
-            <section
-              key={group.id}
-              id={group.id}
-              className="scroll-mt-24 rounded-[1.1rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-5 shadow-[0_18px_48px_rgba(34,24,12,0.08)] backdrop-blur sm:p-6 lg:rounded-[1.25rem] lg:p-8"
-            >
-              <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
-                <div className="w-full min-w-0 lg:flex-1">
-                  <p className="text-xs uppercase tracking-[0.24em] text-[color:var(--accent)] sm:text-sm">{group.title}</p>
-                  <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">{group.description}</h2>
-                </div>
-                <div className="inline-flex w-fit rounded-full border border-[color:var(--border)] bg-[color:var(--surface-soft)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--muted-strong)] sm:text-sm">
-                  {group.items.length} {t("tools.groupCount")}
-                </div>
-              </div>
-
-              <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-                {group.items.map((tool) => (
-                  <ToolCard
-                    key={tool.slug}
-                    title={translateText(locale, tool.title)}
-                    description={translateText(locale, tool.description)}
-                    href={getLocalizedPathname(`/tools/${tool.slug}`, locale)}
-                    slug={tool.slug}
-                    variant="light"
-                  />
-                ))}
-              </div>
-            </section>
-          ))}
-        </div>
+        <ToolsBrowser
+          groups={groupedTools}
+          searchLabel={t("tools.searchLabel")}
+          searchPlaceholder={t("tools.searchPlaceholder")}
+          searchResultsLabel={t("tools.searchResults")}
+          noResultsTitle={t("tools.noResultsTitle")}
+          noResultsDescription={t("tools.noResultsDescription")}
+          clearSearchLabel={t("tools.clearSearch")}
+          groupCountLabel={t("tools.groupCount")}
+        />
       </div>
     </main>
   );
