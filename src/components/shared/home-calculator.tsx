@@ -1070,7 +1070,6 @@ export function HomeCalculator() {
         <div className="rounded-[1.85rem] border border-[color:var(--border)] bg-[color:var(--surface-strong)] p-4 text-white shadow-[0_18px_48px_rgba(34,24,12,0.16)] sm:p-5 xl:max-w-[42rem]">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <p className="text-xs uppercase tracking-[0.24em] text-[color:#c9b79d]">Quick calculator</p>
               <h2 className="mt-2 text-2xl font-semibold">Desk calculator</h2>
               <p className="mt-2 text-sm leading-6 text-white/72">
                 Tap the keypad or type an expression. Parentheses and memory keys are built in.
