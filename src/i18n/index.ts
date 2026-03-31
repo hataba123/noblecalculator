@@ -27,7 +27,7 @@ const uiMessages = {
       heroKicker: "Practical calculators for everyday tasks.",
       heroDescription: "Pick a calculator, enter a few numbers, and get a clear result right away.",
       browseCalculators: "Browse calculators",
-      openProfitMargin: "Open Profit Margin",
+      openTdee: "Open TDEE",
       whyPeopleUseThis: "Why people use this",
       whyTitle: "Fast answers for pricing, tax, and cash flow.",
       whyDescription:
@@ -208,7 +208,7 @@ const uiMessages = {
       heroKicker: "Calculadoras prácticas para tareas cotidianas.",
       heroDescription: "Elige una calculadora, escribe unos pocos números y obtén un resultado claro al instante.",
       browseCalculators: "Ver calculadoras",
-      openProfitMargin: "Abrir margen de beneficio",
+      openTdee: "Abrir TDEE",
       whyPeopleUseThis: "Por qué la gente usa esto",
       whyTitle: "Respuestas rápidas para precios, impuestos y flujo de caja.",
       whyDescription:

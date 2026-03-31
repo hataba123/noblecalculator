@@ -27,7 +27,7 @@ export default async function HomePage() {
   const locale = await getRequestLocale();
   const t = createTranslator(locale);
   const browseCalculatorsHref = getLocalizedPathname("/tools", locale);
-  const profitMarginHref = getLocalizedPathname("/tools/profit-margin", locale);
+  const tdeeHref = getLocalizedPathname("/tools/tdee-calculator", locale);
 
   const featuredTools = [
     { title: "Profit Margin", href: "/tools/profit-margin", description: "See how much profit you keep after costs.", slug: "profit-margin" },
@@ -79,10 +79,10 @@ export default async function HomePage() {
                   {t("home.browseCalculators")}
                 </Link>
                 <Link
-                  href={profitMarginHref}
+                  href={tdeeHref}
                   className="inline-flex rounded-full border border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-2.5 text-sm font-semibold text-[color:var(--foreground)] transition-colors hover:bg-[color:var(--surface-soft)] sm:px-5 sm:py-3"
                 >
-                  {t("home.openProfitMargin")}
+                  {t("home.openTdee")}
                 </Link>
               </div>
             </div>
