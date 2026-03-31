@@ -9,7 +9,7 @@ import { createTranslator, getLocalizedPathname, translateText } from "@/src/i18
 import { getRequestLocale } from "@/src/i18n/server";
 
 export async function generateMetadata() {
-  const locale = await getRequestLocale();
+  const locale = await getRequestLocale( );
   const t = createTranslator(locale);
 
   return createPageMetadata(
@@ -94,7 +94,7 @@ export default async function HomePage() {
         <section className="grid gap-5 lg:grid-cols-[0.88fr_1.12fr] xl:grid-cols-[0.84fr_1.16fr]">
           <div className="rounded-[1.85rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-6 shadow-[0_20px_54px_rgba(34,24,12,0.10)] backdrop-blur sm:p-7 lg:rounded-[2.1rem] lg:p-9">
             <p className="text-xs uppercase tracking-[0.24em] text-[color:var(--accent)] sm:text-sm">{t("home.whyPeopleUseThis")}</p>
-            <h2 className="mt-2 w-full max-w-none break-words text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
+            <h2 className="mt-2 w-full max-w-none break-words text-2xl font-semibold tracking-tight sm:text-3xl">
               {t("home.whyTitle")}
             </h2>
             <p className="mt-3 w-full max-w-none break-words text-sm leading-7 text-[color:var(--muted)] sm:text-base">
@@ -130,7 +130,7 @@ export default async function HomePage() {
           <div className="grid gap-5 lg:grid-cols-[1fr_1fr]">
             <div>
               <p className="text-xs uppercase tracking-[0.24em] text-[color:var(--accent)] sm:text-sm">{t("home.whatToExpect")}</p>
-              <h2 className="mt-2 text-balance text-2xl font-semibold tracking-tight sm:text-3xl">{t("home.whatToExpectTitle")}</h2>
+              <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">{t("home.whatToExpectTitle")}</h2>
               <p className="mt-3 break-words text-sm leading-7 text-[color:var(--muted)] sm:text-base">
                 {t("home.whatToExpectDescription")}
               </p>
