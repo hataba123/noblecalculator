@@ -8,7 +8,7 @@ type CalculatorShellProps = {
 
 export function CalculatorShell({ title, description, children }: CalculatorShellProps) {
   return (
-    <section className="min-w-0 rounded-[1.75rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-4 shadow-[0_16px_40px_rgba(34,24,12,0.08)] backdrop-blur sm:p-6 lg:rounded-[2rem] lg:p-8">
+    <section className="min-w-0 rounded-[1.1rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-4 shadow-[0_16px_40px_rgba(34,24,12,0.08)] backdrop-blur sm:p-6 lg:rounded-[1.25rem] lg:p-8">
       {/* Shared shell keeps every calculator page visually consistent without coupling the tool logic. */}
       <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div className="w-full min-w-0 space-y-3 lg:flex-1">

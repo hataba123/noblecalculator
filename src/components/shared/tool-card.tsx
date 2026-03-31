@@ -20,7 +20,7 @@ export function ToolCard({ title, description, href, slug, variant = "light" }: 
     <article
       data-slug={slug}
       className={[
-        "group flex h-full min-w-0 flex-col rounded-[1.25rem] border p-3 shadow-[0_10px_20px_rgba(34,24,12,0.08)] transition-transform duration-200 hover:-translate-y-1 sm:p-4",
+        "group flex h-full min-w-0 flex-col rounded-[0.9rem] border p-3 shadow-[0_10px_20px_rgba(34,24,12,0.08)] transition-transform duration-200 hover:-translate-y-1 sm:p-4",
         isDark
           ? "border-[color:var(--border)] bg-[color:var(--surface-strong)] text-white shadow-[0_18px_48px_rgba(34,24,12,0.12)]"
           : "border-[color:var(--border)] bg-[color:var(--surface)] text-[color:var(--foreground)] backdrop-blur",

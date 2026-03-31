@@ -59,7 +59,7 @@ export default async function HomePage() {
     <main className="min-h-screen px-3 py-4 text-[color:var(--foreground)] sm:px-6 sm:py-6 lg:px-8 xl:px-10">
       <PageStructuredData kind="home" title={siteConfig.name} description={t("site.description")} pathname={getLocalizedPathname("/", locale)} />
       <div className="mx-auto flex w-full max-w-[90rem] flex-col gap-6 sm:gap-8">
-        <header className="rounded-[1.75rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-5 shadow-[0_18px_48px_rgba(34,24,12,0.08)] backdrop-blur sm:p-6 lg:rounded-[2rem] lg:p-8">
+        <header className="rounded-[1.1rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-5 shadow-[0_18px_48px_rgba(34,24,12,0.08)] backdrop-blur sm:p-6 lg:rounded-[1.25rem] lg:p-8">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div className="w-full min-w-0 space-y-4 lg:flex-1">
               <div className="space-y-3">
@@ -92,7 +92,7 @@ export default async function HomePage() {
         <HomeCalculator />
 
               <section className="grid items-stretch gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] xl:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)]">
-        <div className="h-full rounded-[1.9rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-6 shadow-[0_20px_54px_rgba(34,24,12,0.10)] backdrop-blur sm:p-7 lg:rounded-[2.1rem] lg:p-8 xl:p-9">
+        <div className="h-full rounded-[1.15rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-6 shadow-[0_20px_54px_rgba(34,24,12,0.10)] backdrop-blur sm:p-7 lg:rounded-[1.25rem] lg:p-8 xl:p-9">
           <p className="text-xs uppercase tracking-[0.24em] text-[color:var(--accent)] sm:text-sm">
             {t("home.whyPeopleUseThis")}
           </p>
@@ -106,16 +106,16 @@ export default async function HomePage() {
           </p>
 
           <div className="mt-5 grid gap-3 text-sm text-[color:var(--muted)] sm:grid-cols-2">
-            <div className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
+            <div className="rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
               {t("home.whyCardOne")}
             </div>
-            <div className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
+            <div className="rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
               {t("home.whyCardTwo")}
             </div>
           </div>
         </div>
 
-        <div className="h-full rounded-[1.9rem] border border-[color:var(--border)] bg-[color:var(--accent-soft)] p-6 text-[color:var(--foreground)] shadow-[0_20px_54px_rgba(34,24,12,0.13)] sm:p-7 lg:rounded-[2.1rem] lg:p-8 xl:p-9">
+        <div className="h-full rounded-[1.15rem] border border-[color:var(--border)] bg-[color:var(--accent-soft)] p-6 text-[color:var(--foreground)] shadow-[0_20px_54px_rgba(34,24,12,0.13)] sm:p-7 lg:rounded-[1.25rem] lg:p-8 xl:p-9">
           <p className="text-xs uppercase tracking-[0.24em] text-[color:var(--accent)] sm:text-sm">
             {t("home.goodFor")}
           </p>
@@ -124,7 +124,7 @@ export default async function HomePage() {
             {goodForItems.map((item) => (
               <li
                 key={item}
-                className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-3 text-sm text-[color:var(--foreground)]"
+                className="rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-3 text-sm text-[color:var(--foreground)]"
               >
                 {item}
               </li>
@@ -141,7 +141,7 @@ export default async function HomePage() {
           </div>
         </section>
 
-        <section className="rounded-[1.75rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-5 shadow-[0_18px_48px_rgba(34,24,12,0.08)] backdrop-blur sm:p-6 lg:rounded-[2rem] lg:p-8">
+        <section className="rounded-[1.1rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-5 shadow-[0_18px_48px_rgba(34,24,12,0.08)] backdrop-blur sm:p-6 lg:rounded-[1.25rem] lg:p-8">
           <div className="grid gap-5 lg:grid-cols-[1fr_1fr]">
             <div>
               <p className="text-xs uppercase tracking-[0.24em] text-[color:var(--accent)] sm:text-sm">{t("home.whatToExpect")}</p>
@@ -152,7 +152,7 @@ export default async function HomePage() {
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
               {whatToExpectCards.map((item) => (
-                <div key={item} className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4 text-sm text-[color:var(--muted)]">
+                <div key={item} className="rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4 text-sm text-[color:var(--muted)]">
                   {item}
                 </div>
               ))}

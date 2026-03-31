@@ -39,7 +39,7 @@ export default async function ToolsPage() {
         }))}
       />
       <div className="mx-auto flex w-full max-w-[90rem] flex-col gap-6 sm:gap-8">
-        <section className="rounded-[1.75rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-5 shadow-[0_18px_48px_rgba(34,24,12,0.08)] backdrop-blur sm:p-6 lg:rounded-[2rem] lg:p-8">
+        <section className="rounded-[1.1rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-5 shadow-[0_18px_48px_rgba(34,24,12,0.08)] backdrop-blur sm:p-6 lg:rounded-[1.25rem] lg:p-8">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div className="w-full min-w-0 space-y-3 lg:flex-1">
               <span className="inline-flex w-fit rounded-full border border-[color:var(--border)] bg-[color:var(--surface-soft)] px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[color:var(--muted-strong)] sm:text-xs">
@@ -61,7 +61,7 @@ export default async function ToolsPage() {
 
         <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {[0, 1, 2, 3].map((index) => (
-            <div key={index} className="rounded-[1.35rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-4 text-sm text-[color:var(--muted)] shadow-[0_14px_32px_rgba(34,24,12,0.06)] backdrop-blur">
+            <div key={index} className="rounded-[0.9rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-4 text-sm text-[color:var(--muted)] shadow-[0_14px_32px_rgba(34,24,12,0.06)] backdrop-blur">
               {t(`tools.cards.${index}`)}
             </div>
           ))}
