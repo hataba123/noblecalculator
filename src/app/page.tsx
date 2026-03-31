@@ -38,7 +38,7 @@ export default function HomePage() {
                 </Link>
                 <Link
                   href="/tools/profit-margin"
-                  className="inline-flex rounded-full border border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-2.5 text-sm font-semibold text-[color:var(--foreground)] transition-colors hover:bg-[color:var(--surface-soft)] sm:px-5 sm:py-3"
+                  className="inline-flex rounded-full border border-[color:var(--border)] bg-[color:var(--accent-strong)] px-4 py-2.5 text-sm font-semibold text-[color:var(--background)] transition-colors hover:bg-[color:var(--accent)] sm:px-5 sm:py-3"
                 >
                   Open Profit Margin
                 </Link>
