@@ -91,6 +91,15 @@ a {
   text-decoration: none;
 }
 
+.tool-card-open-btn {
+  color: var(--background);
+}
+
+html[data-theme="dark"] .tool-card-open-btn {
+  color: #000000 !important;
+}
+
+
 .app-logo-badge {
   color: #ffffff;
 }
