@@ -5,24 +5,23 @@ import { tools } from "@/src/config/tools";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url.replace(/\/$/, "");
-  const now = new Date();
 
   return [
     {
       url: `${baseUrl}/`,
-      lastModified: now,
+      lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },
     {
       url: `${baseUrl}/tools`,
-      lastModified: now,
+      lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
     },
     ...tools.map((tool) => ({
       url: `${baseUrl}/tools/${tool.slug}`,
-      lastModified: now,
+      lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.8,
     })),
