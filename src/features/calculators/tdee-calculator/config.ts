@@ -10,6 +10,7 @@ export const tdeeConfig = {
     weightValue: 70,
     heightValue: 175,
     heightInches: 0,
+    bodyFatPercent: 20,
     activityLevel: "sedentary",
     goalMode: "maintain",
   } satisfies TdeeInput,

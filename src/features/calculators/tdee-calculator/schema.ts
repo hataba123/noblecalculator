@@ -6,7 +6,12 @@ export type TdeeActivityLevel = "sedentary" | "lightly-active" | "moderately-act
 
 export type TdeeGoalMode = "maintain" | "lose" | "gain";
 
-export type TdeeEquation = "mifflin-st-jeor" | "revised-harris-benedict";
+export type TdeeEquation =
+  | "mifflin-st-jeor"
+  | "revised-harris-benedict"
+  | "cunningham"
+  | "katch-mcardle"
+  | "schofield-who";
 
 export type TdeeInput = {
   unitSystem: TdeeUnitSystem;
@@ -16,6 +21,7 @@ export type TdeeInput = {
   weightValue: number;
   heightValue: number;
   heightInches: number;
+  bodyFatPercent: number;
   activityLevel: TdeeActivityLevel;
   goalMode: TdeeGoalMode;
 };

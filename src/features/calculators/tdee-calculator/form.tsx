@@ -4,7 +4,7 @@ import { useLanguage } from "@/src/components/shared/language-provider";
 import { translateText } from "@/src/i18n";
 
 import { NumberField } from "../shared/number-field";
-import { convertImperialToMetricInput, convertMetricToImperialInput, tdeeActivityOptions, tdeeEquationOptions, tdeeGoalOptions, tdeeSexOptions } from "./formula";
+import { convertImperialToMetricInput, convertMetricToImperialInput, equationNeedsBodyFatPercent, tdeeActivityOptions, tdeeEquationOptions, tdeeGoalOptions, tdeeSexOptions } from "./formula";
 import type { TdeeActivityLevel, TdeeEquation, TdeeGoalMode, TdeeInput, TdeeSex, TdeeUnitSystem } from "./schema";
 
 type TdeeFormProps = {
@@ -87,6 +87,11 @@ export function TdeeForm({ value, onChange }: TdeeFormProps) {
             />
           ))}
         </div>
+        {equationNeedsBodyFatPercent(value.equationUsed) ? (
+          <p className="text-xs leading-5 text-[color:var(--muted)]">
+            {translateText(locale, "This equation uses body fat percentage to estimate lean body mass.")}
+          </p>
+        ) : null}
       </div>
 
       <div className="space-y-2">
@@ -135,6 +140,19 @@ export function TdeeForm({ value, onChange }: TdeeFormProps) {
           helpText="Enter an adult age in years."
         />
       </div>
+
+      {equationNeedsBodyFatPercent(value.equationUsed) ? (
+        <NumberField
+          label={translateText(locale, "Body fat %")}
+          value={value.bodyFatPercent}
+          onChange={(bodyFatPercent) => onChange({ ...value, bodyFatPercent })}
+          placeholder="20"
+          min={0}
+          max={70}
+          step={0.1}
+          helpText={translateText(locale, "Used to estimate lean body mass for this equation.")}
+        />
+      ) : null}
 
       <div className={getUnitGridClassName(value.unitSystem)}>
         <NumberField

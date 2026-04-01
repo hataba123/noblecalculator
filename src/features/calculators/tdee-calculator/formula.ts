@@ -15,6 +15,21 @@ export const tdeeEquationOptions: Array<{
     label: "Revised Harris-Benedict",
     description: "A classic reference formula used by many calculators.",
   },
+  {
+    value: "cunningham",
+    label: "Cunningham",
+    description: "Uses lean body mass for a body-composition-based estimate.",
+  },
+  {
+    value: "katch-mcardle",
+    label: "Katch-McArdle",
+    description: "Uses lean body mass and body fat percentage.",
+  },
+  {
+    value: "schofield-who",
+    label: "Schofield / WHO",
+    description: "Uses age bands and body weight for a reference estimate.",
+  },
 ];
 
 export const tdeeSexOptions = [
@@ -56,6 +71,15 @@ function getEquationLabel(equationUsed: TdeeEquation) {
   return tdeeEquationOptions.find((option) => option.value === equationUsed)?.label ?? tdeeEquationOptions[0].label;
 }
 
+export function equationNeedsBodyFatPercent(equationUsed: TdeeEquation) {
+  return equationUsed === "cunningham" || equationUsed === "katch-mcardle";
+}
+
+function getLeanBodyMassKg(weightKg: number, bodyFatPercent: number) {
+  const clampedBodyFatPercent = Math.min(Math.max(bodyFatPercent, 0), 70);
+  return weightKg * (1 - clampedBodyFatPercent / 100);
+}
+
 function getGoalTargetLabel(goalMode: TdeeGoalMode) {
   switch (goalMode) {
     case "lose":
@@ -68,12 +92,47 @@ function getGoalTargetLabel(goalMode: TdeeGoalMode) {
   }
 }
 
-function calculateRestingCalories({ equationUsed, sex, ageYears, weightValue, heightValue, heightInches, unitSystem }: TdeeInput) {
+function calculateRestingCalories({ equationUsed, sex, ageYears, weightValue, heightValue, heightInches, bodyFatPercent, unitSystem }: TdeeInput) {
   const weightKg = unitSystem === "imperial" ? weightValue / poundsPerKilogram : weightValue;
   const heightCm = unitSystem === "imperial" ? (heightValue * 12 + heightInches) * centimetersPerInch : heightValue;
+  const normalizedBodyFatPercent = Number.isFinite(bodyFatPercent) ? bodyFatPercent : 20;
 
   if (ageYears <= 0 || weightKg <= 0 || heightCm <= 0) {
     return 0;
+  }
+
+  if (equationUsed === "cunningham") {
+    const leanBodyMassKg = getLeanBodyMassKg(weightKg, normalizedBodyFatPercent);
+    return 500 + 22 * leanBodyMassKg;
+  }
+
+  if (equationUsed === "katch-mcardle") {
+    const leanBodyMassKg = getLeanBodyMassKg(weightKg, normalizedBodyFatPercent);
+    return 370 + 21.6 * leanBodyMassKg;
+  }
+
+  if (equationUsed === "schofield-who") {
+    if (sex === "male") {
+      if (ageYears <= 30) {
+        return 15.057 * weightKg + 692.2;
+      }
+
+      if (ageYears <= 60) {
+        return 11.472 * weightKg + 873.1;
+      }
+
+      return 11.711 * weightKg + 587.7;
+    }
+
+    if (ageYears <= 30) {
+      return 14.818 * weightKg + 486.6;
+    }
+
+    if (ageYears <= 60) {
+      return 8.126 * weightKg + 845.6;
+    }
+
+    return 9.082 * weightKg + 658.5;
   }
 
   if (equationUsed === "revised-harris-benedict") {

@@ -1,7 +1,7 @@
 import type { CalculatorSeoContent } from "../shared/types";
 
 export const tdeeSeoContent: CalculatorSeoContent = {
-  metaDescription: "Estimate adult calorie needs with a simple TDEE calculator and switch between common resting-calorie equations.",
+  metaDescription: "Estimate adult calorie needs with a simple TDEE calculator and compare several common resting-calorie equations.",
   keywords: ["TDEE calculator", "adult calorie calculator", "BMR calculator", "calorie target calculator"],
   intro: "Use this when you want a practical estimate of resting calories, maintenance calories, and a starting point for cutting or gaining.",
   formulaTitle: "TDEE formula",

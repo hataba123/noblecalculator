@@ -20,7 +20,7 @@ export function TdeeCalculator() {
   return (
     <SupportToolShell
       title={tdeeConfig.title}
-      description={translateText(locale, "Estimate adult calorie needs with a simple TDEE calculator and choose from more than one equation.")}
+      description={translateText(locale, "Estimate adult calorie needs with a simple TDEE calculator and compare several common equations.")}
       resultTitle={translateText(locale, "Daily calorie targets")}
       resultDescription={translateText(locale, "See your resting calories, TDEE, and calorie targets side by side.")}
       inputs={<TdeeForm value={value} onChange={setValue} />}
