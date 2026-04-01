@@ -1,11 +1,11 @@
 import type { CalculatorSeoContent } from "../shared/types";
 
 export const tdeeSeoContent: CalculatorSeoContent = {
-  metaDescription: "Estimate adult calorie needs with a simple TDEE calculator based on Mifflin-St. Jeor and activity multipliers.",
+  metaDescription: "Estimate adult calorie needs with a simple TDEE calculator and switch between common resting-calorie equations.",
   keywords: ["TDEE calculator", "adult calorie calculator", "BMR calculator", "calorie target calculator"],
   intro: "Use this when you want a practical estimate of resting calories, maintenance calories, and a starting point for cutting or gaining.",
   formulaTitle: "TDEE formula",
-  formula: "BMR = Mifflin-St. Jeor resting calories. TDEE = BMR x activity multiplier.",
+  formula: "Choose a resting-calorie equation, then TDEE = BMR x activity multiplier.",
   formulaNote: "This is an estimate for adults, not a medical prescription. Real energy needs can vary with age, body composition, and health status.",
   whenToUse: "Use it when planning a calorie target for maintenance, gradual fat loss, or moderate weight gain.",
   examples: [

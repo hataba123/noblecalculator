@@ -17,6 +17,7 @@ describe("health calculators", () => {
   it("calculates tdee and calorie targets", () => {
     const result = calculateTdee({
       unitSystem: "metric",
+      equationUsed: "mifflin-st-jeor",
       sex: "male",
       ageYears: 30,
       weightValue: 70,
@@ -34,5 +35,24 @@ describe("health calculators", () => {
     expect(result.mildCutKcal).toBeCloseTo(2255.5625, 4);
     expect(result.standardCutKcal).toBeCloseTo(2055.5625, 4);
     expect(result.gainKcal).toBeCloseTo(2805.5625, 4);
+  });
+
+  it("switches to revised harris-benedict", () => {
+    const result = calculateTdee({
+      unitSystem: "metric",
+      equationUsed: "revised-harris-benedict",
+      sex: "male",
+      ageYears: 30,
+      weightValue: 70,
+      heightValue: 175,
+      heightInches: 0,
+      activityLevel: "moderately-active",
+      goalMode: "maintain",
+    });
+
+    expect(result.equationUsed).toBe("Revised Harris-Benedict");
+    expect(result.bmrOrReeKcal).toBeCloseTo(1695.667, 3);
+    expect(result.tdeeKcal).toBeCloseTo(2628.2839, 4);
+    expect(result.targetKcal).toBeCloseTo(2628.2839, 4);
   });
 });

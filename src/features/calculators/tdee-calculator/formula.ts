@@ -1,6 +1,21 @@
-import type { TdeeActivityLevel, TdeeGoalMode, TdeeInput, TdeeResult } from "./schema";
+import type { TdeeActivityLevel, TdeeEquation, TdeeGoalMode, TdeeInput, TdeeResult } from "./schema";
 
-export const tdeeEquationUsed = "Mifflin–St. Jeor";
+export const tdeeEquationOptions: Array<{
+  value: TdeeEquation;
+  label: string;
+  description: string;
+}> = [
+  {
+    value: "mifflin-st-jeor",
+    label: "Mifflin–St. Jeor",
+    description: "A modern, practical default for most adults.",
+  },
+  {
+    value: "revised-harris-benedict",
+    label: "Revised Harris-Benedict",
+    description: "A classic reference formula used by many calculators.",
+  },
+];
 
 export const tdeeSexOptions = [
   { value: "male" as const, label: "Male", description: "Add 5 to the resting calorie formula." },
@@ -37,6 +52,10 @@ function getActivityMultiplier(activityLevel: TdeeActivityLevel) {
   return tdeeActivityOptions.find((option) => option.value === activityLevel)?.multiplier ?? 1.2;
 }
 
+function getEquationLabel(equationUsed: TdeeEquation) {
+  return tdeeEquationOptions.find((option) => option.value === equationUsed)?.label ?? tdeeEquationOptions[0].label;
+}
+
 function getGoalTargetLabel(goalMode: TdeeGoalMode) {
   switch (goalMode) {
     case "lose":
@@ -49,12 +68,20 @@ function getGoalTargetLabel(goalMode: TdeeGoalMode) {
   }
 }
 
-function calculateRestingCalories({ sex, ageYears, weightValue, heightValue, heightInches, unitSystem }: TdeeInput) {
+function calculateRestingCalories({ equationUsed, sex, ageYears, weightValue, heightValue, heightInches, unitSystem }: TdeeInput) {
   const weightKg = unitSystem === "imperial" ? weightValue / poundsPerKilogram : weightValue;
   const heightCm = unitSystem === "imperial" ? (heightValue * 12 + heightInches) * centimetersPerInch : heightValue;
 
   if (ageYears <= 0 || weightKg <= 0 || heightCm <= 0) {
     return 0;
+  }
+
+  if (equationUsed === "revised-harris-benedict") {
+    if (sex === "male") {
+      return 88.362 + 13.397 * weightKg + 4.799 * heightCm - 5.677 * ageYears;
+    }
+
+    return 447.593 + 9.247 * weightKg + 3.098 * heightCm - 4.33 * ageYears;
   }
 
   const sexAdjustment = sex === "male" ? 5 : -161;
@@ -82,7 +109,7 @@ export function calculateTdee(input: TdeeInput): TdeeResult {
   }
 
   return {
-    equationUsed: tdeeEquationUsed,
+    equationUsed: getEquationLabel(input.equationUsed),
     bmrOrReeKcal,
     tdeeKcal,
     targetKcal,

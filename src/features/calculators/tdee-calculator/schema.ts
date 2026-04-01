@@ -6,8 +6,11 @@ export type TdeeActivityLevel = "sedentary" | "lightly-active" | "moderately-act
 
 export type TdeeGoalMode = "maintain" | "lose" | "gain";
 
+export type TdeeEquation = "mifflin-st-jeor" | "revised-harris-benedict";
+
 export type TdeeInput = {
   unitSystem: TdeeUnitSystem;
+  equationUsed: TdeeEquation;
   sex: TdeeSex;
   ageYears: number;
   weightValue: number;

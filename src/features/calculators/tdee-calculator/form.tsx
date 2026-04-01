@@ -4,8 +4,8 @@ import { useLanguage } from "@/src/components/shared/language-provider";
 import { translateText } from "@/src/i18n";
 
 import { NumberField } from "../shared/number-field";
-import { convertImperialToMetricInput, convertMetricToImperialInput, tdeeActivityOptions, tdeeGoalOptions, tdeeSexOptions } from "./formula";
-import type { TdeeActivityLevel, TdeeGoalMode, TdeeInput, TdeeSex, TdeeUnitSystem } from "./schema";
+import { convertImperialToMetricInput, convertMetricToImperialInput, tdeeActivityOptions, tdeeEquationOptions, tdeeGoalOptions, tdeeSexOptions } from "./formula";
+import type { TdeeActivityLevel, TdeeEquation, TdeeGoalMode, TdeeInput, TdeeSex, TdeeUnitSystem } from "./schema";
 
 type TdeeFormProps = {
   value: TdeeInput;
@@ -56,6 +56,10 @@ export function TdeeForm({ value, onChange }: TdeeFormProps) {
     onChange(unitSystem === "imperial" ? convertMetricToImperialInput(value) : convertImperialToMetricInput(value));
   };
 
+  const setEquationUsed = (equationUsed: TdeeEquation) => {
+    onChange({ ...value, equationUsed });
+  };
+
   const setSex = (sex: TdeeSex) => {
     onChange({ ...value, sex });
   };
@@ -70,6 +74,21 @@ export function TdeeForm({ value, onChange }: TdeeFormProps) {
 
   return (
     <form className="grid gap-5" onSubmit={(event) => event.preventDefault()}>
+      <div className="space-y-2">
+        <SectionTitle>{translateText(locale, "Equation")}</SectionTitle>
+        <div className="grid gap-2 sm:grid-cols-2">
+          {tdeeEquationOptions.map((option) => (
+            <ChoiceButton
+              key={option.value}
+              selected={value.equationUsed === option.value}
+              title={translateText(locale, option.label)}
+              description={translateText(locale, option.description)}
+              onClick={() => setEquationUsed(option.value)}
+            />
+          ))}
+        </div>
+      </div>
+
       <div className="space-y-2">
         <SectionTitle>{translateText(locale, "Unit system")}</SectionTitle>
         <div className="grid grid-cols-2 gap-2 rounded-[1rem] border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-1">

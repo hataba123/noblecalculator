@@ -4,6 +4,7 @@ export const tdeeConfig = {
   title: "TDEE Calculator",
   defaultValue: {
     unitSystem: "metric",
+    equationUsed: "mifflin-st-jeor",
     sex: "male",
     ageYears: 30,
     weightValue: 70,
