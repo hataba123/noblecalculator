@@ -1,4 +1,4 @@
-export const supportedLocales = ["en", "es"] as const;
+export const supportedLocales = ["en", "es", "de"] as const;
 
 export type Locale = (typeof supportedLocales)[number];
 
@@ -369,6 +369,188 @@ const uiMessages = {
       exampleSnapshotBadge: "Vista previa del ejemplo",
     },
   },
+  de: {
+    brand: "Noble Calculator",
+    site: {
+      description: "Entdecke einfache, leicht zu nutzende Rechner für Finanzen, Business und den Alltag.",
+    },
+    navigation: {
+      home: "Start",
+      calculators: "Rechner",
+      language: "Sprache",
+      english: "Englisch",
+      spanish: "Spanisch",
+      german: "Deutsch",
+    },
+    footer: {
+      tagline: "Diese Website ist für schnelle Berechnungen im Alltag gebaut.",
+      copyright: "Alle Rechte vorbehalten.",
+    },
+    home: {
+      heroKicker: "Praktische Rechner für tägliche Aufgaben.",
+      heroDescription: "Wähle einen Rechner, gib ein paar Zahlen ein und erhalte sofort ein klares Ergebnis.",
+      browseCalculators: "Rechner ansehen",
+      openTdee: "TDEE öffnen",
+      whyPeopleUseThis: "Warum Menschen diese Rechner nutzen",
+      whyTitle: "Schnelle Antworten für Finanzen, Gesundheit und tägliche Planung.",
+      whyDescription:
+        "Jeder Rechner liefert dir einen klaren Ausgangspunkt mit einfachen Schritten, leicht verständlichen Erklärungen und Ergebnissen, die du sofort nutzen kannst.",
+      whyCardOne: "Nützlich, wenn du vor einer Entscheidung schnell gegenprüfen willst.",
+      whyCardTwo: "Wechsle zwischen Tools, ohne den Überblick zu verlieren oder Zahlen neu einzugeben.",
+      goodFor: "Hilfreich für",
+      goodForItems: [
+        "Freelance- und Kleinunternehmensarbeit",
+        "Rechnungen, Steuern und Budgetplanung",
+        "Gesundheit und Kalorienplanung",
+        "Werbebudget, ROI und Website-Schätzungen",
+      ],
+      featuredTools: [
+        { title: "Profit Margin", description: "Sieh, wie viel Gewinn nach den Kosten übrig bleibt." },
+        { title: "Markup", description: "Finde einen Verkaufspreis aus Kosten und gewünschtem Aufschlag." },
+        { title: "Freelance Hourly Rate", description: "Lege einen Stundensatz fest, der zu deinem Einkommensziel passt." },
+        { title: "VAT Calculator", description: "Addiere die Mehrwertsteuer zu einem Preis oder rechne sie heraus." },
+      ],
+      whatToExpect: "Was dich erwartet",
+      whatToExpectTitle: "Klare Aufschlüsselungen, nicht nur eine Zahl.",
+      whatToExpectDescription:
+        "Jeder Rechner zeigt das Endergebnis und die Werte dahinter, damit du das Resultat verstehst und nicht nur kopierst.",
+      whatToExpectCards: [
+        "Ergebnisse aktualisieren sich sofort beim Tippen",
+        "Einfache Sprache für alle, nicht nur für Zahlenmenschen",
+        "Sieht auf Smartphone, Tablet und Desktop gut aus",
+        "Gleicher sauberer Stil auf jeder Rechnerseite",
+      ],
+    },
+    tools: {
+      badge: "Rechner-Hub",
+      title: "Alle Rechner an einem Ort.",
+      description: "Wähle einen Rechner und starte mit einem vorausgefüllten Beispiel.",
+      supportingDescription:
+        "Nutze den Hub, wenn du schnell Preis-, Steuer-, Gewinn- und Marketing-Entscheidungen treffen willst, ohne dich durch Menüs zu klicken.",
+      searchLabel: "Rechner suchen",
+      searchPlaceholder: "Nach Rechnername oder Beschreibung suchen",
+      searchResults: "Ergebnisse gefunden",
+      noResultsTitle: "Keine Rechner gefunden",
+      noResultsDescription: "Versuche ein anderes Wort oder lösche die Suche, um wieder alle Rechner zu sehen.",
+      clearSearch: "Suche löschen",
+      open: "Öffnen",
+      groupCount: "Rechner",
+      groups: {
+        health: {
+          title: "Gesundheit und Wohlbefinden",
+          description: "Verfolge Körperwerte, Kalorienbedarf und gesunde Bereiche, bevor du ein Fitnessziel festlegst.",
+        },
+        pricing: {
+          title: "Preisgestaltung und Planung",
+          description: "Lege Preise, Margen und Budgets fest, bevor die Arbeit beginnt.",
+        },
+        billing: {
+          title: "Abrechnung, Steuern und Gebühren",
+          description: "Verwalte Rechnungen, Steuern und Zahlungskosten an einem Ort.",
+        },
+        marketing: {
+          title: "Marketing und Wachstum",
+          description: "Miss Anzeigenleistung, Rendite und Akquisitionskosten.",
+        },
+        payments: {
+          title: "Zahlungen und Überweisungen",
+          description: "Prüfe Überweisungs- und Bearbeitungsgebühren, bevor Geld bewegt wird.",
+        },
+      },
+      cards: [
+        "Preis- und Margenprüfungen",
+        "Steuer- und Rechnungsschätzungen",
+        "Marketing-Kennzahlen",
+        "Freelance- und Projektplanung",
+      ],
+    },
+    calculator: {
+      inputs: "Eingaben",
+      results: "Ergebnisse",
+      badge: "Rechner",
+      quickTake: "Kurzüberblick",
+      quickRead: "Kurz vor dem Rechnen",
+      exampleSnapshot: "Beispiel-Snapshot",
+      formula: "Formel",
+      examples: "Beispiele",
+      whenToUse: "Wann verwenden",
+      commonMistakes: "Häufige Fehler",
+      faq: "FAQ",
+      nextStep: "Nächster Schritt",
+      onThisPage: "Auf dieser Seite",
+      formulaSummary: "2-3 echte Szenarien, damit das Ergebnis leichter nachvollziehbar ist.",
+      faqSummary: "Klare Antworten auf die Fragen, die man meist zuerst stellt.",
+    },
+    calculatorShell: {
+      quickCalculatorTitle: "Schnellrechner",
+      quickCalculatorDescription:
+        "Ein vollwertiger Rechner mit Speicher, Live-Vorschau und einem Tastenfeld, das sich wie ein Desktop-Rechner anfühlt.",
+      deskCalculator: "Desktop-Rechner",
+      mode: "Modus",
+      basic: "Einfach",
+      scientific: "Wissenschaftlich",
+      angle: "Winkel",
+      deg: "Grad",
+      rad: "Rad",
+      expression: "Ausdruck",
+      editableExpression: "Bearbeitbarer Rechnerausdruck",
+      typeExpression: "Gib einen Ausdruck ein oder nutze das Tastenfeld",
+      result: "Ergebnis",
+      useCurrentAnswer: "Aktuelle Antwort im Ausdruck verwenden",
+      memory: "Speicher",
+      memoryHint: "Gespeichert über M+, M-, MC und MR.",
+      currentAnswer: "Aktuelle Antwort",
+      currentAnswerHint: "Ändert sich, während du den Ausdruck aufbaust.",
+      recentCalculations: "Letzte Berechnungen",
+      recentHint: "Probiere 12 × 8 + 6, um den Verlauf zu sehen.",
+      invalidExpression: "Ungültiger Ausdruck",
+    },
+    supportTools: {
+      inputs: "Eingaben",
+      results: "Ergebnisse",
+    },
+    theme: {
+      light: "Heller Modus",
+      dark: "Dunkler Modus",
+      switchToLight: "Zum hellen Modus wechseln",
+      switchToDark: "Zum dunklen Modus wechseln",
+    },
+    seoSections: {
+      quickTake: "Kurzüberblick",
+      quickReadBefore: "Kurz vor dem Rechnen",
+      exampleSnapshot: "Beispiel-Snapshot",
+      formula: "Formel",
+      examples: "Beispiele",
+      whenToUse: "Wann verwenden",
+      commonMistakes: "Häufige Fehler",
+      faq: "FAQ",
+      nextStep: "Nächster Schritt",
+      formulaSummary: "2-3 echte Szenarien, damit das Ergebnis leichter nachvollziehbar ist.",
+      faqSummary: "Klare Antworten auf die Fragen, die man meist zuerst stellt.",
+      onThisPage: "Auf dieser Seite",
+      moneyStays: "Geld bleibt",
+      target: "Ziel",
+      billable: "Abrechenbar",
+      takeHome: "Netto",
+      expensesPlusTax: "Ausgaben + Steuern",
+      grossTarget: "Bruttoziel",
+      spend: "Ausgaben",
+      revenue: "Umsatz",
+      design: "Design",
+      development: "Entwicklung",
+      content: "Inhalt",
+      lowerCost: "Niedrigere Kosten",
+      higherReturn: "Höhere Rendite",
+      returnLabel: "Rendite",
+      metricA: "Kennzahl A",
+      metricB: "Kennzahl B",
+      metricC: "Kennzahl C",
+      revenueStays: "Umsatz",
+      cost: "Kosten",
+      profit: "Gewinn",
+      exampleSnapshotBadge: "Beispiel-Snapshot",
+    },
+  },
 } as const;
 
 const stringTranslations: Record<string, string> = {
@@ -615,6 +797,60 @@ const stringTranslations: Record<string, string> = {
   "How much you add on top of cost.": "Cuánto añades por encima del costo.",
   "Total revenue before expenses.": "Ingresos totales antes de gastos.",
   "Total cost required to generate that revenue.": "Costo total necesario para generar esos ingresos.",
+};
+
+const deStringTranslations: Record<string, string> = {
+  "Profit Margin Calculator": "Gewinnmargen-Rechner",
+  "Check your body mass index and healthy weight range.": "Prüfe deinen Body-Mass-Index und den gesunden Gewichtsbereich.",
+  "TDEE Calculator": "TDEE-Rechner",
+  "Estimate adult calorie needs and daily targets.": "Schätze den Kalorienbedarf von Erwachsenen und tägliche Ziele.",
+  "See how much profit you keep after costs.": "Sieh, wie viel Gewinn nach den Kosten übrig bleibt.",
+  "Markup Calculator": "Aufschlagsrechner",
+  "Find the right selling price from your cost and target markup.": "Finde den richtigen Verkaufspreis aus deinen Kosten und dem Zielaufschlag.",
+  "Freelance Hourly Rate Calculator": "Freelance-Stundensatz-Rechner",
+  "Set an hourly rate that fits your income goal.": "Lege einen Stundensatz fest, der zu deinem Einkommensziel passt.",
+  "VAT Calculator": "Mehrwertsteuer-Rechner",
+  "Add VAT to a price or split it back out.": "Mehrwertsteuer zu einem Preis addieren oder wieder herausrechnen.",
+  "Invoice Calculator": "Rechnungsrechner",
+  "Estimate the final invoice amount before you send it.": "Schätze den endgültigen Rechnungsbetrag, bevor du sie verschickst.",
+  "International Transfer Fee Calculator": "Rechner für internationale Überweisungsgebühren",
+  "Check the real cost of sending money abroad.": "Prüfe die echten Kosten einer Auslandsüberweisung.",
+  "Break-even Calculator": "Break-even-Rechner",
+  "See how many sales you need before you cover your fixed costs.": "Sieh, wie viele Verkäufe du brauchst, bevor du deine Fixkosten deckst.",
+  "Gross to Net Calculator": "Brutto-zu-Netto-Rechner",
+  "See how much of a gross amount remains after tax.": "Sieh, wie viel eines Bruttobetrags nach Steuern übrig bleibt.",
+  "Net to Gross Calculator": "Netto-zu-Brutto-Rechner",
+  "Work backward from take-home pay to the gross amount.": "Rechne vom Netto zurück zum Bruttobetrag.",
+  "Late Payment Fee Calculator": "Rechner für Mahngebühren",
+  "Estimate the fee added when an invoice is paid late.": "Schätze die Gebühr, die anfällt, wenn eine Rechnung verspätet bezahlt wird.",
+  "Payment Processing Fee Calculator": "Zahlungsgebühren-Rechner",
+  "See what payment processors keep from each payment.": "Sieh, was Zahlungsanbieter von jeder Zahlung behalten.",
+  "ROI Calculator": "ROI-Rechner",
+  "Measure the return earned from an investment.": "Miss die Rendite einer Investition.",
+  "ROAS Calculator": "ROAS-Rechner",
+  "Check how much revenue your ad spend brings back.": "Prüfe, wie viel Umsatz dein Werbebudget zurückbringt.",
+  "Website Cost Calculator": "Website-Kosten-Rechner",
+  "Estimate the cost of designing and building a website.": "Schätze die Kosten für Design und Entwicklung einer Website.",
+  "Self-employed Tax Estimator": "Steuerschätzer für Selbstständige",
+  "Estimate how much tax to set aside from self-employed income.": "Schätze, wie viel Steuern du aus Selbstständigkeits-Einkommen zurücklegen solltest.",
+  "Utilization Rate Calculator": "Auslastungsrechner",
+  "Measure how much of your available time is billable.": "Miss, wie viel deiner verfügbaren Zeit abrechenbar ist.",
+  "Monthly Income Target Calculator": "Rechner für monatliches Einkommensziel",
+  "Find the monthly revenue you need to cover income, taxes, and expenses.": "Finde den monatlichen Umsatz, den du brauchst, um Einkommen, Steuern und Ausgaben zu decken.",
+  "CAC Calculator": "CAC-Rechner",
+  "See how much it costs to acquire one customer.": "Sieh, wie viel es kostet, einen Kunden zu gewinnen.",
+  "CPM / CPC Calculator": "CPM-/CPC-Rechner",
+  "Compare cost per thousand impressions and cost per click.": "Vergleiche Kosten pro tausend Impressionen und Kosten pro Klick.",
+  "Day Rate to Hourly Rate Calculator": "Tagessatz-zu-Stundensatz-Rechner",
+  "Convert a day rate into an hourly rate and weekly equivalent.": "Wandle einen Tagessatz in einen Stundensatz und eine wöchentliche Entsprechung um.",
+  "Profit Margin": "Gewinnmarge",
+  "Markup": "Aufschlag",
+  "Freelance Hourly Rate": "Freelance-Stundensatz",
+  "Freelance pricing": "Freelance-Preise",
+  "Invoice and tax planning": "Rechnungs- und Steuerplanung",
+  "Ad spend and ROI checks": "Werbebudget- und ROI-Prüfungen",
+  "Website budget estimates": "Website-Budget-Schätzungen",
+  "Calculator Hub": "Rechner-Hub",
 };
 
 const extraStringTranslations: Record<string, string> = {
@@ -864,6 +1100,103 @@ const extraStringTranslations: Record<string, string> = {
   "Recheck calories if your age, weight, activity, or goal changes.": "Vuelve a comprobar las calorías si cambian tu edad, peso, actividad u objetivo.",
 };
 
+const deExtraStringTranslations: Record<string, string> = {
+  "Amount you want to send before fees.": "Betrag, den du vor Gebühren senden möchtest.",
+  "International transfer fee rate.": "Gebührensatz für internationale Überweisungen.",
+  "Total campaign spend.": "Gesamtes Kampagnenbudget.",
+  "How many times the ad was shown.": "Wie oft die Anzeige eingeblendet wurde.",
+  "How many clicks the campaign generated.": "Wie viele Klicks die Kampagne erzeugt hat.",
+  "Total cost spent on marketing and sales.": "Gesamtkosten für Marketing und Vertrieb.",
+  "Customers acquired from that spend.": "Durch diese Ausgaben gewonnene Kunden.",
+  "Original invoice value.": "Ursprünglicher Rechnungswert.",
+  "Late fee rate per month.": "Mahngeldsatz pro Monat.",
+  "How many days the payment is overdue.": "Wie viele Tage die Zahlung überfällig ist.",
+  "Invoice amount before tax.": "Rechnungsbetrag vor Steuern.",
+  "Tax applied to the invoice.": "Auf die Rechnung angewendete Steuer.",
+  "Your daily charge or pay rate.": "Dein Tagessatz oder Vergütungssatz.",
+  "How many hours the day rate covers.": "Wie viele Stunden der Tagessatz abdeckt.",
+  "Time spent on layout and visual design.": "Zeit für Layout und visuelles Design.",
+  "Time spent building the site.": "Zeit für den Aufbau der Website.",
+  "Copy, images, and content work.": "Texte, Bilder und Content-Arbeiten.",
+  "Your blended hourly rate.": "Dein gemischter Stundensatz.",
+  "Hosting, plugins, domains, and other fixed costs.": "Hosting, Plugins, Domains und andere fixe Kosten.",
+  "Variable percentage charged by the processor.": "Variabler Prozentsatz, den der Anbieter berechnet.",
+  "Flat fee per transaction.": "Feste Gebühr pro Transaktion.",
+  "All working hours available in the period.": "Alle verfügbaren Arbeitsstunden im Zeitraum.",
+  "Break-even snapshot": "Break-even-Überblick",
+  "Use the contribution margin to see how many sales you need to hit break-even.": "Nutze den Deckungsbeitrag, um zu sehen, wie viele Verkäufe du für den Break-even brauchst.",
+  "Net pay breakdown": "Netto-Gehaltsaufstellung",
+  "Compare the gross amount, withheld tax, and the amount that remains.": "Vergleiche Bruttobetrag, einbehaltene Steuer und den verbleibenden Betrag.",
+  "Gross-up breakdown": "Brutto-Hochrechnung",
+  "Use this when you know the net amount and need the pre-tax figure.": "Nutze das, wenn du den Nettobetrag kennst und die Summe vor Steuern brauchst.",
+  "Advertising return": "Werbe-Rendite",
+  "Use ROAS to judge whether your ads are returning enough revenue.": "Nutze ROAS, um zu beurteilen, ob deine Anzeigen genug Umsatz zurückbringen.",
+  "Tax estimate": "Steuerschätzung",
+  "Use this to plan for income tax and self-employment tax throughout the year.": "Nutze das, um Einkommensteuer und Selbstständigensteuer über das Jahr zu planen.",
+  "See how many sales you need to cover fixed and variable costs with this break-even calculator.": "Sieh mit diesem Break-even-Rechner, wie viele Verkäufe du brauchst, um fixe und variable Kosten zu decken.",
+  "Use this calculator when you want a fast answer to a practical question: how many units, jobs, or orders do I need before the business starts paying for itself?": "Nutze diesen Rechner, wenn du schnell eine praktische Antwort brauchst: Wie viele Einheiten, Aufträge oder Bestellungen brauche ich, bis sich das Geschäft selbst trägt?",
+  "Break-even formula": "Break-even-Formel",
+  "Break-even units = Fixed costs ÷ (Selling price - Variable cost per unit). Break-even revenue = Break-even units × Selling price.": "Break-even-Einheiten = Fixkosten ÷ (Verkaufspreis - variable Kosten pro Einheit). Break-even-Umsatz = Break-even-Einheiten × Verkaufspreis.",
+  "If your selling price is too close to variable cost, the number of units you need rises quickly.": "Wenn dein Verkaufspreis zu nah an den variablen Kosten liegt, steigt die benötigte Stückzahl schnell.",
+  "Use it when you are setting a price, testing a new offer, or checking whether a month of sales can cover rent, payroll, and tools.": "Nutze ihn, wenn du einen Preis festlegst, ein neues Angebot testest oder prüfst, ob ein Verkaufsmonat Miete, Gehälter und Tools decken kann.",
+  "Need cleaner cash flow tracking?": "Brauchst du ein saubereres Cashflow-Tracking?",
+  "If you want a fuller view of invoices, expenses, and profit, QuickBooks or Xero can keep the numbers in one place.": "Wenn du einen umfassenderen Blick auf Rechnungen, Ausgaben und Gewinn willst, können QuickBooks oder Xero die Zahlen an einem Ort halten.",
+  "Revisit break-even anytime your price, supplier cost, or fixed overhead changes.": "Prüfe den Break-even erneut, wenn sich Preis, Lieferantenkosten oder fixe Gemeinkosten ändern.",
+  "See how much it costs to acquire one customer.": "Sieh, wie viel es kostet, einen Kunden zu gewinnen.",
+  "Use this calculator when you want a quick read on whether your marketing spend is efficient enough to keep growing.": "Nutze diesen Rechner, wenn du schnell prüfen willst, ob dein Marketing-Budget effizient genug ist, um weiter zu wachsen.",
+  "CAC formula": "CAC-Formel",
+  "CAC = Marketing spend ÷ New customers.": "CAC = Marketing-Budget ÷ Neue Kunden.",
+  "Lower CAC usually means you are acquiring customers more efficiently, but it still needs to be checked against revenue and lifetime value.": "Ein niedriger CAC bedeutet meist eine effizientere Kundengewinnung, muss aber trotzdem mit Umsatz und Lifetime Value abgeglichen werden.",
+  "Use it when reviewing campaign performance, comparing channels, or checking whether growth is coming at a healthy cost.": "Nutze ihn beim Bewerten von Kampagnen, beim Vergleich von Kanälen oder beim Prüfen, ob Wachstum zu gesunden Kosten kommt.",
+  "Compare CPM and CPC to understand your ad campaign efficiency.": "Vergleiche CPM und CPC, um die Effizienz deiner Werbekampagne zu verstehen.",
+  "Use this calculator when you want a clear, quick way to compare how much your ads cost per impression and per click.": "Nutze diesen Rechner, wenn du klar und schnell vergleichen willst, was deine Anzeigen pro Impression und pro Klick kosten.",
+  "CPM / CPC formula": "CPM-/CPC-Formel",
+  "CPM = Ad spend ÷ Impressions × 1,000. CPC = Ad spend ÷ Clicks. CTR = Clicks ÷ Impressions × 100.": "CPM = Werbebudget ÷ Impressionen × 1.000. CPC = Werbebudget ÷ Klicks. CTR = Klicks ÷ Impressionen × 100.",
+  "CPM tells you exposure cost. CPC tells you traffic cost. CTR shows how often people click.": "CPM zeigt die Kosten für Sichtbarkeit. CPC zeigt die Kosten für Traffic. CTR zeigt, wie oft Menschen klicken.",
+  "Use it when comparing creatives, audiences, or channels and you want the basic media numbers in one place.": "Nutze ihn, wenn du Creatives, Zielgruppen oder Kanäle vergleichst und die wichtigsten Media-Zahlen an einem Ort haben willst.",
+  "Convert a day rate into an hourly rate and weekly equivalent.": "Wandle einen Tagessatz in einen Stundensatz und eine wöchentliche Entsprechung um.",
+  "Use this calculator when a client offers a day rate and you want to see what that looks like as an hourly number.": "Nutze diesen Rechner, wenn ein Kunde einen Tagessatz anbietet und du wissen willst, wie das als Stundensatz aussieht.",
+  "Day rate to hourly rate formula": "Tagessatz-zu-Stundensatz-Formel",
+  "Hourly rate = Day rate ÷ Billable hours per day. Weekly equivalent = Day rate × 5. Monthly equivalent = Day rate × 20.": "Stundensatz = Tagessatz ÷ Abrechenbare Stunden pro Tag. Wöchentliche Entsprechung = Tagessatz × 5. Monatliche Entsprechung = Tagessatz × 20.",
+  "This makes it easier to compare a day fee with hourly work, retained work, or full-time pay.": "So lässt sich ein Tagessatz leichter mit Stundenarbeit, Retainer-Arbeit oder Vollzeitvergütung vergleichen.",
+  "Use it when comparing freelance offers, setting your own rate, or deciding whether a day rate is actually worth it.": "Nutze ihn beim Vergleich von Freelance-Angeboten, beim Festlegen deines eigenen Satzes oder wenn du prüfen willst, ob ein Tagessatz sich wirklich lohnt.",
+  "Set an hourly rate that matches your income goal.": "Lege einen Stundensatz fest, der zu deinem Einkommensziel passt.",
+  "Use this when you want a rate that can actually support your income goal instead of guessing a number that feels safe.": "Nutze das, wenn du einen Satz willst, der dein Einkommensziel wirklich tragen kann, statt nur eine Zahl zu raten, die sich sicher anfühlt.",
+  "Freelance hourly rate formula": "Formel für den Freelance-Stundensatz",
+  "Hourly rate = Target income ÷ Billable hours.": "Stundensatz = Einkommensziel ÷ Abrechenbare Stunden.",
+  "If your billable time is limited, your hourly rate has to carry the full income target.": "Wenn deine abrechenbare Zeit begrenzt ist, muss dein Stundensatz das gesamte Einkommensziel tragen.",
+  "Use it when quoting freelance work, planning a retainer, or checking whether a project will realistically pay the bills.": "Nutze ihn beim Kalkulieren von Freelance-Arbeiten, bei Retainern oder wenn du prüfen willst, ob ein Projekt realistisch die Rechnungen bezahlt.",
+  "See how much of a gross amount remains after tax.": "Sieh, wie viel eines Bruttobetrags nach Steuern übrig bleibt.",
+  "Use this when you already know the gross amount and want to see the amount that actually lands in your pocket after tax.": "Nutze das, wenn du den Bruttobetrag schon kennst und sehen willst, was nach Steuern tatsächlich bei dir ankommt.",
+  "Gross to net formula": "Brutto-zu-Netto-Formel",
+  "Tax amount = Gross amount × Tax rate. Net amount = Gross amount - Tax amount.": "Steuerbetrag = Bruttobetrag × Steuersatz. Nettobetrag = Bruttobetrag - Steuerbetrag.",
+  "It is a quick way to estimate take-home pay without opening a spreadsheet.": "So lässt sich das Netto schnell abschätzen, ohne eine Tabellenkalkulation zu öffnen.",
+  "Use it for salary planning, freelance quotes, or any situation where a tax rate reduces the final amount you keep.": "Nutze ihn für Gehaltsplanung, Freelance-Angebote oder jede Situation, in der ein Steuersatz den Betrag reduziert, den du behältst.",
+  "Measure the return earned from an investment.": "Miss die Rendite einer Investition.",
+  "Use this when you need a fast read on whether an investment produced enough return to justify the money you put in.": "Nutze das, wenn du schnell prüfen willst, ob eine Investition genug Rendite gebracht hat, um das eingesetzte Geld zu rechtfertigen.",
+  "ROI formula": "ROI-Formel",
+  "ROI = (Return amount - Investment) ÷ Investment × 100.": "ROI = (Rückflussbetrag - Investition) ÷ Investition × 100.",
+  "A positive ROI means the return beat the original spend. A negative result means the investment lost value.": "Ein positiver ROI bedeutet, dass die Rendite die ursprünglichen Kosten übertroffen hat. Ein negativer Wert bedeutet Wertverlust.",
+  "Use it for campaigns, equipment purchases, projects, or any decision where you want to compare gain against the original cost.": "Nutze ihn für Kampagnen, Gerätekäufe, Projekte oder jede Entscheidung, bei der du Gewinn gegen die ursprünglichen Kosten vergleichen willst.",
+  "Measure how much of your available time is billable.": "Miss, wie viel deiner verfügbaren Zeit abrechenbar ist.",
+  "Use this calculator when you want to know how much of your working time is actually earning money.": "Nutze diesen Rechner, wenn du wissen willst, wie viel deiner Arbeitszeit tatsächlich Geld verdient.",
+  "Utilization rate formula": "Auslastungsformel",
+  "Utilization rate = Billable hours ÷ Total available hours × 100.": "Auslastung = Abrechenbare Stunden ÷ Verfügbare Gesamtstunden × 100.",
+  "The higher the rate, the more of your time is being converted into revenue.": "Je höher die Rate, desto mehr deiner Zeit wird in Umsatz umgewandelt.",
+  "Use it when checking whether your work week has enough billable time to support your pricing and income goal.": "Nutze ihn, wenn du prüfst, ob deine Arbeitswoche genug abrechenbare Zeit hat, um Preise und Einkommensziel zu tragen.",
+  "Estimate the cost of designing, building, and launching a website.": "Schätze die Kosten für Design, Entwicklung und Launch einer Website.",
+  "Use this when you need a quick website budget that feels realistic, not just a rough guess.": "Nutze das, wenn du ein schnelles Website-Budget brauchst, das realistisch wirkt und nicht nur grob geschätzt ist.",
+  "Website cost formula": "Website-Kosten-Formel",
+  "Total cost = (Design hours + Development hours + Content hours) × Hourly rate + Fixed expenses.": "Gesamtkosten = (Design-Stunden + Entwicklungsstunden + Content-Stunden) × Stundensatz + fixe Ausgaben.",
+  "This is handy when you want to quote a client or plan your own build budget before work starts.": "Das ist praktisch, wenn du einem Kunden ein Angebot machen oder dein eigenes Build-Budget planen willst, bevor die Arbeit beginnt.",
+  "Use it when you are pricing a new site, reviewing a proposal, or checking whether the project scope still fits the budget.": "Nutze ihn, wenn du eine neue Website kalkulierst, ein Angebot prüfst oder checkst, ob der Projektumfang noch ins Budget passt.",
+  "Need cleaner invoice totals?": "Brauchst du klarere Rechnungsbeträge?",
+  "If you invoice often, QuickBooks or Xero can help you track payment fees, revenue, and outstanding balances together.": "Wenn du oft Rechnungen stellst, helfen QuickBooks oder Xero dabei, Zahlungsgebühren, Umsatz und offene Salden zusammen zu verfolgen.",
+  "Recalculate whenever the payment size or processor rate changes.": "Rechne neu, wenn sich Zahlungsbetrag oder Anbietergebühr ändern.",
+  "TDEE Calculator": "TDEE-Rechner",
+  "Estimate adult calorie needs with a simple TDEE calculator and compare several common resting-calorie equations.": "Schätze den Kalorienbedarf von Erwachsenen mit einem einfachen TDEE-Rechner und vergleiche mehrere gängige Ruhekalorien-Gleichungen.",
+};
+
 export function createTranslator(locale: Locale) {
   return (key: string) => getMessage(locale, key);
 }
@@ -888,6 +1221,10 @@ export function translateText(locale: Locale, text: string) {
     return text;
   }
 
+  if (locale === "de") {
+    return deStringTranslations[text] ?? deExtraStringTranslations[text] ?? text;
+  }
+
   return stringTranslations[text] ?? extraStringTranslations[text] ?? text;
 }
 
@@ -909,16 +1246,20 @@ export function translateValue<T>(locale: Locale, value: T): T {
 }
 
 export function normalizeLocale(locale: string | null | undefined): Locale {
-  return locale === "es" ? "es" : "en";
+  if (locale === "es" || locale === "de") {
+    return locale;
+  }
+
+  return "en";
 }
 
 export function getLocaleFromPathname(pathname: string) {
-  const match = pathname.match(/^\/(en|es)(?:\/|$)/);
+  const match = pathname.match(new RegExp(`^\/(${supportedLocales.join("|")})(?:\/|$)`));
   return normalizeLocale(match?.[1]);
 }
 
 export function stripLocaleFromPathname(pathname: string) {
-  const strippedPathname = pathname.replace(/^\/(en|es)(?=\/|$)/, "");
+  const strippedPathname = pathname.replace(new RegExp(`^\/(${supportedLocales.join("|")})(?=\/|$)`), "");
   return strippedPathname === "" ? "/" : strippedPathname;
 }
 
@@ -932,9 +1273,18 @@ export function getLanguageAlternates(pathname: string) {
   return {
     en: getLocalizedPathname(pathname, "en"),
     es: getLocalizedPathname(pathname, "es"),
+    de: getLocalizedPathname(pathname, "de"),
   };
 }
 
 export function getOpenGraphLocale(locale: Locale) {
-  return locale === "es" ? "es_ES" : "en_US";
+  if (locale === "es") {
+    return "es_ES";
+  }
+
+  if (locale === "de") {
+    return "de_DE";
+  }
+
+  return "en_US";
 }

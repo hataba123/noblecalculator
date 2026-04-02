@@ -13,9 +13,14 @@ const ogImagePath = "/og-image.svg";
 export function createRootMetadata(locale: Locale): Metadata {
   const t = createTranslator(locale);
   const description = t("site.description");
+  const alternates = getLanguageAlternates("/");
 
   return {
     metadataBase: new URL(siteConfig.url),
+    alternates: {
+      canonical: alternates[locale],
+      languages: alternates,
+    },
     icons: {
       icon: "/icon.svg",
       shortcut: "/icon.svg",

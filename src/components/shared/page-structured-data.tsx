@@ -1,5 +1,6 @@
 import { siteConfig } from "@/src/config/site";
 import type { CalculatorSeoFaqItem } from "@/src/features/calculators/shared/types";
+import type { Locale } from "@/src/i18n";
 
 type BreadcrumbItem = {
 	name: string;
@@ -17,6 +18,7 @@ type PageStructuredDataProps = {
 	title: string;
 	description: string;
 	pathname: string;
+	locale: Locale;
 	faq?: CalculatorSeoFaqItem[];
 	breadcrumbs?: BreadcrumbItem[];
 	items?: ItemListEntry[];
@@ -32,7 +34,7 @@ function renderJsonLd(data: unknown) {
 	return JSON.stringify(data).replace(/</g, "\\u003c");
 }
 
-export function PageStructuredData({ kind, title, description, pathname, faq, breadcrumbs, items }: PageStructuredDataProps) {
+export function PageStructuredData({ kind, title, description, pathname, locale, faq, breadcrumbs, items }: PageStructuredDataProps) {
 	const pageUrl = toAbsoluteUrl(pathname);
 	const scripts: Array<{ key: string; data: unknown }> = [];
 
@@ -45,6 +47,7 @@ export function PageStructuredData({ kind, title, description, pathname, faq, br
 				name: title,
 				description,
 				url: pageUrl,
+				inLanguage: locale,
 			},
 		});
 	}
@@ -58,6 +61,7 @@ export function PageStructuredData({ kind, title, description, pathname, faq, br
 				name: title,
 				description,
 				url: pageUrl,
+				inLanguage: locale,
 				mainEntity: {
 					"@type": "ItemList",
 					itemListElement: (items ?? []).map((item, index) => ({
@@ -81,6 +85,7 @@ export function PageStructuredData({ kind, title, description, pathname, faq, br
 				name: title,
 				description,
 				url: pageUrl,
+				inLanguage: locale,
 			},
 		});
 

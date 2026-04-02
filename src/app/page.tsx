@@ -9,17 +9,21 @@ import { createTranslator, getLocalizedPathname, translateText } from "@/src/i18
 import { getRequestLocale } from "@/src/i18n/server";
 
 export async function generateMetadata() {
-  const locale = await getRequestLocale( );
+  const locale = await getRequestLocale();
   const t = createTranslator(locale);
+  const keywords =
+    locale === "es"
+      ? ["calculadora financiera", "calculadora de margen de beneficio", "calculadora de markup", "calculadora freelance", "calculadora de impuestos", "calculadora de negocios"]
+      : locale === "de"
+        ? ["Finanzrechner", "Gewinnmargen-Rechner", "Aufschlagsrechner", "Freelance-Rechner", "Steuerrechner", "Geschäftsrechner"]
+        : ["financial calculator", "profit margin calculator", "markup calculator", "freelance calculator", "tax calculator", "business calculator"];
 
   return createPageMetadata(
     locale,
     siteConfig.name,
     t("site.description"),
     "/",
-    locale === "es"
-      ? ["calculadora financiera", "calculadora de margen de beneficio", "calculadora de markup", "calculadora freelance", "calculadora de impuestos", "calculadora de negocios"]
-      : ["financial calculator", "profit margin calculator", "markup calculator", "freelance calculator", "tax calculator", "business calculator"]
+    keywords
   );
 }
 
@@ -57,7 +61,7 @@ export default async function HomePage() {
 
   return (
     <main className="min-h-screen px-3 py-4 text-[color:var(--foreground)] sm:px-6 sm:py-6 lg:px-8 xl:px-10">
-      <PageStructuredData kind="home" title={siteConfig.name} description={t("site.description")} pathname={getLocalizedPathname("/", locale)} />
+      <PageStructuredData kind="home" title={siteConfig.name} description={t("site.description")} pathname={getLocalizedPathname("/", locale)} locale={locale} />
       <div className="mx-auto flex w-full max-w-[90rem] flex-col gap-6 sm:gap-8">
         <header className="rounded-[1.1rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-5 shadow-[0_18px_48px_rgba(34,24,12,0.08)] backdrop-blur sm:p-6 lg:rounded-[1.25rem] lg:p-8">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
@@ -91,47 +95,47 @@ export default async function HomePage() {
 
         <HomeCalculator />
 
-              <section className="grid items-stretch gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] xl:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)]">
-        <div className="h-full rounded-[1.15rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-6 shadow-[0_20px_54px_rgba(34,24,12,0.10)] backdrop-blur sm:p-7 lg:rounded-[1.25rem] lg:p-8 xl:p-9">
-          <p className="text-xs uppercase tracking-[0.24em] text-[color:var(--accent)] sm:text-sm">
-            {t("home.whyPeopleUseThis")}
-          </p>
+        <section className="grid items-stretch gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] xl:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)]">
+          <div className="h-full rounded-[1.15rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-6 shadow-[0_20px_54px_rgba(34,24,12,0.10)] backdrop-blur sm:p-7 lg:rounded-[1.25rem] lg:p-8 xl:p-9">
+            <p className="text-xs uppercase tracking-[0.24em] text-[color:var(--accent)] sm:text-sm">
+              {t("home.whyPeopleUseThis")}
+            </p>
 
-          <h2 className="mt-2 max-w-[18ch] text-xl font-semibold tracking-tight text-[color:var(--foreground)] sm:text-2xl lg:text-[2rem]">
-            {t("home.whyTitle")}
-          </h2>
+            <h2 className="mt-2 max-w-[18ch] text-xl font-semibold tracking-tight text-[color:var(--foreground)] sm:text-2xl lg:text-[2rem]">
+              {t("home.whyTitle")}
+            </h2>
 
-          <p className="mt-3 max-w-[62ch] text-sm leading-7 text-[color:var(--muted)] sm:text-base">
-            {t("home.whyDescription")}
-          </p>
+            <p className="mt-3 max-w-[62ch] text-sm leading-7 text-[color:var(--muted)] sm:text-base">
+              {t("home.whyDescription")}
+            </p>
 
-          <div className="mt-5 grid gap-3 text-sm text-[color:var(--muted)] sm:grid-cols-2">
-            <div className="rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
-              {t("home.whyCardOne")}
-            </div>
-            <div className="rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
-              {t("home.whyCardTwo")}
+            <div className="mt-5 grid gap-3 text-sm text-[color:var(--muted)] sm:grid-cols-2">
+              <div className="rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
+                {t("home.whyCardOne")}
+              </div>
+              <div className="rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
+                {t("home.whyCardTwo")}
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="h-full rounded-[1.15rem] border border-[color:var(--border)] bg-[color:var(--accent-soft)] p-6 text-[color:var(--foreground)] shadow-[0_20px_54px_rgba(34,24,12,0.13)] sm:p-7 lg:rounded-[1.25rem] lg:p-8 xl:p-9">
-          <p className="text-xs uppercase tracking-[0.24em] text-[color:var(--accent)] sm:text-sm">
-            {t("home.goodFor")}
-          </p>
+          <div className="h-full rounded-[1.15rem] border border-[color:var(--border)] bg-[color:var(--accent-soft)] p-6 text-[color:var(--foreground)] shadow-[0_20px_54px_rgba(34,24,12,0.13)] sm:p-7 lg:rounded-[1.25rem] lg:p-8 xl:p-9">
+            <p className="text-xs uppercase tracking-[0.24em] text-[color:var(--accent)] sm:text-sm">
+              {t("home.goodFor")}
+            </p>
 
-          <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-            {goodForItems.map((item) => (
-              <li
-                key={item}
-                className="rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-3 text-sm text-[color:var(--foreground)]"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+            <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+              {goodForItems.map((item) => (
+                <li
+                  key={item}
+                  className="rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-3 text-sm text-[color:var(--foreground)]"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
 
         <section className="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4 lg:col-span-2">

@@ -74,6 +74,12 @@ export async function generateMetadata({ params }: ToolPageProps) {
   const description = seoContent?.metaDescription ?? (tool ? translateText(locale, tool.description) : t("calculatorShell.quickCalculatorDescription"));
   const title = tool ? translateText(locale, tool.title) : t("calculator.badge");
   const translatedKeywords = (seoContent?.keywords ?? []).map((keyword) => translateText(locale, keyword));
+  const fallbackKeywords =
+    locale === "es"
+      ? ["calculadora financiera", "calculadora de negocios"]
+      : locale === "de"
+        ? ["Finanzrechner", "Geschäftsrechner"]
+        : ["financial calculator", "business calculator"];
 
   if (!tool) {
     return createPageMetadata(
@@ -81,7 +87,7 @@ export async function generateMetadata({ params }: ToolPageProps) {
       title,
       description,
       "/tools",
-      translatedKeywords.length > 0 ? translatedKeywords : locale === "es" ? ["calculadora financiera", "herramienta de calculadora"] : ["financial calculator", "calculator tool"]
+      translatedKeywords.length > 0 ? translatedKeywords : fallbackKeywords
     );
   }
 
@@ -91,8 +97,8 @@ export async function generateMetadata({ params }: ToolPageProps) {
     description,
     `/tools/${tool.slug}`,
     seoContent
-      ? [tool.slug, title, ...translatedKeywords, ...(locale === "es" ? ["calculadora financiera", "calculadora de negocios"] : ["financial calculator", "business calculator"])]
-      : [tool.slug, title, ...(locale === "es" ? ["calculadora financiera", "calculadora de negocios"] : ["financial calculator", "business calculator"])]
+      ? [tool.slug, title, ...translatedKeywords, ...fallbackKeywords]
+      : [tool.slug, title, ...fallbackKeywords]
   );
 }
 
@@ -120,6 +126,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
         title={translatedTitle}
         description={pageDescription ?? translateText(locale, tool.description)}
         pathname={calculatorPath}
+        locale={locale}
         breadcrumbs={[
           { name: t("navigation.home"), href: homePath },
           { name: t("navigation.calculators"), href: toolsPath },

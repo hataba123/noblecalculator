@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 import { siteConfig } from "@/src/config/site";
-import { getLocalizedPathname } from "@/src/i18n";
+import { getLocalizedPathname, supportedLocales, type Locale } from "@/src/i18n";
 import { useLanguage } from "./language-provider";
 import { ThemeToggle } from "./theme-toggle";
 
@@ -14,6 +14,11 @@ export function AppHeader() {
   const toolsHref = getLocalizedPathname("/tools", locale);
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
   const languageMenuRef = useRef<HTMLDivElement | null>(null);
+  const languageLabels: Record<Locale, string> = {
+    en: t("navigation.english"),
+    es: t("navigation.spanish"),
+    de: t("navigation.german"),
+  };
 
   useEffect(() => {
     const handlePointerDown = (event: PointerEvent) => {
@@ -37,7 +42,7 @@ export function AppHeader() {
     };
   }, []);
 
-  const selectLocale = (nextLocale: "en" | "es") => {
+  const selectLocale = (nextLocale: Locale) => {
     setIsLanguageMenuOpen(false);
     setLocale(nextLocale);
   };
@@ -56,7 +61,7 @@ export function AppHeader() {
           </div>
         </Link>
 
-        <nav className="grid w-full grid-cols-4 gap-1.5 text-[0.72rem] font-medium leading-none text-[color:var(--foreground)] sm:flex sm:w-auto sm:flex-wrap sm:items-center sm:justify-end sm:gap-2 sm:text-base sm:leading-normal md:flex-nowrap md:gap-1.5 lg:text-lg">
+        <nav className="grid w-full grid-cols-2 gap-2 text-[0.72rem] font-medium leading-none text-[color:var(--foreground)] sm:flex sm:w-auto sm:flex-wrap sm:items-center sm:justify-end sm:gap-2 sm:text-base sm:leading-normal md:flex-nowrap md:gap-1.5 lg:text-lg">
           <Link href={homeHref} className="inline-flex w-full min-h-11 min-w-0 items-center justify-center whitespace-nowrap rounded-xl px-1.5 py-2 text-center text-[0.72rem] leading-normal transition-all duration-150 ease-out hover:bg-[color:var(--surface-soft)] active:translate-y-[1px] active:scale-[0.98] sm:w-auto sm:min-h-0 sm:px-4 sm:text-base sm:leading-normal">
             {t("navigation.home")}
           </Link>
@@ -72,13 +77,12 @@ export function AppHeader() {
               onClick={() => setIsLanguageMenuOpen((current) => !current)}
               className="inline-flex w-full min-h-11 min-w-0 items-center justify-center gap-1.5 rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] px-2.5 py-2 text-[0.72rem] font-semibold leading-normal text-[color:var(--foreground)] shadow-[0_8px_18px_rgba(34,24,12,0.08)] transition-all duration-150 ease-out hover:-translate-y-0.5 hover:bg-[color:var(--surface-soft)] active:translate-y-[1px] active:scale-[0.98] sm:min-h-11 sm:justify-between sm:gap-2 sm:px-4 sm:text-sm sm:leading-normal"
             >
-              <span className="flex min-h-4 items-center justify-center sm:hidden">{locale === "es" ? "ES" : "EN"}</span>
-              <span className="hidden sm:inline">{locale === "es" ? t("navigation.spanish") : t("navigation.english")}</span>
+              <span className="flex min-h-4 items-center justify-center sm:hidden">{locale.toUpperCase()}</span>
+              <span className="hidden sm:inline">{languageLabels[locale]}</span>
               <span
                 aria-hidden="true"
-                className={`text-[0.7rem] leading-none text-[color:var(--muted-strong)] transition-transform duration-150 ease-out ${
-                  isLanguageMenuOpen ? "rotate-180" : "rotate-0"
-                }`}
+                className={`text-[0.7rem] leading-none text-[color:var(--muted-strong)] transition-transform duration-150 ease-out ${isLanguageMenuOpen ? "rotate-180" : "rotate-0"
+                  }`}
               >
                 ▾
               </span>
@@ -88,42 +92,28 @@ export function AppHeader() {
               role="menu"
               aria-label={t("navigation.language")}
               aria-hidden={!isLanguageMenuOpen}
-              className={`absolute left-0 right-0 top-[calc(100%+0.5rem)] z-50 w-full overflow-hidden rounded-[0.95rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-1 shadow-[0_20px_48px_rgba(34,24,12,0.16)] transition-all duration-150 ease-out sm:left-auto sm:right-0 sm:w-[min(12rem,calc(100vw-2rem))] ${
-                isLanguageMenuOpen
+              className={`absolute left-0 right-0 top-[calc(100%+0.5rem)] z-50 w-full overflow-hidden rounded-[0.95rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-1 shadow-[0_20px_48px_rgba(34,24,12,0.16)] transition-all duration-150 ease-out sm:left-auto sm:right-0 sm:w-[min(12rem,calc(100vw-2rem))] ${isLanguageMenuOpen
                   ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
                   : "pointer-events-none -translate-y-1 scale-95 opacity-0"
-              }`}
+                }`}
             >
-              <button
-                type="button"
-                role="menuitemradio"
-                aria-checked={locale === "en"}
-                onClick={() => selectLocale("en")}
-                disabled={!isLanguageMenuOpen}
-                className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm font-semibold transition-all duration-150 ease-out disabled:cursor-default active:translate-y-[1px] active:scale-[0.98] ${
-                  locale === "en"
-                    ? "bg-[color:var(--accent)] text-[color:var(--surface-strong)]"
-                    : "text-[color:var(--foreground)] hover:bg-[color:var(--surface-soft)]"
-                }`}
-              >
-                <span>{t("navigation.english")}</span>
-                {locale === "en" ? <span aria-hidden="true">✓</span> : null}
-              </button>
-              <button
-                type="button"
-                role="menuitemradio"
-                aria-checked={locale === "es"}
-                onClick={() => selectLocale("es")}
-                disabled={!isLanguageMenuOpen}
-                className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm font-semibold transition-all duration-150 ease-out disabled:cursor-default active:translate-y-[1px] active:scale-[0.98] ${
-                  locale === "es"
-                    ? "bg-[color:var(--accent)] text-[color:var(--surface-strong)]"
-                    : "text-[color:var(--foreground)] hover:bg-[color:var(--surface-soft)]"
-                }`}
-              >
-                <span>{t("navigation.spanish")}</span>
-                {locale === "es" ? <span aria-hidden="true">✓</span> : null}
-              </button>
+              {supportedLocales.map((optionLocale) => (
+                <button
+                  key={optionLocale}
+                  type="button"
+                  role="menuitemradio"
+                  aria-checked={locale === optionLocale}
+                  onClick={() => selectLocale(optionLocale)}
+                  disabled={!isLanguageMenuOpen}
+                  className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm font-semibold transition-all duration-150 ease-out disabled:cursor-default active:translate-y-[1px] active:scale-[0.98] ${locale === optionLocale
+                      ? "bg-[color:var(--accent)] text-[color:var(--surface-strong)]"
+                      : "text-[color:var(--foreground)] hover:bg-[color:var(--surface-soft)]"
+                    }`}
+                >
+                  <span>{languageLabels[optionLocale]}</span>
+                  {locale === optionLocale ? <span aria-hidden="true">✓</span> : null}
+                </button>
+              ))}
             </div>
           </div>
           <ThemeToggle className="w-full min-h-11 shrink-0 justify-center px-2.5 py-2 sm:w-auto sm:min-h-11 sm:px-4" />

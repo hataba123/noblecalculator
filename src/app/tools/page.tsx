@@ -45,15 +45,19 @@ const toolGroupDefinitions = [
 export async function generateMetadata() {
   const locale = await getRequestLocale();
   const t = createTranslator(locale);
+  const keywords =
+    locale === "es"
+      ? ["herramientas financieras", "directorio de calculadoras", "registro de calculadoras", "centro de calculadoras de negocios", "calculadoras en línea"]
+      : locale === "de"
+        ? ["Finanztools", "Rechner-Verzeichnis", "Rechner-Hub", "Geschäftsrechner", "Online-Rechner"]
+        : ["financial tools", "calculator directory", "calculator registry", "business calculator hub", "online calculators"];
 
   return createPageMetadata(
     locale,
     t("tools.badge"),
     t("tools.description"),
     "/tools",
-    locale === "es"
-      ? ["herramientas financieras", "directorio de calculadoras", "registro de calculadoras", "centro de calculadoras de negocios", "calculadoras en línea"]
-      : ["financial tools", "calculator directory", "calculator registry", "business calculator hub", "online calculators"]
+    keywords
   );
 }
 
@@ -85,6 +89,7 @@ export default async function ToolsPage() {
         title={t("tools.badge")}
         description={t("tools.description")}
         pathname={hubPath}
+        locale={locale}
         items={tools.map((tool) => ({
           name: translateText(locale, tool.title),
           href: getLocalizedPathname(`/tools/${tool.slug}`, locale),

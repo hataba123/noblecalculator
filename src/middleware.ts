@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { defaultLocale, localeRequestHeader, normalizeLocale } from "@/src/i18n";
+import { defaultLocale, localeRequestHeader, normalizeLocale, supportedLocales } from "@/src/i18n";
 
-const localePrefixPattern = /^\/(en|es)(?:\/|$)/;
+const localePrefixPattern = new RegExp(`^\/(${supportedLocales.join("|")})(?:\/|$)`);
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
