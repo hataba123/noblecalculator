@@ -61,6 +61,16 @@ const calculatorMap = {
   "day-rate-to-hourly-rate": DayRateToHourlyRateCalculator,
 } as const;
 
+const germanDescriptionOverrides: Record<string, string> = {
+  "profit-margin": "Nutze das, wenn du sehen willst, wie viel von deinem Umsatz nach den bezahlten Kosten noch übrig bleibt.",
+  "tdee-calculator": "Nutze das, wenn du eine praktische Schätzung für Ruhekalorien, Erhaltungskalorien und einen Startpunkt für Abnehmen oder Zunehmen willst.",
+};
+
+const germanMetaDescriptionOverrides: Record<string, string> = {
+  "profit-margin": "Sieh mit einem einfachen Gewinnmargen-Rechner, wie viel Gewinn du nach den Kosten behältst.",
+  "tdee-calculator": "Schätze den Kalorienbedarf von Erwachsenen mit einem einfachen TDEE-Rechner und vergleiche mehrere gängige Gleichungen.",
+};
+
 export function generateStaticParams() {
   return tools.map((tool) => ({ slug: tool.slug }));
 }
@@ -71,7 +81,10 @@ export async function generateMetadata({ params }: ToolPageProps) {
   const { slug } = await params;
   const tool = getCalculatorDefinition(slug);
   const seoContent = getCalculatorSeoContent(slug, locale);
-  const description = seoContent?.metaDescription ?? (tool ? translateText(locale, tool.description) : t("calculatorShell.quickCalculatorDescription"));
+  const description =
+    (locale === "de" ? germanMetaDescriptionOverrides[slug] : undefined) ??
+    seoContent?.metaDescription ??
+    (tool ? translateText(locale, tool.description) : t("calculatorShell.quickCalculatorDescription"));
   const title = tool ? translateText(locale, tool.title) : t("calculator.badge");
   const translatedKeywords = (seoContent?.keywords ?? []).map((keyword) => translateText(locale, keyword));
   const fallbackKeywords =
@@ -109,7 +122,14 @@ export default async function ToolPage({ params }: ToolPageProps) {
   const tool = getCalculatorDefinition(slug);
   const Calculator = calculatorMap[slug as keyof typeof calculatorMap];
   const seoContent = getCalculatorSeoContent(slug, locale);
-  const pageDescription = seoContent?.intro ?? (tool ? translateText(locale, tool.description) : undefined);
+  const pageDescription =
+    (locale === "de" ? germanDescriptionOverrides[slug] : undefined) ??
+    seoContent?.intro ??
+    (tool ? translateText(locale, tool.description) : undefined);
+  const translatedFaq = seoContent?.faq?.map((item) => ({
+    question: translateText(locale, item.question),
+    answer: translateText(locale, item.answer),
+  }));
   const translatedTitle = tool ? translateText(locale, tool.title) : t("calculator.badge");
   const toolsPath = getLocalizedPathname("/tools", locale);
   const homePath = getLocalizedPathname("/", locale);
@@ -132,7 +152,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
           { name: t("navigation.calculators"), href: toolsPath },
           { name: translatedTitle, href: calculatorPath },
         ]}
-        faq={seoContent?.faq}
+        faq={translatedFaq}
       />
       <div className="mx-auto flex w-full max-w-[90rem] flex-col gap-6 sm:gap-8">
         <CalculatorShell title={translatedTitle} description={pageDescription}>
