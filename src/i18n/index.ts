@@ -1017,17 +1017,6 @@ const extraStringTranslations: Record<string, string> = {
     "Eine registrierte Ernährungsfachkraft oder ein Arzt kann helfen, Kalorienziele in einen Ernährungsplan umzusetzen, der zu deinen Zielen und Gesundheitsanforderungen passt.",
   "Recheck calories if your age, weight, activity, or goal changes.":
     "Prüfe die Kalorien erneut, wenn sich dein Alter, Gewicht, Aktivitätslevel oder Ziel ändert.",
-  "What is the difference between margin and markup?": "Was ist der Unterschied zwischen Marge und Aufschlag?",
-  "Margin compares profit to revenue. Markup compares profit to cost.": "Marge setzt Gewinn ins Verhältnis zum Umsatz. Aufschlag setzt Gewinn ins Verhältnis zu den Kosten.",
-  "Can profit be negative?": "Kann Gewinn negativ sein?",
-  "Yes. If costs are higher than revenue, the calculator will show a loss instead of profit.":
-    "Ja. Wenn die Kosten höher sind als der Umsatz, zeigt der Rechner einen Verlust statt Gewinn an.",
-  "Why is this only an estimate?": "Warum ist das nur eine Schätzung?",
-  "Activity, body composition, and health status all affect calorie needs, so the result is a practical starting point rather than a guarantee.":
-    "Aktivität, Körperzusammensetzung und Gesundheitszustand beeinflussen den Kalorienbedarf, daher ist das Ergebnis ein praktischer Startpunkt und keine Garantie.",
-  "Can I use this for children or pregnancy?": "Kann ich das für Kinder oder Schwangerschaft verwenden?",
-  "No. This calculator is for adults only and may not be appropriate for pregnancy, breastfeeding, athletes, or people with metabolic conditions.":
-    "Nein. Dieser Rechner ist nur für Erwachsene gedacht und möglicherweise nicht geeignet für Schwangerschaft, Stillzeit, Leistungssport oder Menschen mit Stoffwechselerkrankungen.",
   "Amount you want to send before fees.": "Monto que quieres enviar antes de las comisiones.",
   "International transfer fee rate.": "Tasa de comisión por transferencia internacional.",
   "Total campaign spend.": "Gasto total de la campaña.",
@@ -1250,28 +1239,6 @@ const extraStringTranslations: Record<string, string> = {
   "Estimate adult calorie needs with a simple TDEE calculator and compare several common resting-calorie equations.": "Estima las necesidades calóricas de adultos con una calculadora TDEE simple y compara varias ecuaciones comunes de calorías en reposo.",
   "This is an estimate for adults, not a medical prescription. Real energy needs can vary with age, body composition, and health status.": "Esta es una estimación para adultos, no una prescripción médica. Las necesidades reales de energía pueden variar con la edad, la composición corporal y el estado de salud.",
   "Use it when planning a calorie target for maintenance, gradual fat loss, or moderate weight gain.": "Úsalo al planificar un objetivo calórico para mantenimiento, pérdida gradual de grasa o aumento moderado de peso.",
-  "Desk worker": "Trabajador de escritorio",
-  "A 30-year-old man weighs 70 kg, is 175 cm tall, and is sedentary.": "Un hombre de 30 años pesa 70 kg, mide 175 cm y es sedentario.",
-  "Resting calories are about 1,649 kcal/day and maintenance is about 1,979 kcal/day.": "Las calorías en reposo son aproximadamente 1,649 kcal/día y el mantenimiento es aproximadamente 1,979 kcal/día.",
-  "A sedentary activity level keeps the total close to the resting estimate.": "Un nivel de actividad sedentario mantiene el total cerca de la estimación en reposo.",
-  "Active routine": "Rutina activa",
-  "A 28-year-old woman weighs 60 kg, is 165 cm tall, and is moderately active.": "Una mujer de 28 años pesa 60 kg, mide 165 cm y es moderadamente activa.",
-  "Resting calories are about 1,330 kcal/day and maintenance is about 2,062 kcal/day.": "Las calorías en reposo son aproximadamente 1,330 kcal/día y el mantenimiento es aproximadamente 2,062 kcal/día.",
-  "The activity multiplier increases daily needs after the resting estimate.": "El multiplicador de actividad aumenta las necesidades diarias después de la estimación en reposo.",
-  "Gaining phase": "Fase de ganancia",
-  "A 35-year-old man weighs 82 kg, is 180 cm tall, and is very active.": "Un hombre de 35 años pesa 82 kg, mide 180 cm y es muy activo.",
-  "Resting calories are about 1,775 kcal/day and the gain target is about 3,312 kcal/day.": "Las calorías en reposo son aproximadamente 1,775 kcal/día y el objetivo de ganancia es aproximadamente 3,312 kcal/día.",
-  "This gives a simple calorie surplus starting point for a higher-energy phase.": "Esto da un punto de partida simple de superávit calórico para una fase de mayor energía.",
-  "Using the wrong height or weight unit.": "Usar la unidad equivocada de altura o peso.",
-  "Treating maintenance calories as a fixed promise.": "Tratar las calorías de mantenimiento como una promesa fija.",
-  "Expecting the same target to work forever without rechecking.": "Esperar que el mismo objetivo funcione siempre sin volver a comprobarlo.",
-  "Why is this only an estimate?": "¿Por qué esto es solo una estimación?",
-  "Activity, body composition, and health status all affect calorie needs, so the result is a practical starting point rather than a guarantee.": "La actividad, la composición corporal y el estado de salud afectan las necesidades calóricas, así que el resultado es un punto de partida práctico y no una garantía.",
-  "Can I use this for children or pregnancy?": "¿Puedo usar esto para niños o embarazo?",
-  "No. This calculator is for adults only and may not be appropriate for pregnancy, breastfeeding, athletes, or people with metabolic conditions.": "No. Esta calculadora es solo para adultos y puede no ser adecuada para embarazo, lactancia, atletas o personas con afecciones metabólicas.",
-  "Want to turn this estimate into a plan?": "¿Quieres convertir esta estimación en un plan?",
-  "A registered dietitian or clinician can help turn calorie targets into a nutrition plan that fits your goals and health needs.": "Un dietista registrado o un clínico puede ayudarte a convertir los objetivos calóricos en un plan de nutrición que encaje con tus metas y necesidades de salud.",
-  "Recheck calories if your age, weight, activity, or goal changes.": "Vuelve a comprobar las calorías si cambian tu edad, peso, actividad u objetivo.",
 };
 
 const deExtraStringTranslations: Record<string, string> = {
