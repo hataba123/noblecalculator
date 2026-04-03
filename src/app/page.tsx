@@ -16,7 +16,9 @@ export async function generateMetadata() {
       ? ["calculadora financiera", "calculadora de margen de beneficio", "calculadora de markup", "calculadora freelance", "calculadora de impuestos", "calculadora de negocios"]
       : locale === "de"
         ? ["Finanzrechner", "Gewinnmargen-Rechner", "Aufschlagsrechner", "Freelance-Rechner", "Steuerrechner", "Geschäftsrechner"]
-        : ["financial calculator", "profit margin calculator", "markup calculator", "freelance calculator", "tax calculator", "business calculator"];
+        : locale === "fr"
+          ? ["calculateur financier", "calculateur de marge", "calculateur de markup", "calculateur freelance", "calculateur d'impôts", "calculateur d'entreprise"]
+          : ["financial calculator", "profit margin calculator", "markup calculator", "freelance calculator", "tax calculator", "business calculator"];
 
   return createPageMetadata(
     locale,

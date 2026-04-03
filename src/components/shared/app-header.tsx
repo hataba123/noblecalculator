@@ -18,6 +18,7 @@ export function AppHeader() {
     en: t("navigation.english"),
     es: t("navigation.spanish"),
     de: t("navigation.german"),
+    fr: t("navigation.french"),
   };
 
   useEffect(() => {
@@ -93,8 +94,8 @@ export function AppHeader() {
               aria-label={t("navigation.language")}
               aria-hidden={!isLanguageMenuOpen}
               className={`absolute left-0 right-0 top-[calc(100%+0.5rem)] z-50 w-full overflow-hidden rounded-[0.95rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-1 shadow-[0_20px_48px_rgba(34,24,12,0.16)] transition-all duration-150 ease-out sm:left-auto sm:right-0 sm:w-[min(12rem,calc(100vw-2rem))] ${isLanguageMenuOpen
-                  ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
-                  : "pointer-events-none -translate-y-1 scale-95 opacity-0"
+                ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
+                : "pointer-events-none -translate-y-1 scale-95 opacity-0"
                 }`}
             >
               {supportedLocales.map((optionLocale) => (
@@ -106,8 +107,8 @@ export function AppHeader() {
                   onClick={() => selectLocale(optionLocale)}
                   disabled={!isLanguageMenuOpen}
                   className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm font-semibold transition-all duration-150 ease-out disabled:cursor-default active:translate-y-[1px] active:scale-[0.98] ${locale === optionLocale
-                      ? "bg-[color:var(--accent)] text-[color:var(--surface-strong)]"
-                      : "text-[color:var(--foreground)] hover:bg-[color:var(--surface-soft)]"
+                    ? "bg-[color:var(--accent)] text-[color:var(--surface-strong)]"
+                    : "text-[color:var(--foreground)] hover:bg-[color:var(--surface-soft)]"
                     }`}
                 >
                   <span>{languageLabels[optionLocale]}</span>
