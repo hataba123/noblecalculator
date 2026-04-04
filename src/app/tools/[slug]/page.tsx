@@ -101,6 +101,16 @@ const portugueseMetaDescriptionOverrides: Record<string, string> = {
   "tdee-calculator": "Estima as necessidades calóricas de adultos com uma calculadora TDEE simples e compara várias equações comuns.",
 };
 
+const russianDescriptionOverrides: Record<string, string> = {
+  "profit-margin": "Посмотрите, сколько прибыли остаётся после затрат с помощью простого калькулятора маржи прибыли.",
+  "tdee-calculator": "Оцените потребность взрослого в калориях с помощью простого TDEE-калькулятора и сравните несколько распространённых формул.",
+};
+
+const russianMetaDescriptionOverrides: Record<string, string> = {
+  "profit-margin": "Посмотрите, сколько прибыли остаётся после затрат с помощью простого калькулятора маржи прибыли.",
+  "tdee-calculator": "Оцените потребность взрослого в калориях с помощью простого TDEE-калькулятора и сравните несколько распространённых формул.",
+};
+
 export function generateStaticParams() {
   return tools.map((tool) => ({ slug: tool.slug }));
 }
@@ -116,6 +126,7 @@ export async function generateMetadata({ params }: ToolPageProps) {
     (locale === "fr" ? frenchMetaDescriptionOverrides[slug] : undefined) ??
     (locale === "ja" ? japaneseMetaDescriptionOverrides[slug] : undefined) ??
     (locale === "pt" ? portugueseMetaDescriptionOverrides[slug] : undefined) ??
+    (locale === "ru" ? russianMetaDescriptionOverrides[slug] : undefined) ??
     seoContent?.metaDescription ??
     (tool ? translateText(locale, tool.description) : t("calculatorShell.quickCalculatorDescription"));
   const title = tool ? translateText(locale, tool.title) : t("calculator.badge");
@@ -160,6 +171,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
     (locale === "fr" ? frenchDescriptionOverrides[slug] : undefined) ??
     (locale === "ja" ? japaneseDescriptionOverrides[slug] : undefined) ??
     (locale === "pt" ? portugueseDescriptionOverrides[slug] : undefined) ??
+    (locale === "ru" ? russianDescriptionOverrides[slug] : undefined) ??
     seoContent?.intro ??
     (tool ? translateText(locale, tool.description) : undefined);
   const translatedFaq = seoContent?.faq?.map((item) => ({

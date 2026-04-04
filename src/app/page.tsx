@@ -22,7 +22,9 @@ export async function generateMetadata() {
             ? ["財務計算機", "利益率計算機", "マークアップ計算機", "フリーランス計算機", "税金計算機", "ビジネス計算機"]
             : locale === "pt"
               ? ["calculadora financeira", "calculadora de margem de lucro", "calculadora de markup", "calculadora freelance", "calculadora de impostos", "calculadora de negócios"]
-              : ["financial calculator", "profit margin calculator", "markup calculator", "freelance calculator", "tax calculator", "business calculator"];
+              : locale === "ru"
+                ? ["финансовый калькулятор", "калькулятор маржи прибыли", "калькулятор наценки", "калькулятор фриланса", "налоговый калькулятор", "бизнес-калькулятор"]
+                : ["financial calculator", "profit margin calculator", "markup calculator", "freelance calculator", "tax calculator", "business calculator"];
 
   return createPageMetadata(
     locale,

@@ -21,6 +21,7 @@ export function AppHeader() {
     fr: t("navigation.french"),
     ja: t("navigation.japanese"),
     pt: t("navigation.portuguese"),
+    ru: t("navigation.russian"),
   };
 
   useEffect(() => {

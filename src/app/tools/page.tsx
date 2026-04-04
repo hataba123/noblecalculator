@@ -56,7 +56,9 @@ export async function generateMetadata() {
             ? ["財務ツール", "計算機ディレクトリ", "計算機一覧", "ビジネス計算機ハブ", "オンライン計算機"]
             : locale === "pt"
               ? ["ferramentas financeiras", "diretório de calculadoras", "catálogo de calculadoras", "centro de calculadoras de negócios", "calculadoras online"]
-              : ["financial tools", "calculator directory", "calculator registry", "business calculator hub", "online calculators"];
+              : locale === "ru"
+                ? ["финансовые инструменты", "каталог калькуляторов", "реестр калькуляторов", "центр бизнес-калькуляторов", "онлайн-калькуляторы"]
+                : ["financial tools", "calculator directory", "calculator registry", "business calculator hub", "online calculators"];
 
   return createPageMetadata(
     locale,
