@@ -1,4 +1,4 @@
-export const supportedLocales = ["en", "es", "de", "fr", "ja"] as const;
+export const supportedLocales = ["en", "es", "de", "fr", "ja", "pt"] as const;
 
 export type Locale = (typeof supportedLocales)[number];
 
@@ -21,6 +21,7 @@ const uiMessages = {
       german: "German",
       french: "French",
       japanese: "Japanese",
+      portuguese: "Portuguese",
     },
     footer: {
       tagline: "This website is built for fast, everyday calculations.",
@@ -205,6 +206,7 @@ const uiMessages = {
       german: "Alemán",
       french: "Francés",
       japanese: "Japonés",
+      portuguese: "Portugués",
     },
     footer: {
       tagline: "Este sitio está pensado para cálculos rápidos del día a día.",
@@ -389,6 +391,7 @@ const uiMessages = {
       german: "Deutsch",
       french: "Französisch",
       japanese: "Japanisch",
+      portuguese: "Portugiesisch",
     },
     footer: {
       tagline: "Diese Website ist für schnelle Berechnungen im Alltag gebaut.",
@@ -573,6 +576,7 @@ const uiMessages = {
       german: "Allemand",
       french: "Français",
       japanese: "Japonais",
+      portuguese: "Portugais",
     },
     footer: {
       tagline: "Ce site est conçu pour des calculs rapides du quotidien.",
@@ -751,6 +755,7 @@ const uiMessages = {
       german: "ドイツ語",
       french: "フランス語",
       japanese: "日本語",
+      portuguese: "ポルトガル語",
     },
     footer: {
       tagline: "このサイトは、日常の素早い計算のために作られています。",
@@ -913,6 +918,185 @@ const uiMessages = {
       cost: "コスト",
       profit: "利益",
       exampleSnapshotBadge: "サンプル表示",
+    },
+  },
+  pt: {
+    brand: "Noble Calculator",
+    site: {
+      description: "Explora calculadoras simples e fáceis de usar para finanças, negócios e tarefas do dia a dia.",
+    },
+    navigation: {
+      home: "Início",
+      calculators: "Calculadoras",
+      language: "Idioma",
+      english: "Inglês",
+      spanish: "Espanhol",
+      german: "Alemão",
+      french: "Francês",
+      japanese: "Japonês",
+      portuguese: "Português",
+    },
+    footer: {
+      tagline: "Este site foi feito para cálculos rápidos do dia a dia.",
+      copyright: "Todos os direitos reservados.",
+    },
+    home: {
+      heroKicker: "Calculadoras práticas para tarefas do dia a dia.",
+      heroDescription: "Escolhe uma calculadora, insere alguns números e obtém um resultado claro na hora.",
+      browseCalculators: "Ver calculadoras",
+      openTdee: "Abrir TDEE",
+      whyPeopleUseThis: "Por que as pessoas usam estas calculadoras",
+      whyTitle: "Respostas rápidas para finanças, saúde e planejamento diário.",
+      whyDescription:
+        "Cada calculadora oferece um ponto de partida claro com passos simples, explicações em linguagem direta e resultados que podes usar logo de imediato.",
+      whyCardOne: "Usa quando quiseres uma verificação rápida antes de tomar uma decisão.",
+      whyCardTwo: "Alterna entre ferramentas sem perder o ponto onde estavas ou redigitar os números.",
+      goodFor: "Útil para",
+      goodForItems: [
+        "Trabalho freelance e pequenas empresas",
+        "Faturas, impostos e orçamento",
+        "Saúde e planeamento de calorias",
+        "Gastos com anúncios, ROI e estimativas de site",
+      ],
+      whatToExpect: "O que esperar",
+      whatToExpectTitle: "Desdobramentos claros, não apenas um número.",
+      whatToExpectDescription:
+        "Cada calculadora mostra a resposta final e os valores por trás dela, para entenderes o resultado em vez de apenas o copiares.",
+      whatToExpectCards: [
+        "Vê as respostas atualizar instantaneamente enquanto escreves",
+        "Linguagem simples para toda a gente, não só para quem gosta de números",
+        "Ótimo aspeto em telemóveis, tablets e computadores",
+        "O mesmo estilo limpo em todas as páginas de calculadora",
+      ],
+    },
+    tools: {
+      badge: "Centro de Calculadoras",
+      title: "Todas as calculadoras num só lugar.",
+      description: "Escolhe uma calculadora e começa com um exemplo já preenchido.",
+      supportingDescription:
+        "Usa o centro quando quiseres um caminho rápido para decisões de preços, impostos, lucro e marketing sem andar a procurar menus.",
+      searchLabel: "Pesquisar calculadoras",
+      searchPlaceholder: "Pesquisar por nome ou descrição",
+      searchResults: "resultados encontrados",
+      noResultsTitle: "Nenhuma calculadora encontrada",
+      noResultsDescription: "Tenta outra palavra ou limpa a pesquisa para veres todas as calculadoras novamente.",
+      clearSearch: "Limpar pesquisa",
+      open: "Abrir",
+      groupCount: "calculadoras",
+      groups: {
+        health: {
+          title: "Saúde e bem-estar",
+          description: "Acompanha medidas do corpo, necessidades calóricas e intervalos saudáveis antes de definir uma meta.",
+        },
+        pricing: {
+          title: "Preço e planeamento",
+          description: "Define tarifas, margens e orçamentos antes de começar o trabalho.",
+        },
+        billing: {
+          title: "Faturação, impostos e taxas",
+          description: "Lida com faturas, impostos e custos de pagamento num só lugar.",
+        },
+        marketing: {
+          title: "Marketing e crescimento",
+          description: "Mede desempenho de anúncios, retorno e custo de aquisição.",
+        },
+        payments: {
+          title: "Pagamentos e transferências",
+          description: "Verifica taxas de transferência e processamento antes de mover dinheiro.",
+        },
+      },
+      cards: [
+        "Verificações de preço e margem",
+        "Estimativas de impostos e faturas",
+        "Métricas de desempenho de marketing",
+        "Planeamento freelance e de projetos",
+      ],
+    },
+    calculator: {
+      inputs: "Entradas",
+      results: "Resultados",
+      badge: "Calculadora",
+      quickTake: "Resumo rápido",
+      quickRead: "Uma leitura rápida antes de calcular",
+      exampleSnapshot: "Exemplo visual",
+      formula: "Fórmula",
+      examples: "Exemplos",
+      whenToUse: "Quando usar",
+      commonMistakes: "Erros comuns",
+      faq: "FAQ",
+      nextStep: "Próximo passo",
+      onThisPage: "Nesta página",
+      formulaSummary: "2-3 cenários reais para tornar o resultado mais fácil de confiar.",
+      faqSummary: "Respostas claras para as perguntas que as pessoas fazem primeiro.",
+    },
+    calculatorShell: {
+      quickCalculatorTitle: "Calculadora rápida",
+      quickCalculatorDescription:
+        "Uma calculadora de tamanho completo com memória, pré-visualização em tempo real e teclado que parece uma calculadora de mesa.",
+      deskCalculator: "Calculadora de mesa",
+      mode: "Modo",
+      basic: "Básico",
+      scientific: "Científico",
+      angle: "Ângulo",
+      deg: "Graus",
+      rad: "Rad",
+      expression: "Expressão",
+      editableExpression: "Expressão de cálculo editável",
+      typeExpression: "Escreve uma expressão ou usa o teclado",
+      result: "Resultado",
+      useCurrentAnswer: "Usar a resposta atual na expressão",
+      memory: "Memória",
+      memoryHint: "Guardada por M+, M-, MC e MR.",
+      currentAnswer: "Resposta atual",
+      currentAnswerHint: "Muda à medida que constróis a expressão.",
+      recentCalculations: "Cálculos recentes",
+      recentHint: "Tenta 12 × 8 + 6 para veres o histórico a preencher.",
+      invalidExpression: "Expressão inválida",
+    },
+    supportTools: {
+      inputs: "Entradas",
+      results: "Resultados",
+    },
+    theme: {
+      light: "Modo claro",
+      dark: "Modo escuro",
+      switchToLight: "Mudar para modo claro",
+      switchToDark: "Mudar para modo escuro",
+    },
+    seoSections: {
+      quickTake: "Resumo rápido",
+      quickReadBefore: "Leitura rápida antes de calcular",
+      exampleSnapshot: "Exemplo visual",
+      formula: "Fórmula",
+      examples: "Exemplos",
+      whenToUse: "Quando usar",
+      commonMistakes: "Erros comuns",
+      faq: "FAQ",
+      nextStep: "Próximo passo",
+      formulaSummary: "2-3 cenários reais para tornar o resultado mais fácil de confiar.",
+      faqSummary: "Respostas claras para as perguntas que as pessoas fazem primeiro.",
+      onThisPage: "Nesta página",
+      moneyStays: "O dinheiro fica",
+      target: "Objetivo",
+      billable: "Faturável",
+      takeHome: "Líquido",
+      expensesPlusTax: "Despesas + imposto",
+      grossTarget: "Objetivo bruto",
+      spend: "Gasto",
+      revenue: "Receita",
+      design: "Design",
+      development: "Desenvolvimento",
+      content: "Conteúdo",
+      lowerCost: "Menor custo",
+      higherReturn: "Maior retorno",
+      returnLabel: "Retorno",
+      metricA: "Métrica A",
+      metricB: "Métrica B",
+      metricC: "Métrica C",
+      revenueStays: "Receita",
+      cost: "Custo",
+      profit: "Lucro",
+      exampleSnapshotBadge: "Exemplo visual",
     },
   },
 } as const;
@@ -1926,6 +2110,179 @@ const jaStringTranslations: Record<string, string> = {
     "メモリ、ライブ表示、電卓らしいキー操作を備えたフルサイズの計算機です。",
 };
 
+const ptStringTranslations: Record<string, string> = {
+  "Profit Margin Calculator": "Calculadora de margem de lucro",
+  "Markup Calculator": "Calculadora de markup",
+  "Freelance Hourly Rate Calculator": "Calculadora de tarifa horária freelance",
+  "VAT Calculator": "Calculadora de IVA",
+  "Invoice Calculator": "Calculadora de faturas",
+  "International Transfer Fee Calculator": "Calculadora de taxa de transferência internacional",
+  "Break-even Calculator": "Calculadora de ponto de equilíbrio",
+  "Gross to Net Calculator": "Calculadora de bruto para líquido",
+  "Net to Gross Calculator": "Calculadora de líquido para bruto",
+  "Late Payment Fee Calculator": "Calculadora de multa por atraso",
+  "Payment Processing Fee Calculator": "Calculadora de taxa de processamento",
+  "ROI Calculator": "Calculadora de ROI",
+  "ROAS Calculator": "Calculadora de ROAS",
+  "Website Cost Calculator": "Calculadora de custo de site",
+  "Self-employed Tax Estimator": "Estimador de imposto para trabalhador independente",
+  "Utilization Rate Calculator": "Calculadora de taxa de utilização",
+  "Monthly Income Target Calculator": "Calculadora de meta de rendimento mensal",
+  "CAC Calculator": "Calculadora de CAC",
+  "CPM / CPC Calculator": "Calculadora de CPM / CPC",
+  "Day Rate to Hourly Rate Calculator": "Calculadora de taxa diária para horária",
+  "BMI Calculator": "Calculadora de IMC",
+  "Body mass index": "Índice de massa corporal",
+  "BMI formula": "Fórmula do IMC",
+  "Check your body mass index and healthy weight range.": "Verifica o teu IMC e o intervalo de peso saudável.",
+  "See your BMI score, weight category, and healthy range side by side.": "Vê a tua pontuação de IMC, categoria de peso e intervalo saudável lado a lado.",
+  "Metric": "Métrico",
+  "Imperial": "Imperial",
+  "Unit system": "Sistema de unidades",
+  "Weight (kg)": "Peso (kg)",
+  "Height (cm)": "Altura (cm)",
+  "Weight (lb)": "Peso (lb)",
+  "Height (ft)": "Altura (ft)",
+  "Height (in)": "Altura (in)",
+  "Category": "Categoria",
+  "Healthy weight range": "Intervalo de peso saudável",
+  "Body mass index score.": "Pontuação do índice de massa corporal.",
+  "Standard BMI weight class.": "Classificação padrão de peso pelo IMC.",
+  "Based on a BMI between 18.5 and 24.9.": "Com base num IMC entre 18,5 e 24,9.",
+  "Underweight": "Abaixo do peso",
+  "Normal weight": "Peso normal",
+  "Overweight": "Excesso de peso",
+  "Obesity": "Obesidade",
+  "Equation": "Equação",
+  "Equation used": "Equação usada",
+  "Selected target": "Objetivo selecionado",
+  "Resting calories": "Calorias em repouso",
+  "Maintenance calories": "Calorias de manutenção",
+  "Mild fat loss target": "Objetivo de perda ligeira de gordura",
+  "Standard fat loss target": "Objetivo de perda padrão de gordura",
+  "Weight gain target": "Objetivo de ganho de peso",
+  "Activity level": "Nível de atividade",
+  "Goal mode": "Modo de objetivo",
+  "Sex": "Sexo",
+  "Body fat %": "Gordura corporal %",
+  "Daily calorie targets": "Objetivos calóricos diários",
+  "TDEE after applying activity level.": "TDEE após aplicar o nível de atividade.",
+  "TDEE minus 300 kcal/day.": "TDEE menos 300 kcal/dia.",
+  "TDEE minus 500 kcal/day.": "TDEE menos 500 kcal/dia.",
+  "TDEE plus 250 kcal/day.": "TDEE mais 250 kcal/dia.",
+  "BMR / REE estimate before activity.": "Estimativa de BMR / REE antes da atividade.",
+  "This equation uses body fat percentage to estimate lean body mass.": "Esta equação usa a percentagem de gordura corporal para estimar a massa magra.",
+  "Used to estimate lean body mass for this equation.": "Usado para estimar a massa magra nesta equação.",
+  "See your resting calories, TDEE, and calorie targets side by side.": "Vê as calorias em repouso, o TDEE e os objetivos calóricos lado a lado.",
+  "Estimate adult calorie needs with a simple TDEE calculator and compare several common equations.":
+    "Estima as necessidades calóricas de adultos com uma calculadora TDEE simples e compara várias equações comuns.",
+  "This calculator is an estimate for adults. It may not be appropriate for pregnancy, breastfeeding, competitive athletes, or people with metabolic conditions.":
+    "Esta calculadora é uma estimativa para adultos. Pode não ser adequada para gravidez, amamentação, atletas de competição ou pessoas com condições metabólicas.",
+  "Calculate VAT and gross amount from the pre-tax value.": "Calcula o IVA e o valor bruto a partir do valor sem impostos.",
+  "See the tax amount and the final price side by side.": "Vê o valor do imposto e o preço final lado a lado.",
+  "See how many units you need to sell before your fixed costs are covered.": "Vê quantas unidades precisas vender antes de cobrir os custos fixos.",
+  "See how much you add on top of cost.": "Vê quanto adicionas por cima do custo.",
+  "Profit as a share of revenue.": "Lucro como parte da receita.",
+  "What you keep after costs.": "O que te fica depois dos custos.",
+  "What you can charge before tax.": "O que podes cobrar antes de impostos.",
+  "Amount before VAT.": "Valor antes de IVA.",
+  "VAT rate applied to the amount.": "Taxa de IVA aplicada ao valor.",
+  "Tax added on top.": "Imposto adicionado por cima.",
+  "Total including VAT.": "Total com IVA incluído.",
+  "Gross amount": "Valor bruto",
+  "Net amount": "Valor líquido",
+  "Amount": "Valor",
+  "VAT amount": "Valor do IVA",
+  "Tax rate (%)": "Taxa de imposto (%)",
+  "Profit": "Lucro",
+  "Margin": "Margem",
+  "Revenue": "Receita",
+  "Cost": "Custo",
+};
+
+const ptExtraStringTranslations: Record<string, string> = {
+  "See how much profit you keep after costs with a simple profit margin calculator.":
+    "Vê quanto lucro te fica depois dos custos com uma calculadora simples de margem de lucro.",
+  "Use this when you want to see how much of your revenue is still left after the costs are paid.":
+    "Usa isto quando quiseres ver quanto da tua receita ainda sobra depois de pagares os custos.",
+  "See where the money stays": "Vê onde o dinheiro fica",
+  "This quick snapshot shows the three numbers that matter most before you decide whether a price is worth it.":
+    "Este resumo rápido mostra os três números que mais importam antes de decidires se um preço compensa.",
+  "Revenue": "Receita",
+  "Cost": "Custo",
+  "Profit": "Lucro",
+  "Margin": "Margem",
+  "Live result": "Resultado ao vivo",
+  "Profit margin formula": "Fórmula da margem de lucro",
+  "Profit = Revenue - Cost. Margin = Profit ÷ Revenue × 100. Markup = Profit ÷ Cost × 100.":
+    "Lucro = Receita - Custo. Margem = Lucro ÷ Receita × 100. Markup = Lucro ÷ Custo × 100.",
+  "It gives you both the profit amount and the percentage view so you can price with more confidence.":
+    "Mostra-te o valor do lucro e a visão percentual para que possas definir preços com mais confiança.",
+  "Use it when reviewing a sale, checking a pricing model, or comparing two offers with different cost structures.":
+    "Usa-o ao rever uma venda, verificar um modelo de preços ou comparar duas propostas com estruturas de custo diferentes.",
+  "Using gross revenue and ignoring the real cost of delivery.": "Usar a receita bruta e ignorar o custo real de entrega.",
+  "Confusing margin with markup.": "Confundir margem com markup.",
+  "Comparing profits without checking whether the revenue level is the same.": "Comparar lucros sem verificar se o nível de receita é o mesmo.",
+  "What is the difference between margin and markup?": "Qual é a diferença entre margem e markup?",
+  "Margin compares profit to revenue. Markup compares profit to cost.": "A margem compara o lucro com a receita. O markup compara o lucro com o custo.",
+  "Can profit be negative?": "O lucro pode ser negativo?",
+  "Yes. If costs are higher than revenue, the calculator will show a loss instead of profit.":
+    "Sim. Se os custos forem maiores do que a receita, a calculadora mostra prejuízo em vez de lucro.",
+  "Why is this only an estimate?": "Porque é apenas uma estimativa?",
+  "Activity, body composition, and health status all affect calorie needs, so the result is a practical starting point rather than a guarantee.":
+    "Atividade, composição corporal e estado de saúde afetam as necessidades calóricas, por isso o resultado é um ponto de partida prático e não uma garantia.",
+  "Can I use this for children or pregnancy?": "Posso usar isto para crianças ou gravidez?",
+  "No. This calculator is for adults only and may not be appropriate for pregnancy, breastfeeding, athletes, or people with metabolic conditions.":
+    "Não. Esta calculadora é apenas para adultos e pode não ser adequada para gravidez, amamentação, atletas ou pessoas com condições metabólicas.",
+  "Want to turn this estimate into a plan?": "Queres transformar esta estimativa num plano?",
+  "A registered dietitian or clinician can help turn calorie targets into a nutrition plan that fits your goals and health needs.":
+    "Um nutricionista ou clínico pode ajudar a transformar as metas calóricas num plano alimentar adequado aos teus objetivos e necessidades de saúde.",
+  "Recheck calories if your age, weight, activity, or goal changes.": "Reverifica as calorias se a tua idade, peso, atividade ou objetivo mudar.",
+  "Estimate adult calorie needs with a simple TDEE calculator and compare several common equations.":
+    "Estima as necessidades calóricas de adultos com uma calculadora TDEE simples e compara várias equações comuns.",
+  "Use it when planning a calorie target for maintenance, gradual fat loss, or moderate weight gain.":
+    "Usa-o ao planear uma meta calórica para manutenção, perda gradual de gordura ou ganho moderado de peso.",
+  "Break-even snapshot": "Resumo do ponto de equilíbrio",
+  "Use the contribution margin to see how many sales you need to hit break-even.":
+    "Usa a margem de contribuição para ver quantas vendas precisas para chegar ao ponto de equilíbrio.",
+  "Net pay breakdown": "Desdobramento do líquido",
+  "Compare the gross amount, withheld tax, and the amount that remains.": "Compara o valor bruto, o imposto retido e o valor que sobra.",
+  "Gross-up breakdown": "Desdobramento do cálculo para bruto",
+  "Use this when you know the net amount and need the pre-tax figure.": "Usa isto quando já sabes o valor líquido e precisas do valor antes de impostos.",
+  "Advertising return": "Retorno de anúncios",
+  "Use ROAS to judge whether your ads are returning enough revenue.": "Usa o ROAS para avaliar se os teus anúncios estão a gerar receita suficiente.",
+  "Tax estimate": "Estimativa de imposto",
+  "Use this to plan for income tax and self-employment tax throughout the year.":
+    "Usa isto para planeares o imposto de renda e o imposto de trabalhador independente ao longo do ano.",
+  "See how many sales you need to cover fixed and variable costs with this break-even calculator.":
+    "Vê quantas vendas precisas para cobrir custos fixos e variáveis com esta calculadora de ponto de equilíbrio.",
+  "Use this calculator when you want a fast answer to a practical question: how many units, jobs, or orders do I need before the business starts paying for itself?":
+    "Usa esta calculadora quando quiseres uma resposta rápida a uma pergunta prática: quantas unidades, trabalhos ou encomendas preciso antes de o negócio começar a pagar-se a si mesmo?",
+  "Break-even formula": "Fórmula do ponto de equilíbrio",
+  "If your selling price is too close to variable cost, the number of units you need rises quickly.":
+    "Se o teu preço de venda estiver demasiado próximo do custo variável, o número de unidades necessárias sobe rapidamente.",
+  "Need cleaner cash flow tracking?": "Precisas de um controlo de fluxo de caixa mais limpo?",
+  "If you want a fuller view of invoices, expenses, and profit, QuickBooks or Xero can keep the numbers in one place.":
+    "Se quiseres uma visão mais completa de faturas, despesas e lucro, QuickBooks ou Xero podem manter os números num só lugar.",
+  "Revisit break-even anytime your price, supplier cost, or fixed overhead changes.":
+    "Volta ao ponto de equilíbrio sempre que o preço, o custo do fornecedor ou os custos fixos mudarem.",
+  "See how much it costs to acquire one customer.": "Vê quanto custa adquirir um cliente.",
+  "Use this calculator when you want a quick read on whether your marketing spend is efficient enough to keep growing.":
+    "Usa esta calculadora quando quiseres perceber rapidamente se o teu gasto em marketing é eficiente o suficiente para continuar a crescer.",
+  "CAC formula": "Fórmula do CAC",
+  "CAC = Marketing spend ÷ New customers.": "CAC = Gasto com marketing ÷ Novos clientes.",
+  "Compare CPM and CPC to understand your ad campaign efficiency.": "Compara CPM e CPC para perceber a eficiência da tua campanha.",
+  "Use this calculator when you want a clear, quick way to compare how much your ads cost per impression and per click.":
+    "Usa esta calculadora quando quiseres comparar de forma clara e rápida quanto os teus anúncios custam por impressão e por clique.",
+  "CPM / CPC formula": "Fórmula CPM / CPC",
+  "Convert a day rate into an hourly rate and weekly equivalent.": "Converte uma tarifa diária numa tarifa horária e equivalente semanal.",
+  "Use this calculator when a client offers a day rate and you want to see what that looks like as an hourly number.":
+    "Usa esta calculadora quando um cliente oferece uma tarifa diária e queres ver quanto isso representa por hora.",
+  "Day rate to hourly rate formula": "Fórmula de tarifa diária para horária",
+  "Hourly rate = Day rate ÷ Billable hours per day. Weekly equivalent = Day rate × 5. Monthly equivalent = Day rate × 20.":
+    "Tarifa horária = Tarifa diária ÷ Horas faturáveis por dia. Equivalente semanal = Tarifa diária × 5. Equivalente mensal = Tarifa diária × 20.",
+};
+
 const frExtraStringTranslations: Record<string, string> = {
   "See how much profit you keep after costs with a simple profit margin calculator.":
     "Vois combien de bénéfice tu gardes après les coûts avec un calculateur de marge simple.",
@@ -2156,6 +2513,10 @@ export function translateText(locale: Locale, text: string) {
     return jaStringTranslations[text] ?? jaExtraStringTranslations[text] ?? text;
   }
 
+  if (locale === "pt") {
+    return ptStringTranslations[text] ?? ptExtraStringTranslations[text] ?? text;
+  }
+
   if (locale === "de") {
     return deStringTranslations[text] ?? deExtraStringTranslations[text] ?? text;
   }
@@ -2181,7 +2542,7 @@ export function translateValue<T>(locale: Locale, value: T): T {
 }
 
 export function normalizeLocale(locale: string | null | undefined): Locale {
-  if (locale === "es" || locale === "de" || locale === "fr" || locale === "ja") {
+  if (locale === "es" || locale === "de" || locale === "fr" || locale === "ja" || locale === "pt") {
     return locale;
   }
 
@@ -2211,6 +2572,7 @@ export function getLanguageAlternates(pathname: string) {
     de: getLocalizedPathname(pathname, "de"),
     fr: getLocalizedPathname(pathname, "fr"),
     ja: getLocalizedPathname(pathname, "ja"),
+    pt: getLocalizedPathname(pathname, "pt"),
   };
 }
 
@@ -2229,6 +2591,10 @@ export function getOpenGraphLocale(locale: Locale) {
 
   if (locale === "ja") {
     return "ja_JP";
+  }
+
+  if (locale === "pt") {
+    return "pt_PT";
   }
 
   return "en_US";

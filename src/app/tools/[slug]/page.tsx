@@ -91,6 +91,16 @@ const japaneseMetaDescriptionOverrides: Record<string, string> = {
   "tdee-calculator": "シンプルなTDEE計算機で成人の必要カロリーを見積もり、一般的な式を比較します。",
 };
 
+const portugueseDescriptionOverrides: Record<string, string> = {
+  "profit-margin": "Vê quanto lucro te fica depois dos custos com uma calculadora simples de margem de lucro.",
+  "tdee-calculator": "Estima as necessidades calóricas de adultos com uma calculadora TDEE simples e compara várias equações comuns.",
+};
+
+const portugueseMetaDescriptionOverrides: Record<string, string> = {
+  "profit-margin": "Vê quanto lucro te fica depois dos custos com uma calculadora simples de margem de lucro.",
+  "tdee-calculator": "Estima as necessidades calóricas de adultos com uma calculadora TDEE simples e compara várias equações comuns.",
+};
+
 export function generateStaticParams() {
   return tools.map((tool) => ({ slug: tool.slug }));
 }
@@ -105,6 +115,7 @@ export async function generateMetadata({ params }: ToolPageProps) {
     (locale === "de" ? germanMetaDescriptionOverrides[slug] : undefined) ??
     (locale === "fr" ? frenchMetaDescriptionOverrides[slug] : undefined) ??
     (locale === "ja" ? japaneseMetaDescriptionOverrides[slug] : undefined) ??
+    (locale === "pt" ? portugueseMetaDescriptionOverrides[slug] : undefined) ??
     seoContent?.metaDescription ??
     (tool ? translateText(locale, tool.description) : t("calculatorShell.quickCalculatorDescription"));
   const title = tool ? translateText(locale, tool.title) : t("calculator.badge");
@@ -148,6 +159,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
     (locale === "de" ? germanDescriptionOverrides[slug] : undefined) ??
     (locale === "fr" ? frenchDescriptionOverrides[slug] : undefined) ??
     (locale === "ja" ? japaneseDescriptionOverrides[slug] : undefined) ??
+    (locale === "pt" ? portugueseDescriptionOverrides[slug] : undefined) ??
     seoContent?.intro ??
     (tool ? translateText(locale, tool.description) : undefined);
   const translatedFaq = seoContent?.faq?.map((item) => ({

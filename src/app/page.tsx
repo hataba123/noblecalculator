@@ -20,7 +20,9 @@ export async function generateMetadata() {
           ? ["calculateur financier", "calculateur de marge", "calculateur de markup", "calculateur freelance", "calculateur d'impôts", "calculateur d'entreprise"]
           : locale === "ja"
             ? ["財務計算機", "利益率計算機", "マークアップ計算機", "フリーランス計算機", "税金計算機", "ビジネス計算機"]
-            : ["financial calculator", "profit margin calculator", "markup calculator", "freelance calculator", "tax calculator", "business calculator"];
+            : locale === "pt"
+              ? ["calculadora financeira", "calculadora de margem de lucro", "calculadora de markup", "calculadora freelance", "calculadora de impostos", "calculadora de negócios"]
+              : ["financial calculator", "profit margin calculator", "markup calculator", "freelance calculator", "tax calculator", "business calculator"];
 
   return createPageMetadata(
     locale,
