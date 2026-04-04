@@ -81,6 +81,16 @@ const frenchMetaDescriptionOverrides: Record<string, string> = {
   "tdee-calculator": "Estime les besoins caloriques des adultes avec un calculateur TDEE simple et compare plusieurs formules courantes.",
 };
 
+const japaneseDescriptionOverrides: Record<string, string> = {
+  "profit-margin": "シンプルな利益率計算機で、コスト後にどれだけ利益が残るかを確認します。",
+  "tdee-calculator": "シンプルなTDEE計算機で成人の必要カロリーを見積もり、いくつかの一般的な式を比較します。",
+};
+
+const japaneseMetaDescriptionOverrides: Record<string, string> = {
+  "profit-margin": "シンプルな利益率計算機で、コスト後にどれだけ利益が残るかを確認します。",
+  "tdee-calculator": "シンプルなTDEE計算機で成人の必要カロリーを見積もり、一般的な式を比較します。",
+};
+
 export function generateStaticParams() {
   return tools.map((tool) => ({ slug: tool.slug }));
 }
@@ -94,6 +104,7 @@ export async function generateMetadata({ params }: ToolPageProps) {
   const description =
     (locale === "de" ? germanMetaDescriptionOverrides[slug] : undefined) ??
     (locale === "fr" ? frenchMetaDescriptionOverrides[slug] : undefined) ??
+    (locale === "ja" ? japaneseMetaDescriptionOverrides[slug] : undefined) ??
     seoContent?.metaDescription ??
     (tool ? translateText(locale, tool.description) : t("calculatorShell.quickCalculatorDescription"));
   const title = tool ? translateText(locale, tool.title) : t("calculator.badge");
@@ -136,6 +147,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
   const pageDescription =
     (locale === "de" ? germanDescriptionOverrides[slug] : undefined) ??
     (locale === "fr" ? frenchDescriptionOverrides[slug] : undefined) ??
+    (locale === "ja" ? japaneseDescriptionOverrides[slug] : undefined) ??
     seoContent?.intro ??
     (tool ? translateText(locale, tool.description) : undefined);
   const translatedFaq = seoContent?.faq?.map((item) => ({

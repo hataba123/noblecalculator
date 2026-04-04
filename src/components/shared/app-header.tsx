@@ -19,6 +19,7 @@ export function AppHeader() {
     es: t("navigation.spanish"),
     de: t("navigation.german"),
     fr: t("navigation.french"),
+    ja: t("navigation.japanese"),
   };
 
   useEffect(() => {
