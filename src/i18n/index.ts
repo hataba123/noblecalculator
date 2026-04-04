@@ -2114,6 +2114,11 @@ const ptStringTranslations: Record<string, string> = {
   "Profit Margin Calculator": "Calculadora de margem de lucro",
   "Markup Calculator": "Calculadora de markup",
   "Freelance Hourly Rate Calculator": "Calculadora de tarifa horária freelance",
+  "Set an hourly rate that fits your income goal.": "Define uma tarifa horária que se ajuste ao teu objetivo de rendimento.",
+  "Set an hourly rate that matches your income goal.": "Define uma tarifa horária que se ajuste ao teu objetivo de rendimento.",
+  "See how much profit you keep after costs.": "Vê quanto lucro te fica depois dos custos.",
+  "Find the right selling price from your cost and target markup.": "Encontra o preço de venda certo a partir do teu custo e markup alvo.",
+  "Add VAT to a price or split it back out.": "Adiciona IVA a um preço ou separa-o de novo.",
   "VAT Calculator": "Calculadora de IVA",
   "Invoice Calculator": "Calculadora de faturas",
   "International Transfer Fee Calculator": "Calculadora de taxa de transferência internacional",
@@ -2198,6 +2203,15 @@ const ptStringTranslations: Record<string, string> = {
   "Margin": "Margem",
   "Revenue": "Receita",
   "Cost": "Custo",
+  "Back to tools": "Voltar às calculadoras",
+  "Freelance pricing": "Preços freelance",
+  "Invoice and tax planning": "Planeamento de faturas e impostos",
+  "Ad spend and ROI checks": "Verificações de gasto publicitário e ROI",
+  "Website budget estimates": "Estimativas de orçamento do site",
+  "See answers update instantly while you type": "Vê as respostas atualizar instantaneamente enquanto escreves",
+  "Easy words for everyone, not only number people": "Linguagem simples para toda a gente, não só para quem gosta de números",
+  "Looks great on phones, tablets, and desktop screens": "Fica ótimo em telemóveis, tablets e computadores",
+  "Same clean style across every calculator page": "O mesmo estilo limpo em todas as páginas de calculadora",
 };
 
 const ptExtraStringTranslations: Record<string, string> = {
