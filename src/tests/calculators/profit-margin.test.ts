@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
 
-import { calculateFreelanceHourlyRate } from "../../features/calculators/freelance-hourly-rate/formula";
-import { calculateInternationalTransferFee } from "../../features/calculators/international-transfer-fee/formula";
-import { calculateInvoice } from "../../features/calculators/invoice-calculator/formula";
-import { calculateMarkup } from "../../features/calculators/markup/formula";
-import { calculateProfitMargin } from "../../features/calculators/profit-margin/formula";
-import { calculateVat } from "../../features/calculators/vat-calculator/formula";
+import { calculateFreelanceHourlyRate } from "../../../packages/calculators-core/src/freelance-hourly-rate";
+import { calculateInternationalTransferFee } from "../../../packages/calculators-core/src/international-transfer-fee";
+import { calculateInvoice } from "../../../packages/calculators-core/src/invoice-calculator";
+import { calculateMarkup } from "../../../packages/calculators-core/src/markup";
+import { calculateProfitMargin } from "../../../packages/calculators-core/src/profit-margin";
+import { calculateVat } from "../../../packages/calculators-core/src/vat-calculator";
 
 describe("calculator formulas", () => {
   it("calculates profit margin outputs", () => {

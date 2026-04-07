@@ -28,7 +28,7 @@ function formatLabel(key: string) {
     .replace(/^./, (character) => character.toUpperCase());
 }
 
-function formatDisplayValue(value: unknown) {
+function formatDisplayValue(value: unknown): string {
   if (typeof value === "number") {
     return Number.isInteger(value)
       ? value.toLocaleString("en-US")

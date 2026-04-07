@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
 
-import { calculateCac } from "@/src/features/calculators/cac";
-import { calculateCpmCpc } from "@/src/features/calculators/cpm-cpc";
-import { calculateDayRateToHourlyRate } from "@/src/features/calculators/day-rate-to-hourly-rate";
-import { calculateMonthlyIncomeTarget } from "@/src/features/calculators/monthly-income-target";
-import { calculateSelfEmployedTaxEstimator } from "@/src/features/calculators/self-employed-tax-estimator";
-import { calculateUtilizationRate } from "@/src/features/calculators/utilization-rate";
+import { calculateCac } from "../../packages/calculators-core/src/cac";
+import { calculateCpmCpc } from "../../packages/calculators-core/src/cpm-cpc";
+import { calculateDayRateToHourlyRate } from "../../packages/calculators-core/src/day-rate-to-hourly-rate";
+import { calculateMonthlyIncomeTarget } from "../../packages/calculators-core/src/monthly-income-target";
+import { calculateSelfEmployedTaxEstimator } from "../../packages/calculators-core/src/self-employed-tax-estimator";
+import { calculateUtilizationRate } from "../../packages/calculators-core/src/utilization-rate";
 
 describe("advanced calculators", () => {
   it("calculates self employed tax", () => {

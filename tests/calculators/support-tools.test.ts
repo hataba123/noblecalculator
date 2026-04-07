@@ -1,20 +1,20 @@
 import { describe, expect, it } from "vitest";
 
-import { calculateBreakEven } from "@/src/features/calculators/break-even";
-import { calculateGrossToNet } from "@/src/features/calculators/gross-to-net";
-import { calculateLatePaymentFee } from "@/src/features/calculators/late-payment-fee";
-import { calculateNetToGross } from "@/src/features/calculators/net-to-gross";
-import { calculatePaymentProcessingFee } from "@/src/features/calculators/payment-processing-fee";
-import { calculateRoi } from "@/src/features/calculators/roi";
-import { calculateRoas } from "@/src/features/calculators/roas";
-import { calculateWebsiteCost } from "@/src/features/calculators/website-cost";
+import { calculateBreakEven } from "../../packages/calculators-core/src/break-even";
+import { calculateGrossToNet } from "../../packages/calculators-core/src/gross-to-net";
+import { calculateLatePaymentFee } from "../../packages/calculators-core/src/late-payment-fee";
+import { calculateNetToGross } from "../../packages/calculators-core/src/net-to-gross";
+import { calculatePaymentProcessingFee } from "../../packages/calculators-core/src/payment-processing-fee";
+import { calculateRoi } from "../../packages/calculators-core/src/roi";
+import { calculateRoas } from "../../packages/calculators-core/src/roas";
+import { calculateWebsiteCost } from "../../packages/calculators-core/src/website-cost";
 
 describe("support tool calculators", () => {
 	it("calculates break-even metrics", () => {
 		const result = calculateBreakEven({ fixedCosts: 15000, variableCostPerUnit: 28, sellingPrice: 65 });
 		expect(result.contributionMargin).toBe(37);
 		expect(result.breakEvenUnits).toBeCloseTo(405.4054, 4);
-		expect(result.breakEvenRevenue).toBeCloseTo(26351.3513, 4);
+		expect(result.breakEvenRevenue).toBeCloseTo(26351.351351351354, 6);
 	});
 
 	it("calculates gross to net", () => {

@@ -4,7 +4,7 @@ const bmiUnderweightUpperBound = 18.5;
 const bmiNormalUpperBound = 25;
 const bmiOverweightUpperBound = 30;
 const poundsPerKilogram = 2.2046226218;
-const inchesPerMeter = 39.3700787402;
+const centimetersPerInch = 2.54;
 
 function getBmiCategory(bmi: number) {
   if (bmi < bmiUnderweightUpperBound) {
@@ -98,7 +98,7 @@ export function convertImperialToMetricInput(input: BmiInput): BmiInput {
   return {
     unitSystem: "metric",
     weight: input.weight / poundsPerKilogram,
-    height: totalInches / inchesPerMeter,
+    height: totalInches * centimetersPerInch,
     heightInches: 0,
   };
 }
