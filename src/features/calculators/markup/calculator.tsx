@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 
-import { calculateMarkup } from "./formula";
-import { markupConfig } from "./config";
+import { calculateMarkup } from "./core";
+import { markupConfig } from "./core";
 import { MarkupForm } from "./form";
 import { MarkupResult } from "./result";
-import type { MarkupInput } from "./schema";
+import type { MarkupInput } from "./core";
 
 export function MarkupCalculator() {
   const [value, setValue] = useState<MarkupInput>(() => ({ ...markupConfig.defaultValue }));

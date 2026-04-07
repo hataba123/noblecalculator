@@ -3,11 +3,11 @@
 import { useState } from "react";
 
 import { SupportToolShell } from "../support-tools/shared";
-import { calculateNetToGross } from "./formula";
-import { netToGrossConfig } from "./config";
+import { calculateNetToGross } from "./core";
+import { netToGrossConfig } from "./core";
 import { NetToGrossForm } from "./form";
 import { NetToGrossResult } from "./result";
-import type { NetToGrossInput } from "./schema";
+import type { NetToGrossInput } from "./core";
 
 export function NetToGrossCalculator() {
   const [value, setValue] = useState<NetToGrossInput>(() => ({ ...netToGrossConfig.defaultValue }));

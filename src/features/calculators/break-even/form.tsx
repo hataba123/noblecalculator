@@ -1,7 +1,7 @@
 "use client";
 
 import { NumberField } from "../shared/number-field";
-import type { BreakEvenInput } from "./schema";
+import type { BreakEvenInput } from "./core";
 
 type BreakEvenFormProps = {
   value: BreakEvenInput;

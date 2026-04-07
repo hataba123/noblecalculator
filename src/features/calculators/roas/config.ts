@@ -1,1 +1,1 @@
-export { roasConfig } from "@noblecalculator/calculators-core/roas";
+export { roasConfig } from "./core";

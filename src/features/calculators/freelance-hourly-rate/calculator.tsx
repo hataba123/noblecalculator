@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 
-import { calculateFreelanceHourlyRate } from "./formula";
-import { freelanceHourlyRateConfig } from "./config";
+import { calculateFreelanceHourlyRate } from "./core";
+import { freelanceHourlyRateConfig } from "./core";
 import { FreelanceHourlyRateForm } from "./form";
 import { FreelanceHourlyRateResult } from "./result";
-import type { FreelanceHourlyRateInput } from "./schema";
+import type { FreelanceHourlyRateInput } from "./core";
 
 export function FreelanceHourlyRateCalculator() {
   const [value, setValue] = useState<FreelanceHourlyRateInput>(() => ({ ...freelanceHourlyRateConfig.defaultValue }));

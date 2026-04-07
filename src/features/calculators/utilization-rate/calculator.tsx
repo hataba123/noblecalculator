@@ -3,11 +3,11 @@
 import { useState } from "react";
 
 import { SupportToolShell } from "../support-tools/shared";
-import { calculateUtilizationRate } from "./formula";
-import { utilizationRateConfig } from "./config";
+import { calculateUtilizationRate } from "./core";
+import { utilizationRateConfig } from "./core";
 import { UtilizationRateForm } from "./form";
 import { UtilizationRateResult } from "./result";
-import type { UtilizationRateInput } from "./schema";
+import type { UtilizationRateInput } from "./core";
 
 export function UtilizationRateCalculator() {
   const [value, setValue] = useState<UtilizationRateInput>(() => ({ ...utilizationRateConfig.defaultValue }));

@@ -3,11 +3,11 @@
 import { useState } from "react";
 
 import { SupportToolShell } from "../support-tools/shared";
-import { calculateDayRateToHourlyRate } from "./formula";
-import { dayRateToHourlyRateConfig } from "./config";
+import { calculateDayRateToHourlyRate } from "./core";
+import { dayRateToHourlyRateConfig } from "./core";
 import { DayRateToHourlyRateForm } from "./form";
 import { DayRateToHourlyRateResult } from "./result";
-import type { DayRateToHourlyRateInput } from "./schema";
+import type { DayRateToHourlyRateInput } from "./core";
 
 export function DayRateToHourlyRateCalculator() {
   const [value, setValue] = useState<DayRateToHourlyRateInput>(() => ({ ...dayRateToHourlyRateConfig.defaultValue }));

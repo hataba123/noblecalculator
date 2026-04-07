@@ -1,7 +1,7 @@
 "use client";
 
 import { NumberField } from "../shared/number-field";
-import type { RoasInput } from "./schema";
+import type { RoasInput } from "./core";
 
 type RoasFormProps = {
   value: RoasInput;

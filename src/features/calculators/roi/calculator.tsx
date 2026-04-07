@@ -3,11 +3,11 @@
 import { useState } from "react";
 
 import { SupportToolShell } from "../support-tools/shared";
-import { calculateRoi } from "./formula";
-import { roiConfig } from "./config";
+import { calculateRoi } from "./core";
+import { roiConfig } from "./core";
 import { RoiForm } from "./form";
 import { RoiResult } from "./result";
-import type { RoiInput } from "./schema";
+import type { RoiInput } from "./core";
 
 export function RoiCalculator() {
   const [value, setValue] = useState<RoiInput>(() => ({ ...roiConfig.defaultValue }));

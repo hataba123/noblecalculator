@@ -1,7 +1,7 @@
 "use client";
 
 import { NumberField } from "../shared/number-field";
-import type { InternationalTransferFeeInput } from "./schema";
+import type { InternationalTransferFeeInput } from "./core";
 
 type InternationalTransferFeeFormProps = {
   value: InternationalTransferFeeInput;

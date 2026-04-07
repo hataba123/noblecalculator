@@ -3,7 +3,7 @@ import { useLanguage } from "@/src/components/shared/language-provider";
 import { translateText } from "@/src/i18n";
 
 import { formatDecimal } from "../support-tools/shared";
-import type { BmiResult as BmiResultValue } from "./schema";
+import type { BmiResult as BmiResultValue } from "./core";
 
 type BmiResultProps = {
   result: BmiResultValue;

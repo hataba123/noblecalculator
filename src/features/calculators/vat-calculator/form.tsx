@@ -1,7 +1,7 @@
 "use client";
 
 import { NumberField } from "../shared/number-field";
-import type { VatCalculatorInput } from "./schema";
+import type { VatCalculatorInput } from "./core";
 
 type VatCalculatorFormProps = {
   value: VatCalculatorInput;

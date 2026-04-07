@@ -1,7 +1,7 @@
 "use client";
 
 import { NumberField } from "../shared/number-field";
-import type { CpmCpcInput } from "./schema";
+import type { CpmCpcInput } from "./core";
 
 type CpmCpcFormProps = {
   value: CpmCpcInput;

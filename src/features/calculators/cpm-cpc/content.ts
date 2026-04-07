@@ -1,1 +1,1 @@
-export { cpmCpcSeoContent } from "@noblecalculator/calculators-core/cpm-cpc";
+export { cpmCpcSeoContent } from "./core";

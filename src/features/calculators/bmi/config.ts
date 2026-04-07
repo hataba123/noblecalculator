@@ -1,1 +1,1 @@
-export { bmiConfig } from "@noblecalculator/calculators-core/bmi";
+export { bmiConfig } from "./core";

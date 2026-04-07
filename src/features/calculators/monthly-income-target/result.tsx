@@ -1,7 +1,7 @@
 import { ResultCard } from "@/src/components/shared/result-card";
 import { formatCurrency } from "@/src/lib/format";
 
-import type { MonthlyIncomeTargetResult as MonthlyIncomeTargetResultValue } from "./schema";
+import type { MonthlyIncomeTargetResult as MonthlyIncomeTargetResultValue } from "./core";
 
 type MonthlyIncomeTargetResultProps = {
   result: MonthlyIncomeTargetResultValue;

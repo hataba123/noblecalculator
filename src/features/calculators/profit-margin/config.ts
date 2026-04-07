@@ -1,1 +1,1 @@
-export { profitMarginConfig } from "@noblecalculator/calculators-core/profit-margin";
+export { profitMarginConfig } from "./core";

@@ -3,11 +3,11 @@
 import { useState } from "react";
 
 import { SupportToolShell } from "../support-tools/shared";
-import { calculateLatePaymentFee } from "./formula";
-import { latePaymentFeeConfig } from "./config";
+import { calculateLatePaymentFee } from "./core";
+import { latePaymentFeeConfig } from "./core";
 import { LatePaymentFeeForm } from "./form";
 import { LatePaymentFeeResult } from "./result";
-import type { LatePaymentFeeInput } from "./schema";
+import type { LatePaymentFeeInput } from "./core";
 
 export function LatePaymentFeeCalculator() {
   const [value, setValue] = useState<LatePaymentFeeInput>(() => ({ ...latePaymentFeeConfig.defaultValue }));

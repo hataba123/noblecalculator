@@ -1,1 +1,1 @@
-export { breakEvenSeoContent } from "@noblecalculator/calculators-core/break-even";
+export { breakEvenSeoContent } from "./core";

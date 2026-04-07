@@ -1,7 +1,7 @@
 import { ResultCard } from "@/src/components/shared/result-card";
 import { formatCurrency } from "@/src/lib/format";
 
-import type { InternationalTransferFeeResult as InternationalTransferFeeResultValue } from "./schema";
+import type { InternationalTransferFeeResult as InternationalTransferFeeResultValue } from "./core";
 
 type InternationalTransferFeeResultProps = {
   result: InternationalTransferFeeResultValue;

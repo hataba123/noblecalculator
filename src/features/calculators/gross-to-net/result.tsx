@@ -1,7 +1,7 @@
 import { ResultCard } from "@/src/components/shared/result-card";
 import { formatCurrency, formatPercent } from "@/src/lib/format";
 
-import type { GrossToNetResult as GrossToNetResultValue } from "./schema";
+import type { GrossToNetResult as GrossToNetResultValue } from "./core";
 
 type GrossToNetResultProps = {
   result: GrossToNetResultValue;

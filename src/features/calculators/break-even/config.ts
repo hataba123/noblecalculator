@@ -1,1 +1,1 @@
-export { breakEvenConfig } from "@noblecalculator/calculators-core/break-even";
+export { breakEvenConfig } from "./core";

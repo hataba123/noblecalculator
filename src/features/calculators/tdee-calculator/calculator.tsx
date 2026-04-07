@@ -6,11 +6,11 @@ import { useLanguage } from "@/src/components/shared/language-provider";
 import { translateText } from "@/src/i18n";
 
 import { SupportToolShell } from "../support-tools/shared";
-import { calculateTdee } from "./formula";
-import { tdeeConfig } from "./config";
+import { calculateTdee } from "./core";
+import { tdeeConfig } from "./core";
 import { TdeeForm } from "./form";
 import { TdeeResult } from "./result";
-import type { TdeeInput } from "./schema";
+import type { TdeeInput } from "./core";
 
 export function TdeeCalculator() {
   const { locale } = useLanguage();

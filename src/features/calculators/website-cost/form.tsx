@@ -1,7 +1,7 @@
 "use client";
 
 import { NumberField } from "../shared/number-field";
-import type { WebsiteCostInput } from "./schema";
+import type { WebsiteCostInput } from "./core";
 
 type WebsiteCostFormProps = {
   value: WebsiteCostInput;

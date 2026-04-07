@@ -1,6 +1,6 @@
 export { WebsiteCostCalculator } from "./calculator";
-export { websiteCostConfig } from "./config";
+export { websiteCostConfig } from "./core";
 export { WebsiteCostForm } from "./form";
-export { calculateWebsiteCost } from "./formula";
+export { calculateWebsiteCost } from "./core";
 export { WebsiteCostResult } from "./result";
-export type { WebsiteCostInput, WebsiteCostResult as WebsiteCostResultValue } from "./schema";
+export type { WebsiteCostInput, WebsiteCostResult as WebsiteCostResultValue } from "./core";

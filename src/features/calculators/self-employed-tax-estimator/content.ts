@@ -1,1 +1,1 @@
-export { selfEmployedTaxEstimatorSeoContent } from "@noblecalculator/calculators-core/self-employed-tax-estimator";
+export { selfEmployedTaxEstimatorSeoContent } from "./core";

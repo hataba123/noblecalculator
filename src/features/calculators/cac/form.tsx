@@ -1,7 +1,7 @@
 "use client";
 
 import { NumberField } from "../shared/number-field";
-import type { CacInput } from "./schema";
+import type { CacInput } from "./core";
 
 type CacFormProps = {
   value: CacInput;

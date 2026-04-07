@@ -1,6 +1,6 @@
 export { SelfEmployedTaxEstimatorCalculator } from "./calculator";
-export { selfEmployedTaxEstimatorConfig } from "./config";
+export { selfEmployedTaxEstimatorConfig } from "./core";
 export { SelfEmployedTaxEstimatorForm } from "./form";
-export { calculateSelfEmployedTaxEstimator } from "./formula";
+export { calculateSelfEmployedTaxEstimator } from "./core";
 export { SelfEmployedTaxEstimatorResult } from "./result";
-export type { SelfEmployedTaxEstimatorInput, SelfEmployedTaxEstimatorResult as SelfEmployedTaxEstimatorResultValue } from "./schema";
+export type { SelfEmployedTaxEstimatorInput, SelfEmployedTaxEstimatorResult as SelfEmployedTaxEstimatorResultValue } from "./core";

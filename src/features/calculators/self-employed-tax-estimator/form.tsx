@@ -1,7 +1,7 @@
 "use client";
 
 import { NumberField } from "../shared/number-field";
-import type { SelfEmployedTaxEstimatorInput } from "./schema";
+import type { SelfEmployedTaxEstimatorInput } from "./core";
 
 type SelfEmployedTaxEstimatorFormProps = {
   value: SelfEmployedTaxEstimatorInput;

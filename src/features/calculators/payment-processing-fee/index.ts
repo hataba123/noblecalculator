@@ -1,6 +1,6 @@
 export { PaymentProcessingFeeCalculator } from "./calculator";
-export { paymentProcessingFeeConfig } from "./config";
+export { paymentProcessingFeeConfig } from "./core";
 export { PaymentProcessingFeeForm } from "./form";
-export { calculatePaymentProcessingFee } from "./formula";
+export { calculatePaymentProcessingFee } from "./core";
 export { PaymentProcessingFeeResult } from "./result";
-export type { PaymentProcessingFeeInput, PaymentProcessingFeeResult as PaymentProcessingFeeResultValue } from "./schema";
+export type { PaymentProcessingFeeInput, PaymentProcessingFeeResult as PaymentProcessingFeeResultValue } from "./core";

@@ -1,1 +1,1 @@
-export { calculateMarkup } from "@noblecalculator/calculators-core/markup";
+export { calculateMarkup } from "./core";

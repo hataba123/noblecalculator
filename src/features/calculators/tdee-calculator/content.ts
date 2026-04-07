@@ -1,1 +1,1 @@
-export { tdeeSeoContent } from "@noblecalculator/calculators-core/tdee-calculator";
+export { tdeeSeoContent } from "./core";

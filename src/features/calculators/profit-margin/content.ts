@@ -1,1 +1,1 @@
-export { profitMarginSeoContent } from "@noblecalculator/calculators-core/profit-margin";
+export { profitMarginSeoContent } from "./core";

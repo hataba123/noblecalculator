@@ -4,8 +4,8 @@ import { NumberField } from "../shared/number-field";
 import { translateText } from "@/src/i18n";
 import { useLanguage } from "@/src/components/shared/language-provider";
 
-import { convertImperialToMetricInput, convertMetricToImperialInput } from "./formula";
-import type { BmiInput, BmiUnitSystem } from "./schema";
+import { convertImperialToMetricInput, convertMetricToImperialInput } from "./core";
+import type { BmiInput, BmiUnitSystem } from "./core";
 
 type BmiFormProps = {
   value: BmiInput;

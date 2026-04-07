@@ -3,11 +3,11 @@
 import { useState } from "react";
 
 import { SupportToolShell } from "../support-tools/shared";
-import { calculateCac } from "./formula";
-import { cacConfig } from "./config";
+import { calculateCac } from "./core";
+import { cacConfig } from "./core";
 import { CacForm } from "./form";
 import { CacResult } from "./result";
-import type { CacInput } from "./schema";
+import type { CacInput } from "./core";
 
 export function CacCalculator() {
   const [value, setValue] = useState<CacInput>(() => ({ ...cacConfig.defaultValue }));

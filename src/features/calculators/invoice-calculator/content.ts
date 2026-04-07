@@ -1,1 +1,1 @@
-export { invoiceCalculatorSeoContent } from "@noblecalculator/calculators-core/invoice-calculator";
+export { invoiceCalculatorSeoContent } from "./core";

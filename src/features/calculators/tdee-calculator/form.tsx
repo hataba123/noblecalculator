@@ -4,8 +4,8 @@ import { useLanguage } from "@/src/components/shared/language-provider";
 import { translateText } from "@/src/i18n";
 
 import { NumberField } from "../shared/number-field";
-import { convertImperialToMetricInput, convertMetricToImperialInput, equationNeedsBodyFatPercent, tdeeActivityOptions, tdeeEquationOptions, tdeeGoalOptions, tdeeSexOptions } from "./formula";
-import type { TdeeActivityLevel, TdeeEquation, TdeeGoalMode, TdeeInput, TdeeSex, TdeeUnitSystem } from "./schema";
+import { convertImperialToMetricInput, convertMetricToImperialInput, equationNeedsBodyFatPercent, tdeeActivityOptions, tdeeEquationOptions, tdeeGoalOptions, tdeeSexOptions } from "./core";
+import type { TdeeActivityLevel, TdeeEquation, TdeeGoalMode, TdeeInput, TdeeSex, TdeeUnitSystem } from "./core";
 
 type TdeeFormProps = {
   value: TdeeInput;

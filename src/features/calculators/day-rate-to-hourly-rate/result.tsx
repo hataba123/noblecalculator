@@ -1,6 +1,6 @@
 import { ResultCard } from "@/src/components/shared/result-card";
 import { formatCurrency } from "@/src/lib/format";
-import type { DayRateToHourlyRateResult as DayRateToHourlyRateResultValue } from "./schema";
+import type { DayRateToHourlyRateResult as DayRateToHourlyRateResultValue } from "./core";
 
 type DayRateToHourlyRateResultProps = {
   result: DayRateToHourlyRateResultValue;

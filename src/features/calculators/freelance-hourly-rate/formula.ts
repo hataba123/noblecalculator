@@ -1,1 +1,1 @@
-export { calculateFreelanceHourlyRate } from "@noblecalculator/calculators-core/freelance-hourly-rate";
+export { calculateFreelanceHourlyRate } from "./core";

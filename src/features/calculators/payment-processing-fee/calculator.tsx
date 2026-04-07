@@ -3,11 +3,11 @@
 import { useState } from "react";
 
 import { SupportToolShell } from "../support-tools/shared";
-import { calculatePaymentProcessingFee } from "./formula";
-import { paymentProcessingFeeConfig } from "./config";
+import { calculatePaymentProcessingFee } from "./core";
+import { paymentProcessingFeeConfig } from "./core";
 import { PaymentProcessingFeeForm } from "./form";
 import { PaymentProcessingFeeResult } from "./result";
-import type { PaymentProcessingFeeInput } from "./schema";
+import type { PaymentProcessingFeeInput } from "./core";
 
 export function PaymentProcessingFeeCalculator() {
   const [value, setValue] = useState<PaymentProcessingFeeInput>(() => ({ ...paymentProcessingFeeConfig.defaultValue }));

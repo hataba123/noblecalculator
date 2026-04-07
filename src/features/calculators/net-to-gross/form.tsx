@@ -1,7 +1,7 @@
 "use client";
 
 import { NumberField } from "../shared/number-field";
-import type { NetToGrossInput } from "./schema";
+import type { NetToGrossInput } from "./core";
 
 type NetToGrossFormProps = {
   value: NetToGrossInput;

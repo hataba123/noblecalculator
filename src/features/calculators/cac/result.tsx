@@ -1,7 +1,7 @@
 import { ResultCard } from "@/src/components/shared/result-card";
 import { formatCurrency } from "@/src/lib/format";
 
-import type { CacResult as CacResultValue } from "./schema";
+import type { CacResult as CacResultValue } from "./core";
 
 type CacResultProps = {
   result: CacResultValue;

@@ -1,1 +1,1 @@
-export type { PaymentProcessingFeeInput, PaymentProcessingFeeResult } from "@noblecalculator/calculators-core/payment-processing-fee";
+export type { PaymentProcessingFeeInput, PaymentProcessingFeeResult } from "./core";

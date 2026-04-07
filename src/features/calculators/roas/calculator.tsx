@@ -3,11 +3,11 @@
 import { useState } from "react";
 
 import { SupportToolShell } from "../support-tools/shared";
-import { calculateRoas } from "./formula";
-import { roasConfig } from "./config";
+import { calculateRoas } from "./core";
+import { roasConfig } from "./core";
 import { RoasForm } from "./form";
 import { RoasResult } from "./result";
-import type { RoasInput } from "./schema";
+import type { RoasInput } from "./core";
 
 export function RoasCalculator() {
   const [value, setValue] = useState<RoasInput>(() => ({ ...roasConfig.defaultValue }));

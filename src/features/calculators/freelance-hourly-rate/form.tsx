@@ -1,7 +1,7 @@
 "use client";
 
 import { NumberField } from "../shared/number-field";
-import type { FreelanceHourlyRateInput } from "./schema";
+import type { FreelanceHourlyRateInput } from "./core";
 
 type FreelanceHourlyRateFormProps = {
   value: FreelanceHourlyRateInput;

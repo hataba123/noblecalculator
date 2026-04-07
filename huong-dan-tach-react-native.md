@@ -64,7 +64,7 @@ Lam theo thu tu nay de giam rui ro:
 
 1. Tach `schema.ts` va `formula.ts` ra khoi tung calculator thanh core thuan.
 2. Chuyen `config.ts` va `content.ts` neu no chi chua du lieu.
-3. Tao layer import cho web de van su dung core moi.
+3. Tao layer import cho web de van su dung core moi, thuong bang mot file `core.ts` trong tung calculator de UI import qua mot layer duy nhat.
 4. Tao UI primitives cho mobile: `View`, `Text`, `TextInput`, `Pressable`.
 5. Port tung calculator mot, bat dau tu calculator don gian nhat.
 6. Noi registry vao navigation cua app mobile.

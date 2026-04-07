@@ -2,7 +2,7 @@ import { ResultCard } from "@/src/components/shared/result-card";
 import { formatCurrency } from "@/src/lib/format";
 
 import { formatDecimal } from "../support-tools/shared";
-import type { BreakEvenResult as BreakEvenResultValue } from "./schema";
+import type { BreakEvenResult as BreakEvenResultValue } from "./core";
 
 type BreakEvenResultProps = {
   result: BreakEvenResultValue;

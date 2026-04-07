@@ -1,7 +1,7 @@
 import { ResultCard } from "@/src/components/shared/result-card";
 import { formatCurrency, formatMultiple, formatPercent } from "@/src/lib/format";
 
-import type { RoiResult as RoiResultValue } from "./schema";
+import type { RoiResult as RoiResultValue } from "./core";
 
 type RoiResultProps = {
   result: RoiResultValue;

@@ -1,1 +1,1 @@
-export type { LatePaymentFeeInput, LatePaymentFeeResult } from "@noblecalculator/calculators-core/late-payment-fee";
+export type { LatePaymentFeeInput, LatePaymentFeeResult } from "./core";

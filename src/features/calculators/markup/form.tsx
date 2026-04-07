@@ -1,7 +1,7 @@
 "use client";
 
 import { NumberField } from "../shared/number-field";
-import type { MarkupInput } from "./schema";
+import type { MarkupInput } from "./core";
 
 type MarkupFormProps = {
   value: MarkupInput;

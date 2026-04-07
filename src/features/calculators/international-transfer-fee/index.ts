@@ -1,6 +1,6 @@
 export { InternationalTransferFeeCalculator } from "./calculator";
-export { internationalTransferFeeConfig } from "./config";
+export { internationalTransferFeeConfig } from "./core";
 export { InternationalTransferFeeForm } from "./form";
-export { calculateInternationalTransferFee } from "./formula";
+export { calculateInternationalTransferFee } from "./core";
 export { InternationalTransferFeeResult } from "./result";
-export type { InternationalTransferFeeInput, InternationalTransferFeeResult as InternationalTransferFeeResultValue } from "./schema";
+export type { InternationalTransferFeeInput, InternationalTransferFeeResult as InternationalTransferFeeResultValue } from "./core";

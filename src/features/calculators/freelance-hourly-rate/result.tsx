@@ -1,7 +1,7 @@
 import { ResultCard } from "@/src/components/shared/result-card";
 import { formatCurrency } from "@/src/lib/format";
 
-import type { FreelanceHourlyRateResult as FreelanceHourlyRateResultValue } from "./schema";
+import type { FreelanceHourlyRateResult as FreelanceHourlyRateResultValue } from "./core";
 
 type FreelanceHourlyRateResultProps = {
   result: FreelanceHourlyRateResultValue;

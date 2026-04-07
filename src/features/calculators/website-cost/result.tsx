@@ -2,7 +2,7 @@ import { ResultCard } from "@/src/components/shared/result-card";
 import { formatCurrency } from "@/src/lib/format";
 
 import { formatDecimal } from "../support-tools/shared";
-import type { WebsiteCostResult as WebsiteCostResultValue } from "./schema";
+import type { WebsiteCostResult as WebsiteCostResultValue } from "./core";
 
 type WebsiteCostResultProps = {
   result: WebsiteCostResultValue;

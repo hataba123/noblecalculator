@@ -1,1 +1,1 @@
-export type { DayRateToHourlyRateInput, DayRateToHourlyRateResult } from "@noblecalculator/calculators-core/day-rate-to-hourly-rate";
+export type { DayRateToHourlyRateInput, DayRateToHourlyRateResult } from "./core";

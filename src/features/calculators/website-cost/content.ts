@@ -1,1 +1,1 @@
-export { websiteCostSeoContent } from "@noblecalculator/calculators-core/website-cost";
+export { websiteCostSeoContent } from "./core";

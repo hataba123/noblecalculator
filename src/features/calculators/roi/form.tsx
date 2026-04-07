@@ -1,7 +1,7 @@
 "use client";
 
 import { NumberField } from "../shared/number-field";
-import type { RoiInput } from "./schema";
+import type { RoiInput } from "./core";
 
 type RoiFormProps = {
   value: RoiInput;

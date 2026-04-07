@@ -1,7 +1,7 @@
 import { ResultCard } from "@/src/components/shared/result-card";
 import { formatCurrency, formatPercent } from "@/src/lib/format";
 
-import type { CpmCpcResult as CpmCpcResultValue } from "./schema";
+import type { CpmCpcResult as CpmCpcResultValue } from "./core";
 
 type CpmCpcResultProps = {
   result: CpmCpcResultValue;

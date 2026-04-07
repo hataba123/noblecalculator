@@ -1,1 +1,1 @@
-export { latePaymentFeeConfig } from "@noblecalculator/calculators-core/late-payment-fee";
+export { latePaymentFeeConfig } from "./core";

@@ -1,7 +1,7 @@
 import { ResultCard } from "@/src/components/shared/result-card";
 import { formatCurrency, formatMultiple } from "@/src/lib/format";
 
-import type { NetToGrossResult as NetToGrossResultValue } from "./schema";
+import type { NetToGrossResult as NetToGrossResultValue } from "./core";
 
 type NetToGrossResultProps = {
   result: NetToGrossResultValue;

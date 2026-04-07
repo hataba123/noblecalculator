@@ -1,6 +1,6 @@
 export { RoiCalculator } from "./calculator";
-export { roiConfig } from "./config";
+export { roiConfig } from "./core";
 export { RoiForm } from "./form";
-export { calculateRoi } from "./formula";
+export { calculateRoi } from "./core";
 export { RoiResult } from "./result";
-export type { RoiInput, RoiResult as RoiResultValue } from "./schema";
+export type { RoiInput, RoiResult as RoiResultValue } from "./core";

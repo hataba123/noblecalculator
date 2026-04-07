@@ -1,1 +1,1 @@
-export { internationalTransferFeeSeoContent } from "@noblecalculator/calculators-core/international-transfer-fee";
+export { internationalTransferFeeSeoContent } from "./core";

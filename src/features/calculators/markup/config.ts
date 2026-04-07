@@ -1,1 +1,1 @@
-export { markupConfig } from "@noblecalculator/calculators-core/markup";
+export { markupConfig } from "./core";

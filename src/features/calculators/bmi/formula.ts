@@ -1,1 +1,1 @@
-export { calculateBmi, convertMetricToImperialInput, convertImperialToMetricInput } from "@noblecalculator/calculators-core/bmi";
+export { calculateBmi, convertMetricToImperialInput, convertImperialToMetricInput } from "./core";

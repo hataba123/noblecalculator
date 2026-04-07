@@ -2,7 +2,7 @@ import { useLanguage } from "@/src/components/shared/language-provider";
 import { ResultCard } from "@/src/components/shared/result-card";
 import { translateText } from "@/src/i18n";
 
-import type { TdeeResult as TdeeResultValue } from "./schema";
+import type { TdeeResult as TdeeResultValue } from "./core";
 
 type TdeeResultProps = {
   result: TdeeResultValue;

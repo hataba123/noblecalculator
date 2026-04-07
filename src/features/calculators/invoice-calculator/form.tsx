@@ -1,7 +1,7 @@
 "use client";
 
 import { NumberField } from "../shared/number-field";
-import type { InvoiceCalculatorInput } from "./schema";
+import type { InvoiceCalculatorInput } from "./core";
 
 type InvoiceCalculatorFormProps = {
   value: InvoiceCalculatorInput;

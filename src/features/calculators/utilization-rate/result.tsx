@@ -1,7 +1,7 @@
 import { ResultCard } from "@/src/components/shared/result-card";
 import { formatPercent } from "@/src/lib/format";
 
-import type { UtilizationRateResult as UtilizationRateResultValue } from "./schema";
+import type { UtilizationRateResult as UtilizationRateResultValue } from "./core";
 
 type UtilizationRateResultProps = {
   result: UtilizationRateResultValue;

@@ -1,6 +1,6 @@
 export { BreakEvenCalculator } from "./calculator";
-export { breakEvenConfig } from "./config";
+export { breakEvenConfig } from "./core";
 export { BreakEvenForm } from "./form";
-export { calculateBreakEven } from "./formula";
+export { calculateBreakEven } from "./core";
 export { BreakEvenResult } from "./result";
-export type { BreakEvenInput, BreakEvenResult as BreakEvenResultValue } from "./schema";
+export type { BreakEvenInput, BreakEvenResult as BreakEvenResultValue } from "./core";

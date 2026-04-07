@@ -1,7 +1,7 @@
 "use client";
 
 import { NumberField } from "../shared/number-field";
-import type { LatePaymentFeeInput } from "./schema";
+import type { LatePaymentFeeInput } from "./core";
 
 type LatePaymentFeeFormProps = {
   value: LatePaymentFeeInput;

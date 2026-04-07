@@ -1,1 +1,1 @@
-export { dayRateToHourlyRateSeoContent } from "@noblecalculator/calculators-core/day-rate-to-hourly-rate";
+export { dayRateToHourlyRateSeoContent } from "./core";

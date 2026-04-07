@@ -1,7 +1,7 @@
 "use client";
 
 import { NumberField } from "../shared/number-field";
-import type { UtilizationRateInput } from "./schema";
+import type { UtilizationRateInput } from "./core";
 
 type UtilizationRateFormProps = {
   value: UtilizationRateInput;

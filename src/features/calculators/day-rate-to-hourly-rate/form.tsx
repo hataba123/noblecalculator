@@ -1,7 +1,7 @@
 "use client";
 
 import { NumberField } from "../shared/number-field";
-import type { DayRateToHourlyRateInput } from "./schema";
+import type { DayRateToHourlyRateInput } from "./core";
 
 type DayRateToHourlyRateFormProps = {
   value: DayRateToHourlyRateInput;

@@ -3,11 +3,11 @@
 import { useState } from "react";
 
 import { SupportToolShell } from "../support-tools/shared";
-import { calculateSelfEmployedTaxEstimator } from "./formula";
-import { selfEmployedTaxEstimatorConfig } from "./config";
+import { calculateSelfEmployedTaxEstimator } from "./core";
+import { selfEmployedTaxEstimatorConfig } from "./core";
 import { SelfEmployedTaxEstimatorForm } from "./form";
 import { SelfEmployedTaxEstimatorResult } from "./result";
-import type { SelfEmployedTaxEstimatorInput } from "./schema";
+import type { SelfEmployedTaxEstimatorInput } from "./core";
 
 export function SelfEmployedTaxEstimatorCalculator() {
   const [value, setValue] = useState<SelfEmployedTaxEstimatorInput>(() => ({ ...selfEmployedTaxEstimatorConfig.defaultValue }));

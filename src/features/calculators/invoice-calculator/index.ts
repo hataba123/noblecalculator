@@ -1,6 +1,6 @@
 export { InvoiceCalculatorCalculator } from "./calculator";
-export { invoiceCalculatorConfig } from "./config";
+export { invoiceCalculatorConfig } from "./core";
 export { InvoiceCalculatorForm } from "./form";
-export { calculateInvoice } from "./formula";
+export { calculateInvoice } from "./core";
 export { InvoiceCalculatorResult } from "./result";
-export type { InvoiceCalculatorInput, InvoiceCalculatorResult as InvoiceCalculatorResultValue } from "./schema";
+export type { InvoiceCalculatorInput, InvoiceCalculatorResult as InvoiceCalculatorResultValue } from "./core";

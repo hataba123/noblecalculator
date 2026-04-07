@@ -1,7 +1,7 @@
 import { ResultCard } from "@/src/components/shared/result-card";
 import { formatCurrency, formatPercent } from "@/src/lib/format";
 
-import type { LatePaymentFeeResult as LatePaymentFeeResultValue } from "./schema";
+import type { LatePaymentFeeResult as LatePaymentFeeResultValue } from "./core";
 
 type LatePaymentFeeResultProps = {
   result: LatePaymentFeeResultValue;

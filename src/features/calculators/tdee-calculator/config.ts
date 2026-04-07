@@ -1,1 +1,1 @@
-export { tdeeConfig } from "@noblecalculator/calculators-core/tdee-calculator";
+export { tdeeConfig } from "./core";

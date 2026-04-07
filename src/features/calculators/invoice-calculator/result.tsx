@@ -1,7 +1,7 @@
 import { ResultCard } from "@/src/components/shared/result-card";
 import { formatCurrency } from "@/src/lib/format";
 
-import type { InvoiceCalculatorResult as InvoiceCalculatorResultValue } from "./schema";
+import type { InvoiceCalculatorResult as InvoiceCalculatorResultValue } from "./core";
 
 type InvoiceCalculatorResultProps = {
   result: InvoiceCalculatorResultValue;

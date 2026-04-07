@@ -1,1 +1,1 @@
-export type { RoiInput, RoiResult } from "@noblecalculator/calculators-core/roi";
+export type { RoiInput, RoiResult } from "./core";

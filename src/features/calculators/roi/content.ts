@@ -1,1 +1,1 @@
-export { roiSeoContent } from "@noblecalculator/calculators-core/roi";
+export { roiSeoContent } from "./core";

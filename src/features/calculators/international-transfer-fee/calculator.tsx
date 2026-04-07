@@ -5,11 +5,11 @@ import { useState } from "react";
 import { useLanguage } from "@/src/components/shared/language-provider";
 import { translateText } from "@/src/i18n";
 
-import { calculateInternationalTransferFee } from "./formula";
-import { internationalTransferFeeConfig } from "./config";
+import { calculateInternationalTransferFee } from "./core";
+import { internationalTransferFeeConfig } from "./core";
 import { InternationalTransferFeeForm } from "./form";
 import { InternationalTransferFeeResult } from "./result";
-import type { InternationalTransferFeeInput } from "./schema";
+import type { InternationalTransferFeeInput } from "./core";
 
 export function InternationalTransferFeeCalculator() {
   const [value, setValue] = useState<InternationalTransferFeeInput>(() => ({ ...internationalTransferFeeConfig.defaultValue }));

@@ -1,7 +1,7 @@
 "use client";
 
 import { NumberField } from "../shared/number-field";
-import type { PaymentProcessingFeeInput } from "./schema";
+import type { PaymentProcessingFeeInput } from "./core";
 
 type PaymentProcessingFeeFormProps = {
   value: PaymentProcessingFeeInput;

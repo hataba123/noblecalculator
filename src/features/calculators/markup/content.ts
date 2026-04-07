@@ -1,1 +1,1 @@
-export { markupSeoContent } from "@noblecalculator/calculators-core/markup";
+export { markupSeoContent } from "./core";

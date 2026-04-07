@@ -1,7 +1,7 @@
 import { ResultCard } from "@/src/components/shared/result-card";
 import { formatCurrency, formatMultiple } from "@/src/lib/format";
 
-import type { RoasResult as RoasResultValue } from "./schema";
+import type { RoasResult as RoasResultValue } from "./core";
 
 type RoasResultProps = {
   result: RoasResultValue;

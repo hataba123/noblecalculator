@@ -1,7 +1,7 @@
 import { ResultCard } from "@/src/components/shared/result-card";
 import { formatCurrency, formatPercent } from "@/src/lib/format";
 
-import type { SelfEmployedTaxEstimatorResult as SelfEmployedTaxEstimatorResultValue } from "./schema";
+import type { SelfEmployedTaxEstimatorResult as SelfEmployedTaxEstimatorResultValue } from "./core";
 
 type SelfEmployedTaxEstimatorResultProps = {
   result: SelfEmployedTaxEstimatorResultValue;

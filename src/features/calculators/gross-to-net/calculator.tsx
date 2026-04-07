@@ -3,11 +3,11 @@
 import { useState } from "react";
 
 import { SupportToolShell } from "../support-tools/shared";
-import { calculateGrossToNet } from "./formula";
-import { grossToNetConfig } from "./config";
+import { calculateGrossToNet } from "./core";
+import { grossToNetConfig } from "./core";
 import { GrossToNetForm } from "./form";
 import { GrossToNetResult } from "./result";
-import type { GrossToNetInput } from "./schema";
+import type { GrossToNetInput } from "./core";
 
 export function GrossToNetCalculator() {
   const [value, setValue] = useState<GrossToNetInput>(() => ({ ...grossToNetConfig.defaultValue }));

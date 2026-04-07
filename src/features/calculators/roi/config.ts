@@ -1,1 +1,1 @@
-export { roiConfig } from "@noblecalculator/calculators-core/roi";
+export { roiConfig } from "./core";

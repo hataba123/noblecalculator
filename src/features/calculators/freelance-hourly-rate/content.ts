@@ -1,1 +1,1 @@
-export { freelanceHourlyRateSeoContent } from "@noblecalculator/calculators-core/freelance-hourly-rate";
+export { freelanceHourlyRateSeoContent } from "./core";

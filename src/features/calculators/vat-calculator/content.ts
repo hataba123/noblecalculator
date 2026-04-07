@@ -1,1 +1,1 @@
-export { vatCalculatorSeoContent } from "@noblecalculator/calculators-core/vat-calculator";
+export { vatCalculatorSeoContent } from "./core";

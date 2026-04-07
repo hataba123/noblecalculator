@@ -1,1 +1,1 @@
-export { bmiSeoContent } from "@noblecalculator/calculators-core/bmi";
+export { bmiSeoContent } from "./core";

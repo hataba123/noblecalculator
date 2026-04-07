@@ -1,1 +1,1 @@
-export type { GrossToNetInput, GrossToNetResult } from "@noblecalculator/calculators-core/gross-to-net";
+export type { GrossToNetInput, GrossToNetResult } from "./core";

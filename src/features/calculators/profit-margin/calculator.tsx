@@ -6,11 +6,10 @@ import { formatCurrency } from "@/src/lib/format";
 import { translateText } from "@/src/i18n";
 import { useLanguage } from "@/src/components/shared/language-provider";
 
-import { calculateProfitMargin } from "./formula";
-import { profitMarginConfig } from "./config";
+import { calculateProfitMargin, profitMarginConfig } from "./core";
 import { ProfitMarginForm } from "./form";
 import { ProfitMarginResult } from "./result";
-import type { ProfitMarginInput } from "./schema";
+import type { ProfitMarginInput } from "./core";
 
 export function ProfitMarginCalculator() {
   const { locale, t } = useLanguage();

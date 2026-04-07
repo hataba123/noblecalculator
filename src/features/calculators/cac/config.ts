@@ -1,1 +1,1 @@
-export { cacConfig } from "@noblecalculator/calculators-core/cac";
+export { cacConfig } from "./core";

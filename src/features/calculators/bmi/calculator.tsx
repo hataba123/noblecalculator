@@ -6,11 +6,11 @@ import { useLanguage } from "@/src/components/shared/language-provider";
 import { translateText } from "@/src/i18n";
 
 import { SupportToolShell } from "../support-tools/shared";
-import { bmiConfig } from "./config";
-import { calculateBmi } from "./formula";
+import { bmiConfig } from "./core";
+import { calculateBmi } from "./core";
 import { BmiForm } from "./form";
 import { BmiResult } from "./result";
-import type { BmiInput } from "./schema";
+import type { BmiInput } from "./core";
 
 export function BmiCalculator() {
   const { locale } = useLanguage();

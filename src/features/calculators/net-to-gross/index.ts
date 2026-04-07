@@ -1,6 +1,6 @@
 export { NetToGrossCalculator } from "./calculator";
-export { netToGrossConfig } from "./config";
+export { netToGrossConfig } from "./core";
 export { NetToGrossForm } from "./form";
-export { calculateNetToGross } from "./formula";
+export { calculateNetToGross } from "./core";
 export { NetToGrossResult } from "./result";
-export type { NetToGrossInput, NetToGrossResult as NetToGrossResultValue } from "./schema";
+export type { NetToGrossInput, NetToGrossResult as NetToGrossResultValue } from "./core";

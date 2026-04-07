@@ -5,11 +5,11 @@ import { useState } from "react";
 import { useLanguage } from "@/src/components/shared/language-provider";
 import { translateText } from "@/src/i18n";
 
-import { calculateInvoice } from "./formula";
-import { invoiceCalculatorConfig } from "./config";
+import { calculateInvoice } from "./core";
+import { invoiceCalculatorConfig } from "./core";
 import { InvoiceCalculatorForm } from "./form";
 import { InvoiceCalculatorResult } from "./result";
-import type { InvoiceCalculatorInput } from "./schema";
+import type { InvoiceCalculatorInput } from "./core";
 
 export function InvoiceCalculatorCalculator() {
   const [value, setValue] = useState<InvoiceCalculatorInput>(() => ({ ...invoiceCalculatorConfig.defaultValue }));

@@ -1,6 +1,6 @@
 export { TdeeCalculator } from "./calculator";
-export { tdeeConfig } from "./config";
+export { tdeeConfig } from "./core";
 export { TdeeForm } from "./form";
-export { calculateTdee } from "./formula";
+export { calculateTdee } from "./core";
 export { TdeeResult } from "./result";
-export type { TdeeActivityLevel, TdeeGoalMode, TdeeInput, TdeeResult as TdeeResultValue, TdeeSex, TdeeUnitSystem } from "./schema";
+export type { TdeeActivityLevel, TdeeGoalMode, TdeeInput, TdeeResult as TdeeResultValue, TdeeSex, TdeeUnitSystem } from "./core";

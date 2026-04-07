@@ -1,6 +1,6 @@
 export { GrossToNetCalculator } from "./calculator";
-export { grossToNetConfig } from "./config";
+export { grossToNetConfig } from "./core";
 export { GrossToNetForm } from "./form";
-export { calculateGrossToNet } from "./formula";
+export { calculateGrossToNet } from "./core";
 export { GrossToNetResult } from "./result";
-export type { GrossToNetInput, GrossToNetResult as GrossToNetResultValue } from "./schema";
+export type { GrossToNetInput, GrossToNetResult as GrossToNetResultValue } from "./core";

@@ -1,6 +1,6 @@
 export { ProfitMarginCalculator } from "./calculator";
-export { profitMarginConfig } from "./config";
+export { profitMarginConfig } from "./core";
 export { ProfitMarginForm } from "./form";
-export { calculateProfitMargin } from "./formula";
+export { calculateProfitMargin } from "./core";
 export { ProfitMarginResult } from "./result";
-export type { ProfitMarginInput, ProfitMarginResult as ProfitMarginResultValue } from "./schema";
+export type { ProfitMarginInput, ProfitMarginResult as ProfitMarginResultValue } from "./core";

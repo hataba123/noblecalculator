@@ -3,7 +3,7 @@ import { ResultCard } from "@/src/components/shared/result-card";
 import { translateText } from "@/src/i18n";
 import { formatCurrency, formatPercent } from "@/src/lib/format";
 
-import type { ProfitMarginResult as ProfitMarginResultValue } from "./schema";
+import type { ProfitMarginResult as ProfitMarginResultValue } from "./core";
 
 type ProfitMarginResultProps = {
   result: ProfitMarginResultValue;

@@ -1,1 +1,1 @@
-export { calculateGrossToNet } from "@noblecalculator/calculators-core/gross-to-net";
+export { calculateGrossToNet } from "./core";

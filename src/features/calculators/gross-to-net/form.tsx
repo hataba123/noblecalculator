@@ -1,7 +1,7 @@
 "use client";
 
 import { NumberField } from "../shared/number-field";
-import type { GrossToNetInput } from "./schema";
+import type { GrossToNetInput } from "./core";
 
 type GrossToNetFormProps = {
   value: GrossToNetInput;

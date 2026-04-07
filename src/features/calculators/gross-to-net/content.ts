@@ -1,1 +1,1 @@
-export { grossToNetSeoContent } from "@noblecalculator/calculators-core/gross-to-net";
+export { grossToNetSeoContent } from "./core";

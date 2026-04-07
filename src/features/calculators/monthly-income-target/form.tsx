@@ -1,7 +1,7 @@
 "use client";
 
 import { NumberField } from "../shared/number-field";
-import type { MonthlyIncomeTargetInput } from "./schema";
+import type { MonthlyIncomeTargetInput } from "./core";
 
 type MonthlyIncomeTargetFormProps = {
   value: MonthlyIncomeTargetInput;

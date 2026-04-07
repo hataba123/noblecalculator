@@ -1,1 +1,1 @@
-export type { UtilizationRateInput, UtilizationRateResult } from "@noblecalculator/calculators-core/utilization-rate";
+export type { UtilizationRateInput, UtilizationRateResult } from "./core";

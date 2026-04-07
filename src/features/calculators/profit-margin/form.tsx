@@ -1,7 +1,7 @@
 "use client";
 
 import { NumberField } from "../shared/number-field";
-import type { ProfitMarginInput } from "./schema";
+import type { ProfitMarginInput } from "./core";
 
 type ProfitMarginFormProps = {
   value: ProfitMarginInput;

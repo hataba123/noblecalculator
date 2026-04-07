@@ -1,1 +1,1 @@
-export { internationalTransferFeeConfig } from "@noblecalculator/calculators-core/international-transfer-fee";
+export { internationalTransferFeeConfig } from "./core";

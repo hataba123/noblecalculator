@@ -1,7 +1,7 @@
 import { ResultCard } from "@/src/components/shared/result-card";
 import { formatCurrency, formatPercent } from "@/src/lib/format";
 
-import type { PaymentProcessingFeeResult as PaymentProcessingFeeResultValue } from "./schema";
+import type { PaymentProcessingFeeResult as PaymentProcessingFeeResultValue } from "./core";
 
 type PaymentProcessingFeeResultProps = {
   result: PaymentProcessingFeeResultValue;

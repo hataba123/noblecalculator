@@ -1,1 +1,1 @@
-export { cacSeoContent } from "@noblecalculator/calculators-core/cac";
+export { cacSeoContent } from "./core";

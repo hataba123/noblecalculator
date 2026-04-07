@@ -1,7 +1,7 @@
 import { ResultCard } from "@/src/components/shared/result-card";
 import { formatCurrency } from "@/src/lib/format";
 
-import type { VatCalculatorResult as VatCalculatorResultValue } from "./schema";
+import type { VatCalculatorResult as VatCalculatorResultValue } from "./core";
 
 type VatCalculatorResultProps = {
   result: VatCalculatorResultValue;

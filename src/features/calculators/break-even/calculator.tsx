@@ -5,11 +5,11 @@ import { useState } from "react";
 import { SupportToolShell } from "../support-tools/shared";
 import { useLanguage } from "@/src/components/shared/language-provider";
 import { translateText } from "@/src/i18n";
-import { calculateBreakEven } from "./formula";
-import { breakEvenConfig } from "./config";
+import { calculateBreakEven } from "./core";
+import { breakEvenConfig } from "./core";
 import { BreakEvenForm } from "./form";
 import { BreakEvenResult } from "./result";
-import type { BreakEvenInput } from "./schema";
+import type { BreakEvenInput } from "./core";
 
 export function BreakEvenCalculator() {
   const { locale } = useLanguage();

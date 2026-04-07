@@ -5,11 +5,11 @@ import { useState } from "react";
 import { useLanguage } from "@/src/components/shared/language-provider";
 import { translateText } from "@/src/i18n";
 
-import { calculateVat } from "./formula";
-import { vatCalculatorConfig } from "./config";
+import { calculateVat } from "./core";
+import { vatCalculatorConfig } from "./core";
 import { VatCalculatorForm } from "./form";
 import { VatCalculatorResult } from "./result";
-import type { VatCalculatorInput } from "./schema";
+import type { VatCalculatorInput } from "./core";
 
 export function VatCalculatorCalculator() {
   const { locale, t } = useLanguage();

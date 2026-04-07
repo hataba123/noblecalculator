@@ -1,1 +1,1 @@
-export { latePaymentFeeSeoContent } from "@noblecalculator/calculators-core/late-payment-fee";
+export { latePaymentFeeSeoContent } from "./core";

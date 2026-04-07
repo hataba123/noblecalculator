@@ -3,11 +3,11 @@
 import { useState } from "react";
 
 import { SupportToolShell } from "../support-tools/shared";
-import { calculateWebsiteCost } from "./formula";
-import { websiteCostConfig } from "./config";
+import { calculateWebsiteCost } from "./core";
+import { websiteCostConfig } from "./core";
 import { WebsiteCostForm } from "./form";
 import { WebsiteCostResult } from "./result";
-import type { WebsiteCostInput } from "./schema";
+import type { WebsiteCostInput } from "./core";
 
 export function WebsiteCostCalculator() {
   const [value, setValue] = useState<WebsiteCostInput>(() => ({ ...websiteCostConfig.defaultValue }));

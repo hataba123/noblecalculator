@@ -1,6 +1,6 @@
 export { MarkupCalculator } from "./calculator";
-export { markupConfig } from "./config";
+export { markupConfig } from "./core";
 export { MarkupForm } from "./form";
-export { calculateMarkup } from "./formula";
+export { calculateMarkup } from "./core";
 export { MarkupResult } from "./result";
-export type { MarkupInput, MarkupResult as MarkupResultValue } from "./schema";
+export type { MarkupInput, MarkupResult as MarkupResultValue } from "./core";

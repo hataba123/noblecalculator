@@ -3,11 +3,11 @@
 import { useState } from "react";
 
 import { SupportToolShell } from "../support-tools/shared";
-import { calculateCpmCpc } from "./formula";
-import { cpmCpcConfig } from "./config";
+import { calculateCpmCpc } from "./core";
+import { cpmCpcConfig } from "./core";
 import { CpmCpcForm } from "./form";
 import { CpmCpcResult } from "./result";
-import type { CpmCpcInput } from "./schema";
+import type { CpmCpcInput } from "./core";
 
 export function CpmCpcCalculator() {
   const [value, setValue] = useState<CpmCpcInput>(() => ({ ...cpmCpcConfig.defaultValue }));
