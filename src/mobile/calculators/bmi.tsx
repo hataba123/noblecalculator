@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { calculateBmi, convertImperialToMetricInput, convertMetricToImperialInput, bmiConfig, bmiSeoContent, type BmiInput, type BmiUnitSystem } from "@noblecalculator/calculators-core/bmi";
 
-import { Pressable, Text, TextInput, View, type KeyboardType, type ViewProps } from "../primitives";
+import { Pressable, Text, TextInput, View, type KeyboardType, type TextProps, type ViewProps } from "../primitives";
 
 type BmiFormState = {
     unitSystem: BmiUnitSystem;
@@ -46,7 +46,7 @@ function toBmiInput(state: BmiFormState): BmiInput {
     };
 }
 
-function unitButtonStyle(selected: boolean) {
+function unitButtonStyle(selected: boolean): ViewProps["style"] {
     return {
         flex: 1,
         alignItems: "center",
@@ -56,15 +56,15 @@ function unitButtonStyle(selected: boolean) {
         borderWidth: 1,
         borderColor: selected ? "#1b1a17" : "rgba(27,26,23,0.08)",
         backgroundColor: selected ? "#1b1a17" : "#f6ede0",
-    };
+    } as const;
 }
 
-function unitButtonTextStyle(selected: boolean) {
+function unitButtonTextStyle(selected: boolean): TextProps["style"] {
     return {
         color: selected ? "#ffffff" : "#1b1a17",
         fontSize: 14,
         fontWeight: "700" as const,
-    };
+    } as const;
 }
 
 function Field({
@@ -87,7 +87,7 @@ function Field({
     wrapperStyle?: ViewProps["style"];
 }) {
     return (
-        <View style={{ ...styles.field, ...(wrapperStyle ?? {}) }}>
+        <View style={[styles.field, wrapperStyle]}>
             <Text style={styles.label}>{label}</Text>
             <View style={styles.inputRow}>
                 <TextInput

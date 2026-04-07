@@ -1,0 +1,59 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "ignoreDeprecations": "5.0",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "../../*"
+      ],
+      "@noblecalculator/calculators-core": [
+        "../../packages/calculators-core/src/index.ts"
+      ],
+      "@noblecalculator/calculators-core/*": [
+        "../../packages/calculators-core/src/*/index.ts"
+      ],
+      "@noblecalculator/shared-format": [
+        "../../packages/shared-format/src/index.ts"
+      ],
+      "react-native": [
+        "./node_modules/react-native"
+      ],
+      "expo-linking": [
+        "./node_modules/expo-linking"
+      ],
+      "expo-status-bar": [
+        "./node_modules/expo-status-bar"
+      ],
+      "@react-navigation/native": [
+        "./node_modules/@react-navigation/native"
+      ],
+      "@react-navigation/native-stack": [
+        "./node_modules/@react-navigation/native-stack"
+      ],
+      "react-native-gesture-handler": [
+        "./node_modules/react-native-gesture-handler"
+      ],
+      "react-native-safe-area-context": [
+        "./node_modules/react-native-safe-area-context"
+      ],
+      "react-native-screens": [
+        "./node_modules/react-native-screens"
+      ]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "../../src/mobile/**/*.ts",
+    "../../src/mobile/**/*.tsx",
+    "../../src/features/calculators/shared/calculator-registry.ts",
+    "../../packages/calculators-core/src/**/*.ts",
+    "../../packages/shared-format/src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".expo"
+  ]
+}

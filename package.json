@@ -10,7 +10,8 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
-    "test": "vitest run"
+    "test": "vitest run",
+    "mobile": "npm --prefix apps/mobile start"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

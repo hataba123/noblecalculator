@@ -2,8 +2,31 @@
 
 import { useState } from "react";
 
+import { NavigationContainer, type LinkingOptions } from "@react-navigation/native";
+import { createNativeStackNavigator, type NativeStackScreenProps } from "@react-navigation/native-stack";
+import * as ExpoLinking from "expo-linking";
+import { StatusBar } from "expo-status-bar";
+import { ScrollView } from "react-native";
+
 import { Pressable, Text, TextInput, View } from "./primitives";
 import { getMobileCalculatorEntry, mobileCalculatorRegistry } from "./registry";
+
+type RootStackParamList = {
+    Registry: undefined;
+    Calculator: { slug: string };
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+const linking: LinkingOptions<RootStackParamList> = {
+    prefixes: [ExpoLinking.createURL("/"), "noblecalculator://"],
+    config: {
+        screens: {
+            Registry: "",
+            Calculator: "calculator/:slug",
+        },
+    },
+};
 
 function MobileCalculatorCard({
     title,
@@ -47,7 +70,7 @@ function MobileRegistryScreen({
     });
 
     return (
-        <View style={styles.screen}>
+        <ScrollView contentContainerStyle={styles.screen} style={styles.scrollView}>
             <View style={styles.heroCard}>
                 <Text style={styles.eyebrow}>Mobile registry</Text>
                 <Text style={styles.title}>Choose a calculator</Text>
@@ -59,7 +82,7 @@ function MobileRegistryScreen({
                     accessibilityLabel="Search calculators"
                     autoCapitalize="none"
                     autoCorrect={false}
-                    keyboardType="search"
+                    keyboardType="default"
                     onChangeText={onQueryChange}
                     placeholder="Search calculators"
                     style={styles.searchInput}
@@ -90,7 +113,7 @@ function MobileRegistryScreen({
                     </View>
                 )}
             </View>
-        </View>
+        </ScrollView>
     );
 }
 
@@ -104,7 +127,7 @@ function MobileCalculatorScreenView({
     const Screen = calculator.Screen;
 
     return (
-        <View style={styles.screen}>
+        <ScrollView contentContainerStyle={styles.screen} style={styles.scrollView}>
             <Pressable accessibilityLabel="Back to registry" onPress={onBack} style={styles.backButton}>
                 <Text style={styles.backButtonText}>Back to registry</Text>
             </Pressable>
@@ -118,40 +141,66 @@ function MobileCalculatorScreenView({
             <View style={styles.detailFrame}>
                 <Screen />
             </View>
-        </View>
+        </ScrollView>
     );
 }
 
-export function MobileApp() {
+function RegistryRoute({ navigation }: NativeStackScreenProps<RootStackParamList, "Registry">) {
     const [query, setQuery] = useState("");
-    const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
-
-    const selectedCalculator = selectedSlug ? getMobileCalculatorEntry(selectedSlug) : null;
-
-    if (selectedCalculator) {
-        return (
-            <MobileCalculatorScreenView
-                calculator={selectedCalculator}
-                onBack={() => setSelectedSlug(null)}
-            />
-        );
-    }
 
     return (
         <MobileRegistryScreen
             query={query}
             onQueryChange={setQuery}
-            onOpenCalculator={setSelectedSlug}
+            onOpenCalculator={(slug) => navigation.navigate("Calculator", { slug })}
         />
     );
 }
 
+function CalculatorRoute({ route, navigation }: NativeStackScreenProps<RootStackParamList, "Calculator">) {
+    const calculator = getMobileCalculatorEntry(route.params.slug);
+
+    if (!calculator) {
+        return (
+            <ScrollView contentContainerStyle={styles.screen} style={styles.scrollView}>
+                <View style={styles.heroCard}>
+                    <Text style={styles.eyebrow}>Mobile registry</Text>
+                    <Text style={styles.title}>Calculator not found</Text>
+                    <Text style={styles.description}>This route is missing from the mobile registry.</Text>
+                </View>
+
+                <Pressable accessibilityLabel="Back to registry" onPress={() => navigation.goBack()} style={styles.backButton}>
+                    <Text style={styles.backButtonText}>Back to registry</Text>
+                </Pressable>
+            </ScrollView>
+        );
+    }
+
+    return <MobileCalculatorScreenView calculator={calculator} onBack={() => navigation.goBack()} />;
+}
+
+export function MobileApp() {
+    return (
+        <NavigationContainer linking={linking}>
+            <StatusBar style="dark" />
+            <Stack.Navigator initialRouteName="Registry" screenOptions={{ headerShown: false, contentStyle: { backgroundColor: "#f6efe5" } }}>
+                <Stack.Screen name="Registry" component={RegistryRoute} />
+                <Stack.Screen name="Calculator" component={CalculatorRoute} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
+}
+
 const styles = {
+    scrollView: {
+        flex: 1,
+        backgroundColor: "#f6efe5",
+    },
     screen: {
         gap: 16,
         padding: 16,
-        minHeight: "100vh",
-        overflowY: "auto",
+        paddingBottom: 32,
+        flexGrow: 1,
         backgroundColor: "#f6efe5",
     },
     heroCard: {
@@ -215,9 +264,7 @@ const styles = {
     },
     card: {
         gap: 8,
-        display: "flex",
         width: "100%",
-        textAlign: "left",
         borderRadius: 22,
         padding: 16,
         borderWidth: 1,
@@ -274,7 +321,6 @@ const styles = {
         color: "#5c554b",
     },
     backButton: {
-        display: "inline-flex",
         alignSelf: "flex-start",
         alignItems: "center",
         justifyContent: "center",

@@ -132,11 +132,14 @@ Tai lieu nay khop voi cach du an dang hoat dong trong:
 - `src/mobile/app.tsx`
 - `src/mobile/registry.ts`
 - `src/mobile/index.ts`
+- `apps/mobile/App.tsx`
+- `apps/mobile/metro.config.js`
+- `apps/mobile/babel.config.js`
 
 ## 9. Neu muon lam tiep
 
 Buoc tiep theo hop ly nhat la:
-
-1. noi `MobileApp` vao runtime mobile de render registry-driven navigation
-2. tao skeleton Expo / React Native
-3. them deep link / stack navigation neu can
+npm run mobile
+1. chay app mobile bang `npm --prefix apps/mobile start`
+2. mo Expo Go hoac emulator va chon calculator tu registrya
+3. neu can deep link, dung scheme `noblecalculator://calculator/<slug>`
