@@ -1,1 +1,1 @@
-export type { MarkupInput, MarkupResult } from '@noblecalculator/calculators-core/markup';
+export type { MarkupInput, MarkupResult } from "@noblecalculator/calculators-core/markup";

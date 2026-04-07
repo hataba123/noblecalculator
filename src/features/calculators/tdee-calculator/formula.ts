@@ -1,1 +1,1 @@
-export { equationNeedsBodyFatPercent, calculateTdee, convertMetricToImperialInput, convertImperialToMetricInput, tdeeEquationOptions, tdeeSexOptions, tdeeActivityOptions, tdeeGoalOptions } from '@noblecalculator/calculators-core/tdee-calculator';
+export { equationNeedsBodyFatPercent, calculateTdee, convertMetricToImperialInput, convertImperialToMetricInput, tdeeEquationOptions, tdeeSexOptions, tdeeActivityOptions, tdeeGoalOptions } from "@noblecalculator/calculators-core/tdee-calculator";

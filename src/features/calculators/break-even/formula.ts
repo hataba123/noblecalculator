@@ -1,1 +1,1 @@
-export { calculateBreakEven } from '@noblecalculator/calculators-core/break-even';
+export { calculateBreakEven } from "@noblecalculator/calculators-core/break-even";

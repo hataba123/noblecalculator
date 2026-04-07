@@ -1,1 +1,1 @@
-export { calculateVat } from '@noblecalculator/calculators-core/vat-calculator';
+export { calculateVat } from "@noblecalculator/calculators-core/vat-calculator";

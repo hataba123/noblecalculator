@@ -1,1 +1,1 @@
-export { calculateCpmCpc } from '@noblecalculator/calculators-core/cpm-cpc';
+export { calculateCpmCpc } from "@noblecalculator/calculators-core/cpm-cpc";

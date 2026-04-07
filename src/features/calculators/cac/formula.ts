@@ -1,1 +1,1 @@
-export { calculateCac } from '@noblecalculator/calculators-core/cac';
+export { calculateCac } from "@noblecalculator/calculators-core/cac";

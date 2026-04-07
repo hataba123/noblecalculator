@@ -1,1 +1,1 @@
-export type { WebsiteCostInput, WebsiteCostResult } from '@noblecalculator/calculators-core/website-cost';
+export type { WebsiteCostInput, WebsiteCostResult } from "@noblecalculator/calculators-core/website-cost";

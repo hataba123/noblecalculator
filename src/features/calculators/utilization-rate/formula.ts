@@ -1,1 +1,1 @@
-export { calculateUtilizationRate } from '@noblecalculator/calculators-core/utilization-rate';
+export { calculateUtilizationRate } from "@noblecalculator/calculators-core/utilization-rate";

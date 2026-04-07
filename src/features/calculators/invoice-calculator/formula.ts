@@ -1,1 +1,1 @@
-export { calculateInvoice } from '@noblecalculator/calculators-core/invoice-calculator';
+export { calculateInvoice } from "@noblecalculator/calculators-core/invoice-calculator";

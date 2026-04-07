@@ -1,3 +1,4 @@
+export * as shared from "./shared";
 export * as bmi from "./bmi";
 export * as breakEven from "./break-even";
 export * as cac from "./cac";
@@ -20,4 +21,3 @@ export * as tdeeCalculator from "./tdee-calculator";
 export * as utilizationRate from "./utilization-rate";
 export * as vatCalculator from "./vat-calculator";
 export * as websiteCost from "./website-cost";
-export { profitMarginConfig } from "./profit-margin";

@@ -1,1 +1,1 @@
-export { calculateMonthlyIncomeTarget } from '@noblecalculator/calculators-core/monthly-income-target';
+export { calculateMonthlyIncomeTarget } from "@noblecalculator/calculators-core/monthly-income-target";

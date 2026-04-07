@@ -1,1 +1,1 @@
-export type { InternationalTransferFeeInput, InternationalTransferFeeResult } from '@noblecalculator/calculators-core/international-transfer-fee';
+export type { InternationalTransferFeeInput, InternationalTransferFeeResult } from "@noblecalculator/calculators-core/international-transfer-fee";

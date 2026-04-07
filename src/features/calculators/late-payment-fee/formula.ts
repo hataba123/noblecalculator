@@ -1,1 +1,1 @@
-export { calculateLatePaymentFee } from '@noblecalculator/calculators-core/late-payment-fee';
+export { calculateLatePaymentFee } from "@noblecalculator/calculators-core/late-payment-fee";

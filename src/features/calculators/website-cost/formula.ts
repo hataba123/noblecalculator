@@ -1,1 +1,1 @@
-export { calculateWebsiteCost } from '@noblecalculator/calculators-core/website-cost';
+export { calculateWebsiteCost } from "@noblecalculator/calculators-core/website-cost";
