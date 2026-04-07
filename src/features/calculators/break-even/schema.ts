@@ -1,11 +1,1 @@
-export type BreakEvenInput = {
-  fixedCosts: number;
-  variableCostPerUnit: number;
-  sellingPrice: number;
-};
-
-export type BreakEvenResult = {
-  contributionMargin: number;
-  breakEvenUnits: number;
-  breakEvenRevenue: number;
-};
+export type { BreakEvenInput, BreakEvenResult } from '@noblecalculator/calculators-core/break-even';

@@ -1,12 +1,1 @@
-export type RoiInput = {
-  investment: number;
-  returnAmount: number;
-};
-
-export type RoiResult = {
-  investment: number;
-  returnAmount: number;
-  gain: number;
-  roi: number;
-  returnMultiple: number;
-};
+export type { RoiInput, RoiResult } from '@noblecalculator/calculators-core/roi';

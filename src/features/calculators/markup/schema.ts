@@ -1,10 +1,1 @@
-export type MarkupInput = {
-  cost: number;
-  markupRate: number;
-};
-
-export type MarkupResult = {
-  markupAmount: number;
-  sellingPrice: number;
-  margin: number;
-};
+export type { MarkupInput, MarkupResult } from '@noblecalculator/calculators-core/markup';

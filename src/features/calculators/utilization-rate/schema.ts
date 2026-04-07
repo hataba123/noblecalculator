@@ -1,11 +1,1 @@
-export type UtilizationRateInput = {
-  billableHours: number;
-  totalAvailableHours: number;
-};
-
-export type UtilizationRateResult = {
-  billableHours: number;
-  totalAvailableHours: number;
-  utilizationRate: number;
-  nonBillableHours: number;
-};
+export type { UtilizationRateInput, UtilizationRateResult } from '@noblecalculator/calculators-core/utilization-rate';

@@ -1,10 +1,1 @@
-export type VatCalculatorInput = {
-  amount: number;
-  vatRate: number;
-};
-
-export type VatCalculatorResult = {
-  amount: number;
-  vatAmount: number;
-  grossAmount: number;
-};
+export type { VatCalculatorInput, VatCalculatorResult } from '@noblecalculator/calculators-core/vat-calculator';

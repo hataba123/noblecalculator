@@ -1,10 +1,2 @@
-export type ProfitMarginInput = {
-  revenue: number;
-  cost: number;
-};
+export type { ProfitMarginInput, ProfitMarginResult } from "@noblecalculator/calculators-core/profit-margin";
 
-export type ProfitMarginResult = {
-  profit: number;
-  margin: number;
-  markup: number;
-};

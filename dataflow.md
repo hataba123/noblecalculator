@@ -13,6 +13,8 @@ It stores:
 
 That registry is re-exported through `src/config/tools.ts` so the app, sitemap, API route, and directory pages all read the same data.
 
+Reusable calculator math is being moved into `packages/calculators-core`, and shared number formatting now lives in `packages/shared-format`.
+
 ```mermaid
 flowchart LR
 	A[calculatorRegistry] --> B[src/config/tools.ts]
@@ -66,6 +68,8 @@ Each calculator follows the same pattern:
 6. `index.ts` re-exports the public module API.
 
 That structure keeps business logic separate from UI.
+
+In the new monorepo layout, the pure calculation pieces are the first candidates for shared packages, while the route-specific UI stays in the web app.
 
 ## 4. Shared UI flow
 

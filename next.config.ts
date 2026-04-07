@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  transpilePackages: ["@noblecalculator/calculators-core", "@noblecalculator/shared-format"],
 };
 
 export default nextConfig;

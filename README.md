@@ -83,6 +83,10 @@ src/
 └─ tests/
 	└─ calculators/               # Formula tests for each calculator
 
+packages/
+├─ calculators-core/             # Shared calculator schema, config, and formula logic
+└─ shared-format/                # Shared number and money formatting helpers
+
 public/
 └─ og-image.svg                  # Shared social preview image
 
@@ -96,6 +100,7 @@ README.md                        # Project overview and architecture notes
 - `components/shared/` holds reusable UI blocks used across pages.
 - `config/` stores small application-wide configuration and shared registry data.
 - `features/calculators/` contains the business logic for each calculator.
+- `packages/` contains shared code that can be reused by the web app and a future React Native app.
 - `lib/` contains generic helpers that are not tied to one feature.
 - `tests/` contains formula tests, so the math stays easy to verify.
 - `public/` stores static assets used by social sharing and the browser.
