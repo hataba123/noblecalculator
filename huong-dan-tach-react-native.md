@@ -65,7 +65,7 @@ Lam theo thu tu nay de giam rui ro:
 1. Tach `schema.ts` va `formula.ts` ra khoi tung calculator thanh core thuan.
 2. Chuyen `config.ts` va `content.ts` neu no chi chua du lieu.
 3. Tao layer import cho web de van su dung core moi, thuong bang mot file `core.ts` trong tung calculator de UI import qua mot layer duy nhat.
-4. Tao UI primitives cho mobile: `View`, `Text`, `TextInput`, `Pressable`.
+4. Tao UI primitives cho mobile: `View`, `Text`, `TextInput`, `Pressable`, roi gom chung qua `src/mobile/index.ts`.
 5. Port tung calculator mot, bat dau tu calculator don gian nhat.
 6. Noi registry vao navigation cua app mobile.
 7. Giu lai test cho cong thuc core, bo sung test moi neu can.
@@ -114,6 +114,7 @@ Khi tach, giu cac rule nay:
 - [ ] `schema.ts` chi chua type
 - [ ] `config.ts` chi chua data thuan
 - [ ] format helper chay duoc tren RN
+- [ ] UI mobile import qua mot layer duy nhat, vi du `src/mobile/index.ts`
 - [ ] registry khong phu thuoc route web
 - [ ] moi calculator co 1 entry diem mobile rieng
 - [ ] UI mobile dung primitives cua React Native, khong dung DOM
@@ -126,11 +127,12 @@ Tai lieu nay khop voi cach du an dang hoat dong trong:
 - [dataflow.md](dataflow.md)
 - `src/features/calculators/profit-margin/`
 - `src/features/calculators/shared/calculator-registry.ts`
+- `src/mobile/index.ts`
 
 ## 9. Neu muon lam tiep
 
 Buoc tiep theo hop ly nhat la:
 
-1. tach truoc calculator `profit-margin` thanh core dung chung
+1. port `bmi` sang mobile truoc, vi no it input nhat va de test flow nhat
 2. tao skeleton Expo / React Native
 3. noi lai 1 man hinh mobile dau tien de test flow
