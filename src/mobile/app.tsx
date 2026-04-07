@@ -111,8 +111,8 @@ function MobileCalculatorScreenView({
 
             <View style={styles.detailHero}>
                 <Text style={styles.eyebrow}>Selected calculator</Text>
-                <Text style={styles.title}>{title}</Text>
-                <Text style={styles.description}>{description}</Text>
+                <Text style={styles.title}>{calculator.title}</Text>
+                <Text style={styles.description}>{calculator.description}</Text>
             </View>
 
             <View style={styles.detailFrame}>
