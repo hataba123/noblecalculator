@@ -14,10 +14,17 @@ export function middleware(request: NextRequest) {
   const matchedLocale = pathname.match(localePrefixPattern)?.[1];
 
   if (!matchedLocale) {
-    const redirectUrl = request.nextUrl.clone();
-    redirectUrl.pathname = `${request.nextUrl.pathname === "/" ? "" : request.nextUrl.pathname}`;
-    redirectUrl.pathname = `/${defaultLocale}${redirectUrl.pathname}`;
-    return NextResponse.redirect(redirectUrl);
+    const rewriteUrl = request.nextUrl.clone();
+    rewriteUrl.pathname = `/${defaultLocale}${pathname === "/" ? "" : pathname}`;
+
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set(localeRequestHeader, defaultLocale);
+
+    return NextResponse.rewrite(rewriteUrl, {
+      request: {
+        headers: requestHeaders,
+      },
+    });
   }
 
   const locale = normalizeLocale(matchedLocale);
