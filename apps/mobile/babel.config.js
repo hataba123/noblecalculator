@@ -13,7 +13,6 @@ module.exports = function (api) {
                         "@noblecalculator/calculators-core": "../../packages/calculators-core/src",
                         "@noblecalculator/shared-format": "../../packages/shared-format/src",
                         react: "./node_modules/react",
-                        "react-native": "./node_modules/react-native",
                         "react-native-gesture-handler": "./node_modules/react-native-gesture-handler",
                         "react-native-safe-area-context": "./node_modules/react-native-safe-area-context",
                         "react-native-screens": "./node_modules/react-native-screens",

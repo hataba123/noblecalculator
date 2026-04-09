@@ -95,7 +95,6 @@ function MobileRegistryScreen({
     });
 
     const featuredCalculators = mobileCalculatorRegistry.slice(0, 4);
-    <View style={styles.heroAccent} />
     return (
         <ScrollView
             contentContainerStyle={styles.page}
