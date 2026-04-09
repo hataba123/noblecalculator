@@ -111,6 +111,8 @@ function Field({
         keyboardType={keyboardType}
         onChangeText={onChangeText}
         placeholder={placeholder}
+        placeholderTextColor="#9c8f7f"
+        selectionColor="#8a6b45"
         style={styles.input}
         value={value}
       />
@@ -151,7 +153,13 @@ export function createMobileCalculatorScreen<TInput extends CalculatorInput, TRe
         </View>
 
         <View style={styles.card}>
-          <Text style={styles.sectionLabel}>Inputs</Text>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionLabel}>Inputs</Text>
+            <Pressable accessibilityLabel={`Reset ${config.title}`} onPress={reset} style={styles.resetButton}>
+              <Text style={styles.resetButtonText}>Reset</Text>
+            </Pressable>
+          </View>
+
           <View style={styles.fieldsStack}>
             {fieldKeys.map((key) => {
               const templateValue = baseValue[key];
@@ -175,14 +183,16 @@ export function createMobileCalculatorScreen<TInput extends CalculatorInput, TRe
               );
             })}
           </View>
-
-          <Pressable accessibilityLabel={`Reset ${config.title}`} onPress={reset} style={styles.resetButton}>
-            <Text style={styles.resetButtonText}>Reset</Text>
-          </Pressable>
         </View>
 
         <View style={styles.card}>
-          <Text style={styles.sectionLabel}>Result</Text>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionLabel}>Result</Text>
+            <Text style={styles.sectionMeta}>
+              {Object.keys(resultValue).length} output{Object.keys(resultValue).length === 1 ? "" : "s"}
+            </Text>
+          </View>
+
           <View style={styles.resultsStack}>
             {Object.entries(resultValue).map(([key, value]) => (
               <ResultItem key={key} label={formatLabel(config.resultLabels?.[key as keyof TResult] ?? key)} value={value} />
@@ -192,7 +202,11 @@ export function createMobileCalculatorScreen<TInput extends CalculatorInput, TRe
 
         {config.notes && config.notes.length > 0 ? (
           <View style={styles.card}>
-            <Text style={styles.sectionLabel}>Notes</Text>
+            <View style={styles.sectionHeader}>
+              <Text style={styles.sectionLabel}>Notes</Text>
+              <Text style={styles.sectionMeta}>Helpful context</Text>
+            </View>
+
             <View style={styles.notesStack}>
               {config.notes.map((note) => (
                 <Text key={note} style={styles.note}>
@@ -211,16 +225,21 @@ const styles = {
   screen: {
     gap: 16,
     padding: 16,
-    backgroundColor: "#f8f3ea",
+    backgroundColor: "#f5efe6",
     minHeight: "100%",
   },
   heroCard: {
     gap: 10,
-    borderRadius: 24,
-    padding: 18,
+    borderRadius: 28,
+    padding: 20,
     borderWidth: 1,
     borderColor: "rgba(27,26,23,0.08)",
-    backgroundColor: "#ffffff",
+    backgroundColor: "#fffdf9",
+    shadowColor: "#1b1a17",
+    shadowOpacity: 0.06,
+    shadowRadius: 18,
+    shadowOffset: { width: 0, height: 8 },
+    elevation: 2,
   },
   eyebrow: {
     fontSize: 12,
@@ -242,11 +261,22 @@ const styles = {
   },
   card: {
     gap: 14,
-    borderRadius: 24,
+    borderRadius: 28,
     padding: 18,
     borderWidth: 1,
     borderColor: "rgba(27,26,23,0.08)",
-    backgroundColor: "#ffffff",
+    backgroundColor: "#fffdf9",
+    shadowColor: "#1b1a17",
+    shadowOpacity: 0.05,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 6 },
+    elevation: 1,
+  },
+  sectionHeader: {
+    flexDirection: "row" as const,
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 12,
   },
   sectionLabel: {
     fontSize: 12,
@@ -254,6 +284,11 @@ const styles = {
     letterSpacing: 1.4,
     textTransform: "uppercase" as const,
     color: "#8a6b45",
+  },
+  sectionMeta: {
+    fontSize: 12,
+    fontWeight: "600" as const,
+    color: "#6c655b",
   },
   fieldsStack: {
     gap: 14,
@@ -273,20 +308,22 @@ const styles = {
     paddingHorizontal: 14,
     paddingVertical: 12,
     borderColor: "rgba(27,26,23,0.12)",
-    backgroundColor: "#fff",
+    backgroundColor: "#ffffff",
     color: "#1b1a17",
     fontSize: 16,
   },
   resetButton: {
+    alignSelf: "flex-start",
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: 12,
-    borderRadius: 16,
-    backgroundColor: "#8a6b45",
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+    borderRadius: 999,
+    backgroundColor: "rgba(138,107,69,0.12)",
   },
   resetButtonText: {
-    color: "#ffffff",
-    fontSize: 15,
+    color: "#8a6b45",
+    fontSize: 13,
     fontWeight: "700" as const,
   },
   resultsStack: {
