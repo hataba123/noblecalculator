@@ -43,6 +43,11 @@ type ChoiceButtonProps = {
   onPress: () => void;
 };
 
+type TdeeEquationOption = (typeof tdeeEquationOptions)[number];
+type TdeeSexOption = (typeof tdeeSexOptions)[number];
+type TdeeActivityOption = (typeof tdeeActivityOptions)[number];
+type TdeeGoalOption = (typeof tdeeGoalOptions)[number];
+
 const numericKeyboardType: KeyboardType = "numeric";
 
 function formatInputValue(value: number) {
@@ -210,7 +215,7 @@ export function TdeeCalculator({ initialValue = tdeeConfig.defaultValue }: { ini
       <View style={styles.card}>
         <SectionTitle title="Equation" />
         <View style={styles.choiceStack}>
-          {tdeeEquationOptions.map((option) => (
+          {tdeeEquationOptions.map((option: TdeeEquationOption) => (
             <ChoiceButton
               key={option.value}
               selected={formState.equationUsed === option.value}
@@ -238,7 +243,7 @@ export function TdeeCalculator({ initialValue = tdeeConfig.defaultValue }: { ini
       <View style={styles.card}>
         <SectionTitle title="Sex & age" />
         <View style={styles.choiceRow}>
-          {tdeeSexOptions.map((option) => (
+          {tdeeSexOptions.map((option: TdeeSexOption) => (
             <View key={option.value} style={styles.choiceRowItem}>
               <ChoiceButton
                 selected={formState.sex === option.value}
@@ -325,7 +330,7 @@ export function TdeeCalculator({ initialValue = tdeeConfig.defaultValue }: { ini
       <View style={styles.card}>
         <SectionTitle title="Activity level" />
         <View style={styles.choiceStack}>
-          {tdeeActivityOptions.map((option) => (
+          {tdeeActivityOptions.map((option: TdeeActivityOption) => (
             <ChoiceButton
               key={option.value}
               selected={formState.activityLevel === option.value}
@@ -340,7 +345,7 @@ export function TdeeCalculator({ initialValue = tdeeConfig.defaultValue }: { ini
       <View style={styles.card}>
         <SectionTitle title="Goal mode" />
         <View style={styles.choiceRow}>
-          {tdeeGoalOptions.map((option) => (
+          {tdeeGoalOptions.map((option: TdeeGoalOption) => (
             <View key={option.value} style={styles.choiceRowItem}>
               <ChoiceButton
                 selected={formState.goalMode === option.value}
